@@ -1,0 +1,15 @@
+03 — ALKUPERÄINEN SVG-TYYLI, VAIN KUUSI KUVAA
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / Medium. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Lue docs/VISUAALINEN_OHJE.md ja katso nykyinen korttinäkymä. Tee kuusi alkuperäistä SVG-kuvitusta avaimille authority, planner, consultant, landowner, reindeer ja substation. Ei ulkoista kuvageneraattoria tai maksullista palvelua. Tavoitteena on pelkistetty, kulmikas ja tyylikäs oma kuvitus, ei valmiiden Reigns-kuvien kopio.
+
+Lukitse yhteinen 6–8 värin paletti ja 320x320 viewBox. Muutamat suuret polygonit, tunnistettava siluetti ja harkitut kasvot. Ammattihahmot erottuvat pienessä koossa ilman tekstiä. Neutraali virkailija voi olla koominen juuri vakavuudessaan. Vältä geneeristä ikonikirjaston tai emojiavatarin vaikutelmaa.
+
+Renderöi ja avaa kontaktikartta sekä ainakin kolme kuvaa oikeassa korttinäkymässä. Arvioi rajaus, sommittelu, yhtenäisyys ja 360px puhelinnäkymän luettavuus. Korjaa havaitut selvät virheet yhdessä rajatussa kierroksessa, älä tee kaikkia tulevia kuvia ennen suunnan arviointia. Kun kuvaa ei voi avata, ilmoita tarkastus tekemättömäksi.
+
+Toimita SVG:t, yhteinen tyylimäärittely ja kuvaviitteet. Tee puuttuville muille artKey-avaimille selvästi kehitystilaan merkitty vararatkaisu, älä väitä niitä valmiiksi. Ei moottorin, korttitekstien tai vaihelogiikan muutoksia. Seuraavaksi käyttäjä arvioi tämän kuuden kuvan suunnan ennen sarjatuotantoa.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

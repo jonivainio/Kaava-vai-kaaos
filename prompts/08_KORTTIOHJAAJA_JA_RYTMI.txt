@@ -1,0 +1,17 @@
+08 — SURKUHUPAISUUDEN RYTMI JA KORTTIOHJAAJA
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / High. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Toteuta editorial.fi.json-tietoja käyttävä pehmeä komediarytmi nykyiseen korttiohjaajaan. Älä muuta korttien effectejä tai hyväksymisehtoja. Lue sävyohje ja nykyinen valintalogiikka.
+
+Prioriteetti: erääntyneet seuraukset ja välttämättömät portit ensin. Niiden jälkeen valitse kelvollinen vaihesisältö ja vasta sitten sattumaluonteinen arkikortti. Kohtauksen sisältö, moodi, vaihe, riskin paljastuminen ja jono ovat ehtoja; huumoritaso ei ohita niitä.
+
+Vältä samaa irrallista vitsiperhettä yli kahdesti viimeisessä kahdeksassa kortissa ja kahta voimakkuuden 3 sattumakorttia peräkkäin. Kolmen takaiskun jälkeen suosi myönteistä tai arkista hengähdystä, jos sellainen on kelvollisena. Älä muuta tutkimustulosta helpoksi, luo budjettia tyhjästä tai tukahduta erääntynyttä estettä. Jos pehmeä rajoitus estää kaiken, höllennä rytmiehtoa näkyvän säännön mukaan; ei deadlockia.
+
+Seuraa ketjun alkua, jatkoa ja sulkeutumista. Followup-kortti ei saa tulla ilman omaa jonoa. Pidä valinnat ja tarjoukset tallennuksessa, ettei reload arvo uutta tarinaa. Eri siemenillä ja valinnoilla syntyy erilaisia mutta ymmärrettäviä tarinoita.
+
+Testit: no-eligible-card, kaikki vaihtoehdot samasta perheestä, erääntynyt vakava kortti kevennyksen kohdalla, P025/P026-poissulku, H001:n kaksi haaraa, ei ikuista selvityssilmukkaa, ei resurssifarmia, reload samaan korttiin. Raportoi toteutuneet rytmirajoitteet ja poikkeukset. Älä väitä numeeristen testien todistavan hauskuutta.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

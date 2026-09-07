@@ -1,0 +1,591 @@
+{
+  "schemaVersion": "1.0",
+  "packId": "pilot-fi-002",
+  "notice": "Toimituksellinen rytmitys, ei uusia vaikutuskäskyjä. Ei julkaistuja tositapauskytkentöjä.",
+  "cards": [
+    {
+      "cardId": "P001",
+      "family": "land",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P002",
+      "family": "land",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P003",
+      "family": "water",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P004",
+      "family": "deadline",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P005",
+      "family": "municipality",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P006",
+      "family": "municipality",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P007",
+      "family": "regional",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P008",
+      "family": "regional",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P009",
+      "family": "grid",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P010",
+      "family": "grid",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P011",
+      "family": "defence",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P012",
+      "family": "height",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P013",
+      "family": "documents",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P014",
+      "family": "participation",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P015",
+      "family": "consultant",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P016",
+      "family": "season",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P017",
+      "family": "reindeer",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P018",
+      "family": "eagle",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P019",
+      "family": "eagle",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P020",
+      "family": "osprey",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P021",
+      "family": "frog",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P022",
+      "family": "water",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P023",
+      "family": "soil",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P024",
+      "family": "wind",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P025",
+      "family": "wind",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P026",
+      "family": "wind",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P027",
+      "family": "documents",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P028",
+      "family": "shadow",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P029",
+      "family": "landscape",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P030",
+      "family": "season",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P031",
+      "family": "landuse",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P032",
+      "family": "procedure",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P033",
+      "family": "solar",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P034",
+      "family": "documents",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P035",
+      "family": "adequacy",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P036",
+      "family": "adequacy",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P037",
+      "family": "relief",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P038",
+      "family": "participation",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P039",
+      "family": "politics",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P040",
+      "family": "funding",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P041",
+      "family": "funding",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P042",
+      "family": "hybrid",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P043",
+      "family": "grid",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P044",
+      "family": "commercial",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P045",
+      "family": "documents",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P046",
+      "family": "victory",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P047",
+      "family": "procedure",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "P048",
+      "family": "hybrid",
+      "comedyLevel": 1,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H001",
+      "family": "scope",
+      "comedyLevel": 3,
+      "fictionLevel": "heightenedSatire",
+      "chainId": "shedScope",
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H002",
+      "family": "scope",
+      "comedyLevel": 3,
+      "fictionLevel": "heightenedSatire",
+      "chainId": "shedScope",
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H003",
+      "family": "scope",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": "shedScope",
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H004",
+      "family": "map",
+      "comedyLevel": 3,
+      "fictionLevel": "heightenedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H005",
+      "family": "water",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H006",
+      "family": "landscape",
+      "comedyLevel": 3,
+      "fictionLevel": "heightenedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H007",
+      "family": "falseAlarm",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H008",
+      "family": "conflictingAdvice",
+      "comedyLevel": 3,
+      "fictionLevel": "heightenedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H009",
+      "family": "meeting",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H010",
+      "family": "relief",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H011",
+      "family": "grid",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H012",
+      "family": "management",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "work",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H013",
+      "family": "reindeer",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H014",
+      "family": "map",
+      "comedyLevel": 3,
+      "fictionLevel": "heightenedSatire",
+      "chainId": null,
+      "beat": "setback",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H015",
+      "family": "refund",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    },
+    {
+      "cardId": "H016",
+      "family": "relief",
+      "comedyLevel": 2,
+      "fictionLevel": "groundedSatire",
+      "chainId": null,
+      "beat": "relief",
+      "reviewStatus": "draft"
+    }
+  ],
+  "directorDefaults": {
+    "maxAmbientFamilyInLast8": 2,
+    "avoidBackToBackLevel3": true,
+    "preferReliefAfterSetbacks": 3,
+    "maxSideQuestDepth": 3,
+    "neverSuppressDueEventsOrGates": true,
+    "reliefIsPreferenceNotGuaranteedOutcome": true
+  }
+}

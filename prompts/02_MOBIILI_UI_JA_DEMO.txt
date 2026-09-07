@@ -1,0 +1,19 @@
+02 — MOBIILI-UI JA 12 PÄÄTÖKSEN DEMO
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / Medium. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Toteuta nykyisen moottorin päälle mobiili ensin -käyttöliittymä ja manifestin demoFlow'n mukainen 12 päätöksen tunnelmaproto. Lue UI-osat pelisuunnitelmasta, demoFlow ja moottorin julkiset tyypit. Älä suunnittele moottoria uudelleen. Käytä yksinkertaisia väliaikaisia kuvituspaikkoja; varsinainen alkuperäinen taidesuunta tehdään tehtävässä 03.
+
+Yläpalkki: fiktiivinen hankenimi, vaihe ja hankekuukausi. Koko ajan näkyvät TUULI: kpl, enimmäiskokonaiskorkeus m, kokonais-MW, liittymä km; AURINKO: ha ja liittymä km. Hybridin yhteinen johto merkitään yhteiseksi. Neljä tiivistä mittaria: budjetti, luottamus, selvitysvalmius ja omistajan kärsivällisyys. Tärkeät luvut eivät saa kadota avattavan valikon taakse.
+
+Keskellä yksi suuri kortti, puhuja, kuvitus ja napakka suomenkielinen teksti. Pyyhkäisy paljastaa valinnan tekstin ja tunnetun vaikutuksen. Vaaraindikaattori näyttää varmasti kohtalokkaan seurauksen. Vaihtoehtoisina ohjaimina kaksi painiketta ja näppäimistö. Peruuntunut veto ei tee päätöstä, sivun pystyscrolli ei vahvista valintaa, nopea napautus ja swipe eivät tee kahta transaktiota. Lisää reduced motion ja näkyvä fokustila. Teksti on HTML:ää, ei SVG-kuvassa.
+
+Demon H001 jonottaa vasemmalla H002:n ja oikealla H003:n. Älä pelaa molempia tai seuraa jäykästi esimerkkijonoa. Demo käyttää näkyvästi käsikirjoitettuja vaihe-fixtureja, ei väitä suorittavansa vielä täyttä kampanjan porttimallia. Lopussa ”Ensimmäinen selvityskierros valmis”, kesken olevat työt näkyvissä. Ei kaavavoittoa.
+
+Tee kehittäjän korttikatselin: 64 korttia, hankemuoto/vaihe/sävy-suodattimet, molempien päätösten esikatselu, näkyvästi nimetyt testifixturet. Älä muuta fixturea todisteeksi kortin luonnollisesta saavutettavuudesta. Alkuvalikossa on yksi lyhyt fiktiivisyyden ilmoitus ja Uusi hanke / Jatka.
+
+Tarkista selaimessa ainakin 360x800 ja 390x844 näkymät sekä pitkät nimet ja kortit. Aja E2E: kummatkin H001-haarat, veto/peruutus, napit, näppäimistö ja tallennuksen jatko. Ellei selain ole käytettävissä, kirjaa puute. Älä väitä oikean puhelimen testausta emulaation perusteella.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

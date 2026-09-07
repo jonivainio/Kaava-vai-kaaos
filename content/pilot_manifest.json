@@ -1,0 +1,323 @@
+{
+  "schemaVersion": "1.0",
+  "status": "authoringAndImplementationContract",
+  "notice": "64 fictional pilot cards; 48 rewritten + 16 new. Structure is checked; game-engine execution, campaign reachability, humor and phone usability still need testing.",
+  "roles": {
+    "landowner": "Maanomistaja",
+    "waterExpert": "Vesiasiantuntija",
+    "legal": "Lakiasiantuntija",
+    "planner": "Kunnan kaavoittaja",
+    "regionalPlanner": "Maakuntaliiton suunnittelija",
+    "gridEngineer": "Verkkosuunnittelija",
+    "defence": "Puolustusasioiden asiantuntija",
+    "aviation": "Ilmailuasiantuntija",
+    "consultant": "YVA-/kaavakonsultti",
+    "ecologist": "Luontoasiantuntija",
+    "windAnalyst": "Tuulianalyytikko",
+    "landscapeExpert": "Maisema-asiantuntija",
+    "solarEngineer": "Aurinkosuunnittelija",
+    "authority": "Yhteysviranomainen",
+    "resident": "Mökkiläinen",
+    "finance": "Omistajan edustaja"
+  },
+  "artKeys": [
+    "authority",
+    "celebration",
+    "consultant",
+    "cottage",
+    "documents",
+    "eagle",
+    "ecologist",
+    "finance",
+    "frog",
+    "landowner",
+    "map",
+    "osprey",
+    "planner",
+    "radar",
+    "reindeer",
+    "solarfield",
+    "substation",
+    "wetland",
+    "windscape"
+  ],
+  "flags": [
+    "adoptionDecisionPositive",
+    "adoptionGatesSatisfied",
+    "anchorLeaseSigned",
+    "aviationLayoutAdjusted",
+    "birdAdequacyReviewNeeded",
+    "birdEvidenceCurrent",
+    "coOwnerIssueResolved",
+    "coOwnerTalks",
+    "conclusionActionsMapped",
+    "defenceRedesignNeeded",
+    "defenceStudyNeeded",
+    "documentFullReviewNeeded",
+    "documentsSynced",
+    "draftFeedbackProcessed",
+    "drainageEdgeRemoved",
+    "drainageRightsReviewed",
+    "ecologyReady",
+    "economicsReviewNeeded",
+    "electionDue",
+    "epilogueEnabled",
+    "exportLimitStudyNeeded",
+    "finalQaDone",
+    "frogAreaAvoided",
+    "frogHydrologyStudyNeeded",
+    "fundingDecisionReady",
+    "fundingPhasingNeeded",
+    "goldenEagleLayoutAdjusted",
+    "goldenEagleRedesignNeeded",
+    "gridAlternativesMapped",
+    "gridCrossingStudyNeeded",
+    "gridResponseReady",
+    "gridRouteStudyNeeded",
+    "groundwaterRedesignNeeded",
+    "groundwaterStudyReady",
+    "hybridPivotAvailable",
+    "hybridProfileStudyNeeded",
+    "landTalksStarted",
+    "landscapeLayoutAdjusted",
+    "layoutFreezeNeeded",
+    "leaseDeadlineNear",
+    "leaseExtended",
+    "leaseRedesignNeeded",
+    "miningFallbackDesigned",
+    "miningOverlapReviewed",
+    "newCouncilBriefed",
+    "newCouncilGoalsHeard",
+    "noGrantBaseCase",
+    "noiseCurrent",
+    "oasNeedsUpdate",
+    "oasReviewed",
+    "ospreyLayoutAdjusted",
+    "ospreyRedesignNeeded",
+    "pivotUsed",
+    "ppaCompetitionStarted",
+    "ppaNegotiationsStarted",
+    "programmeScopeMeeting",
+    "regionalEvidenceReady",
+    "regionalFallbackDesigned",
+    "regionalRedesignNeeded",
+    "reindeerLayoutAdjusted",
+    "residentViewsRecorded",
+    "seaEagleLayoutAdjusted",
+    "seaEagleStudyNeeded",
+    "shadowCurtailmentStudyNeeded",
+    "shadowLayoutAdjusted",
+    "sharedGridDesignAdvanced",
+    "solarPlanningRouteConfirmed",
+    "solarScaleAlternativeNeeded",
+    "solarShadeAdjusted",
+    "solarShadeRedesignNeeded",
+    "sulphateLayoutAdjusted",
+    "sulphatePlanNeeded",
+    "visualsNeedUpdate",
+    "waterExpertAssigned",
+    "windDesktopUpdated",
+    "windMeasured",
+    "windResultProcessed",
+    "yieldRedesignNeeded",
+    "yvaAdequacyConfirmed",
+    "yvaAlternativeNeeded",
+    "yvaProgrammeReviewed",
+    "yvaSupplementReady"
+  ],
+  "defaultFlagValue": false,
+  "siteFields": [
+    "aviationConflict",
+    "birdEvidenceOutdated",
+    "defenceConflict",
+    "draftFeedbackQuiet",
+    "frogConflict",
+    "goldenEagleConflict",
+    "grantRejected",
+    "gridConstraint",
+    "gridCrossingConflict",
+    "landscapeConflict",
+    "miningOverlap",
+    "ospreyConflict",
+    "proceduralReversal",
+    "regionalRequired",
+    "reindeerConflict",
+    "renewfmCallEligible",
+    "seaEagleConflict",
+    "shadowConflict",
+    "solarPlanningRequired",
+    "solarShade",
+    "sulphateRisk",
+    "waterRisk",
+    "windClass",
+    "yvaNeedsSupplement",
+    "yvaRequired"
+  ],
+  "siteFieldValues": {
+    "windClass": [
+      "weak",
+      "good"
+    ],
+    "defaultOtherType": "boolean"
+  },
+  "readOnlyGateFlags": [
+    "leaseDeadlineNear",
+    "electionDue",
+    "yvaAdequacyConfirmed",
+    "adoptionDecisionPositive",
+    "adoptionGatesSatisfied",
+    "epilogueEnabled"
+  ],
+  "adjustableFields": [
+    "budget",
+    "trust",
+    "quality",
+    "patience",
+    "economicsIndex",
+    "windYieldIndex"
+  ],
+  "derivedConditionFields": [
+    "wind.count",
+    "solar.hectares"
+  ],
+  "allowedTracks": {
+    "municipality": [
+      "unstarted",
+      "initiated",
+      "proposal",
+      "adopted",
+      "reprocessing",
+      "rejected"
+    ],
+    "regional": [
+      "notRequired",
+      "compatible",
+      "pending",
+      "draft",
+      "proposal",
+      "omitted",
+      "approved",
+      "appealed"
+    ],
+    "grid": [
+      "unstarted",
+      "inquiry",
+      "study",
+      "alternative",
+      "feasible",
+      "contracted",
+      "blocked"
+    ],
+    "funding": [
+      "unstarted",
+      "applied",
+      "notApplied",
+      "granted",
+      "rejected"
+    ],
+    "yva": [
+      "notRequired",
+      "programme",
+      "report",
+      "supplement",
+      "conclusion"
+    ]
+  },
+  "initialDefaults": {
+    "budget": 100,
+    "trust": 50,
+    "quality": 15,
+    "patience": 75,
+    "economicsIndex": 65,
+    "windYieldIndex": 100
+  },
+  "demo": {
+    "mode": "hybrid",
+    "script": [
+      "P001",
+      "P002",
+      "P006",
+      "P005",
+      "P009",
+      "P015",
+      "P014",
+      "P013",
+      "H001",
+      "H002",
+      "H015",
+      "P040"
+    ],
+    "endingLabel": "Ensimmäinen selvityskierros valmis",
+    "notAFullCampaign": true,
+    "fixture": {
+      "windCount": 16,
+      "turbineMW": 10,
+      "maxTotalHeightM": 300,
+      "solarHa": 100,
+      "gridKm": 14,
+      "site": {
+        "regionalRequired": true,
+        "waterRisk": true,
+        "yvaRequired": true,
+        "renewfmCallEligible": true
+      }
+    },
+    "notes": "Prologin esimerkkipolku vasemmalla H001-valinnalla. Käytä demoFlow-tietoja: H001 jonottaa H002:n TAI H003:n, ei molempia. H001 esitetään vaiheessa 03, H015 vaiheessa 03. P040 vaatii skenaarion tukihakukelpoisuuden. Odotus on näkyvä kellon etenemistapahtuma, ei valintojen tai ehtojen ohitus. P040 esitetään vaiheessa 04; tämä on näkyvästi ilmoitettu demon vaiheistus, ei kokonaisen kampanjan porttitesti.",
+    "demoFlow": [
+      {
+        "cardId": "P001",
+        "phase": "01"
+      },
+      {
+        "cardId": "P002",
+        "phase": "01"
+      },
+      {
+        "cardId": "P006",
+        "phase": "02"
+      },
+      {
+        "cardId": "P005",
+        "phase": "02"
+      },
+      {
+        "cardId": "P009",
+        "phase": "02"
+      },
+      {
+        "cardId": "P015",
+        "phase": "03"
+      },
+      {
+        "cardId": "P014",
+        "phase": "03"
+      },
+      {
+        "cardId": "P013",
+        "phase": "03"
+      },
+      {
+        "cardId": "H001",
+        "phase": "03"
+      },
+      {
+        "queuedOneOf": [
+          "H002",
+          "H003"
+        ],
+        "phase": "03",
+        "waitUntilDue": true
+      },
+      {
+        "cardId": "H015",
+        "phase": "03"
+      },
+      {
+        "cardId": "P040",
+        "phase": "04"
+      }
+    ],
+    "fictionalNameRequired": true
+  },
+  "expectedCardCount": 64
+}

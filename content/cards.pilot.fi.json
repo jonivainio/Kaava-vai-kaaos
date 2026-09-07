@@ -1,0 +1,4702 @@
+{
+  "schemaVersion": "1.0",
+  "packId": "pilot-fi-002",
+  "locale": "fi-FI",
+  "status": "contentPrototype",
+  "cards": [
+    {
+      "id": "P001",
+      "version": 2,
+      "title": "Kynä käy. Epäily herää.",
+      "body": "Maanomistaja lukee sopimuksen ja sanoo kyllä. Ilman ehtoja. Tiimi tarkistaa varmuuden vuoksi, että oikea henkilö tuli paikalle. Hän kysyy, kutsutaanko naapuritkin.",
+      "speakerId": "landowner",
+      "artKey": "landowner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Sovitaan yhteinen tapaaminen",
+          "outcomeText": "Naapurit kutsutaan. Hanke saa ensimmäisen kokouksen, jota kukaan ei vaatinut.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 7
+            },
+            {
+              "op": "flag",
+              "key": "landTalksStarted",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Allekirjoitetaan ensin",
+          "outcomeText": "Ensimmäinen nimi on paperissa. Muiden allekirjoitukset eivät ilmesty myötätunnosta.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "flag",
+              "key": "anchorLeaseSigned",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P002",
+      "version": 2,
+      "title": "Kuusi osakasta ja yksi vastaus",
+      "body": "Kaksi voimalapaikkaa on yhteisomistetulla tilalla. Yksi osakas vastasi kaikille. Muut vastaavat nyt toisilleen, mutta eivät kysymykseen.",
+      "speakerId": "landowner",
+      "artKey": "landowner",
+      "phases": [
+        "01",
+        "02"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "mixed",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "wind.count",
+          "operator": "gte",
+          "value": 4
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Kootaan kaikki osakkaat",
+          "outcomeText": "Osakkaat saadaan saman asian äärelle. Kalenterit eivät selvinneet ilman vaurioita.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "flag",
+              "key": "coOwnerTalks",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Rajataan kaksi paikkaa pois",
+          "outcomeText": "Kaksi paikkaa poistuu. Sähköpostiketju jatkuu ilman hanketta.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "windRemove",
+              "count": 2,
+              "reason": "co_owned_parcel"
+            },
+            {
+              "op": "flag",
+              "key": "coOwnerIssueResolved",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P003",
+      "version": 2,
+      "title": "Oja hakee omaa sopimusta",
+      "body": "Aurinkoalueen kuivatus päätyy naapurin ojaan. Vedelle reitti oli selvä. Sopimuskansiolle ei. Käyttö- ja kunnossapito-oikeudet puuttuvat.",
+      "speakerId": "waterExpert",
+      "artKey": "wetland",
+      "phases": [
+        "01",
+        "04"
+      ],
+      "modes": [
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "solar.hectares",
+          "operator": "gte",
+          "value": 30
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Selvitetään oikeudet",
+          "outcomeText": "Oikeuksien tarkastelu tilataan. Vedelle ei vielä lähetetä kokouskutsua.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "drainage_rights",
+              "afterMonths": 2,
+              "completionText": "Ojien käyttöoikeuksien tarkastelu valmistui.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "drainageRightsReviewed",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Jätetään reuna-alue pois",
+          "outcomeText": "Reunasta poistuu 10 ha. Oja jää, riippuvuus pienenee.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "solarRemove",
+              "hectares": 10,
+              "reason": "drainage_edge"
+            },
+            {
+              "op": "flag",
+              "key": "drainageEdgeRemoved",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P004",
+      "version": 2,
+      "title": "Sopimus osasi lukea kalenteria",
+      "body": "Maanvuokraoptio vanhenee ennen kaavapäätöstä. Projektiaikataulu on siirretty kolmesti. Sopimuksen päivämäärä ei ole osallistunut talkoisiin.",
+      "speakerId": "legal",
+      "artKey": "documents",
+      "phases": [
+        "03",
+        "04",
+        "05"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "followup",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.leaseDeadlineNear",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Neuvotellaan jatkoa",
+          "outcomeText": "Jatkoaika maksaa. Tällä kertaa myös sopimus pääsee uuteen aikatauluun.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -6
+            },
+            {
+              "op": "flag",
+              "key": "leaseExtended",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tiivistetään hankerajausta",
+          "outcomeText": "Rajauksen uudelleensuunnittelu alkaa. Vanhaa määräaikaa ei kuitata toiveikkuudella.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "flag",
+              "key": "leaseRedesignNeeded",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -5
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P005",
+      "version": 2,
+      "title": "Myönteinen päätös. Hengitä.",
+      "body": "Kunta hyväksyi kaavoitusaloitteen. Omistaja kysyy jo rakentamisen aloituspäivää. Kaavoittaja kysyy aloitustilaisuuden päivää. Aloitetaan jälkimmäisestä.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "02"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "milestone",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tavataan kuntalaiset pian",
+          "outcomeText": "Kuntalaiset kutsutaan. Lapion tilaaminen odottaa vielä.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "track",
+              "key": "municipality",
+              "value": "initiated"
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 6
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Kootaan lähtötiedot ensin",
+          "outcomeText": "Lähtötiedot kootaan. Rakentamisaikataulun soluun kirjoitetaan jälleen ”alustava”.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "track",
+              "key": "municipality",
+              "value": "initiated"
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 6
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P006",
+      "version": 2,
+      "title": "Kunta tarjoaa pöydän",
+      "body": "Kunnan edustaja suhtautuu myönteisesti ja ehdottaa yhteistä tapaamista. Kahvi kuuluu tilaan. Myönteinen kaavapäätös ei kuulu tarjoiluun.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "02"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Otetaan kutsu vastaan",
+          "outcomeText": "Yhteinen keskustelu alkaa ilman, että kenenkään tarvitsee ensin suuttua.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 7
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Pidetään ensin työpalaveri",
+          "outcomeText": "Työpalaverissa löydetään avoimet asiat. Tämä on tänään hyvä uutinen.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 5
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P007",
+      "version": 2,
+      "title": "Kartalla. Toistaiseksi.",
+      "body": "Maakuntakaavaluonnoksessa on hankkeen tarvitsema aluevaraus. Kalvolla lukee ”mahdollistaa”. Alaviitteessä lukee ”edellyttäen”. Alaviite tarvitsee lisäaineistoa.",
+      "speakerId": "regionalPlanner",
+      "artKey": "map",
+      "phases": [
+        "02",
+        "03"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.regionalRequired",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Teetetään yhteisvaikutukset",
+          "outcomeText": "Yhteisvaikutusten tarkastelu tilataan. Karttaväri ei vielä muutu lupaukseksi.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -6
+            },
+            {
+              "op": "track",
+              "key": "regional",
+              "value": "draft"
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "regional_evidence",
+              "afterMonths": 3,
+              "completionText": "Maakunnallinen perustelupaketti valmistui.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "regionalEvidenceReady",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Varataan suppeampi vaihtoehto",
+          "outcomeText": "Suppeampi vaihtoehto valmistellaan. On nyt suunnitelma myös suunnitelman puuttumiselle.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "track",
+              "key": "regional",
+              "value": "draft"
+            },
+            {
+              "op": "flag",
+              "key": "regionalFallbackDesigned",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P008",
+      "version": 2,
+      "title": "Aluevaraus kävi täällä",
+      "body": "Maakuntakaavaehdotuksesta puuttuu hankkeen tarvitsema varaus. Luonnos oli kuulemma luonnos. Esityskalvon vihreä liikennevalo ei saanut tiedotetta.",
+      "speakerId": "regionalPlanner",
+      "artKey": "map",
+      "phases": [
+        "05",
+        "06",
+        "07"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "followup",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.regionalRequired",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "tracks.regional",
+          "operator": "eq",
+          "value": "draft"
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Selvitetään uusi ratkaisu",
+          "outcomeText": "Uutta ratkaisua selvitetään. Paikallinen kaava ei tässä skenaariossa yksin ratkaise riippuvuutta.",
+          "timeMonths": 3,
+          "effects": [
+            {
+              "op": "track",
+              "key": "regional",
+              "value": "omitted"
+            },
+            {
+              "op": "flag",
+              "key": "regionalRedesignNeeded",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -6
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -8
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Odotetaan seuraavaa ratkaisua",
+          "outcomeText": "Hanke odottaa rinnakkaista ratkaisua. Omistaja pyytää odottamisesta aikataulun.",
+          "timeMonths": 6,
+          "effects": [
+            {
+              "op": "track",
+              "key": "regional",
+              "value": "omitted"
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -15
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P009",
+      "version": 2,
+      "title": "Kartalla on sähköä",
+      "body": "Alustava verkkokartta näyttää lupaavalta. Verkkosuunnittelija täsmentää: väri kertoo mahdollisuudesta, ei siitä, että sähköpaikka odottaa nimelläsi.",
+      "speakerId": "gridEngineer",
+      "artKey": "substation",
+      "phases": [
+        "01",
+        "02",
+        "03"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Lähetetään liityntäkysely",
+          "outcomeText": "Liityntäkysely lähtee. Nyt kartan lisäksi myös verkkoyhtiö tietää hankkeesta.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "track",
+              "key": "grid",
+              "value": "inquiry"
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "grid_initial",
+              "afterMonths": 2,
+              "completionText": "Liityntäkyselyyn saatiin vastaus.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "gridResponseReady",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Verrataan ensin kahta pistettä",
+          "outcomeText": "Kaksi pistettä vertaillaan. Molemmat ovat vielä vaihtoehtoja, eivät varauksia.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "flag",
+              "key": "gridAlternativesMapped",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P010",
+      "version": 2,
+      "title": "Lähin on täynnä",
+      "body": "Lähimmän liittymispisteen kapasiteetti ei riitä. Kauempi piste näyttää mahdolliselta. Se on yhdeksän kilometriä kauempana kuin sana ”lähellä” antoi ymmärtää.",
+      "speakerId": "gridEngineer",
+      "artKey": "substation",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "followup",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.gridResponseReady",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "site.gridConstraint",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Tutkitaan kauempi piste",
+          "outcomeText": "Reitti pitenee 9 km. Uuden pisteen käyttökelpoisuus pitää vielä varmistaa.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "gridDistance",
+              "deltaKm": 9
+            },
+            {
+              "op": "track",
+              "key": "grid",
+              "value": "alternative"
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "economicsIndex",
+              "value": -6
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Neuvotellaan rajatusta viennistä",
+          "outcomeText": "Rajattua vientiä tutkitaan. Voimaloiden nimellisteho ei muutu neuvottelemalla.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "flag",
+              "key": "exportLimitStudyNeeded",
+              "value": true
+            },
+            {
+              "op": "track",
+              "key": "grid",
+              "value": "study"
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P011",
+      "version": 2,
+      "title": "Tutka ei ihastunut",
+      "body": "Puolustusasioiden asiantuntija välittää arvion: nykyinen sijoittelu ei sovi. Hankkeen hyvä asenne ei näy tutkassa, mutta suunnitelman ongelma näkyy.",
+      "speakerId": "defence",
+      "artKey": "radar",
+      "phases": [
+        "02",
+        "03",
+        "04"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.defenceConflict",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Tutkitaan uusi sijoittelu",
+          "outcomeText": "Uusi sijoittelu tutkitaan. Sen hyväksyttävyyttä ei vielä tiedetä.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "flag",
+              "key": "defenceRedesignNeeded",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -6
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -5
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Pyydetään tarkentava selvitys",
+          "outcomeText": "Tarkennus tilataan. Tarkempi vastaus ei välttämättä ole mukavampi vastaus.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "flag",
+              "key": "defenceStudyNeeded",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -9
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P012",
+      "version": 2,
+      "title": "Taivaassakin on katto",
+      "body": "Ilmailutarkastelu rajaa suunnitelmaa. Tässä vaihtoehdot ovat 280 metrin enimmäiskorkeus tai kahden voimalapaikan poistaminen. Taivaan vapaata tilaa oli liioiteltu.",
+      "speakerId": "aviation",
+      "artKey": "windscape",
+      "phases": [
+        "03",
+        "04"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.aviationConflict",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "wind.count",
+          "operator": "gte",
+          "value": 4
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Enimmäiskorkeus 280 metriin",
+          "outcomeText": "Korkeusraja laskee 280 metriin. Voimalamalli ei pienene mukana itsestään.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "heightCap",
+              "metres": 280
+            },
+            {
+              "op": "flag",
+              "key": "aviationLayoutAdjusted",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Poistetaan kaksi paikkaa",
+          "outcomeText": "Kaksi paikkaa poistuu. Muiden korkeustavoite säilyy.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "windRemove",
+              "count": 2,
+              "reason": "aviation_conflict"
+            },
+            {
+              "op": "flag",
+              "key": "aviationLayoutAdjusted",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P013",
+      "version": 2,
+      "title": "Kolmesataa sivua. Yksi nuoli.",
+      "body": "YVA-ohjelmassa tuotantoalueella on kunnollinen kuvaus. Ulkoinen sähkönsiirto on kartalla nuoli. Nuoli näyttäisi tarvitsevan oman työryhmän.",
+      "speakerId": "consultant",
+      "artKey": "documents",
+      "phases": [
+        "03"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.yvaRequired",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Täydennetään reittivaihtoehdot",
+          "outcomeText": "Reittivaihtoehdot täydennetään. Nuoli saa vihdoin sisältöä.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 7
+            },
+            {
+              "op": "flag",
+              "key": "yvaProgrammeReviewed",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Pidetään rajauspalaveri ensin",
+          "outcomeText": "Rajauspalaveri sovitaan. Ohjelman puute ei katoa kutsun lähettämisellä.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "flag",
+              "key": "programmeScopeMeeting",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P014",
+      "version": 2,
+      "title": "Naapurikunta ilmestyy kuvaan",
+      "body": "Osallistumissuunnitelma valmistui. Vaikutusalue jatkuu naapurikunnan mökkirantaan, vaikka kunnanraja oli piirretty karttaan erittäin selvästi.",
+      "speakerId": "planner",
+      "artKey": "map",
+      "phases": [
+        "03"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Täsmennetään osallistujat",
+          "outcomeText": "Osallistujat täsmennetään vaikutusten mukaan. Kartan viiva säilyy koristeena.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 5
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 4
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "flag",
+              "key": "oasReviewed",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Kootaan paikallistieto ensin",
+          "outcomeText": "Paikallistieto kootaan. OAS odottaa vielä päivitystä.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 7
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "flag",
+              "key": "oasNeedsUpdate",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P015",
+      "version": 2,
+      "title": "Asiantuntija, nimetään myöhemmin",
+      "body": "Halvimman YVA-tarjouksen vesiasiantuntija on ”nimetään myöhemmin”. Hänellä on ilmeisen laaja toimenkuva: sama henkilö hoitaa myös hankalat kysymykset.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "03"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "mixed",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.waterRisk",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Vahvistetaan tarjoustiimiä",
+          "outcomeText": "Nimetty osaaja ostetaan tiimiin. Tarjous menettää edullisimman ominaisuutensa.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -8
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 9
+            },
+            {
+              "op": "flag",
+              "key": "waterExpertAssigned",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Valitaan myöhemmin aloittava",
+          "outcomeText": "Valitaan myöhemmin aloittava osaava tiimi. Kalenteri maksaa osan säästöstä.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 9
+            },
+            {
+              "op": "flag",
+              "key": "waterExpertAssigned",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P016",
+      "version": 2,
+      "title": "Luonto ei lukenut hankintaohjetta",
+      "body": "Selvityskausi lähestyy. Konsultti ehtii vielä maastoon, jos tilaat nyt. Sisäinen hyväksyntä on seuraavassa kokouksessa. Eläimet eivät osallistuneet aikataulutukseen.",
+      "speakerId": "ecologist",
+      "artKey": "ecologist",
+      "phases": [
+        "03",
+        "04"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tilataan kokonaisuus nyt",
+          "outcomeText": "Selvitykset alkavat. Tuloksia ei saa vielä käyttää johtopäätöksinä.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -8
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "ecology_surveys",
+              "afterMonths": 3,
+              "completionText": "Luontoselvitysten tulokset saapuivat.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "ecologyReady",
+                  "value": true
+                },
+                {
+                  "op": "adjust",
+                  "field": "quality",
+                  "value": 8
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Kootaan ensin aineistot",
+          "outcomeText": "Aineistot kootaan ensin. Seuraava sopiva tutkimusjakso siirtää tuloksia.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "ecology_surveys",
+              "afterMonths": 10,
+              "completionText": "Myöhemmän tutkimusjakson tulokset saapuivat.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "ecologyReady",
+                  "value": true
+                },
+                {
+                  "op": "adjust",
+                  "field": "quality",
+                  "value": 8
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P017",
+      "version": 2,
+      "title": "Metsäpeuralla oli reitti ensin",
+      "body": "Luontoselvityksessä metsäpeurojen kulkuyhteys osuu tuuli- ja aurinkoalueiden väliin. Juuri siihen oli kirjoitettu ”tehokas yhteiskäyttö”.",
+      "speakerId": "ecologist",
+      "artKey": "reindeer",
+      "phases": [
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.ecologyReady",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "site.reindeerConflict",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "wind.count",
+          "operator": "gte",
+          "value": 4
+        },
+        {
+          "field": "solar.hectares",
+          "operator": "gte",
+          "value": 30
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Avataan yhtenäinen käytävä",
+          "outcomeText": "Käytävä avataan: kaksi voimalaa ja 14 ha poistuvat. Uusi ratkaisu arvioidaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "windRemove",
+              "count": 2,
+              "reason": "reindeer_corridor"
+            },
+            {
+              "op": "solarRemove",
+              "hectares": 14,
+              "reason": "reindeer_corridor"
+            },
+            {
+              "op": "flag",
+              "key": "reindeerLayoutAdjusted",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Selvitetään komponenttijako",
+          "outcomeText": "Komponenttijakoa selvitetään. Hybridin nimi on toistaiseksi pidempi kuin varma suunnitelma.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "flag",
+              "key": "hybridPivotAvailable",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            },
+            {
+              "op": "queueCard",
+              "cardId": "P048",
+              "delayMonths": 0
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P018",
+      "version": 2,
+      "title": "Harjanne oli jo käytössä",
+      "body": "Maakotka käyttää suunniteltua voimalariviä säännöllisesti. Se ei ollut varannut harjannetta kalenterista, mutta lentoaineisto on melko yksiselitteinen.",
+      "speakerId": "ecologist",
+      "artKey": "eagle",
+      "phases": [
+        "04",
+        "05"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.ecologyReady",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "site.goldenEagleConflict",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "wind.count",
+          "operator": "gte",
+          "value": 5
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Poistetaan riskirivin paikat",
+          "outcomeText": "Kolme riskirivin paikkaa poistetaan. Kokonaisvaikutuksen arviointi jää tehtäväksi.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "windRemove",
+              "count": 3,
+              "reason": "golden_eagle_ridge"
+            },
+            {
+              "op": "flag",
+              "key": "goldenEagleLayoutAdjusted",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Etsitään vaihtoehtoiset paikat",
+          "outcomeText": "Vaihtoehtoisia paikkoja etsitään. Niitä ei lisätä karttaan pelkällä optimismilla.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -8
+            },
+            {
+              "op": "flag",
+              "key": "goldenEagleRedesignNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P019",
+      "version": 2,
+      "title": "Merikotkan oikopolku",
+      "body": "Merikotkan ruokailureitti osuu sekä voimaloihin että johtoon. Yhteinen infrastruktuuri toi hankkeelle yhteisen ongelman.",
+      "speakerId": "ecologist",
+      "artKey": "eagle",
+      "phases": [
+        "04",
+        "05"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.ecologyReady",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "site.seaEagleConflict",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "wind.count",
+          "operator": "gte",
+          "value": 3
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Muutetaan molempia reittejä",
+          "outcomeText": "Yksi paikka poistuu ja johto pitenee 3 km. Ratkaisu tarvitsee päivitetyn arvioinnin.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "windRemove",
+              "count": 1,
+              "reason": "white_tailed_eagle_route"
+            },
+            {
+              "op": "gridDistance",
+              "deltaKm": 3
+            },
+            {
+              "op": "flag",
+              "key": "seaEagleLayoutAdjusted",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Täydennetään lentoaineistoa",
+          "outcomeText": "Lentoaineistoa täydennetään. Alkuperäistä reittiä ei sillä vielä hyväksytä.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -6
+            },
+            {
+              "op": "flag",
+              "key": "seaEagleStudyNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P020",
+      "version": 2,
+      "title": "Sääksi valitsi suoran linjan",
+      "body": "Sääksen reitti kalastusjärvelle osuu reunimmaiseen voimalapaikkaan. Se valitsi lyhimmän yhteyden. Verkkosuunnittelija ymmärtää ratkaisua henkilökohtaisesti.",
+      "speakerId": "ecologist",
+      "artKey": "osprey",
+      "phases": [
+        "04",
+        "05"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.ecologyReady",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "site.ospreyConflict",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "wind.count",
+          "operator": "gte",
+          "value": 3
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Poistetaan reunapaikka",
+          "outcomeText": "Reunapaikka poistuu. Uuden rajauksen vaikutukset tarkistetaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "windRemove",
+              "count": 1,
+              "reason": "osprey_flight_route"
+            },
+            {
+              "op": "flag",
+              "key": "ospreyLayoutAdjusted",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tutkitaan siirto sivummalle",
+          "outcomeText": "Siirtoa tutkitaan. Korvaava paikka on vielä ajatus, ei lisävoimala.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            },
+            {
+              "op": "flag",
+              "key": "ospreyRedesignNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P021",
+      "version": 2,
+      "title": "Viitasammakon tonttitoive",
+      "body": "Aurinkolohkon kosteikossa lisääntyy viitasammakko. Se tarvitsee toimivan vesitalouden, ei karttapistettä. Karttapiste olisi ollut meille halvempi.",
+      "speakerId": "ecologist",
+      "artKey": "frog",
+      "phases": [
+        "04",
+        "05"
+      ],
+      "modes": [
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.ecologyReady",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "site.frogConflict",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "solar.hectares",
+          "operator": "gte",
+          "value": 30
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Jätetään vesitalousalue pois",
+          "outcomeText": "Vesitalousalueesta rajataan pois 12 ha tässä skenaariossa.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "solarRemove",
+              "hectares": 12,
+              "reason": "frog_hydrology"
+            },
+            {
+              "op": "flag",
+              "key": "frogAreaAvoided",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Suunnitellaan vesienhallinta",
+          "outcomeText": "Vesienhallinnan vaihtoehto tutkitaan. Sammakkoa ei kuitata käsitellyksi laskun maksulla.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -7
+            },
+            {
+              "op": "flag",
+              "key": "frogHydrologyStudyNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P022",
+      "version": 2,
+      "title": "Paineita myös maan alla",
+      "body": "Maaperäselvitys viittaa paineelliseen pohjaveteen. Kaivanto voisi avata purkautumisreitin. Tähän asti hankkeen paineet olivat pysyneet palavereissa.",
+      "speakerId": "waterExpert",
+      "artKey": "wetland",
+      "phases": [
+        "04",
+        "05"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.waterRisk",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Teetetään hydrogeologia",
+          "outcomeText": "Hydrogeologinen selvitys tilataan. Ratkaisu odottaa tuloksia.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -7
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "groundwater_study",
+              "afterMonths": 3,
+              "completionText": "Hydrogeologinen selvitys valmistui; ratkaisu pitää sovittaa siihen.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "groundwaterStudyReady",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Siirretään rakenteita",
+          "outcomeText": "Rakenteiden siirto suunnitellaan. Muut vaikutukset pitää tarkistaa uudesta paikasta.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            },
+            {
+              "op": "flag",
+              "key": "groundwaterRedesignNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P023",
+      "version": 2,
+      "title": "Maa paljastaa luonteensa",
+      "body": "Aurinkoalueen kuivatusreitin maaperässä tunnistetaan sulfaattimaariski. Maanomistajan mukaan maa on aina ollut hankalaa. Nyt väitteellä on laboratoriotulos.",
+      "speakerId": "waterExpert",
+      "artKey": "wetland",
+      "phases": [
+        "04",
+        "05"
+      ],
+      "modes": [
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.sulphateRisk",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "solar.hectares",
+          "operator": "gte",
+          "value": 25
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Vähennetään kuivatusaluetta",
+          "outcomeText": "Riskilohkosta poistuu 8 ha. Vesiratkaisun täsmentäminen maksaa vielä.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "solarRemove",
+              "hectares": 8,
+              "reason": "sulphate_soil"
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "flag",
+              "key": "sulphateLayoutAdjusted",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Teetetään käsittelysuunnitelma",
+          "outcomeText": "Käsittelyratkaisua tutkitaan. Toteuttamiskelpoisuutta ei voi kirjoittaa tarjoukseen valmiiksi.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -7
+            },
+            {
+              "op": "flag",
+              "key": "sulphatePlanNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P024",
+      "version": 2,
+      "title": "Excelissä tuulee hyvin",
+      "body": "Karttapohjainen tuotantoarvio näyttää lupaavalta. Omistaja kysyy, onko alueella mitattu. Vastaus ”kalvo 12” ei ollut aivan se, mitä hän tarkoitti.",
+      "speakerId": "windAnalyst",
+      "artKey": "windscape",
+      "phases": [
+        "02",
+        "03",
+        "04"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Aloitetaan mittaus nyt",
+          "outcomeText": "Mittaus alkaa rinnakkain muun työn kanssa. Tuloksia tulee myöhemmin.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -8
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "wind_measurement",
+              "afterMonths": 12,
+              "completionText": "Tuulimittauksen tulos on käytettävissä.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "windMeasured",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Tarkennetaan esiselvitystä",
+          "outcomeText": "Esiselvitystä tarkennetaan. Parempi kartta ei vielä ole mittaus.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            },
+            {
+              "op": "flag",
+              "key": "windDesktopUpdated",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P025",
+      "version": 2,
+      "title": "Tuuli ei saavuttanut tavoitettaan",
+      "body": "Mittaus valmistui. Tuotanto-odotus jää aiemmasta arviosta. Tiimi on pettynyt tuulen suoritukseen. Tuuli ei hyväksy sille asetettua kehityskeskustelua.",
+      "speakerId": "windAnalyst",
+      "artKey": "windscape",
+      "phases": [
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "followup",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.windMeasured",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "site.windClass",
+          "operator": "eq",
+          "value": "weak"
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Suunnitellaan sijoittelu uusiksi",
+          "outcomeText": "Heikompi tuotanto huomioidaan ja sijoittelua tutkitaan. Nimellisteho säilyy.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "windYieldIndex",
+              "value": -18
+            },
+            {
+              "op": "adjust",
+              "field": "economicsIndex",
+              "value": -10
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            },
+            {
+              "op": "flag",
+              "key": "windResultProcessed",
+              "value": true
+            },
+            {
+              "op": "flag",
+              "key": "yieldRedesignNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Päivitetään talousmalli",
+          "outcomeText": "Talousmalli päivitetään. Generaattorien MW-luku ei ollutkaan ongelman sijainti.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "windYieldIndex",
+              "value": -18
+            },
+            {
+              "op": "adjust",
+              "field": "economicsIndex",
+              "value": -10
+            },
+            {
+              "op": "flag",
+              "key": "windResultProcessed",
+              "value": true
+            },
+            {
+              "op": "flag",
+              "key": "economicsReviewNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P026",
+      "version": 2,
+      "title": "Tuuli ylitti odotukset",
+      "body": "Tuulimittaus vahvistaa hyvän tuotanto-odotuksen. Tulos tarkistettiin kahdesti, koska se paransi hanketta ilman lisäselvityspyyntöä.",
+      "speakerId": "windAnalyst",
+      "artKey": "windscape",
+      "phases": [
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "followup",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.windMeasured",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "site.windClass",
+          "operator": "eq",
+          "value": "good"
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Vahvistetaan suunnittelua",
+          "outcomeText": "Hyvä tulos antaa liikkumavaraa parempaan suunnitelmaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "windYieldIndex",
+              "value": 8
+            },
+            {
+              "op": "adjust",
+              "field": "economicsIndex",
+              "value": 5
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            },
+            {
+              "op": "flag",
+              "key": "windResultProcessed",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Avataan rahoituskeskustelu",
+          "outcomeText": "Rahoituskeskustelu avataan. Hyvä kuvaaja ei vielä ole rahoitussopimus.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "windYieldIndex",
+              "value": 8
+            },
+            {
+              "op": "adjust",
+              "field": "economicsIndex",
+              "value": 5
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 5
+            },
+            {
+              "op": "flag",
+              "key": "windResultProcessed",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P027",
+      "version": 2,
+      "title": "Mallinnus, ennen viimeistä siirtoa",
+      "body": "Voimalasijoittelu vaihtui. Valmis melumallinnus kuvaa edellistä versiota, joka oli viimeinen versio ennen nykyistä viimeistä versiota.",
+      "speakerId": "consultant",
+      "artKey": "documents",
+      "phases": [
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tilataan päivitetty mallinnus",
+          "outcomeText": "Ajantasainen melumallinnus tilataan. Valmistumista odotetaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "noise_update",
+              "afterMonths": 1,
+              "completionText": "Melumallinnus päivitettiin nykyiseen hankeversioon.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "noiseCurrent",
+                  "value": true
+                },
+                {
+                  "op": "adjust",
+                  "field": "quality",
+                  "value": 5
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Lukitaan ensin uusi sijoittelu",
+          "outcomeText": "Uusi sijoittelu lukitaan ensin. Melumallinnus jää vielä avoimeksi.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "flag",
+              "key": "layoutFreezeNeeded",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P028",
+      "version": 2,
+      "title": "Aurinko löysi mökin",
+      "body": "Välkemallinnus näyttää ongelmallisen vaikutuksen mökkirantaan. Vaihtoehtoina ovat lähimmän paikan poisto tai pysäytysohjauksen tarkempi arviointi.",
+      "speakerId": "consultant",
+      "artKey": "cottage",
+      "phases": [
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "mixed",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.shadowConflict",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "wind.count",
+          "operator": "gte",
+          "value": 3
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Poistetaan lähin paikka",
+          "outcomeText": "Yksi voimala poistuu. Aurinko saa jatkaa nykyisellä radallaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "windRemove",
+              "count": 1,
+              "reason": "shadow_conflict"
+            },
+            {
+              "op": "flag",
+              "key": "shadowLayoutAdjusted",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tutkitaan pysäytysohjaus",
+          "outcomeText": "Pysäytysohjausta tutkitaan. Tuotantohäviötä ei jätetä laskelman marginaaliin.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "flag",
+              "key": "shadowCurtailmentStudyNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P029",
+      "version": 2,
+      "title": "Kolmesataa metriä näkyy",
+      "body": "Maisema-arviossa näkyvin ryhmä hallitsee arvokasta näkymää. Kokouksessa ehdotetaan, että voimalat olisivat suuria mutta vähemmän korkeita.",
+      "speakerId": "landscapeExpert",
+      "artKey": "windscape",
+      "phases": [
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "mixed",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.landscapeConflict",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "wind.count",
+          "operator": "gte",
+          "value": 5
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Tavoitekorkeus 280 metriin",
+          "outcomeText": "Korkeustavoite laskee 280 metriin. Voimalamalli ja havainnekuvat tarkistetaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "heightCap",
+              "metres": 280
+            },
+            {
+              "op": "flag",
+              "key": "landscapeLayoutAdjusted",
+              "value": true
+            },
+            {
+              "op": "flag",
+              "key": "visualsNeedUpdate",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Poistetaan kolme paikkaa",
+          "outcomeText": "Kolme paikkaa poistuu. Vaikutusarvio päivitetään pienempään ryhmään.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "windRemove",
+              "count": 3,
+              "reason": "landscape_ridge"
+            },
+            {
+              "op": "flag",
+              "key": "landscapeLayoutAdjusted",
+              "value": true
+            },
+            {
+              "op": "flag",
+              "key": "visualsNeedUpdate",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P030",
+      "version": 2,
+      "title": "Selvitys ehti vanheta odottaessa",
+      "body": "Kaavaehdotus lähestyy. Muuttolintuaineisto ja naapurihankkeet eivät enää vastaa toisiaan. Selvitys vanheni sillä aikaa, kun odotimme, että muut selvitykset valmistuvat.",
+      "speakerId": "ecologist",
+      "artKey": "eagle",
+      "phases": [
+        "05",
+        "06",
+        "07"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.birdEvidenceOutdated",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Päivitetään seuranta",
+          "outcomeText": "Seuranta tilataan uudelleen. Kalenteri saa oman jatkoversion.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -7
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -5
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "migration_update",
+              "afterMonths": 8,
+              "completionText": "Muuttolintuaineisto ja yhteisvaikutustarkastelu päivittyivät.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "birdEvidenceCurrent",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Pyydetään riittävyyden arvio",
+          "outcomeText": "Aineiston riittävyys arvioidaan. Vanha päivämäärä ei yksin ratkaise vastausta.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "flag",
+              "key": "birdAdequacyReviewNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P031",
+      "version": 2,
+      "title": "Samaan suohon mahtuu suunnitelmia",
+      "body": "Kartalle ilmestyi kaivosvaraus. Omistaja kysyy, menetimmekö alueen. Selvitetään ensin, mitä on varattu ja mitä on oikeasti päätetty.",
+      "speakerId": "legal",
+      "artKey": "map",
+      "phases": [
+        "02",
+        "03",
+        "04",
+        "05"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.miningOverlap",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Selvitetään todellinen vaihe",
+          "outcomeText": "Oikeuksien ja hankevaiheiden selvitys täsmentää uutista.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "flag",
+              "key": "miningOverlapReviewed",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Valmistellaan vaihtoehtoinen rajaus",
+          "outcomeText": "Vararajaus valmistellaan. Varaudutaan ilman että varauksesta päätellään valmis kaivos.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            },
+            {
+              "op": "flag",
+              "key": "miningFallbackDesigned",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P032",
+      "version": 2,
+      "title": "Oikopolku päätyi kaavoitukseen",
+      "body": "Kunnan tarkastelussa tämän aurinkohankkeen laajuus ja maisemavaikutus edellyttävät kaavoitusta. Nopea menettely oli nopea lähinnä suunnittelukalvolla.",
+      "speakerId": "planner",
+      "artKey": "solarfield",
+      "phases": [
+        "02",
+        "03"
+      ],
+      "modes": [
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.solarPlanningRequired",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Käynnistetään kaavapolku",
+          "outcomeText": "Tämän hankkeen kaavapolku käynnistetään.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "flag",
+              "key": "solarPlanningRouteConfirmed",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tutkitaan suppeampi vaihtoehto",
+          "outcomeText": "Suppeampaa vaihtoehtoa tutkitaan. Sen menettelytarve tarkistetaan erikseen.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "flag",
+              "key": "solarScaleAlternativeNeeded",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P033",
+      "version": 2,
+      "title": "Puu teki työnsä liian hyvin",
+      "body": "Reunametsä suojaa aurinkokentän näkymää ja varjostaa paneeleita. Näkösuojana onnistunut puu on tuotantomallissa ongelma.",
+      "speakerId": "solarEngineer",
+      "artKey": "solarfield",
+      "phases": [
+        "04",
+        "05"
+      ],
+      "modes": [
+        "solar",
+        "hybrid"
+      ],
+      "tone": "mixed",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.solarShade",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "solar.hectares",
+          "operator": "gte",
+          "value": 20
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Jätetään reunavyöhyke",
+          "outcomeText": "Kenttä pienenee 6 ha. Näkösuoja säilyy.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "solarRemove",
+              "hectares": 6,
+              "reason": "shaded_edge"
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 3
+            },
+            {
+              "op": "flag",
+              "key": "solarShadeAdjusted",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Muutetaan rivisijoittelua",
+          "outcomeText": "Rivisijoittelua muutetaan. Puu ei vielä saa uutta toimenkuvaa.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "flag",
+              "key": "solarShadeRedesignNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P034",
+      "version": 2,
+      "title": "Lopullinen_v7_OIKEA",
+      "body": "YVA-selostuksessa, kaavaselostuksessa ja havainnekuvissa on kolme eri rajausta. Jokaisen tiedoston nimessä lukee lopullinen. Tämä on ollut niiden ainoa yhteinen linja.",
+      "speakerId": "consultant",
+      "artKey": "documents",
+      "phases": [
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tehdään yhteinen versiokierros",
+          "outcomeText": "Aineistot synkronoidaan. Lopullisuus ei enää perustu tiedoston nimeen.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 8
+            },
+            {
+              "op": "flag",
+              "key": "documentsSynced",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Korjataan kriittiset erot ensin",
+          "outcomeText": "Kriittiset erot korjataan ensin. Täysi tarkistus jää odottamaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "flag",
+              "key": "documentFullReviewNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P035",
+      "version": 2,
+      "title": "Perusteltu täydennyspyyntö",
+      "body": "Yhteysviranomainen nimeää vaikutusarvion keskeiset puutteet. Konsultti kertoo työn olleen valmis tarjouksen tarkoittamassa merkityksessä.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.yvaRequired",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "site.yvaNeedsSupplement",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Täydennetään nimetyt puutteet",
+          "outcomeText": "Nimetyt puutteet täydennetään. Tulokset tarvitaan ennen seuraavaa porttia.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -8
+            },
+            {
+              "op": "track",
+              "key": "yva",
+              "value": "supplement"
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "yva_supplement",
+              "afterMonths": 4,
+              "completionText": "Pyydetty täydennys valmistui viranomaiskäsittelyä varten.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "yvaSupplementReady",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Selvitetään muuttunut vaihtoehto",
+          "outcomeText": "Muuttunutta vaihtoehtoa tutkitaan. Pienempikin hanke tarvitsee arvioinnin.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            },
+            {
+              "op": "track",
+              "key": "yva",
+              "value": "supplement"
+            },
+            {
+              "op": "flag",
+              "key": "yvaAlternativeNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P036",
+      "version": 2,
+      "title": "Aineisto riitti. Lue uudelleen.",
+      "body": "Perusteltu päätelmä saapui. Aineisto riitti. Tiimi lukee virkkeen kolmesti varmistaakseen, ettei välistä puutu sanaa ”ei”. Johtopäätökset viedään nyt suunnitteluun.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "milestone",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.yvaRequired",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "flags.yvaAdequacyConfirmed",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Viedään johtopäätökset kaavaan",
+          "outcomeText": "Johtopäätökset viedään kaavan tarkistuslistalle. Tämä ei vielä ole kaavavoitto.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "track",
+              "key": "yva",
+              "value": "conclusion"
+            },
+            {
+              "op": "flag",
+              "key": "conclusionActionsMapped",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 6
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään ehdot tiimin kanssa",
+          "outcomeText": "Tekninen tiimi käy johtopäätökset läpi. Helpotus käytetään hyödyksi.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "track",
+              "key": "yva",
+              "value": "conclusion"
+            },
+            {
+              "op": "flag",
+              "key": "conclusionActionsMapped",
+              "value": true
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 5
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P037",
+      "version": 2,
+      "title": "Ei huomautettavaa",
+      "body": "Kaavaluonnoksen kuulemisessa ei tullut kielteisiä kannanottoja. Tiimi tarkistaa ensin roskapostin. Sitten sallitaan varovainen helpotus.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.draftFeedbackQuiet",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Kiitetään osallistumisesta",
+          "outcomeText": "Osallistujia kiitetään. Yhteydenpitoa ei lopeteta onnistumisen vuoksi.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 7
+            },
+            {
+              "op": "flag",
+              "key": "draftFeedbackProcessed",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käytetään rauha viimeistelyyn",
+          "outcomeText": "Rauha käytetään aineiston viimeistelyyn. Tällä kertaa kukaan ei keskeytä.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 6
+            },
+            {
+              "op": "flag",
+              "key": "draftFeedbackProcessed",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P038",
+      "version": 2,
+      "title": "Esitteessä oli väärä ranta",
+      "body": "Mökkiläinen kysyy, mitä juuri hänen rannaltaan näkyisi. Hän on saanut jo kolme yleisesitettä ja yhden kuvan rannasta, jota ei tunnista.",
+      "speakerId": "resident",
+      "artKey": "cottage",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "mixed",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tehdään paikallinen kuvasovite",
+          "outcomeText": "Paikallinen kuvasovite tilataan. Vastataan nyt siihen kysymykseen, joka esitettiin.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 7
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Järjestetään pieni keskustelu",
+          "outcomeText": "Pieni keskustelu järjestetään. Neljättä yleisesitettä ei paineta.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 5
+            },
+            {
+              "op": "flag",
+              "key": "residentViewsRecorded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P039",
+      "version": 2,
+      "title": "Vaalit päivittivät sidosryhmät",
+      "body": "Vaalien jälkeen valtuustossa on kriittisempi enemmistö. Vanhan myönteisen tapaamisen muistio löytyy. Sen äänioikeus uudessa valtuustossa on rajallinen.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "04",
+        "05",
+        "06",
+        "07"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "followup",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.electionDue",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Esitellään myös vaihtoehdot",
+          "outcomeText": "Vaikutukset ja vaihtoehdot esitellään uusille päättäjille.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 3
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "flag",
+              "key": "newCouncilBriefed",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Kuullaan ensin uudet tavoitteet",
+          "outcomeText": "Uusia tavoitteita kuullaan. Edellisen valtuuston hyvä tunnelma ei siirry liitteenä.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 4
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -3
+            },
+            {
+              "op": "flag",
+              "key": "newCouncilGoalsHeard",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P040",
+      "version": 2,
+      "title": "Tukea työn tekemiseen tarvitaan",
+      "body": "Aurinkohankkeelle sopiva RENEWFM-haku on avoinna tässä pelikerrassa. Hakemus vaatii valmiutta. Valmiuden tuottaminen vaatii rahaa. Raha on hakemuksen aihe.",
+      "speakerId": "finance",
+      "artKey": "documents",
+      "phases": [
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.renewfmCallEligible",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Valmistellaan ehdot täyttäen",
+          "outcomeText": "Hakemus valmistellaan. Päätös tulee myöhemmin, ei tallennuspainikkeesta.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            },
+            {
+              "op": "track",
+              "key": "funding",
+              "value": "applied"
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "renewfm_decision",
+              "afterMonths": 4,
+              "completionText": "Tukihakemuksen päätös on saapunut.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "fundingDecisionReady",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Kehitetään ilman tukiolettamaa",
+          "outcomeText": "Hanketta kehitetään ilman tukiolettamaa. Hakutyö säästyy, avustusta ei oleteta.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "flag",
+              "key": "noGrantBaseCase",
+              "value": true
+            },
+            {
+              "op": "track",
+              "key": "funding",
+              "value": "notApplied"
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P041",
+      "version": 2,
+      "title": "Hakemus oli hyvä. Ei tällä kertaa.",
+      "body": "Tukihakemus ei saanut rahoitusta. Palaute oli kannustavaa. Talousmalli ei hyväksy kannustusta rahoituseräksi.",
+      "speakerId": "finance",
+      "artKey": "documents",
+      "phases": [
+        "05",
+        "06",
+        "07"
+      ],
+      "modes": [
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "followup",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.fundingDecisionReady",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "tracks.funding",
+          "operator": "eq",
+          "value": "applied"
+        },
+        {
+          "field": "site.grantRejected",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Neuvotellaan vaiheistamisesta",
+          "outcomeText": "Vaiheistamista neuvotellaan heikentyneellä talousasetelmalla.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "track",
+              "key": "funding",
+              "value": "rejected"
+            },
+            {
+              "op": "adjust",
+              "field": "economicsIndex",
+              "value": -8
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "flag",
+              "key": "fundingPhasingNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Lasketaan tueton vaihtoehto",
+          "outcomeText": "Tueton vaihtoehto lasketaan. Hylkäys ei itsessään ole rakentamiskielto.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "track",
+              "key": "funding",
+              "value": "rejected"
+            },
+            {
+              "op": "adjust",
+              "field": "economicsIndex",
+              "value": -8
+            },
+            {
+              "op": "flag",
+              "key": "noGrantBaseCase",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P042",
+      "version": 2,
+      "title": "Kaksi tekniikkaa, yksi asema",
+      "body": "Yhteinen sähköasema voisi säästää kustannuksia. Omistaja kysyy, saammeko molemmat huipputehot ulos yhtä aikaa. Verkkosuunnittelija avaa uuden taulukon.",
+      "speakerId": "gridEngineer",
+      "artKey": "substation",
+      "phases": [
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Viedään yhteisratkaisu eteenpäin",
+          "outcomeText": "Yhteisratkaisua viedään eteenpäin. Vientiraja selvitetään erikseen.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "economicsIndex",
+              "value": 5
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "flag",
+              "key": "sharedGridDesignAdvanced",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Simuloidaan tuotantoprofiilit",
+          "outcomeText": "Tuotantoprofiilit simuloidaan. Säästö ja samanaikainen vienti erotetaan toisistaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 5
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "flag",
+              "key": "hybridProfileStudyNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P043",
+      "version": 2,
+      "title": "Lyhin reitti kulkee ongelman kautta",
+      "body": "Lyhyin johtoreitti kohtaa hankalan ylityksen. Kierto lisäisi kuusi kilometriä. Viivoitin ei tuntenut tätä paikan ominaisuutta.",
+      "speakerId": "gridEngineer",
+      "artKey": "map",
+      "phases": [
+        "04",
+        "05",
+        "06",
+        "07"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "mixed",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "site.gridCrossingConflict",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Kierretään kuusi kilometriä",
+          "outcomeText": "Johto pitenee 6 km. Uuden reitin selvitykset ovat vielä edessä.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "gridDistance",
+              "deltaKm": 6
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "flag",
+              "key": "gridRouteStudyNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tutkitaan alkuperäinen ylitys",
+          "outcomeText": "Alkuperäisen ylityksen erikoisratkaisua tutkitaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -7
+            },
+            {
+              "op": "flag",
+              "key": "gridCrossingStudyNeeded",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P044",
+      "version": 2,
+      "title": "Ostaja kysyi hintaa, ei liitettä",
+      "body": "Sähkön ostaja kiinnostui hankkeesta. Ensimmäinen kysymys koski toimitusta eikä selvityksen liitenumeroa. Tiimi tarvitsee hetken sopeutuakseen.",
+      "speakerId": "finance",
+      "artKey": "finance",
+      "phases": [
+        "06",
+        "07"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Neuvotellaan vakaa sopimus",
+          "outcomeText": "Sopimusneuvottelu alkaa. Kiinnostus ei vielä ole rahoitussitoumus.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 6
+            },
+            {
+              "op": "flag",
+              "key": "ppaNegotiationsStarted",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Pyydetään useampi tarjous",
+          "outcomeText": "Useampi tarjous pyydetään. Hyvää uutista saa myös kilpailuttaa.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            },
+            {
+              "op": "flag",
+              "key": "ppaCompetitionStarted",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P045",
+      "version": 2,
+      "title": "Viimeinen tarkistus. Tällä kertaa.",
+      "body": "Kaavaehdotus on menossa päätöksentekoon. Tarkistuslistalla ovat kartta, vastineet, kuulemiset ja kokousmenettely. Listan viimeinen kohta on tarkistaa lista.",
+      "speakerId": "legal",
+      "artKey": "documents",
+      "phases": [
+        "07"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tehdään yhteinen loppu-QA",
+          "outcomeText": "Yhteinen lopputarkistus tehdään ennen esityslistaa.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 7
+            },
+            {
+              "op": "flag",
+              "key": "finalQaDone",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tehdään riippumaton tarkistus",
+          "outcomeText": "Riippumaton tarkastaja käy aineiston läpi. Oma tuttuus ei toimi tarkistusmenetelmänä.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -6
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 8
+            },
+            {
+              "op": "flag",
+              "key": "finalQaDone",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P046",
+      "version": 2,
+      "title": "Kaava hyväksytty. Oikeasti.",
+      "body": "Valtuusto hyväksyi kaavan. Kampanjan tavoite saavutettiin. Tiimi odottaa täydennyspyyntöä vielä hetken tottumuksesta. Lainvoima ja investointi ovat seuraavia asioita.",
+      "speakerId": "planner",
+      "artKey": "celebration",
+      "phases": [
+        "08"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "milestone",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.adoptionDecisionPositive",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "flags.adoptionGatesSatisfied",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Kootaan kehitystulos",
+          "outcomeText": "Kehitystulos kootaan: alku, loppu ja avoimet jatkoasiat. Nyt saa iloita.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "finish",
+              "ending": "planAdopted"
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään ratkaisut tiimin kanssa",
+          "outcomeText": "Päätöshistoria käydään läpi. Pöytäkirjaan kirjataan myös onnistuminen.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "finish",
+              "ending": "planAdopted"
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P047",
+      "version": 2,
+      "title": "Väärä henkilö jäi oikeaan huoneeseen",
+      "body": "Vain erillisessä jatkopelissä: päätöksentekomenettelyn virhe kumosi kaavapäätöksen. Sisältöä hiottiin vuosia. Kokousmenettely tarvitsi sekin tarkistajan.",
+      "speakerId": "legal",
+      "artKey": "documents",
+      "phases": [
+        "08"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "epilogue",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.epilogueEnabled",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "site.proceduralReversal",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Palataan lailliseen käsittelyyn",
+          "outcomeText": "Korjaavaa käsittelyä valmistellaan. Jatkamisen edellytykset arvioidaan uudelleen.",
+          "timeMonths": 6,
+          "effects": [
+            {
+              "op": "track",
+              "key": "municipality",
+              "value": "reprocessing"
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -10
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -10
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Lopetetaan kehitystyö",
+          "outcomeText": "Kehitystyö lopetetaan. Arkiston nimeksi ei laiteta ”lähes valmis”.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "finish",
+              "ending": "developerWithdraws"
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "P048",
+      "version": 2,
+      "title": "Hybridi etsii itseään",
+      "body": "Hybridin muuttamista on selvitetty. Jatketaanko vain tuulella vai vain auringolla? Yhteistyö oli hyvä idea. Myös yhteiset ongelmat osoittautuivat yhteisiksi.",
+      "speakerId": "finance",
+      "artKey": "finance",
+      "phases": [
+        "04",
+        "05",
+        "06",
+        "07"
+      ],
+      "modes": [
+        "hybrid"
+      ],
+      "tone": "mixed",
+      "trigger": "followup",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.hybridPivotAvailable",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "flags.pivotUsed",
+          "operator": "eq",
+          "value": false
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Jatketaan vain tuulella",
+          "outcomeText": "Aurinko poistuu. Tuulen ja jäljelle jäävän verkon ehdot tarkistetaan uudelleen.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "pivot",
+              "mode": "wind"
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "flag",
+              "key": "pivotUsed",
+              "value": true
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Jatketaan vain auringolla",
+          "outcomeText": "Tuuli poistuu. Auringon ja yhteisten kustannusten ehdot tarkistetaan uudelleen.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "pivot",
+              "mode": "solar"
+            },
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "flag",
+              "key": "pivotUsed",
+              "value": true
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Täysin fiktiivinen tilanne ja vuoropuhelu. Ei tapauskuvausta, henkilöesikuvaa eikä linkkiä oikeaan hankkeeseen. Vaikutusluvut ja kestot ovat pelisääntöjä; huumori ei muodosta viranomaisohjetta."
+    },
+    {
+      "id": "H001",
+      "version": 1,
+      "title": "Selvitys selvitystarpeesta",
+      "body": "Tyhjän varastokopin purusta pyydetään laaja maisemaselvitys. Sen tarpeellisuus voitaisiin kuulemma ratkaista alustavalla selvityksellä selvitystarpeesta.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tilaa suppea alustava arvio",
+          "outcomeText": "Pieni toimeksianto käynnistyy. Varsinainen pyyntö on yhä auki.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 2
+            },
+            {
+              "op": "queueCard",
+              "cardId": "H002",
+              "delayMonths": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Pyydä kirjallinen rajaus",
+          "outcomeText": "Pyydät perustelut ja rajatun toimeksiannon ennen tilaamista.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -2
+            },
+            {
+              "op": "queueCard",
+              "cardId": "H003",
+              "delayMonths": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H002",
+      "version": 1,
+      "title": "Myös puuttuvat vaikutukset",
+      "body": "Alustavan arvion mukaan kopin purulla ei ole olennaisia maisemavaikutuksia. Nyt pyydetään taulukko vaikutuksista, joita ei löytynyt. Tyhjää taulukkoa ei suositella.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "followup",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Taulukoi arvioidut asiat",
+          "outcomeText": "Kierros suljetaan selkeällä yhteenvedolla. Koppi ei ehtinyt muuttua.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Sovi tarpeellinen rajaus",
+          "outcomeText": "Yhteisessä käsittelyssä sovitaan, mitä yhteenvetoon tarvitaan. Asia saadaan pois pöydältä.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H003",
+      "version": 1,
+      "title": "Suppeampi tosiaan riittää",
+      "body": "Kirjallista rajausta pyydettyäsi asiantuntija tarkistaa kohteen: kopista riittää lyhyt kuvaus ja valokuva. Kukaan ei määrää lisäkokousta. Tarkistat viestin lähettäjän.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "followup",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tee rajattu muistio",
+          "outcomeText": "Pieni asia saa pienen muistion. Selvityskierre päättyy tähän.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Liitä kuva nykyiseen aineistoon",
+          "outcomeText": "Kuvaus yhdistetään olemassa olevaan aineistoon. Erillinen raportti vältetään.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 2
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H004",
+      "version": 1,
+      "title": "Raja on epäilyttävän paksu",
+      "body": "Karttaviivan paksuus herättää kysymyksen siitä, kuuluuko hanke viivan sisä- vai ulkoreunaan. Koordinaatit ovat liitteenä. Niitä ei ole vielä avattu.",
+      "speakerId": "authority",
+      "artKey": "map",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Lähetä koordinaatit ja uusi kartta",
+          "outcomeText": "Aineisto selkeytetään. Hankeraja ei muutu, vain sen esitystapa.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 2
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käy rajaus yhdessä läpi",
+          "outcomeText": "Kartta avataan yhteisessä istunnossa. Samat koordinaatit tulevat nyt nähdyiksi.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H005",
+      "version": 1,
+      "title": "Kuiva sää ei ollut tarpeeksi märkä",
+      "body": "Vesiarvioon pyydetään havainto märältä jaksolta. Käytettävissä oleva havainto on märältä paikalta kuivalla jaksolla. Sää ei ole vastannut täydennyspyyntöön.",
+      "speakerId": "waterExpert",
+      "artKey": "wetland",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Sovi lisähavainnon aikataulu",
+          "outcomeText": "Lisähavainto sovitetaan ohjelmaan. Tarve pidetään näkyvissä.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 2
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Arvioi nykyisen näytön riittävyys",
+          "outcomeText": "Asiantuntija kokoaa rajatun perustelun nykyisen aineiston käyttökelpoisuudesta.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H006",
+      "version": 1,
+      "title": "Kuva puun takaa",
+      "body": "Havainnekuvaa pyydetään pisteestä, jossa tiheä kuusikko peittää koko näkymän. Pyytäjä haluaa kuvan myös ilman puita. Maanomistaja haluaa kuusikon.",
+      "speakerId": "landscapeExpert",
+      "artKey": "windscape",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Esitä molemmat tilanteet",
+          "outcomeText": "Nykytila ja havainnollistava näkymä erotellaan. Kumpaakaan ei esitetä toisena.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Sovi edustavampi kuvauspiste",
+          "outcomeText": "Kuvauspisteen tarkoitus täsmennetään ennen uutta kuvausta.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H007",
+      "version": 1,
+      "title": "Havainto oli kauppakassi",
+      "body": "Epäselvä tumma hahmo maastokuvassa osoittautui oksaan juuttuneeksi kauppakassiksi. Luontokonsultti varmisti asian. Kassia ei lisätä lajilistaan.",
+      "speakerId": "ecologist",
+      "artKey": "ecologist",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.ecologyReady",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Kirjaa tarkistus aineistoon",
+          "outcomeText": "Virhetulkinta dokumentoidaan. Kassi ei muuta alueen muita havaintoja.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 2
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Kerro tarkennus tiimille",
+          "outcomeText": "Tiimi saa yhden aiheen vähemmän murehdittavaksi. Muut luontoasiat säilyvät.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H008",
+      "version": 1,
+      "title": "Kaksi lausuntoa, kaksi suuntaa",
+      "body": "Yksi lausunto kehottaa keskittämään rakenteet. Toinen pyytää hajauttamaan ne. Kumpikin pitää omaa ratkaisuaan kokonaisuuden kannalta selkeänä.",
+      "speakerId": "authority",
+      "artKey": "documents",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Kutsu yhteinen ratkaisupalaveri",
+          "outcomeText": "Tavoitteet asetetaan rinnakkain. Molempien lausuntojen tulkinta täsmentyy.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 4
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Teetä kaksi rajattua vaihtoehtoa",
+          "outcomeText": "Vaihtoehdot tehdään vertailukelpoisiksi ennen yhteensovittamista.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 5
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H009",
+      "version": 1,
+      "title": "Muille sopii, kaikille ei",
+      "body": "Viranomaisneuvotteluun löytyi aika, joka sopii kaikille paitsi kutsun lähettäjälle. Hän osallistuu toisesta samanaikaisesta neuvottelusta.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Valtuuta valmistautunut sijainen",
+          "outcomeText": "Sijainen saa aineiston ja kysymykset. Kokous voi edetä.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Etsi uusi yhteinen aika",
+          "outcomeText": "Kokous siirtyy. Kaikkien osallistuminen saadaan järjestettyä.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H010",
+      "version": 1,
+      "title": "Ei lisättävää. Kahdesti.",
+      "body": "Lausunnossa lukee ”ei lisättävää”. Edellisessäkin luki niin. Konsultti ehdottaa lyhyttä tarkistusta, ettei kyseessä ole väärä liite.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "05",
+        "06",
+        "07"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Arkistoi ja jatka valmistelua",
+          "outcomeText": "Käsitelty asia ei saa ylimääräistä työryhmää.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 4
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Varmista viite ja päivitä lista",
+          "outcomeText": "Viite oli oikein. Tarkistuslista voidaan sulkea tältä osin.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H011",
+      "version": 1,
+      "title": "Tilaa löytyy, mutta myöhemmin",
+      "body": "Verkkosuunnittelijan mukaan vaihtoehto voisi sopia tulevaan vahvistukseen. Sana ”tuleva” puuttuu yhtiön investointiaikataulusta.",
+      "speakerId": "gridEngineer",
+      "artKey": "substation",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.gridResponseReady",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Sovita hankkeen aikataulu",
+          "outcomeText": "Riippuvuus tehdään näkyväksi. Yhteys ei tällä päätöksellä varmistu.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -4
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Selvitä toinen aikataulupolku",
+          "outcomeText": "Vaihtoehtoja selvitetään nykyisen rinnalle ilman kapasiteettilupausta.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H012",
+      "version": 1,
+      "title": "Hyvä uutinen tarvitsee kuvan",
+      "body": "Omistaja pyytää onnistumisesta yhden selkeän kalvon. Sen pitää sisältää kaikki riskit mutta näyttää rauhalliselta.",
+      "speakerId": "finance",
+      "artKey": "finance",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Esitä päätulos ja avoimet asiat",
+          "outcomeText": "Yksi luettava kalvo valmistuu. Riskit eivät katoa värivalinnalla.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Liitä myös tekninen kooste",
+          "outcomeText": "Yhteenveto saa taustan. Yhden kalvon kokous kestää hieman kauemmin.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H013",
+      "version": 1,
+      "title": "Peuran aikataulu ei siirry",
+      "body": "Metsäpeura-aineiston käsittelyyn pyydetään tarkennus. Lisätyön aikataulu osuu sopimusten uusimiseen. Kahdesta kalenterista vain toinen on neuvoteltavissa.",
+      "speakerId": "ecologist",
+      "artKey": "reindeer",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "hybrid"
+      ],
+      "tone": "mixed",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [
+        {
+          "field": "flags.ecologyReady",
+          "operator": "eq",
+          "value": true
+        },
+        {
+          "field": "site.reindeerConflict",
+          "operator": "eq",
+          "value": true
+        }
+      ],
+      "choices": {
+        "left": {
+          "label": "Yhteensovita selvitys ja sopimukset",
+          "outcomeText": "Työjärjestys tarkennetaan. Nykyinen luontokysymys pysyy avoimena.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Rajaa tarkennus nykyiseen näyttöön",
+          "outcomeText": "Asiantuntija täsmentää, mihin aineisto riittää ja mitä jää auki.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H014",
+      "version": 1,
+      "title": "Neutraali harmaa ei ole neutraali",
+      "body": "Aurinkokentän karttavärin sanotaan vähättelevän maisemamuutosta. Tummempi väri taas korostaa sitä. Paneelit eivät ole vielä edes maastossa.",
+      "speakerId": "planner",
+      "artKey": "solarfield",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Esitä värit ja vaikutukset erikseen",
+          "outcomeText": "Karttamerkintä selitetään. Varsinainen vaikutusarvio ei perustu värin miellyttävyyteen.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 2
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käy esitystapa yhdessä läpi",
+          "outcomeText": "Karttamerkinnästä sovitaan. Paneeliala ei muutu keskustelussa.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H015",
+      "version": 1,
+      "title": "Konsultti korjasi laskun alaspäin",
+      "body": "Konsultti löysi laskusta päällekkäisen rivin ja palauttaa osan maksusta. Taloushallinto varmistaa, että plusmerkki on tarkoituksellinen.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "03",
+        "04",
+        "05",
+        "06"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Palauta summa kehitysbudjettiin",
+          "outcomeText": "Kaksi budjettipistettä palautuu. Tämä oli oikea säästö, ei uusi oletus.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 2
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käytä hyvitys rajattuun tarkistukseen",
+          "outcomeText": "Hyvitys käytetään sovittuun pieneen lisätyöhön. Budjetti ei samalla kasva.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    },
+    {
+      "id": "H016",
+      "version": 1,
+      "title": "Asiantuntija sanoi: riittää",
+      "body": "Viranomaisen asiantuntija katkaisee lisäselvitysidean: kysymys on jo käsitelty riittävästi tässä aineistossa. Tiimi ei heti löydä tästä syntyvää tehtävää.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "05",
+        "06",
+        "07"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 6,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Sulje kyseinen työlistan kohta",
+          "outcomeText": "Aineisto selkeytyy. Yksittäisen asian riittävyys ei ratkaise koko kaavaa.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 2
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 2
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Varmista rajaus seuraavaan vaiheeseen",
+          "outcomeText": "Sovittu rajaus kirjataan jatkovalmisteluun.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivistä työelämäsatiiria: vaatimus tai vastaus on keksitty, ei todellinen viranomaislinjaus. Pisteet ja aika ovat pelisuunnittelua. Ei nimettyä tosielämän tapausta."
+    }
+  ]
+}

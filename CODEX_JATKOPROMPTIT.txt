@@ -1,0 +1,5 @@
+V2 KORVAA AIEMMAT JATKOPROMPTIT
+
+Käytä CODEX_AIHEET_JA_MALLIT.txt-tiedostosta yhtä aihetta kerrallaan tai vastaavaa prompts/-tiedostoa. Älä yhdistä koko roadmapia yhdeksi toimeksiannoksi. Ensimmäinen toimeksianto on nyt 01 (moottori), toinen 02 (mobiilidemo), kolmas 03 (kuusi SVG-tyyppikuvaa).
+
+Tämä tiedosto säilyttää v1:n tutun tiedostonimen, jotta vanha työnkulku ei ohjaa käyttämään vanhentuneita ohjeita.

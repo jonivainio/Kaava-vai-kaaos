@@ -1,0 +1,17 @@
+07 — ENSIMMÄINEN KOKONAINEN HYBRIDIKAMPANJA
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-6 Astra / High. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Tee nykyisestä moottorista ja hyväksytystä sisällöstä yksi kokonaan läpi pelattava hybridikampanja. Lue tilasopimus, pelisuunnitelman portit, nykyinen ohjaaja ja hyväksyttyjen ketjujen indeksi. Älä tee samalla kuvitusta, aurinko-/tuulikampanjoiden kaikkia erillisiä polkuja, rakentamisvaihetta tai akustoa.
+
+Ensin määrittele aukot: vaiheportit, välttämättömät tuloskortit, korkeusmallin valinta, vuokrasopimuksen jatko, viranomaisarvio, maakuntakaavariippuvuus, liityntä ja menettelypäätös. Kirjaa puuttuva sisältö täsmälliseen tilaukseen. Älä korvaa puuttuvaa korttia automaattisella myönteisellä ratkaisulla. Toteuta nykyisestä aineistosta oikeasti suljettavissa olevat osat ja fixture-testit. Luonnollisen kampanjan valmistuminen raportoidaan vasta, kun aukot on täydennetty erillisellä sisältöerällä.
+
+Maakuntakaava, verkkoliityntä, luontoselvitykset, vaalit, sopimusaika ja tuki etenevät rinnakkain. YVA ei ole kaavapäätös eikä yleinen laatumittari viranomaispäätös. Alussa arvotut riskit paljastuvat tiedonhankinnalla. Myöhemmät poliittiset ja hallinnolliset tapahtumat voivat olla siemenellisiä ajastettuja muutoksia, mutta tutkimuksen tilaaminen ei taio eläintä paikalle.
+
+Toteuta yksi hallittu hybridistä yksikomponenttiseksi siirtyminen vain, jos jäljelle jäävän hankkeen ja yhteisen verkon ehdot mahdollistavat sen. Samat alueet eivät vähene eri riskien vuoksi kahdesti. Tunnetun häviörajan ylittävä päätös näkyy ennakossa. Kaavan hyväksyntä ja omistajan kaupallinen jatkaminen ovat erillisiä tietoja loppuraportissa.
+
+Testaa vähintään yksi oikea voitto, pienennetty jatkamiskelpoinen hanke, liian pieni hanke, liian pitkä liittymä, budjetin loppu, kova ratkaisematon este, maakuntakaavan muuttuminen myöhään ja molemmat kelvolliset suunnanmuutokset. Testit eivät saa avata lopullista porttia huijauslipulla. Tuota toistettavat siemenet ja jäljelle jäävät epävarmuudet. Käytä vain nykyiseen osatehtävään tarvittavaa simulaatiomäärää.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

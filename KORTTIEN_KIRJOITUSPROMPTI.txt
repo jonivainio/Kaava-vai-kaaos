@@ -1,0 +1,23 @@
+05 — UUSI SURKUHUPAISA KORTTIERÄ
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / Medium. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Kirjoita seuraava 20 kortin erä tähän peliin. Sallittu eräkoko on 16–24, jos se tekee yhdestä teema- tai tapahtumaketjukokonaisuudesta eheän. Tarkista ensin nykyinen sisältötilaus tai NEXT_STEPS.md. Ellei aihetta ole valittu, täydennä suurin dokumentoitu vaihe-/ketjuaukko ja merkitse se erän tavoitteeksi.
+
+Lue docs/SAVY_JA_HUUMORI.md, docs/KORTTITUOTANNON_SUUNNITELMA.md, skeema, manifesti ja 8–12 edustavaa olemassa olevaa korttia. Älä avaa kaikkea lähdetutkimusta tai kirjoita koko pakkaa uudelleen. Ei verkkohakua työnantajan tai oikeiden hankkeiden tapahtumiin. Sisältö on kokonaan fiktiivistä.
+
+Tyyli: ”Mitä ihmettä nyt taas?” Pieni asia paisuu suhteettomaan viranomaispyyntöön, ohjeet vetävät eri suuntiin, luonto ei noudata hankekalenteria, tai hyvä uutinen vaikuttaa epäilyttävän hyvältä. Kirjoita suomeksi, kuivasti ja napakasti. Vitsin täytyy liittyä kortin konkreettiseen pulmaan, ei yleiseen sarkastiseen loppulauseeseen. Myös järkevästi toimiva viranomainen ja aidosti hyödyllinen konsultti kuuluvat maailmaan.
+
+Erään tavoitellaan karkeasti 5 myönteistä/hengähdyskorttia, 5 työntekokorttia ja 10 vaikeaa tai ristiriitaista valintaa; toimiva ketju menee tarkan kiintiön edelle. Korkeintaan 3 selvästi absurdia sivutilannetta erässä. Ainakin kaksi 2–3 päätöksen ketjua, joille on tarjolla alku, seuraus ja sulkeutuva ratkaisu. Liite- ja versiovitsien lisäksi vähintään neljä muuta huumoriperhettä. Ei eläinten vahingoittamista, asiakirjojen väärentämistä tai oikeiden henkilöiden syyttelyä päätösvaihtoehdoksi.
+
+Kumpikin valinta on tavallisesti puolustettava. Pyyntöä saa kyseenalaistaa asiallisesti. Nopeus, hinta, hankekoko ja epävarmuus ovat todellisia valintatekijöitä. Kaikki ”maksa selvitys” -vaihtoehdot eivät saa voittaa. Vaihtoehdon teksti kertoo toiminnon; jälkipalaute näyttää seurauksen. Älä anna vitsin luvata efektejä, joita data ei tee.
+
+Käytä vain nykyisiä effect-käskyjä, rooleja, kuva-avaimia ja ehtokenttiä. Korteilla pysyvät uudet ID:t, sourceIds aina [], editorial-metatieto ja versionumero. Älä muuta nykyisten korttien ID:tä, alkutilanteen 10 MW/300 m -sääntöä tai moottoria. Tuntematonta uutta mekaniikkaa vaativa idea jää erilliseen ideamuistioon, ei virheellisenä JSONina tuotantopakettiin.
+
+Kirjoita erä erilliseen draft-tiedostoon sekä lyhyt luettava esikatselu. Aja skeema- ja viitetarkistus erästä yhdessä nykyisen pakan kanssa. Tarkista ID:t, haarat, tekstipituudet, yksiköt ja vaihtoehtojen selvä dominanssi. Älä integroi luonnosta tuotantoon samalla toimeksiannolla. Merkitse heikot tai arvioimattomat kohdat täsmällisesti. Tulosta loppuvastaukseen vain erän aihe, määrä ja 2–3 esimerkkikorttia.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+CHATGPT-KÄYTTÖ: sama käsikirjoitustehtävä voidaan tehdä ChatGPT:ssä toimittamalla skeema, manifesti, sävyohje ja esimerkkikortit. Mallirivi koskee Codex-työnkulkua. Luonnos tarkistetaan silti koneellisesti ennen pelikäyttöä.

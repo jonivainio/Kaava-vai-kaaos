@@ -1,0 +1,329 @@
+{
+  "schemaVersion": "1.0",
+  "poolVersion": "1.0",
+  "locale": "fi-FI",
+  "fictional": true,
+  "notice": "Nimet on keksitty peliä varten, ei poimittu oikeista hankkeista. Tahatonta samannimisyyttä oikean paikannimen kanssa ei ole voitu sulkea maailmanlaajuisesti pois. Nimillä ei ole todellisia sijainteja tai hankeesikuvia.",
+  "names": [
+    {
+      "id": "N001",
+      "name": "Hattarahongansuo"
+    },
+    {
+      "id": "N002",
+      "name": "Hattarahonganneva"
+    },
+    {
+      "id": "N003",
+      "name": "Sammalviulunsuo"
+    },
+    {
+      "id": "N004",
+      "name": "Sammalviulunneva"
+    },
+    {
+      "id": "N005",
+      "name": "Utuviiksensuo"
+    },
+    {
+      "id": "N006",
+      "name": "Utuviiksenneva"
+    },
+    {
+      "id": "N007",
+      "name": "Huurrehatunsuo"
+    },
+    {
+      "id": "N008",
+      "name": "Huurrehatunneva"
+    },
+    {
+      "id": "N009",
+      "name": "Käpytaskunsuo"
+    },
+    {
+      "id": "N010",
+      "name": "Käpytaskunneva"
+    },
+    {
+      "id": "N011",
+      "name": "Kuusikuiskeensuo"
+    },
+    {
+      "id": "N012",
+      "name": "Kuusikuiskeenneva"
+    },
+    {
+      "id": "N013",
+      "name": "Varpuhupunsuo"
+    },
+    {
+      "id": "N014",
+      "name": "Varpuhupunneva"
+    },
+    {
+      "id": "N015",
+      "name": "Naavanuotinsuo"
+    },
+    {
+      "id": "N016",
+      "name": "Naavanuotinneva"
+    },
+    {
+      "id": "N017",
+      "name": "Usvatossunsuo"
+    },
+    {
+      "id": "N018",
+      "name": "Usvatossunneva"
+    },
+    {
+      "id": "N019",
+      "name": "Routarusetinsuo"
+    },
+    {
+      "id": "N020",
+      "name": "Routarusetinneva"
+    },
+    {
+      "id": "N021",
+      "name": "Hohkapillinsuo"
+    },
+    {
+      "id": "N022",
+      "name": "Hohkapillinneva"
+    },
+    {
+      "id": "N023",
+      "name": "Tihkukävynsuo"
+    },
+    {
+      "id": "N024",
+      "name": "Tihkukävynneva"
+    },
+    {
+      "id": "N025",
+      "name": "Unipihkansuo"
+    },
+    {
+      "id": "N026",
+      "name": "Unipihkanneva"
+    },
+    {
+      "id": "N027",
+      "name": "Hallahuilunsuo"
+    },
+    {
+      "id": "N028",
+      "name": "Hallahuilunneva"
+    },
+    {
+      "id": "N029",
+      "name": "Pihkapilvensuo"
+    },
+    {
+      "id": "N030",
+      "name": "Pihkapilvenneva"
+    },
+    {
+      "id": "N031",
+      "name": "Sumusukansuo"
+    },
+    {
+      "id": "N032",
+      "name": "Sumusukanneva"
+    },
+    {
+      "id": "N033",
+      "name": "Kaislatupsunsuo"
+    },
+    {
+      "id": "N034",
+      "name": "Kaislatupsunneva"
+    },
+    {
+      "id": "N035",
+      "name": "Havuhattaransuo"
+    },
+    {
+      "id": "N036",
+      "name": "Havuhattaranneva"
+    },
+    {
+      "id": "N037",
+      "name": "Kantohuilunsuo"
+    },
+    {
+      "id": "N038",
+      "name": "Kantohuilunneva"
+    },
+    {
+      "id": "N039",
+      "name": "Huurresolmunsuo"
+    },
+    {
+      "id": "N040",
+      "name": "Huurresolmunneva"
+    },
+    {
+      "id": "N041",
+      "name": "Utuhelmensuo"
+    },
+    {
+      "id": "N042",
+      "name": "Utuhelmenneva"
+    },
+    {
+      "id": "N043",
+      "name": "Käpyrusetinsuo"
+    },
+    {
+      "id": "N044",
+      "name": "Käpyrusetinneva"
+    },
+    {
+      "id": "N045",
+      "name": "Sammaltaskunsuo"
+    },
+    {
+      "id": "N046",
+      "name": "Sammaltaskunneva"
+    },
+    {
+      "id": "N047",
+      "name": "Routahupunsuo"
+    },
+    {
+      "id": "N048",
+      "name": "Routahupunneva"
+    },
+    {
+      "id": "N049",
+      "name": "Naavasolmionsuo"
+    },
+    {
+      "id": "N050",
+      "name": "Naavasolmionneva"
+    },
+    {
+      "id": "N051",
+      "name": "Varpuviitansuo"
+    },
+    {
+      "id": "N052",
+      "name": "Varpuviitanneva"
+    },
+    {
+      "id": "N053",
+      "name": "Havulipukkeensuo"
+    },
+    {
+      "id": "N054",
+      "name": "Havulipukkeenneva"
+    },
+    {
+      "id": "N055",
+      "name": "Sumukellonsuo"
+    },
+    {
+      "id": "N056",
+      "name": "Sumukellonneva"
+    },
+    {
+      "id": "N057",
+      "name": "Hallataskunsuo"
+    },
+    {
+      "id": "N058",
+      "name": "Hallataskunneva"
+    },
+    {
+      "id": "N059",
+      "name": "Usvakintaansuo"
+    },
+    {
+      "id": "N060",
+      "name": "Usvakintaanneva"
+    },
+    {
+      "id": "N061",
+      "name": "Tihkuhatunsuo"
+    },
+    {
+      "id": "N062",
+      "name": "Tihkuhatunneva"
+    },
+    {
+      "id": "N063",
+      "name": "Unikävynsuo"
+    },
+    {
+      "id": "N064",
+      "name": "Unikävynneva"
+    },
+    {
+      "id": "N065",
+      "name": "Kuusiviulunsuo"
+    },
+    {
+      "id": "N066",
+      "name": "Kuusiviulunneva"
+    },
+    {
+      "id": "N067",
+      "name": "Pihkapillinsuo"
+    },
+    {
+      "id": "N068",
+      "name": "Pihkapillinneva"
+    },
+    {
+      "id": "N069",
+      "name": "Kantorusetinsuo"
+    },
+    {
+      "id": "N070",
+      "name": "Kantorusetinneva"
+    },
+    {
+      "id": "N071",
+      "name": "Hohkatupsunsuo"
+    },
+    {
+      "id": "N072",
+      "name": "Hohkatupsunneva"
+    },
+    {
+      "id": "N073",
+      "name": "Routaviitansuo"
+    },
+    {
+      "id": "N074",
+      "name": "Routaviitanneva"
+    },
+    {
+      "id": "N075",
+      "name": "Kaislakuiskeensuo"
+    },
+    {
+      "id": "N076",
+      "name": "Kaislakuiskeenneva"
+    },
+    {
+      "id": "N077",
+      "name": "Naavakintaansuo"
+    },
+    {
+      "id": "N078",
+      "name": "Naavakintaanneva"
+    },
+    {
+      "id": "N079",
+      "name": "Sammalhatunsuo"
+    },
+    {
+      "id": "N080",
+      "name": "Sammalhatunneva"
+    }
+  ]
+}

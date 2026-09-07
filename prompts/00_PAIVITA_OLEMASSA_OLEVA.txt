@@ -1,0 +1,19 @@
+00 — JO ALOITETUN PELIN PÄIVITYS V2:een
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / Medium. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Olemassa olevaa peliä ei rakenneta uudelleen. Tarkista git status ja projektirakenne. Etsi tähän tehtävään toimitettu v2-vertailukansio sen LUE_ENSIN.md- ja MUUTOSLOKI.md-tiedostojen perusteella. Älä sekoita sitä sovelluksen lähdekoodiin tai käsittele aloituspakettia valmiina toteutuksena.
+
+Vertaa nykyistä toteutusta v2:n sävyohjeeseen, nimisopimukseen ja korttien formaattiin. Tavoite on surkuhupaisa, täysin fiktiivinen hankekehityspeli: kohtuuttomiksi paisuvat selvityspyynnöt, yllättävät lajihavainnot, ristiriitaiset neuvot, kuiva ammattihuumori ja myös aidot helpotukset. Ei linkkejä oikeisiin hankkeisiin eikä esikuviksi tunnistettavia henkilöitä.
+
+Tuo 64 kortin sisältöpaketti nykyiseen lataimeen ID:t säilyttäen. P001–P048:n vaikutuslogiikka ei muutu v1:stä; teksti ja sisältöversio muuttuvat. H001–H016 ovat uusia. sourceIds on aina tyhjä. Säilytä vanhan keskeneräisen kierroksen sisältö tai tee näkyvä turvallinen versiovaihto; älä hävitä tallennusta.
+
+Lisää 80 nimen nimipankki ja erillinen kosmeettinen arvonta; tallenna nimi pysyvästi kierrokseen. Lisää lyhyt fiktioilmoitus alkuvalikkoon ja tietoihin. Pidä lainvoima, kaavahyväksyntä ja demopäätös erillisinä. Uuden nimiavaruuden ja editorial.fi.json-metadatan johdosta ei tehdä moottorin vaikutuskäskyjen kokonaisuudistusta.
+
+Älä tee tässä kuvitussarjaa tai täyttä dramaturgiaohjaajaa. Nykyiset kuvat voivat jäädä väliaikaisesti, elleivät ne sisällä kiellettyä oikeaa aineistoa. Jos sovellus käyttää v1-lähdeaineistoa runtime-puolella, katkaise riippuvuus hallitusti; älä poista käyttäjän alkuperäistä tutkimusarkistoa tai git-historiaa. Raportoi, jos sisältö on jo julkaistu: nykyisen bundle-version siistiminen ei poista vanhoja julkisia kopioita.
+
+Hyväksyntä: nykyinen peli käynnistyy, nimet säilyvät latauksessa, korttien lähdeviitteet ovat tyhjiä, vanhat hankeluvut ja efektit säilyvät, uudet haarat eivät sekoitu, tyypitys/testit/build läpäisevät. Näytä puutteet erikseen; älä tee muita roadmap-vaiheita.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

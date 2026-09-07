@@ -1,0 +1,299 @@
+CODEX-TEHTÄVÄT — VERSIO 2.0, 7.9.2026
+
+ÄLÄ LIITÄ KOKO TIEDOSTOA YHDEKSI TEHTÄVÄKSI. Valitse yksi numeroitu osio ja valitse siinä mainittu malli ja reasoning käyttöliittymästä ennen lähettämistä. Standard-nopeus. Mallisuositukset ovat projektikohtaisia; tarkemmat perustelut ja varavaihtoehdot: docs/MALLIT_JA_KAYTTORAJA.md.
+
+Uusi projekti: 01 → 02 → 03 → tyylin arviointi → 04/04B tarpeen mukaan → 05/06 sisältöerät → 07 → 08 → 09 → 10. 11 on rajattuihin korjauksiin. Olemassa oleva projekti aloittaa 00:sta, ei koko perustasta uudelleen.
+
+
+
+========================================================================
+TIEDOSTO: 00_PAIVITA_OLEMASSA_OLEVA.txt
+========================================================================
+
+00 — JO ALOITETUN PELIN PÄIVITYS V2:een
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / Medium. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Olemassa olevaa peliä ei rakenneta uudelleen. Tarkista git status ja projektirakenne. Etsi tähän tehtävään toimitettu v2-vertailukansio sen LUE_ENSIN.md- ja MUUTOSLOKI.md-tiedostojen perusteella. Älä sekoita sitä sovelluksen lähdekoodiin tai käsittele aloituspakettia valmiina toteutuksena.
+
+Vertaa nykyistä toteutusta v2:n sävyohjeeseen, nimisopimukseen ja korttien formaattiin. Tavoite on surkuhupaisa, täysin fiktiivinen hankekehityspeli: kohtuuttomiksi paisuvat selvityspyynnöt, yllättävät lajihavainnot, ristiriitaiset neuvot, kuiva ammattihuumori ja myös aidot helpotukset. Ei linkkejä oikeisiin hankkeisiin eikä esikuviksi tunnistettavia henkilöitä.
+
+Tuo 64 kortin sisältöpaketti nykyiseen lataimeen ID:t säilyttäen. P001–P048:n vaikutuslogiikka ei muutu v1:stä; teksti ja sisältöversio muuttuvat. H001–H016 ovat uusia. sourceIds on aina tyhjä. Säilytä vanhan keskeneräisen kierroksen sisältö tai tee näkyvä turvallinen versiovaihto; älä hävitä tallennusta.
+
+Lisää 80 nimen nimipankki ja erillinen kosmeettinen arvonta; tallenna nimi pysyvästi kierrokseen. Lisää lyhyt fiktioilmoitus alkuvalikkoon ja tietoihin. Pidä lainvoima, kaavahyväksyntä ja demopäätös erillisinä. Uuden nimiavaruuden ja editorial.fi.json-metadatan johdosta ei tehdä moottorin vaikutuskäskyjen kokonaisuudistusta.
+
+Älä tee tässä kuvitussarjaa tai täyttä dramaturgiaohjaajaa. Nykyiset kuvat voivat jäädä väliaikaisesti, elleivät ne sisällä kiellettyä oikeaa aineistoa. Jos sovellus käyttää v1-lähdeaineistoa runtime-puolella, katkaise riippuvuus hallitusti; älä poista käyttäjän alkuperäistä tutkimusarkistoa tai git-historiaa. Raportoi, jos sisältö on jo julkaistu: nykyisen bundle-version siistiminen ei poista vanhoja julkisia kopioita.
+
+Hyväksyntä: nykyinen peli käynnistyy, nimet säilyvät latauksessa, korttien lähdeviitteet ovat tyhjiä, vanhat hankeluvut ja efektit säilyvät, uudet haarat eivät sekoitu, tyypitys/testit/build läpäisevät. Näytä puutteet erikseen; älä tee muita roadmap-vaiheita.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+
+========================================================================
+TIEDOSTO: 01_MOOTTORIN_PERUSTA.txt
+========================================================================
+
+01 — KAAVA VAI KAAOS: PELIMOOTTORIN RAJATTU PERUSTA
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-6 Astra / High. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Rakenna suomalaisille hankekehityksen ammattilaisille Reigns-henkinen mobiilikorttipeli. Pelaaja kehittää fiktiivistä tuuli-, aurinko- tai hybridihanketta maanvuokrauksesta kaavan hyväksymiseen. Yksi kortti, kaksi päätöstä. Peli on surkuhupaisa, ei koulutusvisa: absurdi mutta kuivasti esitetty viranomaispyyntö, yllättävä lajihavainto tai vanheneva selvitys voi muuttaa tilanteen. Molemmat valinnat ovat yleensä järkeviä eri kustannuksilla.
+
+TOTEUTA NYT VAIN MOOTTORIN PERUSTA JA TESTIT. Älä tee samalla koko UI:ta, 420 korttia, kuvitussarjaa, kampanjaohjaajaa tai julkaisua. 64 kortin pakka on sisältöpilotti, ei valmis kampanja. Ensimmäinen valmis käyttöliittymädemo tehdään erillisessä tehtävässä 02.
+
+Lue docs/PELISUUNNITELMA.md (luvut ja rajat), docs/TOTEUTUSSOPIMUS.md (efektit ja ajastus), docs/SAVY_JA_HUUMORI.md (sävy) sekä korttiskeema, manifesti ja muutama olennaista käskyä esittävä kortti. Lue docs/NIMET_JA_FIKTIO.md nimiarvontaan. Älä hae oikeiden hankkeiden tai työnantajan tietoja.
+
+Tarkista työkansio ja git status. Käytä nykyistä tekniikkaa, jos sovellus on jo olemassa; muuten perusta pieni TypeScript + React + Vite -projekti ja testikehys. Päätä julkiset tyypit ennen riippuvaisten moduulien kirjoittamista. Moottori on puhdas TypeScript-moduuli, ei React-komponentti. Toteuta vähintään createRun, getDerivedStats, previewChoice, applyChoice, advanceTime, serializeRun ja restoreRun. Samasta siemenestä ja valinnoista seuraa sama mekaaninen tulos. Preview ei kuluta RNG:tä eikä päätös vahvistu kahdesti.
+
+Alkuarvot säilyvät: tuuli 12–24 kpl; hybridi 12–20 kpl ja 60–160 ha; aurinko 80–220 ha. Jokainen tuulivoimala alkaa aina 10 MW:n ja 300 metrin koosta. Liityntä tuuli/hybridi 5–20 km, aurinko 2–12 km. Erota kpl, korkeus, nimellisteho, tuotto, MWp/MWac ja ha. Samat poistetut kohteet eivät vähene kahdesti, yhteinen johto ei kahdennu, korkeusrajan muutos ei leikkaa tehoa lineaarisesti.
+
+Arvo hankenimi 80 nimen poolista erillisellä nimi-RNG:llä. Tallenna nimi, ID ja pooliversio. Nimi ja nimipankin muutokset eivät vaikuta hankkeen mekaanisiin satunnaistuloksiin. Jatka-painike ei myöhemmin saa arpoa mitään uudelleen.
+
+Toteuta vain skeeman sallimat effect-käskyt ja ajastuksen täsmällinen tulkinta. Kortin tekstistä ei päätellä efektejä. Tuntematon käsky on näkyvä validointivirhe. Selvitys alkaa tilattaessa ja paljastaa alussa määritettyä tietoa valmistuttuaan. Yhteinen kello, rinnakkaiset tehtävät ja jonotetut tapahtumat tallennetaan. Vain menettelymalli voi myöhemmin kirjoittaa suojattuja hyväksymisportteja; demo ei tekaise kaavavoittoa.
+
+Hyväksymistestit: sama siemen/samat valinnat; päätöksen ja preview'n erottelu; sama poissulku kahdesti; yhteinen johto kerran; MW vs. tuotanto; korkeus ja malliyhteensopivuus; kaksi rinnakkaista työtä; due-eventin järjestys; H001:n vasen/oikea haara; lataus keskeneräisen työn aikana; pysyvä nimi; nimet eivät muuta skenaariota; virheellinen tallennus säilyy palautettavaksi. Aja Pythonin sisältötestit, TypeScript-testit, tyypitys ja build.
+
+Toimita lyhyt tilasopimus, toimiva testattava moottoriperusta ja NEXT_STEPS.md:hen täsmällinen lähtökohta tehtävälle 02. Älä esitä toteuttamatonta selain- tai puhelintestiä suoritetuksi.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+
+========================================================================
+TIEDOSTO: 02_MOBIILI_UI_JA_DEMO.txt
+========================================================================
+
+02 — MOBIILI-UI JA 12 PÄÄTÖKSEN DEMO
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / Medium. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Toteuta nykyisen moottorin päälle mobiili ensin -käyttöliittymä ja manifestin demoFlow'n mukainen 12 päätöksen tunnelmaproto. Lue UI-osat pelisuunnitelmasta, demoFlow ja moottorin julkiset tyypit. Älä suunnittele moottoria uudelleen. Käytä yksinkertaisia väliaikaisia kuvituspaikkoja; varsinainen alkuperäinen taidesuunta tehdään tehtävässä 03.
+
+Yläpalkki: fiktiivinen hankenimi, vaihe ja hankekuukausi. Koko ajan näkyvät TUULI: kpl, enimmäiskokonaiskorkeus m, kokonais-MW, liittymä km; AURINKO: ha ja liittymä km. Hybridin yhteinen johto merkitään yhteiseksi. Neljä tiivistä mittaria: budjetti, luottamus, selvitysvalmius ja omistajan kärsivällisyys. Tärkeät luvut eivät saa kadota avattavan valikon taakse.
+
+Keskellä yksi suuri kortti, puhuja, kuvitus ja napakka suomenkielinen teksti. Pyyhkäisy paljastaa valinnan tekstin ja tunnetun vaikutuksen. Vaaraindikaattori näyttää varmasti kohtalokkaan seurauksen. Vaihtoehtoisina ohjaimina kaksi painiketta ja näppäimistö. Peruuntunut veto ei tee päätöstä, sivun pystyscrolli ei vahvista valintaa, nopea napautus ja swipe eivät tee kahta transaktiota. Lisää reduced motion ja näkyvä fokustila. Teksti on HTML:ää, ei SVG-kuvassa.
+
+Demon H001 jonottaa vasemmalla H002:n ja oikealla H003:n. Älä pelaa molempia tai seuraa jäykästi esimerkkijonoa. Demo käyttää näkyvästi käsikirjoitettuja vaihe-fixtureja, ei väitä suorittavansa vielä täyttä kampanjan porttimallia. Lopussa ”Ensimmäinen selvityskierros valmis”, kesken olevat työt näkyvissä. Ei kaavavoittoa.
+
+Tee kehittäjän korttikatselin: 64 korttia, hankemuoto/vaihe/sävy-suodattimet, molempien päätösten esikatselu, näkyvästi nimetyt testifixturet. Älä muuta fixturea todisteeksi kortin luonnollisesta saavutettavuudesta. Alkuvalikossa on yksi lyhyt fiktiivisyyden ilmoitus ja Uusi hanke / Jatka.
+
+Tarkista selaimessa ainakin 360x800 ja 390x844 näkymät sekä pitkät nimet ja kortit. Aja E2E: kummatkin H001-haarat, veto/peruutus, napit, näppäimistö ja tallennuksen jatko. Ellei selain ole käytettävissä, kirjaa puute. Älä väitä oikean puhelimen testausta emulaation perusteella.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+
+========================================================================
+TIEDOSTO: 03_SVG_TYYLI_ENSIN.txt
+========================================================================
+
+03 — ALKUPERÄINEN SVG-TYYLI, VAIN KUUSI KUVAA
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / Medium. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Lue docs/VISUAALINEN_OHJE.md ja katso nykyinen korttinäkymä. Tee kuusi alkuperäistä SVG-kuvitusta avaimille authority, planner, consultant, landowner, reindeer ja substation. Ei ulkoista kuvageneraattoria tai maksullista palvelua. Tavoitteena on pelkistetty, kulmikas ja tyylikäs oma kuvitus, ei valmiiden Reigns-kuvien kopio.
+
+Lukitse yhteinen 6–8 värin paletti ja 320x320 viewBox. Muutamat suuret polygonit, tunnistettava siluetti ja harkitut kasvot. Ammattihahmot erottuvat pienessä koossa ilman tekstiä. Neutraali virkailija voi olla koominen juuri vakavuudessaan. Vältä geneeristä ikonikirjaston tai emojiavatarin vaikutelmaa.
+
+Renderöi ja avaa kontaktikartta sekä ainakin kolme kuvaa oikeassa korttinäkymässä. Arvioi rajaus, sommittelu, yhtenäisyys ja 360px puhelinnäkymän luettavuus. Korjaa havaitut selvät virheet yhdessä rajatussa kierroksessa, älä tee kaikkia tulevia kuvia ennen suunnan arviointia. Kun kuvaa ei voi avata, ilmoita tarkastus tekemättömäksi.
+
+Toimita SVG:t, yhteinen tyylimäärittely ja kuvaviitteet. Tee puuttuville muille artKey-avaimille selvästi kehitystilaan merkitty vararatkaisu, älä väitä niitä valmiiksi. Ei moottorin, korttitekstien tai vaihelogiikan muutoksia. Seuraavaksi käyttäjä arvioi tämän kuuden kuvan suunnan ennen sarjatuotantoa.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+
+========================================================================
+TIEDOSTO: 04_SVG_ERAT.txt
+========================================================================
+
+04 — HYVÄKSYTYN SVG-TYYLIN SARJATUOTANTO
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.3-Codex-Spark / oletus; Medium vain jos mallin valitsin tarjoaa sen. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Jatka vain jo arvioitua ja hyväksyttyä SVG-tyyliä. Lue tyylimäärittely, 2–3 hyväksyttyä SVG:tä ja artKey-manifesti. Tee seuraavat 6–8 puuttuvaa kuvaa samasta manifestista; älä luo joka tekstikortille omaa kuvaa. Jos tyyliperusta ei ole vielä olemassa tai sitä ei ole arvioitu, kirjaa puuttuva edellytys eikä sarjaa tehdä sokkona.
+
+Säilytä viewBox, paletti, mittasuhteet ja kuvituskieli. Ei kopioituja taide-elementtejä, ulkoisia upotuksia, script-elementtejä, SVG:hen kirjoitettua korttitekstiä tai moottorimuutoksia. Älä lisää uusia artKey-avaimia ilman sisällöstä tulevaa tarvetta.
+
+Aja XML/SVG- ja viitetarkistukset. Tee automaattinen kontaktikartta seuraavaa katselmointia varten, jos renderöintityökalu on saatavilla. Tämä on koodituotanto, ei väite visuaalisesta hyväksynnästä. Pyydetyt testit on ajettava nimenomaisesti; pelkkä tiedostojen tallennus ei riitä. Raportoi valmistuneet avaimet ja vielä tarkastamattomat kuvat. Älä jatka automaattisesti seuraavaan erään.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+
+========================================================================
+TIEDOSTO: 04B_SVG_VISUAALINEN_QA.txt
+========================================================================
+
+04B — SVG-ERÄN VISUAALINEN TARKISTUS
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / Medium. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Tarkista vain edellisen SVG-erän kuvat. Lue yhteinen tyylimäärittely. Renderöi kuvat, avaa kontaktikartta ja tarkista kuvat myös oikeassa kortissa 360px leveässä näkymässä. Älä arvioi vain SVG-koodin siisteyttä.
+
+Tarkista erottuvat siluetit, paletti, mittasuhteet, rajautuminen, kasvojen toimivuus, pieni koko ja ero hyväksyttyihin kuviin. Korjaa konkreettiset poikkeamat, älä vaihda koko pelin taidesuuntaa. Aja kuva- ja viitetestit. Raportoi erikseen hyväksytyt, korjatut ja vielä arvioimattomat kuvat. Jos et voi nähdä renderöityä tulosta, kerro se ja jätä visuaalinen hyväksyntä avoimeksi.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+
+========================================================================
+TIEDOSTO: 05_KORTTIEN_KIRJOITUS.txt
+========================================================================
+
+05 — UUSI SURKUHUPAISA KORTTIERÄ
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / Medium. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Kirjoita seuraava 20 kortin erä tähän peliin. Sallittu eräkoko on 16–24, jos se tekee yhdestä teema- tai tapahtumaketjukokonaisuudesta eheän. Tarkista ensin nykyinen sisältötilaus tai NEXT_STEPS.md. Ellei aihetta ole valittu, täydennä suurin dokumentoitu vaihe-/ketjuaukko ja merkitse se erän tavoitteeksi.
+
+Lue docs/SAVY_JA_HUUMORI.md, docs/KORTTITUOTANNON_SUUNNITELMA.md, skeema, manifesti ja 8–12 edustavaa olemassa olevaa korttia. Älä avaa kaikkea lähdetutkimusta tai kirjoita koko pakkaa uudelleen. Ei verkkohakua työnantajan tai oikeiden hankkeiden tapahtumiin. Sisältö on kokonaan fiktiivistä.
+
+Tyyli: ”Mitä ihmettä nyt taas?” Pieni asia paisuu suhteettomaan viranomaispyyntöön, ohjeet vetävät eri suuntiin, luonto ei noudata hankekalenteria, tai hyvä uutinen vaikuttaa epäilyttävän hyvältä. Kirjoita suomeksi, kuivasti ja napakasti. Vitsin täytyy liittyä kortin konkreettiseen pulmaan, ei yleiseen sarkastiseen loppulauseeseen. Myös järkevästi toimiva viranomainen ja aidosti hyödyllinen konsultti kuuluvat maailmaan.
+
+Erään tavoitellaan karkeasti 5 myönteistä/hengähdyskorttia, 5 työntekokorttia ja 10 vaikeaa tai ristiriitaista valintaa; toimiva ketju menee tarkan kiintiön edelle. Korkeintaan 3 selvästi absurdia sivutilannetta erässä. Ainakin kaksi 2–3 päätöksen ketjua, joille on tarjolla alku, seuraus ja sulkeutuva ratkaisu. Liite- ja versiovitsien lisäksi vähintään neljä muuta huumoriperhettä. Ei eläinten vahingoittamista, asiakirjojen väärentämistä tai oikeiden henkilöiden syyttelyä päätösvaihtoehdoksi.
+
+Kumpikin valinta on tavallisesti puolustettava. Pyyntöä saa kyseenalaistaa asiallisesti. Nopeus, hinta, hankekoko ja epävarmuus ovat todellisia valintatekijöitä. Kaikki ”maksa selvitys” -vaihtoehdot eivät saa voittaa. Vaihtoehdon teksti kertoo toiminnon; jälkipalaute näyttää seurauksen. Älä anna vitsin luvata efektejä, joita data ei tee.
+
+Käytä vain nykyisiä effect-käskyjä, rooleja, kuva-avaimia ja ehtokenttiä. Korteilla pysyvät uudet ID:t, sourceIds aina [], editorial-metatieto ja versionumero. Älä muuta nykyisten korttien ID:tä, alkutilanteen 10 MW/300 m -sääntöä tai moottoria. Tuntematonta uutta mekaniikkaa vaativa idea jää erilliseen ideamuistioon, ei virheellisenä JSONina tuotantopakettiin.
+
+Kirjoita erä erilliseen draft-tiedostoon sekä lyhyt luettava esikatselu. Aja skeema- ja viitetarkistus erästä yhdessä nykyisen pakan kanssa. Tarkista ID:t, haarat, tekstipituudet, yksiköt ja vaihtoehtojen selvä dominanssi. Älä integroi luonnosta tuotantoon samalla toimeksiannolla. Merkitse heikot tai arvioimattomat kohdat täsmällisesti. Tulosta loppuvastaukseen vain erän aihe, määrä ja 2–3 esimerkkikorttia.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+
+========================================================================
+TIEDOSTO: 06_KORTTIERAN_TUONTI.txt
+========================================================================
+
+06 — HYVÄKSYTYN KORTTIERÄN TUONTI
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.3-Codex-Spark / oletus; Medium vain jos valittavissa. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Tuo käyttäjän hyväksymä valmis korttierä nykyiseen sisältöpakettiin. Älä kirjoita vitsejä, muuta päätösvaikutuksia tai laajenna moottoria. Lue vain erätiedosto, tarvittava skeema, manifesti ja nykyisten ID:iden indeksi.
+
+Validoi erä ennen yhdistämistä ja koko pakka yhdistämisen jälkeen. Päivitä manifestin korttilukumäärä, sisältöversion tunniste ja editorial-viitteet. Tarkista pysyvät ID:t, ei toistoja, sourceIds tyhjät, kaikki kuva-/rooli-/flag-/track-/queueCard-viittaukset kelvollisia, ehdot sopivat pelimuotoon ja samat yksiköt säilyvät.
+
+Jos erä tarvitsee tuntemattoman vaikutuksen, älä korvaa sitä no-opilla tai arvaa sen merkitystä. Jätä kyseinen kortti luonnokseen ja raportoi tarkka puute; säilytä aiempi toimiva pakka. Suojattuja vaiheportteja ei saa kirjoittaa kortin effectillä. Lisää fixture tai regressiotesti uusille ketjuille. Tallenna uudistettu luettava esikatselu skriptillä, älä muotoile satoja kortteja käsin.
+
+Aja nimenomaisesti sisältötestit, vaikutus-/ketjutestit sekä sovelluksen build, jos sisältö tuodaan siihen. Tulosta vain lisätty määrä, sisältöversio, testit ja havaitut ongelmat. Ei automaattista seuraavaa erää.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+
+========================================================================
+TIEDOSTO: 07_KOKONAINEN_HYBRIDIKAMPANJA.txt
+========================================================================
+
+07 — ENSIMMÄINEN KOKONAINEN HYBRIDIKAMPANJA
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-6 Astra / High. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Tee nykyisestä moottorista ja hyväksytystä sisällöstä yksi kokonaan läpi pelattava hybridikampanja. Lue tilasopimus, pelisuunnitelman portit, nykyinen ohjaaja ja hyväksyttyjen ketjujen indeksi. Älä tee samalla kuvitusta, aurinko-/tuulikampanjoiden kaikkia erillisiä polkuja, rakentamisvaihetta tai akustoa.
+
+Ensin määrittele aukot: vaiheportit, välttämättömät tuloskortit, korkeusmallin valinta, vuokrasopimuksen jatko, viranomaisarvio, maakuntakaavariippuvuus, liityntä ja menettelypäätös. Kirjaa puuttuva sisältö täsmälliseen tilaukseen. Älä korvaa puuttuvaa korttia automaattisella myönteisellä ratkaisulla. Toteuta nykyisestä aineistosta oikeasti suljettavissa olevat osat ja fixture-testit. Luonnollisen kampanjan valmistuminen raportoidaan vasta, kun aukot on täydennetty erillisellä sisältöerällä.
+
+Maakuntakaava, verkkoliityntä, luontoselvitykset, vaalit, sopimusaika ja tuki etenevät rinnakkain. YVA ei ole kaavapäätös eikä yleinen laatumittari viranomaispäätös. Alussa arvotut riskit paljastuvat tiedonhankinnalla. Myöhemmät poliittiset ja hallinnolliset tapahtumat voivat olla siemenellisiä ajastettuja muutoksia, mutta tutkimuksen tilaaminen ei taio eläintä paikalle.
+
+Toteuta yksi hallittu hybridistä yksikomponenttiseksi siirtyminen vain, jos jäljelle jäävän hankkeen ja yhteisen verkon ehdot mahdollistavat sen. Samat alueet eivät vähene eri riskien vuoksi kahdesti. Tunnetun häviörajan ylittävä päätös näkyy ennakossa. Kaavan hyväksyntä ja omistajan kaupallinen jatkaminen ovat erillisiä tietoja loppuraportissa.
+
+Testaa vähintään yksi oikea voitto, pienennetty jatkamiskelpoinen hanke, liian pieni hanke, liian pitkä liittymä, budjetin loppu, kova ratkaisematon este, maakuntakaavan muuttuminen myöhään ja molemmat kelvolliset suunnanmuutokset. Testit eivät saa avata lopullista porttia huijauslipulla. Tuota toistettavat siemenet ja jäljelle jäävät epävarmuudet. Käytä vain nykyiseen osatehtävään tarvittavaa simulaatiomäärää.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+
+========================================================================
+TIEDOSTO: 08_KORTTIOHJAAJA_JA_RYTMI.txt
+========================================================================
+
+08 — SURKUHUPAISUUDEN RYTMI JA KORTTIOHJAAJA
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / High. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Toteuta editorial.fi.json-tietoja käyttävä pehmeä komediarytmi nykyiseen korttiohjaajaan. Älä muuta korttien effectejä tai hyväksymisehtoja. Lue sävyohje ja nykyinen valintalogiikka.
+
+Prioriteetti: erääntyneet seuraukset ja välttämättömät portit ensin. Niiden jälkeen valitse kelvollinen vaihesisältö ja vasta sitten sattumaluonteinen arkikortti. Kohtauksen sisältö, moodi, vaihe, riskin paljastuminen ja jono ovat ehtoja; huumoritaso ei ohita niitä.
+
+Vältä samaa irrallista vitsiperhettä yli kahdesti viimeisessä kahdeksassa kortissa ja kahta voimakkuuden 3 sattumakorttia peräkkäin. Kolmen takaiskun jälkeen suosi myönteistä tai arkista hengähdystä, jos sellainen on kelvollisena. Älä muuta tutkimustulosta helpoksi, luo budjettia tyhjästä tai tukahduta erääntynyttä estettä. Jos pehmeä rajoitus estää kaiken, höllennä rytmiehtoa näkyvän säännön mukaan; ei deadlockia.
+
+Seuraa ketjun alkua, jatkoa ja sulkeutumista. Followup-kortti ei saa tulla ilman omaa jonoa. Pidä valinnat ja tarjoukset tallennuksessa, ettei reload arvo uutta tarinaa. Eri siemenillä ja valinnoilla syntyy erilaisia mutta ymmärrettäviä tarinoita.
+
+Testit: no-eligible-card, kaikki vaihtoehdot samasta perheestä, erääntynyt vakava kortti kevennyksen kohdalla, P025/P026-poissulku, H001:n kaksi haaraa, ei ikuista selvityssilmukkaa, ei resurssifarmia, reload samaan korttiin. Raportoi toteutuneet rytmirajoitteet ja poikkeukset. Älä väitä numeeristen testien todistavan hauskuutta.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+
+========================================================================
+TIEDOSTO: 09_TASAPAINO_JA_SIMULAATIO.txt
+========================================================================
+
+09 — TASAPAINO JA TOISTETTAVAT SIMULAATIOT
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / High. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Tee rajattu simulaatiotyökalu ja raportoi nykyisen kampanjan ongelmat. Simulaatiostrategiat eivät saa lukea piilotettuja riskejä ennen niiden paljastumista. Käytä satunnaista, budjettipainotteista ja tunnettuja riskejä hallitsevaa strategiaa. Simuloi ensin 100 siementä per strategia savutestinä ja 1000 diagnostiseen raporttiin. Laajenna 10000 siemeneen vasta, kun virheet eivät hukuta tuloksia; raportoi oikeasti ajettu määrä.
+
+Mittaa deadlockit, vaiheiden saavutettavuus, yleiset tappiot, vastavalintojen dominanssi, liian yleiset kortit, tekstiperheiden toistot, nollakustannuksen farmit ja tahattomat mahdottomat alut. Tarkista, että häviöketjun voi selittää pelaajalle ilman salaisen tiedon edellyttämistä.
+
+Korjaa vain löydetty ohjelmavirhe tai asetustiedoston tasapainoluku. Älä muuta luonto- tai menettelymerkityksiä, kirjoita satoja kortteja uudelleen tai lisää loputonta armoa voittoprosentin vuoksi. Lisää jokaisesta korjatusta virheestä regressiotesti ja säilytä epäonnistuneen ajon siemen.
+
+Tallenna koneellinen raportti tiedostoon ja lyhyt tiivistelmä. Ihmispelitesti arvioi huumorin, mielekkyyden ja peukalotuntuman erikseen. Sama simulaatiostrategia ei ole todellisen pelaajan mallinnus.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+
+========================================================================
+TIEDOSTO: 10_PWA_JA_JULKAISUVALMISTELU.txt
+========================================================================
+
+10 — PWA, OFFLINE JA JULKAISUVALMISTELU
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Terra / Medium; ellei käytettävissä, Sol / Medium. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Valmistele nykyinen staattinen peli asennettavaksi PWA:ksi. Ei palvelinta, tilijärjestelmää, maksullisia palveluita tai internetjulkaisua tässä toimeksiannossa. Tarkista nykyiset riippuvuudet ja käytä olemassa olevaa build-työkalua.
+
+Toteuta manifesti, sovelluskuvakkeet olemassa olevasta alkuperäisestä taiteesta, offline-välimuisti ja turvallinen sisältöpäivitys. Peli jatkaa samoilla säännöillä keskeneräisen kierroksen, tai tarjoaa näkyvän siirtymisen uuteen versioon tallennusta hävittämättä. Polkujen pitää toimia myös repoalihakemistossa.
+
+Aja offline-käynnistys lataamisen jälkeen, päivitys aktiivisen tallennuksen kanssa, välimuistin vanhan version käsittely ja pitkät fiktiiviset nimet. Tarkista ettei tuotantobundleen tule oikeiden hankkeiden lähteitä, sisäisiä dokumentteja, debug-fixtureja, henkilötietoja, seuranta-analytiikkaa tai ulkoisia kuvalinkkejä. Nykyisen tiedoston siistiminen ei poista aiempaa julkista git-historiaa; raportoi tällainen riski erikseen.
+
+Kirjoita julkaisuohje ja kuvaa näkyvyys rehellisesti. Yksityinen lähdekoodirepo ei yksin takaa pelisivun pääsynhallintaa. Älä toteuta JavaScriptiin kovakoodattua salasanaa suojaukseksi. Julkaisun saa tehdä vasta erillisessä toimeksiannossa. Kerro aidot selain- ja laitetestit erikseen.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.
+
+
+========================================================================
+TIEDOSTO: 11_RAJATTU_KORJAUS.txt
+========================================================================
+
+11 — YKSI RAJATTU KORJAUS
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.3-Codex-Spark / oletus; Medium vain jos valittavissa. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Korjaa vain viimeisimmässä käyttäjän raportissa tai NEXT_STEPS.md:ssä yksilöity virhe. Lue ongelmaan liittyvä moduuli, sen tyypit ja testit. Älä tee koko repon katselmointia, taidesuunnan vaihtoa, sivusiivousta tai riippuvuuksien massapäivitystä.
+
+Toista virhe, lisää puuttuva regressiotesti ja tee pienin ylläpidettävä korjaus. CSS-/tekstimuutoksen vuoksi ei muuteta moottoria. Jos ongelman juurisyy on usean tilakoneen tai tallennuksen ristiriita, tee rajattu diagnoosi ja toistettava testitapaus; käyttäjä voi jatkaa Astra / High -tehtävänä. Älä väitä vaihtaneesi mallia itse.
+
+Aja nimenomaisesti asianmukaiset testit. Kuvat tai näköasettelun hyväksyy renderöitynä Sol tai käyttäjä, ei pelkkä tekstipohjainen SVG-lukeminen. Raportoi muutetut tiedostot, toisto ennen/jälkeen, testit ja vielä tekemättä oleva tarkistus.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

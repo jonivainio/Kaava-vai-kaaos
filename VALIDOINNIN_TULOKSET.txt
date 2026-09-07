@@ -1,0 +1,65 @@
+SISÄLTÖPAKETIN V2 TARKISTUKSET — 7.9.2026
+
+Tämä on kirjoitus- ja toteutusohjepaketti, ei sovelluksen testiraportti.
+
+$ python tools/validate_content.py
+PASS: three JSON Schemas (cards, names, editorial), Draft 2020-12
+PASS: 64 unique cards; 128 choices; 80 unique fictional names
+PASS: speaker, art-key, field, flag, track and queued-card references
+PASS: editorial coverage and protected gate / component-removal constraints
+PASS: demo phase, mode and queued-branch references (not engine execution)
+PASS: empty case-source register and no external URLs in checked runtime data
+Tones: {'positive': 14, 'mixed': 9, 'work': 14, 'challenge': 27}
+NOT TESTED: game execution, campaign reachability, balance, humor, actual artwork, phone UI, worldwide name uniqueness
+
+$ python tools/test_pack.py
+test_baseline_is_valid (__main__.ContentContractTests.test_baseline_is_valid) ... ok
+test_branch_cannot_be_drawn_as_ambient_card (__main__.ContentContractTests.test_branch_cannot_be_drawn_as_ambient_card) ... ok
+test_card_case_reference_is_rejected (__main__.ContentContractTests.test_card_case_reference_is_rejected) ... ok
+test_content_cannot_write_approval_gate (__main__.ContentContractTests.test_content_cannot_write_approval_gate) ... ok
+test_demo_phase_mismatch_is_rejected (__main__.ContentContractTests.test_demo_phase_mismatch_is_rejected) ... ok
+test_demo_queued_branch_cannot_skip_due_time (__main__.ContentContractTests.test_demo_queued_branch_cannot_skip_due_time) ... ok
+test_duplicate_card_is_rejected (__main__.ContentContractTests.test_duplicate_card_is_rejected) ... ok
+test_duplicate_name_is_rejected (__main__.ContentContractTests.test_duplicate_name_is_rejected) ... ok
+test_editorial_version_mismatch_is_rejected (__main__.ContentContractTests.test_editorial_version_mismatch_is_rejected) ... ok
+test_embedded_external_url_is_rejected (__main__.ContentContractTests.test_embedded_external_url_is_rejected) ... ok
+test_humor_chain_has_two_distinct_branches (__main__.ContentContractTests.test_humor_chain_has_two_distinct_branches) ... ok
+test_missing_editorial_is_rejected (__main__.ContentContractTests.test_missing_editorial_is_rejected) ... ok
+test_name_suffix_is_enforced (__main__.ContentContractTests.test_name_suffix_is_enforced) ... ok
+test_real_case_register_is_rejected (__main__.ContentContractTests.test_real_case_register_is_rejected) ... ok
+test_unknown_queued_card_is_rejected (__main__.ContentContractTests.test_unknown_queued_card_is_rejected) ... ok
+test_unknown_track_value_is_rejected (__main__.ContentContractTests.test_unknown_track_value_is_rejected) ... ok
+test_wind_removal_cannot_run_in_solar_only_mode (__main__.ContentContractTests.test_wind_removal_cannot_run_in_solar_only_mode) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 4.453s
+
+OK
+
+$ python tools/render_preview.py
+WROTE: PILOTTIKORTIT_ESIKATSELU.md; 64 cards
+
+V1-V2-VERTAILU (erillinen vertailu toimitettuun alkuperäispakettiin):
+PASS: kaikki 48 alkuperäistä kortti-ID:tä säilyvät.
+PASS: 48 kortin vaiheet, hanketyypit, tarjoamistapa, paino, esiintymisraja ja requiresAll-ehdot säilyvät.
+PASS: 96 alkuperäisen valinnan timeMonths, effects ja delayed säilyvät muuttumattomina.
+Tekstit, otsikot ja fiktiivisyyttä koskevat tiedot on uudelleenkirjoitettu.
+Lisätty 16 korttia eli 32 uutta valintaa. Yhteensä 64 korttia ja 128 valintaa.
+
+LOPPUTARKISTUS:
+PASS: 80 erillistä nimeä, kaikki suo- tai neva-päätteisiä ja uniikkeja tämän pankin sisällä.
+PASS: runtime-korttien sourceIds-listat ja lähderekisteri ovat tyhjiä.
+PASS: vanhan tutkimuspaketin tarkastetut oikeat hanketunnisteet eivät esiinny v2:n teksteissä.
+PASS: demon P040:n vaihe korjattu vaiheeksi 04 sen omien vaihe-ehtojen mukaisesti.
+PASS: 13 erillistä tehtäväpromptia; aloitusprompti sisältää vain yhden tehtävän.
+
+MITÄ EI OLE TEHTY TAI TODETTU:
+- Ei TypeScript-/React-pelimoottorin suoritusta, koska sovellusta ei ole tässä paketissa.
+- Ei todistusta koko kampanjan saavutettavuudesta tai kaikkien haarojen läpipelattavuudesta.
+- Ei tuhansien pelikierrosten tasapainosimulaatiota.
+- Ei valmista SVG-kuvitusta tai puhelimella renderöityä käyttöliittymää.
+- Ei pelaajien tekemää huumorin tai käyttökokemuksen arviointia.
+- Ei takeita siitä, ettei jokin keksitty nimi vahingossa vastaa jotakin todellista paikannimeä.
+- Ei mitattua Codex-kiintiösäästöä tai jäljellä olevan käyttäjäkiintiön arviota.
+
+Moottorin ja julkaisun testit ovat erillisten Codex-tehtävien hyväksymisehtoja.

@@ -1,0 +1,13 @@
+11 — YKSI RAJATTU KORJAUS
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.3-Codex-Spark / oletus; Medium vain jos valittavissa. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Korjaa vain viimeisimmässä käyttäjän raportissa tai NEXT_STEPS.md:ssä yksilöity virhe. Lue ongelmaan liittyvä moduuli, sen tyypit ja testit. Älä tee koko repon katselmointia, taidesuunnan vaihtoa, sivusiivousta tai riippuvuuksien massapäivitystä.
+
+Toista virhe, lisää puuttuva regressiotesti ja tee pienin ylläpidettävä korjaus. CSS-/tekstimuutoksen vuoksi ei muuteta moottoria. Jos ongelman juurisyy on usean tilakoneen tai tallennuksen ristiriita, tee rajattu diagnoosi ja toistettava testitapaus; käyttäjä voi jatkaa Astra / High -tehtävänä. Älä väitä vaihtaneesi mallia itse.
+
+Aja nimenomaisesti asianmukaiset testit. Kuvat tai näköasettelun hyväksyy renderöitynä Sol tai käyttäjä, ei pelkkä tekstipohjainen SVG-lukeminen. Raportoi muutetut tiedostot, toisto ennen/jälkeen, testit ja vielä tekemättä oleva tarkistus.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

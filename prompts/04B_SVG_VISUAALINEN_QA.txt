@@ -1,0 +1,11 @@
+04B — SVG-ERÄN VISUAALINEN TARKISTUS
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / Medium. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Tarkista vain edellisen SVG-erän kuvat. Lue yhteinen tyylimäärittely. Renderöi kuvat, avaa kontaktikartta ja tarkista kuvat myös oikeassa kortissa 360px leveässä näkymässä. Älä arvioi vain SVG-koodin siisteyttä.
+
+Tarkista erottuvat siluetit, paletti, mittasuhteet, rajautuminen, kasvojen toimivuus, pieni koko ja ero hyväksyttyihin kuviin. Korjaa konkreettiset poikkeamat, älä vaihda koko pelin taidesuuntaa. Aja kuva- ja viitetestit. Raportoi erikseen hyväksytyt, korjatut ja vielä arvioimattomat kuvat. Jos et voi nähdä renderöityä tulosta, kerro se ja jätä visuaalinen hyväksyntä avoimeksi.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

@@ -1,0 +1,15 @@
+06 — HYVÄKSYTYN KORTTIERÄN TUONTI
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.3-Codex-Spark / oletus; Medium vain jos valittavissa. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Tuo käyttäjän hyväksymä valmis korttierä nykyiseen sisältöpakettiin. Älä kirjoita vitsejä, muuta päätösvaikutuksia tai laajenna moottoria. Lue vain erätiedosto, tarvittava skeema, manifesti ja nykyisten ID:iden indeksi.
+
+Validoi erä ennen yhdistämistä ja koko pakka yhdistämisen jälkeen. Päivitä manifestin korttilukumäärä, sisältöversion tunniste ja editorial-viitteet. Tarkista pysyvät ID:t, ei toistoja, sourceIds tyhjät, kaikki kuva-/rooli-/flag-/track-/queueCard-viittaukset kelvollisia, ehdot sopivat pelimuotoon ja samat yksiköt säilyvät.
+
+Jos erä tarvitsee tuntemattoman vaikutuksen, älä korvaa sitä no-opilla tai arvaa sen merkitystä. Jätä kyseinen kortti luonnokseen ja raportoi tarkka puute; säilytä aiempi toimiva pakka. Suojattuja vaiheportteja ei saa kirjoittaa kortin effectillä. Lisää fixture tai regressiotesti uusille ketjuille. Tallenna uudistettu luettava esikatselu skriptillä, älä muotoile satoja kortteja käsin.
+
+Aja nimenomaisesti sisältötestit, vaikutus-/ketjutestit sekä sovelluksen build, jos sisältö tuodaan siihen. Tulosta vain lisätty määrä, sisältöversio, testit ja havaitut ongelmat. Ei automaattista seuraavaa erää.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

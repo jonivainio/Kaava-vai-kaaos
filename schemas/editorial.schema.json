@@ -1,0 +1,118 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Fiktiivisten korttien toimituksellinen rytmitys",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "packId": {
+      "type": "string",
+      "minLength": 1
+    },
+    "notice": {
+      "type": "string"
+    },
+    "cards": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "cardId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "family": {
+            "type": "string",
+            "minLength": 1
+          },
+          "comedyLevel": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 3
+          },
+          "fictionLevel": {
+            "enum": [
+              "groundedSatire",
+              "heightenedSatire",
+              "absurdSatire"
+            ]
+          },
+          "chainId": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "beat": {
+            "enum": [
+              "relief",
+              "work",
+              "setback"
+            ]
+          },
+          "reviewStatus": {
+            "enum": [
+              "draft",
+              "reviewed",
+              "approved"
+            ]
+          }
+        },
+        "required": [
+          "cardId",
+          "family",
+          "comedyLevel",
+          "fictionLevel",
+          "chainId",
+          "beat",
+          "reviewStatus"
+        ]
+      }
+    },
+    "directorDefaults": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "maxAmbientFamilyInLast8": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "avoidBackToBackLevel3": {
+          "type": "boolean"
+        },
+        "preferReliefAfterSetbacks": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "maxSideQuestDepth": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "neverSuppressDueEventsOrGates": {
+          "type": "boolean"
+        },
+        "reliefIsPreferenceNotGuaranteedOutcome": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "maxAmbientFamilyInLast8",
+        "avoidBackToBackLevel3",
+        "preferReliefAfterSetbacks",
+        "maxSideQuestDepth",
+        "neverSuppressDueEventsOrGates",
+        "reliefIsPreferenceNotGuaranteedOutcome"
+      ]
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "packId",
+    "notice",
+    "cards",
+    "directorDefaults"
+  ]
+}

@@ -1,0 +1,13 @@
+04 — HYVÄKSYTYN SVG-TYYLIN SARJATUOTANTO
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.3-Codex-Spark / oletus; Medium vain jos mallin valitsin tarjoaa sen. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Jatka vain jo arvioitua ja hyväksyttyä SVG-tyyliä. Lue tyylimäärittely, 2–3 hyväksyttyä SVG:tä ja artKey-manifesti. Tee seuraavat 6–8 puuttuvaa kuvaa samasta manifestista; älä luo joka tekstikortille omaa kuvaa. Jos tyyliperusta ei ole vielä olemassa tai sitä ei ole arvioitu, kirjaa puuttuva edellytys eikä sarjaa tehdä sokkona.
+
+Säilytä viewBox, paletti, mittasuhteet ja kuvituskieli. Ei kopioituja taide-elementtejä, ulkoisia upotuksia, script-elementtejä, SVG:hen kirjoitettua korttitekstiä tai moottorimuutoksia. Älä lisää uusia artKey-avaimia ilman sisällöstä tulevaa tarvetta.
+
+Aja XML/SVG- ja viitetarkistukset. Tee automaattinen kontaktikartta seuraavaa katselmointia varten, jos renderöintityökalu on saatavilla. Tämä on koodituotanto, ei väite visuaalisesta hyväksynnästä. Pyydetyt testit on ajettava nimenomaisesti; pelkkä tiedostojen tallennus ei riitä. Raportoi valmistuneet avaimet ja vielä tarkastamattomat kuvat. Älä jatka automaattisesti seuraavaan erään.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

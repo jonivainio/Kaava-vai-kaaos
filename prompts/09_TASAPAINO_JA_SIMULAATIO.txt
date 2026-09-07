@@ -1,0 +1,15 @@
+09 — TASAPAINO JA TOISTETTAVAT SIMULAATIOT
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Sol / High. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Tee rajattu simulaatiotyökalu ja raportoi nykyisen kampanjan ongelmat. Simulaatiostrategiat eivät saa lukea piilotettuja riskejä ennen niiden paljastumista. Käytä satunnaista, budjettipainotteista ja tunnettuja riskejä hallitsevaa strategiaa. Simuloi ensin 100 siementä per strategia savutestinä ja 1000 diagnostiseen raporttiin. Laajenna 10000 siemeneen vasta, kun virheet eivät hukuta tuloksia; raportoi oikeasti ajettu määrä.
+
+Mittaa deadlockit, vaiheiden saavutettavuus, yleiset tappiot, vastavalintojen dominanssi, liian yleiset kortit, tekstiperheiden toistot, nollakustannuksen farmit ja tahattomat mahdottomat alut. Tarkista, että häviöketjun voi selittää pelaajalle ilman salaisen tiedon edellyttämistä.
+
+Korjaa vain löydetty ohjelmavirhe tai asetustiedoston tasapainoluku. Älä muuta luonto- tai menettelymerkityksiä, kirjoita satoja kortteja uudelleen tai lisää loputonta armoa voittoprosentin vuoksi. Lisää jokaisesta korjatusta virheestä regressiotesti ja säilytä epäonnistuneen ajon siemen.
+
+Tallenna koneellinen raportti tiedostoon ja lyhyt tiivistelmä. Ihmispelitesti arvioi huumorin, mielekkyyden ja peukalotuntuman erikseen. Sama simulaatiostrategia ei ole todellisen pelaajan mallinnus.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

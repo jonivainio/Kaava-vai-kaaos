@@ -1,0 +1,15 @@
+10 — PWA, OFFLINE JA JULKAISUVALMISTELU
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-5.6 Terra / Medium; ellei käytettävissä, Sol / Medium. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Valmistele nykyinen staattinen peli asennettavaksi PWA:ksi. Ei palvelinta, tilijärjestelmää, maksullisia palveluita tai internetjulkaisua tässä toimeksiannossa. Tarkista nykyiset riippuvuudet ja käytä olemassa olevaa build-työkalua.
+
+Toteuta manifesti, sovelluskuvakkeet olemassa olevasta alkuperäisestä taiteesta, offline-välimuisti ja turvallinen sisältöpäivitys. Peli jatkaa samoilla säännöillä keskeneräisen kierroksen, tai tarjoaa näkyvän siirtymisen uuteen versioon tallennusta hävittämättä. Polkujen pitää toimia myös repoalihakemistossa.
+
+Aja offline-käynnistys lataamisen jälkeen, päivitys aktiivisen tallennuksen kanssa, välimuistin vanhan version käsittely ja pitkät fiktiiviset nimet. Tarkista ettei tuotantobundleen tule oikeiden hankkeiden lähteitä, sisäisiä dokumentteja, debug-fixtureja, henkilötietoja, seuranta-analytiikkaa tai ulkoisia kuvalinkkejä. Nykyisen tiedoston siistiminen ei poista aiempaa julkista git-historiaa; raportoi tällainen riski erikseen.
+
+Kirjoita julkaisuohje ja kuvaa näkyvyys rehellisesti. Yksityinen lähdekoodirepo ei yksin takaa pelisivun pääsynhallintaa. Älä toteuta JavaScriptiin kovakoodattua salasanaa suojaukseksi. Julkaisun saa tehdä vasta erillisessä toimeksiannossa. Kerro aidot selain- ja laitetestit erikseen.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

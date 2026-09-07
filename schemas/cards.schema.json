@@ -1,0 +1,744 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Kaava vai kaaos — kortit 1.0, fiktiivinen sisältöpaketti v2",
+  "type": "object",
+  "additionalProperties": false,
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "packId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 120
+    },
+    "locale": {
+      "const": "fi-FI"
+    },
+    "status": {
+      "enum": [
+        "contentPrototype",
+        "reviewed",
+        "production"
+      ]
+    },
+    "cards": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/card"
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "packId",
+    "locale",
+    "status",
+    "cards"
+  ],
+  "$defs": {
+    "effect": {
+      "oneOf": [
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "adjust"
+            },
+            "field": {
+              "enum": [
+                "budget",
+                "trust",
+                "quality",
+                "patience",
+                "economicsIndex",
+                "windYieldIndex"
+              ]
+            },
+            "value": {
+              "type": "number",
+              "minimum": -100,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "op",
+            "field",
+            "value"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "flag"
+            },
+            "key": {
+              "enum": [
+                "anchorLeaseSigned",
+                "aviationLayoutAdjusted",
+                "birdAdequacyReviewNeeded",
+                "birdEvidenceCurrent",
+                "coOwnerIssueResolved",
+                "coOwnerTalks",
+                "conclusionActionsMapped",
+                "defenceRedesignNeeded",
+                "defenceStudyNeeded",
+                "documentFullReviewNeeded",
+                "documentsSynced",
+                "draftFeedbackProcessed",
+                "drainageEdgeRemoved",
+                "drainageRightsReviewed",
+                "ecologyReady",
+                "economicsReviewNeeded",
+                "exportLimitStudyNeeded",
+                "finalQaDone",
+                "frogAreaAvoided",
+                "frogHydrologyStudyNeeded",
+                "fundingDecisionReady",
+                "fundingPhasingNeeded",
+                "goldenEagleLayoutAdjusted",
+                "goldenEagleRedesignNeeded",
+                "gridAlternativesMapped",
+                "gridCrossingStudyNeeded",
+                "gridResponseReady",
+                "gridRouteStudyNeeded",
+                "groundwaterRedesignNeeded",
+                "groundwaterStudyReady",
+                "hybridPivotAvailable",
+                "hybridProfileStudyNeeded",
+                "landTalksStarted",
+                "landscapeLayoutAdjusted",
+                "layoutFreezeNeeded",
+                "leaseExtended",
+                "leaseRedesignNeeded",
+                "miningFallbackDesigned",
+                "miningOverlapReviewed",
+                "newCouncilBriefed",
+                "newCouncilGoalsHeard",
+                "noGrantBaseCase",
+                "noiseCurrent",
+                "oasNeedsUpdate",
+                "oasReviewed",
+                "ospreyLayoutAdjusted",
+                "ospreyRedesignNeeded",
+                "pivotUsed",
+                "ppaCompetitionStarted",
+                "ppaNegotiationsStarted",
+                "programmeScopeMeeting",
+                "regionalEvidenceReady",
+                "regionalFallbackDesigned",
+                "regionalRedesignNeeded",
+                "reindeerLayoutAdjusted",
+                "residentViewsRecorded",
+                "seaEagleLayoutAdjusted",
+                "seaEagleStudyNeeded",
+                "shadowCurtailmentStudyNeeded",
+                "shadowLayoutAdjusted",
+                "sharedGridDesignAdvanced",
+                "solarPlanningRouteConfirmed",
+                "solarScaleAlternativeNeeded",
+                "solarShadeAdjusted",
+                "solarShadeRedesignNeeded",
+                "sulphateLayoutAdjusted",
+                "sulphatePlanNeeded",
+                "visualsNeedUpdate",
+                "waterExpertAssigned",
+                "windDesktopUpdated",
+                "windMeasured",
+                "windResultProcessed",
+                "yieldRedesignNeeded",
+                "yvaAlternativeNeeded",
+                "yvaProgrammeReviewed",
+                "yvaSupplementReady"
+              ]
+            },
+            "value": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "op",
+            "key",
+            "value"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "track"
+            },
+            "key": {
+              "enum": [
+                "municipality",
+                "regional",
+                "grid",
+                "funding",
+                "yva"
+              ]
+            },
+            "value": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            }
+          },
+          "required": [
+            "op",
+            "key",
+            "value"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "windRemove"
+            },
+            "count": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 100
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            }
+          },
+          "required": [
+            "op",
+            "count",
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "solarRemove"
+            },
+            "hectares": {
+              "type": "number",
+              "exclusiveMinimum": 0,
+              "maximum": 2000
+            },
+            "reason": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            }
+          },
+          "required": [
+            "op",
+            "hectares",
+            "reason"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "heightCap"
+            },
+            "metres": {
+              "type": "number",
+              "minimum": 100,
+              "maximum": 300
+            }
+          },
+          "required": [
+            "op",
+            "metres"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "gridDistance"
+            },
+            "deltaKm": {
+              "type": "number",
+              "minimum": -100,
+              "maximum": 100
+            }
+          },
+          "required": [
+            "op",
+            "deltaKm"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "queueCard"
+            },
+            "cardId": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 120
+            },
+            "delayMonths": {
+              "type": "integer",
+              "minimum": 0,
+              "maximum": 120
+            }
+          },
+          "required": [
+            "op",
+            "cardId",
+            "delayMonths"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "pivot"
+            },
+            "mode": {
+              "enum": [
+                "wind",
+                "solar"
+              ]
+            }
+          },
+          "required": [
+            "op",
+            "mode"
+          ]
+        },
+        {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "op": {
+              "const": "finish"
+            },
+            "ending": {
+              "enum": [
+                "planAdopted",
+                "developerWithdraws"
+              ]
+            }
+          },
+          "required": [
+            "op",
+            "ending"
+          ]
+        }
+      ]
+    },
+    "delayed": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "jobId": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "afterMonths": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 120
+        },
+        "completionText": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 260
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effect"
+          },
+          "maxItems": 16
+        }
+      },
+      "required": [
+        "jobId",
+        "afterMonths",
+        "completionText",
+        "effects"
+      ]
+    },
+    "choice": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "label": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 42
+        },
+        "outcomeText": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 260
+        },
+        "timeMonths": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 24
+        },
+        "effects": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/effect"
+          },
+          "maxItems": 16
+        },
+        "delayed": {
+          "type": "array",
+          "maxItems": 6,
+          "items": {
+            "$ref": "#/$defs/delayed"
+          }
+        }
+      },
+      "required": [
+        "label",
+        "outcomeText",
+        "timeMonths",
+        "effects",
+        "delayed"
+      ]
+    },
+    "condition": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "field": {
+          "enum": [
+            "flags.adoptionDecisionPositive",
+            "flags.adoptionGatesSatisfied",
+            "flags.anchorLeaseSigned",
+            "flags.aviationLayoutAdjusted",
+            "flags.birdAdequacyReviewNeeded",
+            "flags.birdEvidenceCurrent",
+            "flags.coOwnerIssueResolved",
+            "flags.coOwnerTalks",
+            "flags.conclusionActionsMapped",
+            "flags.defenceRedesignNeeded",
+            "flags.defenceStudyNeeded",
+            "flags.documentFullReviewNeeded",
+            "flags.documentsSynced",
+            "flags.draftFeedbackProcessed",
+            "flags.drainageEdgeRemoved",
+            "flags.drainageRightsReviewed",
+            "flags.ecologyReady",
+            "flags.economicsReviewNeeded",
+            "flags.electionDue",
+            "flags.epilogueEnabled",
+            "flags.exportLimitStudyNeeded",
+            "flags.finalQaDone",
+            "flags.frogAreaAvoided",
+            "flags.frogHydrologyStudyNeeded",
+            "flags.fundingDecisionReady",
+            "flags.fundingPhasingNeeded",
+            "flags.goldenEagleLayoutAdjusted",
+            "flags.goldenEagleRedesignNeeded",
+            "flags.gridAlternativesMapped",
+            "flags.gridCrossingStudyNeeded",
+            "flags.gridResponseReady",
+            "flags.gridRouteStudyNeeded",
+            "flags.groundwaterRedesignNeeded",
+            "flags.groundwaterStudyReady",
+            "flags.hybridPivotAvailable",
+            "flags.hybridProfileStudyNeeded",
+            "flags.landTalksStarted",
+            "flags.landscapeLayoutAdjusted",
+            "flags.layoutFreezeNeeded",
+            "flags.leaseDeadlineNear",
+            "flags.leaseExtended",
+            "flags.leaseRedesignNeeded",
+            "flags.miningFallbackDesigned",
+            "flags.miningOverlapReviewed",
+            "flags.newCouncilBriefed",
+            "flags.newCouncilGoalsHeard",
+            "flags.noGrantBaseCase",
+            "flags.noiseCurrent",
+            "flags.oasNeedsUpdate",
+            "flags.oasReviewed",
+            "flags.ospreyLayoutAdjusted",
+            "flags.ospreyRedesignNeeded",
+            "flags.pivotUsed",
+            "flags.ppaCompetitionStarted",
+            "flags.ppaNegotiationsStarted",
+            "flags.programmeScopeMeeting",
+            "flags.regionalEvidenceReady",
+            "flags.regionalFallbackDesigned",
+            "flags.regionalRedesignNeeded",
+            "flags.reindeerLayoutAdjusted",
+            "flags.residentViewsRecorded",
+            "flags.seaEagleLayoutAdjusted",
+            "flags.seaEagleStudyNeeded",
+            "flags.shadowCurtailmentStudyNeeded",
+            "flags.shadowLayoutAdjusted",
+            "flags.sharedGridDesignAdvanced",
+            "flags.solarPlanningRouteConfirmed",
+            "flags.solarScaleAlternativeNeeded",
+            "flags.solarShadeAdjusted",
+            "flags.solarShadeRedesignNeeded",
+            "flags.sulphateLayoutAdjusted",
+            "flags.sulphatePlanNeeded",
+            "flags.visualsNeedUpdate",
+            "flags.waterExpertAssigned",
+            "flags.windDesktopUpdated",
+            "flags.windMeasured",
+            "flags.windResultProcessed",
+            "flags.yieldRedesignNeeded",
+            "flags.yvaAdequacyConfirmed",
+            "flags.yvaAlternativeNeeded",
+            "flags.yvaProgrammeReviewed",
+            "flags.yvaSupplementReady",
+            "site.aviationConflict",
+            "site.birdEvidenceOutdated",
+            "site.defenceConflict",
+            "site.draftFeedbackQuiet",
+            "site.frogConflict",
+            "site.goldenEagleConflict",
+            "site.grantRejected",
+            "site.gridConstraint",
+            "site.gridCrossingConflict",
+            "site.landscapeConflict",
+            "site.miningOverlap",
+            "site.ospreyConflict",
+            "site.proceduralReversal",
+            "site.regionalRequired",
+            "site.reindeerConflict",
+            "site.renewfmCallEligible",
+            "site.seaEagleConflict",
+            "site.shadowConflict",
+            "site.solarPlanningRequired",
+            "site.solarShade",
+            "site.sulphateRisk",
+            "site.waterRisk",
+            "site.windClass",
+            "site.yvaNeedsSupplement",
+            "site.yvaRequired",
+            "tracks.municipality",
+            "tracks.regional",
+            "tracks.grid",
+            "tracks.funding",
+            "tracks.yva",
+            "wind.count",
+            "solar.hectares"
+          ]
+        },
+        "operator": {
+          "enum": [
+            "eq",
+            "neq",
+            "gt",
+            "gte",
+            "lt",
+            "lte"
+          ]
+        },
+        "value": {
+          "type": [
+            "string",
+            "boolean",
+            "number"
+          ]
+        }
+      },
+      "required": [
+        "field",
+        "operator",
+        "value"
+      ]
+    },
+    "card": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 120
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "title": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 64
+        },
+        "body": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 340
+        },
+        "speakerId": {
+          "enum": [
+            "landowner",
+            "waterExpert",
+            "legal",
+            "planner",
+            "regionalPlanner",
+            "gridEngineer",
+            "defence",
+            "aviation",
+            "consultant",
+            "ecologist",
+            "windAnalyst",
+            "landscapeExpert",
+            "solarEngineer",
+            "authority",
+            "resident",
+            "finance"
+          ]
+        },
+        "artKey": {
+          "enum": [
+            "authority",
+            "celebration",
+            "consultant",
+            "cottage",
+            "documents",
+            "eagle",
+            "ecologist",
+            "finance",
+            "frog",
+            "landowner",
+            "map",
+            "osprey",
+            "planner",
+            "radar",
+            "reindeer",
+            "solarfield",
+            "substation",
+            "wetland",
+            "windscape"
+          ]
+        },
+        "phases": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "01",
+              "02",
+              "03",
+              "04",
+              "05",
+              "06",
+              "07",
+              "08"
+            ]
+          }
+        },
+        "modes": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "wind",
+              "solar",
+              "hybrid"
+            ]
+          }
+        },
+        "tone": {
+          "enum": [
+            "positive",
+            "challenge",
+            "work",
+            "mixed"
+          ]
+        },
+        "trigger": {
+          "enum": [
+            "ambient",
+            "milestone",
+            "followup",
+            "epilogue"
+          ]
+        },
+        "weight": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "maxPerRun": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 10
+        },
+        "requiresAll": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/condition"
+          }
+        },
+        "choices": {
+          "type": "object",
+          "additionalProperties": false,
+          "properties": {
+            "left": {
+              "$ref": "#/$defs/choice"
+            },
+            "right": {
+              "$ref": "#/$defs/choice"
+            }
+          },
+          "required": [
+            "left",
+            "right"
+          ]
+        },
+        "sourceIds": {
+          "type": "array",
+          "maxItems": 0,
+          "items": {
+            "type": "string"
+          },
+          "description": "Yhteensopivuuskenttä. Fiktiivisessä pakassa aina tyhjä: ei tosielämän tapauslinkityksiä."
+        },
+        "authorNote": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 1000
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "title",
+        "body",
+        "speakerId",
+        "artKey",
+        "phases",
+        "modes",
+        "tone",
+        "trigger",
+        "weight",
+        "maxPerRun",
+        "requiresAll",
+        "choices",
+        "sourceIds",
+        "authorNote"
+      ]
+    }
+  }
+}

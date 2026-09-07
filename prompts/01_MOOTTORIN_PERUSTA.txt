@@ -1,0 +1,25 @@
+01 — KAAVA VAI KAAOS: PELIMOOTTORIN RAJATTU PERUSTA
+
+VALITSE ENNEN TEHTÄVÄÄ: GPT-6 Astra / High. Nopeus: Standard.
+Tämä rivi on käyttäjän valintaohje, ei automaattinen mallinvaihto.
+
+Rakenna suomalaisille hankekehityksen ammattilaisille Reigns-henkinen mobiilikorttipeli. Pelaaja kehittää fiktiivistä tuuli-, aurinko- tai hybridihanketta maanvuokrauksesta kaavan hyväksymiseen. Yksi kortti, kaksi päätöstä. Peli on surkuhupaisa, ei koulutusvisa: absurdi mutta kuivasti esitetty viranomaispyyntö, yllättävä lajihavainto tai vanheneva selvitys voi muuttaa tilanteen. Molemmat valinnat ovat yleensä järkeviä eri kustannuksilla.
+
+TOTEUTA NYT VAIN MOOTTORIN PERUSTA JA TESTIT. Älä tee samalla koko UI:ta, 420 korttia, kuvitussarjaa, kampanjaohjaajaa tai julkaisua. 64 kortin pakka on sisältöpilotti, ei valmis kampanja. Ensimmäinen valmis käyttöliittymädemo tehdään erillisessä tehtävässä 02.
+
+Lue docs/PELISUUNNITELMA.md (luvut ja rajat), docs/TOTEUTUSSOPIMUS.md (efektit ja ajastus), docs/SAVY_JA_HUUMORI.md (sävy) sekä korttiskeema, manifesti ja muutama olennaista käskyä esittävä kortti. Lue docs/NIMET_JA_FIKTIO.md nimiarvontaan. Älä hae oikeiden hankkeiden tai työnantajan tietoja.
+
+Tarkista työkansio ja git status. Käytä nykyistä tekniikkaa, jos sovellus on jo olemassa; muuten perusta pieni TypeScript + React + Vite -projekti ja testikehys. Päätä julkiset tyypit ennen riippuvaisten moduulien kirjoittamista. Moottori on puhdas TypeScript-moduuli, ei React-komponentti. Toteuta vähintään createRun, getDerivedStats, previewChoice, applyChoice, advanceTime, serializeRun ja restoreRun. Samasta siemenestä ja valinnoista seuraa sama mekaaninen tulos. Preview ei kuluta RNG:tä eikä päätös vahvistu kahdesti.
+
+Alkuarvot säilyvät: tuuli 12–24 kpl; hybridi 12–20 kpl ja 60–160 ha; aurinko 80–220 ha. Jokainen tuulivoimala alkaa aina 10 MW:n ja 300 metrin koosta. Liityntä tuuli/hybridi 5–20 km, aurinko 2–12 km. Erota kpl, korkeus, nimellisteho, tuotto, MWp/MWac ja ha. Samat poistetut kohteet eivät vähene kahdesti, yhteinen johto ei kahdennu, korkeusrajan muutos ei leikkaa tehoa lineaarisesti.
+
+Arvo hankenimi 80 nimen poolista erillisellä nimi-RNG:llä. Tallenna nimi, ID ja pooliversio. Nimi ja nimipankin muutokset eivät vaikuta hankkeen mekaanisiin satunnaistuloksiin. Jatka-painike ei myöhemmin saa arpoa mitään uudelleen.
+
+Toteuta vain skeeman sallimat effect-käskyt ja ajastuksen täsmällinen tulkinta. Kortin tekstistä ei päätellä efektejä. Tuntematon käsky on näkyvä validointivirhe. Selvitys alkaa tilattaessa ja paljastaa alussa määritettyä tietoa valmistuttuaan. Yhteinen kello, rinnakkaiset tehtävät ja jonotetut tapahtumat tallennetaan. Vain menettelymalli voi myöhemmin kirjoittaa suojattuja hyväksymisportteja; demo ei tekaise kaavavoittoa.
+
+Hyväksymistestit: sama siemen/samat valinnat; päätöksen ja preview'n erottelu; sama poissulku kahdesti; yhteinen johto kerran; MW vs. tuotanto; korkeus ja malliyhteensopivuus; kaksi rinnakkaista työtä; due-eventin järjestys; H001:n vasen/oikea haara; lataus keskeneräisen työn aikana; pysyvä nimi; nimet eivät muuta skenaariota; virheellinen tallennus säilyy palautettavaksi. Aja Pythonin sisältötestit, TypeScript-testit, tyypitys ja build.
+
+Toimita lyhyt tilasopimus, toimiva testattava moottoriperusta ja NEXT_STEPS.md:hen täsmällinen lähtökohta tehtävälle 02. Älä esitä toteuttamatonta selain- tai puhelintestiä suoritetuksi.
+
+YHTEISET TYÖRAJAT
+Lue AGENTS.md ja NEXT_STEPS.md sekä vain tämän tehtävän olennaiset tiedostot. Malli- ja reasoning-valinta on käyttäjän tehtävä ennen käynnistystä, ei tässä tekstissä suoritettava komento. Standard-nopeus; ei automaattista agenttijoukkoa, maksullisia palveluita, runtime-LLM:ää tai julkaisua. Älä muuta globaaleja asetuksia. Säilytä hyväksytty sisältö ja käyttäjän muutokset. Testaa rajattu välitulos ja päivitä NEXT_STEPS.md. Älä väitä ajaneesi tai nähneesi mitään, mitä et oikeasti ajanut tai avannut. Älä tulosta koko korttipakkaa vastaukseen.

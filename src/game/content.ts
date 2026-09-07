@@ -1,6 +1,6 @@
 import data from "../../content/deck.fi.json";
 import type { Decision, Story } from "./types";
-export const CONTENT_VERSION = "swipe-fi-005";
+export const CONTENT_VERSION = "swipe-fi-006";
 export const STAGES = [
   "Maanvuokraus",
   "Kaava-aloite & ohjelma",

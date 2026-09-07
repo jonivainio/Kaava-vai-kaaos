@@ -126,6 +126,7 @@ describe("hybridin uudet haarat", () => {
       const before = getDerivedStats(s.run).windCount;
       s = decide(s, "commission");
       expect(restoreGame(serializeGame(s)).ok).toBe(true);
+      if (outcome === "clear" || outcome === "oppose") expect(s.run.jobs.some(j=>j.jobId === "defence_review")).toBe(false);
       if (outcome === "clear") {
         expect(s.lastOutcome).toContain("ei vastusta");
         continue;

@@ -268,6 +268,12 @@ function physical(mode: Mode) {
         "Uuden lyhyen menettelyn fyysinen päätös. Näyttöteksti on erillistä dataa.",
     };
   });
+  // An immediate statement does not commission a VTT study.
+  const statement = structuredClone(cards[DECISIONS.findIndex(d=>d.id === "defence")]!);
+  statement.id = "Z980";
+  statement.choices.left.delayed = [];
+  statement.choices.right.delayed = [];
+  cards.push(statement);
   // Bind affected locations once. Repeat effects address the same locations.
   const groups: [string, number, number][] = [
     ["lease_edge", 4, 12],
@@ -756,7 +762,8 @@ export function choose(s0: Game, expectedToken: string, side: Side): Game {
       : definition.base;
   const engine = physical(s.run.mode),
     physicalSide = base.options[0].action === action ? "left" : "right";
-  s.run = engine.offerCard(s.run, `C${201 + s.cursor}`);
+  const immediateStatement = c.id === "defence" && (s.run.mode === "solar" || s.world.defence === "clear" || s.world.defence === "oppose");
+  s.run = engine.offerCard(s.run, immediateStatement ? "Z980" : `C${201 + s.cursor}`);
   s.run = engine.applyChoice(s.run, s.run.offeredCard!.token, physicalSide);
   let result = "";
   switch (action) {

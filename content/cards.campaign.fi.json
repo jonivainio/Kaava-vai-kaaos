@@ -1,0 +1,4788 @@
+{
+  "schemaVersion": "1.0",
+  "packId": "campaign-fi-001",
+  "locale": "fi-FI",
+  "status": "contentPrototype",
+  "cards": [
+    {
+      "id": "C001",
+      "version": 1,
+      "title": "Ensimmäinen rajaus",
+      "body": "Kartalle mahtuu hanke. Kiinteistörajat eivät aivan noudata kartalle piirrettyä ajatusta. Aloitetaan yhteydenotoista.",
+      "speakerId": "landowner",
+      "artKey": "landowner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Neuvotellaan koko alueesta",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Aloitetaan ydinalueesta",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C002",
+      "version": 1,
+      "title": "Sama pelto, kolme omistajaa",
+      "body": "Yksi omistajista on jo vastannut. Kaksi muuta eivät ole vielä nähneet sopimusluonnosta. Allekirjoituksille jätetty tila on optimistinen.",
+      "speakerId": "landowner",
+      "artKey": "landowner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Kootaan yhteinen neuvottelu",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 2
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään ehdot yksitellen",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 2
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C003",
+      "version": 1,
+      "title": "Tie ei kuulu kauppaan",
+      "body": "Vuokrattavalle alueelle pääsee tietä pitkin. Tieoikeuksien selvitys ei vielä vahvista, että sama koskee hankkeen liikennettä.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Sovitaan kulkuoikeuksista nyt",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Suunnitellaan toinen sisääntulo",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C004",
+      "version": 1,
+      "title": "Sopimuksen pieni liite",
+      "body": "Korvausperusteet on sovittu. Maanomistaja pyytää vielä liitettä alueen ennallistamisesta. Kukaan ei pidä pyyntöä huonona, vain myöhäisenä.",
+      "speakerId": "landowner",
+      "artKey": "landowner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Täsmennetään vastuut liitteeseen",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään ehdot yhdessä läpi",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C005",
+      "version": 1,
+      "title": "Kartan oikea versio",
+      "body": "Maanomistajan kartassa on viime viikon rajaus. Uudessa versiossa tie kulkee eri kohdasta. Molemmissa tiedostonimessä lukee uusi.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Lähetetään muutoskartta",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään muutos yhdessä läpi",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C006",
+      "version": 1,
+      "title": "Määräaika löytyy lopusta",
+      "body": "Optio kattaa suunnitellun valmistelun. Jatkosta tarvitaan erillinen sopimus, jos selvityskalenteri venyy.",
+      "speakerId": "landowner",
+      "artKey": "landowner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Sovitaan jatkoehdot valmiiksi",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Pidetään lyhyempi optio",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 0
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": -2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C007",
+      "version": 1,
+      "title": "Ensimmäinen budjettipäätös",
+      "body": "Omistaja hyväksyy seuraavan kehityserän. Hän haluaa tilannekuvan, jonka liikennevalot eivät kaikki perustu samaan oletukseen.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Raportoidaan avoimet riskit",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 16
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Sovitaan tiheämmät tarkistukset",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 14
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C008",
+      "version": 1,
+      "title": "Maanhallinta pöydälle",
+      "body": "Alue, osapuolet ja tarvittavat oikeudet kootaan samaan karttaan. Tiedostonimessä ei vielä käytetä sanaa lopullinen.",
+      "speakerId": "landowner",
+      "artKey": "landowner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Varmistetaan allekirjoitukset",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Suljetaan puutteet juristin kanssa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C009",
+      "version": 1,
+      "title": "Kaava-aloitteen luonnos",
+      "body": "Kunnan kanssa sovitaan aloitteen sisällöstä. Tiivistelmä on valmis. Taustaliitteet tarvitsevat vielä oman tiivistelmänsä.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Viimeistellään aineisto yhdessä",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Toimitetaan tiivis aloite liitteineen",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C010",
+      "version": 1,
+      "title": "Maakuntakaavan mittakaava",
+      "body": "Hanke sopii kartalle, mutta sen suhde maakuntakaavaan pitää selvittää. Mittakaavan vaihtaminen ei ratkaise asiaa.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tilataan yhteensopivuustarkastelu",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Verrataan suppeampaa vaihtoehtoa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C011",
+      "version": 1,
+      "title": "Liityntäkysely lähtee",
+      "body": "Verkkoyhtiö tarvitsee tehon, aikataulun ja vaihtoehdot. Aikataulun perään lisätään sana alustava.",
+      "speakerId": "gridEngineer",
+      "artKey": "substation",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tilataan tekninen tarkastelu",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "grid_initial",
+              "afterMonths": 3,
+              "completionText": "Tilattu selvitysaineisto on valmistunut.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "gridResponseReady",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Rajataan kaksi liityntäpistettä",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "grid_initial",
+              "afterMonths": 4,
+              "completionText": "Tilattu selvitysaineisto on valmistunut.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "gridResponseReady",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C012",
+      "version": 1,
+      "title": "Puolustus ja ilmailu",
+      "body": "Korkeiden rakenteiden soveltuvuus pyydetään arvioitavaksi. Kartan korkeuslukema tarvitsee lausunnon, ei lisää desimaaleja.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Selvitetään koko suunnitelma",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tutkitaan samalla matalampi vaihtoehto",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C013",
+      "version": 1,
+      "title": "Tilaisuus samaan aikaan",
+      "body": "Kunnan yleisötilaisuus osuu paikallisen yhdistyksen vuosikokoukseen. Osallistujia ei voida jakaa kahteen saliin.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Siirretään tilaisuutta",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Järjestetään toinen osallistumistapa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C014",
+      "version": 1,
+      "title": "Kyläilta kalenteriin",
+      "body": "Ensimmäinen yleisötilaisuus on tulossa. Useimmat kysymykset koskevat näkymiä, liikennettä ja sitä, mitä tässä vaiheessa oikeasti tiedetään.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Esitellään myös epävarmuudet",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 6
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Kootaan kysymykset ennakkoon",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 6
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C015",
+      "version": 1,
+      "title": "Kunnan aloituspäätös",
+      "body": "Aloite tulee käsittelyyn. Kehittäjä voi täydentää aineistoa, mutta kunta ratkaisee, aloitetaanko valmistelu.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Toimitetaan päätösaineisto",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "municipality_decision",
+              "afterMonths": 1,
+              "completionText": "Menettelyn päätös on saapunut.",
+              "effects": []
+            }
+          ]
+        },
+        "right": {
+          "label": "Täsmennetään rajaus ennen käsittelyä",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "municipality_decision",
+              "afterMonths": 2,
+              "completionText": "Menettelyn päätös on saapunut.",
+              "effects": []
+            }
+          ]
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C016",
+      "version": 1,
+      "title": "Valmistelu saa työohjelman",
+      "body": "Kunta on päättänyt aloittaa valmistelun. Rakentamisesta ei ole päätetty. Tämä ero mahtuu juuri yhteen kalvoon.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Sovitaan yhteinen työohjelma",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Kootaan vastuut kirjallisesti",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C017",
+      "version": 1,
+      "title": "Arvioinnin laajuus",
+      "body": "Arvioitavat vaihtoehdot ja vaikutukset kootaan ohjelmaan. Nollavaihtoehto ei tarkoita tyhjää sivua.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Verrataan kahta toteutusvaihtoehtoa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Syvennetään rajattua vaihtoehtoa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C018",
+      "version": 1,
+      "title": "Selvityskausi ei siirry",
+      "body": "Maastotyön ajankohta riippuu selvityksen kohteesta. Hankintapäätös on seuraavassa kokouksessa, sopiva kausi alkaa jo ennen sitä.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Varmistetaan tekijä ajoissa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "ecology_surveys",
+              "afterMonths": 4,
+              "completionText": "Tilattu selvitysaineisto on valmistunut.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "ecologyReady",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Varataan seuraava sopiva kausi",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "ecology_surveys",
+              "afterMonths": 8,
+              "completionText": "Tilattu selvitysaineisto on valmistunut.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "ecologyReady",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C019",
+      "version": 1,
+      "title": "Tuulen oma kalenteri",
+      "body": "Mittaus kannattaa käynnistää muiden selvitysten rinnalla. Tuloksia ei voi aikaistaa siirtämällä raportin palautuspäivää.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Aloitetaan mittaus nyt",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -5
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "wind_measurement",
+              "afterMonths": 12,
+              "completionText": "Tilattu selvitysaineisto on valmistunut.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "windMeasured",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Hyödynnetään olemassa oleva mittaus",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -7
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "wind_measurement",
+              "afterMonths": 6,
+              "completionText": "Tilattu selvitysaineisto on valmistunut.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "windMeasured",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C020",
+      "version": 1,
+      "title": "Myös johto arvioidaan",
+      "body": "Arvioinnin kartassa on tuotantoalue ja sähkönsiirron reitti. Jälkimmäisen vaikutukset eivät jää nuolen kärkeen.",
+      "speakerId": "gridEngineer",
+      "artKey": "substation",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Täydennetään reittivaihtoehdot",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Sovitaan tarkastelun rajaus",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C021",
+      "version": 1,
+      "title": "Selvityksen lähtötiedot",
+      "body": "Konsultti pyytää lähtötiedot yhtenä pakettina. Ne ovat valmiina kolmessa kansiossa ja kahden henkilön sähköpostissa.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Kootaan yksi aineistopaketti",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Sovitaan aineistovastaava",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C022",
+      "version": 1,
+      "title": "Natura-alue tarkastelussa",
+      "body": "Lähialueen suojeluarvoihin kohdistuvat vaikutukset pitää selvittää. Etäisyys kartalla ei yksin ratkaise arvioinnin tarvetta.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tilataan arviointitarpeen tarkastelu",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "groundwater_study",
+              "afterMonths": 3,
+              "completionText": "Tilattu selvitysaineisto on valmistunut.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "groundwaterStudyReady",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        },
+        "right": {
+          "label": "Tarkennetaan ensin vaikutusreitit",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "groundwater_study",
+              "afterMonths": 4,
+              "completionText": "Tilattu selvitysaineisto on valmistunut.",
+              "effects": [
+                {
+                  "op": "flag",
+                  "key": "groundwaterStudyReady",
+                  "value": true
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C023",
+      "version": 1,
+      "title": "Ohjelmasta saatu palaute",
+      "body": "Lausunto pyytää täsmentämään yhteisvaikutuksia. Sama kappale oli kyllä mukana, mutta se vastasi hieman eri kysymykseen.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Täydennetään tarkastelun sisältö",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Pidetään rajauspalaveri",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C024",
+      "version": 1,
+      "title": "Selvitysbudjetin tarkistus",
+      "body": "Tutkimusohjelma on nyt rajattu. Omistaja vapauttaa seuraavan erän toteutuneen työohjelman perusteella.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Hyväksytään koko työpaketti",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 20
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Jaetaan hankinta kahteen erään",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 17
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C025",
+      "version": 1,
+      "title": "Maastotieto saapuu",
+      "body": "Tilatut luontoselvitykset valmistuvat. Havaintojen merkitys arvioidaan ennen kuin sijoittelua kutsutaan valmiiksi.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Käydään tulokset suunnittelijan kanssa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Pyydetään koottu vaikutusarvio",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C026",
+      "version": 1,
+      "title": "Sijoittelu tarkentuu",
+      "body": "Selvitysten perusteella osa reunasta kannattaa jättää suunnitelman ulkopuolelle. Rajaus näkyy nyt myös hankeluvuissa.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Vältetään tunnistettu alue",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 4
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tutkitaan lieventävä sijoittelu",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 3
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C027",
+      "version": 1,
+      "title": "Mittauksesta talousmalliin",
+      "body": "Tuotantoarvio päivitetään mittauksen perusteella. Generaattorin nimellisteho ei muutu sillä, että tuuli jäi arviosta.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Päivitetään talousmalli",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Optimoidaan sijoittelu tuloksen mukaan",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C028",
+      "version": 1,
+      "title": "Melumallin versio",
+      "body": "Yksi voimala siirtyi, ja mallinnus pitää päivittää. Kuvassa muutos näyttää pieneltä. Laskennassa se on silti uusi lähtötieto.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Päivitetään koko mallinnus",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Varmistetaan muutosalueen vaikutus",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C029",
+      "version": 1,
+      "title": "Hyvä uutinen sellaisenaan",
+      "body": "Aiempi selvitys on käyttökelpoinen myös nykyiselle rajaukselle. Asia tarkistettiin, ja tällä kertaa tarkistus lyhensi työlistaa.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Hyödynnetään aineisto",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Varmistetaan rajaukset vielä yhdessä",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C030",
+      "version": 1,
+      "title": "Korkeuslausunnon reunaehto",
+      "body": "Lausunto ja sijoittelu sovitetaan yhteen. Jos korkeusraja muuttuu, myös laitemallin soveltuvuus pitää tarkistaa erikseen.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Pidetään yhteensopiva suunnitelma",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tutkitaan matalampi malli",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C031",
+      "version": 1,
+      "title": "Selostus ja kaavaluonnos",
+      "body": "Arviointiselostus ja kaavaluonnos perustuvat nyt samaan hankeversioon. Tämä mainitaan kokouksessa erikseen.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Toimitetaan aineisto kuulemiseen",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tehdään vielä yhteinen laaduntarkistus",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C032",
+      "version": 1,
+      "title": "Luonnosvaiheen palaute",
+      "body": "Palautteessa korostuvat maisema ja rakentamisen liikenne. Osa toivoo pienempää hanketta, osa tarkempia vastauksia.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tarkennetaan ratkaisuja ja vastineita",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 5
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään vaihtoehdot pienryhmissä",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 3,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 5
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C033",
+      "version": 1,
+      "title": "Perusteltu päätelmä",
+      "body": "Arvioinnin riittävyys ja suunnittelussa huomioon otettavat asiat kootaan. Yleinen selvitysvalmius ei korvaa puuttuvaa tarkastelua.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Varmistetaan täydennysten riittävyys",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Täydennetään aineisto kerralla",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C034",
+      "version": 1,
+      "title": "Maakuntakaava etenee",
+      "body": "Maakuntakaavan valmistelu on edennyt muun työn rinnalla. Nyt tarkistetaan, että hankkeen ratkaisu edelleen sopii kokonaisuuteen.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Varmistetaan ajantasainen yhteensopivuus",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Sovitetaan rajaus uuteen aineistoon",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C035",
+      "version": 1,
+      "title": "Reittivaihtoehto täsmentyy",
+      "body": "Verkkoselvityksen tulos on käytettävissä. Lyhyin karttareitti ei välttämättä ole helpoin toteuttaa.",
+      "speakerId": "gridEngineer",
+      "artKey": "substation",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Valitaan selvitetty perusreitti",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käytetään pidempää varareittiä",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C036",
+      "version": 1,
+      "title": "Natura-arvion ajantasaisuus",
+      "body": "Hankeversio ja vaikutusarvion lähtötiedot verrataan. Jos muuttunut ratkaisu vaikuttaa arvioon, päivitys tarvitaan ennen päätösaineistoa.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Päivitetään muuttuneet tarkastelut",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Varmistetaan arvioinnin vastaavuus",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C037",
+      "version": 1,
+      "title": "Lausunnon tarkka viite",
+      "body": "Lausunto viittaa oikeaan selvitykseen mutta sen vanhaan versioon. Sisältöero on pieni. Vastineessa se pitää silti selittää.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Täsmennetään versioviite",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Liitetään lyhyt muutosvertailu",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C038",
+      "version": 1,
+      "title": "Ehdotuksen kartta ja määräykset",
+      "body": "Kartta, määräykset ja selostus käydään rinnakkain läpi. Kolmen tiedoston olisi tarkoitus kuvata samaa hanketta.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tehdään yhteinen versiolukitus",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään ristiriidat työpalaverissa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C039",
+      "version": 1,
+      "title": "Muistutukset ja vastineet",
+      "body": "Kaavaehdotuksesta on saatu muistutuksia. Vastineessa tarvitaan perustelu, ei pelkkä viittaus aiempaan vastaukseen.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Perustellaan ratkaisut kohteittain",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Täsmennetään vielä ehdotusta",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "trust",
+              "value": 3
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C040",
+      "version": 1,
+      "title": "Päätösvaiheen rahoitus",
+      "body": "Omistaja jatkaa kehitysrahoitusta, kun avoimet asiat ja seuraavat päätökset ovat näkyvissä. Ennusteessa on tällä kertaa myös vaihteluväli.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Vahvistetaan päätösvaiheen budjetti",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 20
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Sovitaan rajattu lisäerä",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 17
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C041",
+      "version": 1,
+      "title": "Sopimus ehtii ensin",
+      "body": "Kaavan aikataulu on tarkentunut. Maanvuokrasopimusten ja optioiden voimassaolo tarkistetaan sitä vasten.",
+      "speakerId": "landowner",
+      "artKey": "landowner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Jatketaan tarvittavat sopimukset",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Vahvistetaan nykyisten ehtojen riittävyys",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C042",
+      "version": 1,
+      "title": "Päätösaineiston tarkastus",
+      "body": "Kaavaselostus, vastineet ja selvitykset kootaan päätöksentekoon. Viimeisin versio löytyy tällä kertaa yhdestä paikasta.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Tarkistetaan koko aineistoketju",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tarkistetaan kriittiset riippuvuudet",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C043",
+      "version": 1,
+      "title": "Yksi tarkentava kysymys",
+      "body": "Valmistelija pyytää perustelun reittiratkaisulle. Vastaus on jo raportissa, mutta eri otsikon alla kuin kukaan etsi.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Nostetaan perustelu päätösaineistoon",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään ratkaisu valmistelijan kanssa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C044",
+      "version": 1,
+      "title": "Valtuuston kokous",
+      "body": "Kaava on päätöksenteossa. Valmistelun laatu auttaa päätöksentekoa, mutta kehittäjä ei päätä äänestyksen tulosta.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Seurataan päätöksentekoa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 0
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Ollaan käytettävissä lisäkysymyksiin",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C045",
+      "version": 1,
+      "title": "Arkisto alkaa muistuttaa hanketta",
+      "body": "Päätösasiakirjat löytyvät nyt sovituista kansioista. Uusi työntekijä löysi tarvitsemansa kysymättä keneltäkään.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Pidetään käytäntö",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Täydennetään luovutusluettelo",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C046",
+      "version": 1,
+      "title": "Kaava on hyväksytty",
+      "body": "Valtuusto hyväksyi kaavan. Hanke etenee, mutta rakentamisvalmius edellyttää vielä omat ratkaisunsa.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Kootaan päätöksen ehdot",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Päivitetään jatkotyön vastuut",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C047",
+      "version": 1,
+      "title": "Päätöksen lainvoimaisuus",
+      "body": "Muutoksenhaun tilanne tarkistetaan ennen seuraavien sitoumusten tekemistä. Kalenterimerkintä ei yksin vahvista lainvoimaa.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Varmistetaan päätöksen tila",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Valmistellaan jatkoa tarkistuksen rinnalla",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C048",
+      "version": 1,
+      "title": "Kohti rakentamisvalmiutta",
+      "body": "Omistaja vapauttaa viimeistelyvaiheen kehitysrahan. Kaavavoittoa ei kirjata vielä rakentamisen aloituspäätökseksi.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Sovitaan RtB-työpaketti",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 18
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Priorisoidaan kriittiset sopimukset",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 16
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C049",
+      "version": 1,
+      "title": "Lupapaketti",
+      "body": "Skenaarion tarvitsemat rakentamisen ja muun toteutuksen luvat kootaan. Kaavakarttaa ei käytetä niiden sijaisena.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Viimeistellään lupahakemukset",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "rtb_permits",
+              "afterMonths": 5,
+              "completionText": "Menettelyn päätös on saapunut.",
+              "effects": []
+            }
+          ]
+        },
+        "right": {
+          "label": "Käsitellään hakemukset rinnakkain",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -6
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": [
+            {
+              "jobId": "rtb_permits",
+              "afterMonths": 3,
+              "completionText": "Menettelyn päätös on saapunut.",
+              "effects": []
+            }
+          ]
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C050",
+      "version": 1,
+      "title": "Liittymän ehdot",
+      "body": "Tekninen verkkoratkaisu tarkentuu sopimusehdoiksi ja aikatauluksi. Nimellistehosumma ei ole sama kuin sallittu vientiteho.",
+      "speakerId": "gridEngineer",
+      "artKey": "substation",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Vahvistetaan liittymisratkaisu",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Sovitaan vaiheistettu liittyminen",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C051",
+      "version": 1,
+      "title": "Johdon tarvitsema maa",
+      "body": "Tuotantoalueen oikeudet ovat kunnossa. Myös sähkönsiirron ja kulkuyhteyksien oikeuksien pitää kattaa lopullinen ratkaisu.",
+      "speakerId": "landowner",
+      "artKey": "landowner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Varmistetaan kaikki reittioikeudet",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Täsmennetään reitti sopimusten mukaan",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C052",
+      "version": 1,
+      "title": "Lupapäätökset saapuvat",
+      "body": "Skenaarion lupaviranomaiset ovat ratkaisseet hakemukset. Ehdot verrataan toteutussuunnitelmaan ennen rakentamisvalmiuden kirjaamista.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Varmistetaan ehtojen täyttäminen",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Sovitetaan suunnitelma lupaehtoihin",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C053",
+      "version": 1,
+      "title": "Nimi hankekansiossa",
+      "body": "Hankkeen nimi on pysynyt samana alusta asti. Sopimusluettelon pituus ei ole.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Päivitetään luovutuspaketti",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään vastuut läpi",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C054",
+      "version": 1,
+      "title": "Laitemalli lukitaan",
+      "body": "Toimittajan ratkaisu sovitetaan lupiin, korkeusrajaan ja melumalliin. Mallitunnus on lyhyt; tarkistuslista pidempi.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Vahvistetaan yhteensopiva malli",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Verrataan kahta sallittua ratkaisua",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C055",
+      "version": 1,
+      "title": "Tuotannon kaupalliset ehdot",
+      "body": "Kaupallinen suunnitelma päivitetään nykyisellä tuotantoarviolla. Aiemman version optimistisin solu ei siirry mukana.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Varmistetaan rahoituskelpoinen perusmalli",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Sovitaan vaiheistettu toteutusmalli",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            },
+            {
+              "op": "adjust",
+              "field": "patience",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C056",
+      "version": 1,
+      "title": "Vielä yksi ajantasaisuuskierros",
+      "body": "Suunnitelma, luvat, selvitykset ja sopimukset tarkistetaan samaa hankeversiota vasten. Nyt sana viimeinen kirjoitetaan varovasti.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Suljetaan avoimet toteutusehdot",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tehdään riippumaton valmiustarkastus",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 3
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C057",
+      "version": 1,
+      "title": "RtB-katselmus",
+      "body": "Hanke on rakentamisvalmiuden tarkastuksessa. Päätös perustuu todettuihin lupiin, oikeuksiin, verkkoon ja kaupallisiin edellytyksiin.",
+      "speakerId": "planner",
+      "artKey": "planner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Vahvistetaan rakentamisvalmius",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 0
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään valmius läpi omistajan kanssa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "X001",
+      "version": 1,
+      "title": "Kriittinen sopimus jää saamatta",
+      "body": "Ratkaisevan alueen omistaja on päättänyt olla luovuttamatta oikeuksia. Käyttökelpoista korvaavaa rajausta ei tämän hankkeen alueella ole.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Dokumentoidaan päättymisen syy",
+          "outcomeText": "Hankkeen kehitys päättyy. Syyt ja tehdyt selvitykset säilyvät arkistossa.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään päätös osapuolten kanssa",
+          "outcomeText": "Hanke suljetaan hallitusti. Päätös ei ollut tämän valinnan vältettävissä.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "X002",
+      "version": 1,
+      "title": "Kunta ei aloita valmistelua",
+      "body": "Kunta on ratkaissut aloitteen kielteisesti. Käytettävissä olevat vaihtoehdot eivät muuta hankkeen keskeistä ristiriitaa.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Dokumentoidaan päättymisen syy",
+          "outcomeText": "Hankkeen kehitys päättyy. Syyt ja tehdyt selvitykset säilyvät arkistossa.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään päätös osapuolten kanssa",
+          "outcomeText": "Hanke suljetaan hallitusti. Päätös ei ollut tämän valinnan vältettävissä.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "X003",
+      "version": 1,
+      "title": "Lausunto sulkee toteutusvaihtoehdot",
+      "body": "Skenaarion toimivaltaisen viranomaisen lopullinen arvio estää tämän hankkeen toteutuksen. Myös tutkittu vaihtoehto jää esteen piiriin.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Dokumentoidaan päättymisen syy",
+          "outcomeText": "Hankkeen kehitys päättyy. Syyt ja tehdyt selvitykset säilyvät arkistossa.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään päätös osapuolten kanssa",
+          "outcomeText": "Hanke suljetaan hallitusti. Päätös ei ollut tämän valinnan vältettävissä.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "X004",
+      "version": 1,
+      "title": "Vaikutusta ei voida välttää",
+      "body": "Valmistunut arvio tunnistaa ratkaisemattoman esteen. Tutkitut sijoittelut ja lieventämiskeinot eivät mahdollista tämän hankkeen jatkoa.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Dokumentoidaan päättymisen syy",
+          "outcomeText": "Hankkeen kehitys päättyy. Syyt ja tehdyt selvitykset säilyvät arkistossa.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään päätös osapuolten kanssa",
+          "outcomeText": "Hanke suljetaan hallitusti. Päätös ei ollut tämän valinnan vältettävissä.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "X005",
+      "version": 1,
+      "title": "Kaavaratkaisu ei mahdollista hanketta",
+      "body": "Alueellinen suunnitteluratkaisu on muuttunut. Selvitetty vaihtoehto ei ratkaise ristiriitaa, eikä hankkeen jatkamiselle ole hyväksyttävää polkua.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Dokumentoidaan päättymisen syy",
+          "outcomeText": "Hankkeen kehitys päättyy. Syyt ja tehdyt selvitykset säilyvät arkistossa.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään päätös osapuolten kanssa",
+          "outcomeText": "Hanke suljetaan hallitusti. Päätös ei ollut tämän valinnan vältettävissä.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "X006",
+      "version": 1,
+      "title": "Kaava palautuu lähtöpisteeseen",
+      "body": "Päätöksenteko tai muutoksenhaku päätyy ratkaisuun, jonka vuoksi hankkeen valmistelua ei voida jatkaa tässä muodossa. Omistaja ei rahoita uutta lähtöä.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Dokumentoidaan päättymisen syy",
+          "outcomeText": "Hankkeen kehitys päättyy. Syyt ja tehdyt selvitykset säilyvät arkistossa.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään päätös osapuolten kanssa",
+          "outcomeText": "Hanke suljetaan hallitusti. Päätös ei ollut tämän valinnan vältettävissä.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "X007",
+      "version": 1,
+      "title": "Rahoitus vetäytyy",
+      "body": "Rahoittaja vetäytyy muuttuneessa markkinatilanteessa. Korvaavaa toteutusmallia ei saada sovittua hankkeen määräajassa. Kaava voi silti jäädä voimaan.",
+      "speakerId": "authority",
+      "artKey": "authority",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "challenge",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Dokumentoidaan päättymisen syy",
+          "outcomeText": "Hankkeen kehitys päättyy. Syyt ja tehdyt selvitykset säilyvät arkistossa.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään päätös osapuolten kanssa",
+          "outcomeText": "Hanke suljetaan hallitusti. Päätös ei ollut tämän valinnan vältettävissä.",
+          "timeMonths": 0,
+          "effects": [],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C100",
+      "version": 1,
+      "title": "Rajapyykki löytyy maastosta",
+      "body": "Maanomistajien kanssa tehty maastokäynti selventää yhden epäselvän kulman. Keskustelu lyheni, kun kartan vieressä oli myös itse paikka.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Kootaan tieto yhteiseen aineistoon",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään asia työryhmän kanssa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C101",
+      "version": 1,
+      "title": "Kysymykset ennen kalvoja",
+      "body": "Kunnan valmistelija lähettää asukkaiden kysymykset jo ennen tilaisuutta. Esityksen viimeinen kalvo vaihtuu ensimmäiseksi.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Kootaan tieto yhteiseen aineistoon",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään asia työryhmän kanssa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C102",
+      "version": 1,
+      "title": "Aineisto löytyi arkistosta",
+      "body": "Vanha käyttökelpoinen lähtöaineisto löytyi sovitusta arkistosta. Sen ajantasaisuus pitää vielä varmistaa, mutta koko työtä ei tarvitse aloittaa alusta.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Kootaan tieto yhteiseen aineistoon",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään asia työryhmän kanssa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C103",
+      "version": 1,
+      "title": "Maastoryhmät samalle kartalle",
+      "body": "Kaksi selvitysryhmää käyttää hieman eri rajausta. Ero huomataan ennen raportointia. Nyt yhteinen kartta säästää yhden korjauskierroksen.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "positive",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Kootaan tieto yhteiseen aineistoon",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 2
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään asia työryhmän kanssa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C104",
+      "version": 1,
+      "title": "Vastineen pituus",
+      "body": "Yhteen muistutukseen on laadittu pitkä vastaus. Valmistelija pyytää alkuun kahta lausetta siitä, mitä suunnitelmassa oikeasti muuttui.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Kootaan tieto yhteiseen aineistoon",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään asia työryhmän kanssa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C105",
+      "version": 1,
+      "title": "Päätösliite on oikea",
+      "body": "Päätösaineiston tarkastuksessa kaikki liiteviitteet johtavat oikeisiin versioihin. Tarkastaja kirjaa asian myönteisenä havaintona.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Kootaan tieto yhteiseen aineistoon",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään asia työryhmän kanssa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "C106",
+      "version": 1,
+      "title": "Luovutuksen tarkistuslista",
+      "body": "Toteutustiimi pyytää koottua listaa avoimista ehdoista. Listassa on tällä kertaa myös vastuuhenkilö ja seuraava toimenpide.",
+      "speakerId": "consultant",
+      "artKey": "consultant",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Kootaan tieto yhteiseen aineistoon",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Käydään asia työryhmän kanssa",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            },
+            {
+              "op": "adjust",
+              "field": "quality",
+              "value": 1
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "R001",
+      "version": 1,
+      "title": "Yhteinen lajiseuranta",
+      "body": "Fiktiivinen valtakunnallinen tutkimusryhmä hakee rahoitusta lajien ja energiantuotannon yhteisvaikutusten seurantaan. Osallistuminen maksaa 20 000 euroa. Hankkeen omat selvitykset tarvitaan silti.",
+      "speakerId": "ecologist",
+      "artKey": "reindeer",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Osallistutaan 20 000 eurolla",
+          "outcomeText": "Ratkaisu kirjataan. Tutkimustulos ei riipu rahoituspäätöksestä.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Seurataan julkaistavia tuloksia",
+          "outcomeText": "Ratkaisu kirjataan. Tutkimustulos ei riipu rahoituspäätöksestä.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": 0
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "R002",
+      "version": 1,
+      "title": "Tutkimuksesta käyttökelpoista tietoa",
+      "body": "Yleisen lajiseurannan tulokset tarkentavat vaikutusten arviointia ja tukevat tutkittua lieventämiskeinoa. Tuloksia voi hyödyntää myös ilman rahoitusosuutta. Oman alueen soveltuvuus on silti osoitettava.",
+      "speakerId": "ecologist",
+      "artKey": "reindeer",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Sovitetaan tieto omaan arviointiin",
+          "outcomeText": "Ratkaisu kirjataan. Tutkimustulos ei riipu rahoituspäätöksestä.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -1
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Varmistetaan soveltuvuus asiantuntijalta",
+          "outcomeText": "Ratkaisu kirjataan. Tutkimustulos ei riipu rahoituspäätöksestä.",
+          "timeMonths": 0,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -2
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "R003",
+      "version": 1,
+      "title": "Tutkimus tarkentaa huolta",
+      "body": "Yleinen lajiseuranta tunnistaa aiemmin arvioitua suuremman yhteisvaikutusriskin. Tieto koskee myös rahoittajia. Hankkeen arviota ja lieventämistä pitää täydentää oman alueen tietojen avulla.",
+      "speakerId": "ecologist",
+      "artKey": "reindeer",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "ambient",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Täydennetään vaikutusarvio",
+          "outcomeText": "Ratkaisu kirjataan. Tutkimustulos ei riipu rahoituspäätöksestä.",
+          "timeMonths": 2,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -3
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Tutkitaan varovaisempi suunnitelma",
+          "outcomeText": "Ratkaisu kirjataan. Tutkimustulos ei riipu rahoituspäätöksestä.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "adjust",
+              "field": "budget",
+              "value": -4
+            }
+          ],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "Z001",
+      "version": 1,
+      "title": "Menettelymallin rajausviite",
+      "body": "Kartalle mahtuu hanke. Kiinteistörajat eivät aivan noudata kartalle piirrettyä ajatusta. Aloitetaan yhteydenotoista.",
+      "speakerId": "landowner",
+      "artKey": "landowner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "wind",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "milestone",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Neuvotellaan koko alueesta",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "windRemove",
+              "count": 2,
+              "reason": "campaign_nature"
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Aloitetaan ydinalueesta",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    },
+    {
+      "id": "Z002",
+      "version": 1,
+      "title": "Menettelymallin rajausviite",
+      "body": "Kartalle mahtuu hanke. Kiinteistörajat eivät aivan noudata kartalle piirrettyä ajatusta. Aloitetaan yhteydenotoista.",
+      "speakerId": "landowner",
+      "artKey": "landowner",
+      "phases": [
+        "01"
+      ],
+      "modes": [
+        "solar",
+        "hybrid"
+      ],
+      "tone": "work",
+      "trigger": "milestone",
+      "weight": 10,
+      "maxPerRun": 1,
+      "requiresAll": [],
+      "choices": {
+        "left": {
+          "label": "Neuvotellaan koko alueesta",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 1,
+          "effects": [
+            {
+              "op": "solarRemove",
+              "hectares": 12,
+              "reason": "campaign_nature"
+            }
+          ],
+          "delayed": []
+        },
+        "right": {
+          "label": "Aloitetaan ydinalueesta",
+          "outcomeText": "Ratkaisu kirjataan hankkeen päätöshistoriaan.",
+          "timeMonths": 2,
+          "effects": [],
+          "delayed": []
+        }
+      },
+      "sourceIds": [],
+      "authorNote": "Fiktiivinen mutta teoriassa mahdollinen tilanne. Pelin menettelymalli on erillinen kortin tekstistä."
+    }
+  ]
+}

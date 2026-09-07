@@ -1,0 +1,612 @@
+{
+  "version": "rtb-1",
+  "nodes": [
+    {
+      "cardId": "C001",
+      "stage": 0,
+      "left": "landScope",
+      "right": "landScope",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C002",
+      "stage": 0,
+      "left": "owners",
+      "right": "owners",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C003",
+      "stage": 0,
+      "left": "access",
+      "right": "access",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C004",
+      "stage": 0,
+      "left": "restoration",
+      "right": "restoration",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C005",
+      "stage": 0,
+      "left": "interlude",
+      "right": "interlude",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": true,
+      "alternatives": [
+        "C005",
+        "C100"
+      ]
+    },
+    {
+      "cardId": "C006",
+      "stage": 0,
+      "left": "leaseLong",
+      "right": "leaseShort",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C007",
+      "stage": 0,
+      "left": "funding",
+      "right": "funding",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C008",
+      "stage": 0,
+      "left": "leases",
+      "right": "leases",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C009",
+      "stage": 1,
+      "left": "initiative",
+      "right": "initiative",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C010",
+      "stage": 1,
+      "left": "regional",
+      "right": "regional",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C011",
+      "stage": 1,
+      "left": "gridOrder",
+      "right": "gridOrder",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C012",
+      "stage": 1,
+      "left": "technical",
+      "right": "technical",
+      "windOnly": true,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C013",
+      "stage": 1,
+      "left": "interlude",
+      "right": "interlude",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": true,
+      "alternatives": [
+        "C013",
+        "C101"
+      ]
+    },
+    {
+      "cardId": "C014",
+      "stage": 1,
+      "left": "engagement",
+      "right": "engagement",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C015",
+      "stage": 1,
+      "left": "municipality",
+      "right": "municipality",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C016",
+      "stage": 1,
+      "left": "stageReady",
+      "right": "stageReady",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C017",
+      "stage": 2,
+      "left": "scope",
+      "right": "scope",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C018",
+      "stage": 2,
+      "left": "ecologyOrder",
+      "right": "ecologyOrder",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C019",
+      "stage": 2,
+      "left": "windOrder",
+      "right": "windOrder",
+      "windOnly": true,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C020",
+      "stage": 2,
+      "left": "routeScope",
+      "right": "routeScope",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C021",
+      "stage": 2,
+      "left": "interlude",
+      "right": "interlude",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": true,
+      "alternatives": [
+        "C021",
+        "C102"
+      ]
+    },
+    {
+      "cardId": "C022",
+      "stage": 2,
+      "left": "naturaOrder",
+      "right": "naturaOrder",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C023",
+      "stage": 2,
+      "left": "programme",
+      "right": "programme",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C024",
+      "stage": 2,
+      "left": "funding",
+      "right": "funding",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C025",
+      "stage": 3,
+      "left": "natureReview",
+      "right": "natureReview",
+      "windOnly": false,
+      "waitFor": [
+        "ecology_surveys",
+        "groundwater_study"
+      ],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C026",
+      "stage": 3,
+      "left": "avoidNature",
+      "right": "mitigateNature",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": "nature",
+      "optional": false
+    },
+    {
+      "cardId": "C027",
+      "stage": 3,
+      "left": "yield",
+      "right": "yieldOptimise",
+      "windOnly": true,
+      "waitFor": [
+        "wind_measurement"
+      ],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C028",
+      "stage": 3,
+      "left": "noise",
+      "right": "noise",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C029",
+      "stage": 3,
+      "left": "interlude",
+      "right": "interlude",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": true,
+      "alternatives": [
+        "C029",
+        "C103"
+      ]
+    },
+    {
+      "cardId": "C030",
+      "stage": 3,
+      "left": "heightResolve",
+      "right": "heightLower",
+      "windOnly": true,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C031",
+      "stage": 3,
+      "left": "draft",
+      "right": "draft",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C032",
+      "stage": 3,
+      "left": "draftFeedback",
+      "right": "draftFeedback",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C033",
+      "stage": 4,
+      "left": "conclusion",
+      "right": "conclusion",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C034",
+      "stage": 4,
+      "left": "regionalFinal",
+      "right": "regionalFinal",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C035",
+      "stage": 4,
+      "left": "gridBase",
+      "right": "gridAlternative",
+      "windOnly": false,
+      "waitFor": [
+        "grid_initial"
+      ],
+      "risk": "grid",
+      "optional": false
+    },
+    {
+      "cardId": "C036",
+      "stage": 4,
+      "left": "naturaCurrent",
+      "right": "naturaCheck",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": "natura",
+      "optional": false
+    },
+    {
+      "cardId": "C037",
+      "stage": 4,
+      "left": "interlude",
+      "right": "interlude",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": true,
+      "alternatives": [
+        "C037",
+        "C104"
+      ]
+    },
+    {
+      "cardId": "C038",
+      "stage": 4,
+      "left": "proposal",
+      "right": "proposal",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C039",
+      "stage": 4,
+      "left": "consultation",
+      "right": "consultation",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C040",
+      "stage": 4,
+      "left": "funding",
+      "right": "funding",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C041",
+      "stage": 5,
+      "left": "leaseRenewed",
+      "right": "leaseCheck",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": "lease",
+      "optional": false
+    },
+    {
+      "cardId": "C042",
+      "stage": 5,
+      "left": "finalQa",
+      "right": "finalQa",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C043",
+      "stage": 5,
+      "left": "decisionEvidence",
+      "right": "decisionEvidence",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C044",
+      "stage": 5,
+      "left": "adoption",
+      "right": "adoption",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C045",
+      "stage": 5,
+      "left": "interlude",
+      "right": "interlude",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": true,
+      "alternatives": [
+        "C045",
+        "C105"
+      ]
+    },
+    {
+      "cardId": "C046",
+      "stage": 5,
+      "left": "adoptionRecorded",
+      "right": "adoptionRecorded",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C047",
+      "stage": 5,
+      "left": "planFinal",
+      "right": "planFinal",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C048",
+      "stage": 5,
+      "left": "funding",
+      "right": "funding",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C049",
+      "stage": 6,
+      "left": "permits",
+      "right": "permits",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C050",
+      "stage": 6,
+      "left": "gridContract",
+      "right": "gridContract",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C051",
+      "stage": 6,
+      "left": "routeRights",
+      "right": "routeRights",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C052",
+      "stage": 6,
+      "left": "permitDecision",
+      "right": "permitDecision",
+      "windOnly": false,
+      "waitFor": [
+        "rtb_permits"
+      ],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C053",
+      "stage": 6,
+      "left": "interlude",
+      "right": "interlude",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": true,
+      "alternatives": [
+        "C053",
+        "C106"
+      ]
+    },
+    {
+      "cardId": "C054",
+      "stage": 6,
+      "left": "equipment",
+      "right": "equipment",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C055",
+      "stage": 6,
+      "left": "commercial",
+      "right": "commercial",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C056",
+      "stage": 6,
+      "left": "rtbQa",
+      "right": "rtbQa",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    },
+    {
+      "cardId": "C057",
+      "stage": 6,
+      "left": "rtb",
+      "right": "rtb",
+      "windOnly": false,
+      "waitFor": [],
+      "risk": null,
+      "optional": false
+    }
+  ]
+}

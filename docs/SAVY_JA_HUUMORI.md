@@ -1,5 +1,7 @@
 # Sävy: ”Mitä ihmettä nyt taas?”
 
+**Käyttäjän tarkennus 7.9.2026:** uuden kampanjan tapahtumien pitää olla realistisia tai teoriassa mahdollisia. Kuiva surkuhupaisuus säilyy, mutta ei yliampuvaa absurdiutta. Tämä ohittaa tämän alkuperäisen ohjeen liioittelutavoitteet. Vanha 64 kortin pilotti säilytetään versionlukittuna erillään uudesta kampanjasta.
+
 ## Tavoiteltu kokemus
 
 Tämä ei ole ensisijaisesti koulutuspeli eikä neutraali projektinhallintasimulaatio. Se on **surkuhupaisa hankekehityssatiiri ammattilaisille**. Pelaaja tuntee tekevänsä järkeviä asioita maailmassa, joka vastaa ajoittain kohtuuttomalla perusteellisuudella, väärään aikaan tulevalla tiedolla tai kahdella yhteensopimattomalla vaatimuksella.

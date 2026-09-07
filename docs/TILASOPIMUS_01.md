@@ -1,5 +1,7 @@
 # Moottoriperustan tilasopimus 01
 
+Tämä kuvaa tehtävässä 01 valmistunutta perustaa ja pilotin rajapintaa. Myöhemmän erillisen kampanjan menettely on dokumentissa `TILASOPIMUS_RTB.md`; alla olevat ”myöhempää työtä” -rajaukset ovat perustan historiallinen toimitusraja. Pilotin suojattuja hyväksymisportteja ei ole avattu.
+
 Versiot: tallennus `1`, säännöt `foundation-1`, sisältö `pilot-fi-002` + sisällön tarkistussumma. Tämä täydentää TOTEUTUSSOPIMUS.md:tä muuttamatta korttipakkaa. Julkinen rajapinta on `src/engine/index.ts`, tyypit `types.ts` ja tallennusrakenne `state-schema.ts`.
 
 ## Rajapinta ja tilan omistus

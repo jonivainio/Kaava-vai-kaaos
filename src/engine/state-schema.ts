@@ -42,7 +42,7 @@ export const runSchema = z.strictObject({
   windHeightCapM: n.min(100).max(300), selectedModelId: model,
   grid: z.strictObject({
     segments: z.array(z.strictObject({ id, km: n, component: z.enum(['shared', 'wind', 'solar']), active: z.boolean(), revision: integer })),
-    exportLimitMWac: n.nullable(), technicalStatus: z.enum(['unassessed', 'reviewNeeded']),
+    exportLimitMWac: n.nullable(), technicalStatus: z.enum(['unassessed', 'reviewNeeded', 'confirmed']),
     routeHistory: z.array(z.strictObject({ segmentId: id, month: integer, previousKm: n, km: n, revision: integer })),
   }),
   resources: z.strictObject({ budget: point, trust: point, quality: point, patience: point }),

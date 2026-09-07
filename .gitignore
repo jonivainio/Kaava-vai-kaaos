@@ -5,5 +5,9 @@ __pycache__/
 *.pyc
 .python-deps/
 .venv/
+.playwright/
+test-results/
+test-results-offline/
+playwright-report/
 .env
 .env.*

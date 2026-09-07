@@ -1,8 +1,8 @@
-import { check, pilotPack, validatePack, ValidationError } from './content';
+import { check, pilotPack, validatePack, validateEffect, ValidationError } from './content';
 import { runSchema } from './state-schema';
 import { buildScenario, freeze, hash, JOB_REVEALS } from './scenario';
-import { getDerivedStats, RULES, settle } from './rules';
-import type { Card, CardPack, Condition, CreateRunOptions, Effect, PendingEvent, Phase, RunState, Side } from './types';
+import { getDerivedStats, MODELS, RULES, settle } from './rules';
+import type { Card, CardPack, Condition, CreateRunOptions, Effect, ModelId, PendingEvent, Phase, RunState, Side } from './types';
 
 export function createEngine(input: unknown = pilotPack) {
   const pack: CardPack = freeze(validatePack(input));
@@ -286,5 +286,24 @@ export function createEngine(input: unknown = pilotPack) {
       return { ok: false, error: error instanceof Error ? error.message : String(error), recoverableRaw: raw };
     }
   }
-  return { createRun, getDerivedStats, getEligibleCards, offerCard, applyChoice, previewChoice, advanceTime, serializeRun, restoreRun, setDemoPhase, offerDemoMilestone };
+  // Procedure-only physical resolutions. They cannot write permission gates or invent effect commands.
+  function applyProcedureEffects(state: RunState, list: Effect[]) {
+    const s = copy(state);
+    check(!s.offeredCard && !s.ending, 'Menettelyratkaisu vaatii ratkaistun kortin');
+    for (const e of list) { validateEffect(e); check(['windRemove', 'solarRemove', 'heightCap', 'gridDistance', 'adjust'].includes(e.op), 'Menettelyn fyysinen ratkaisu ei kirjoita portteja'); }
+    effects(s, list, 'procedure'); settle(s); return output(s);
+  }
+  function selectProcedureModel(state: RunState, modelId: ModelId) {
+    const s = copy(state), model = MODELS[modelId];
+    check(!s.offeredCard && !s.ending && model && s.windHeightCapM >= model.minHeight, 'Malli ei sovi menettelyn korkeusrajaan');
+    s.selectedModelId = modelId;
+    for (const a of s.assets.windSites) if (!a.exclusions.length) { a.modelId = modelId; a.totalHeightM = Math.min(s.windHeightCapM, model.maxHeight); }
+    settle(s); return output(s);
+  }
+  function confirmProcedureGrid(state: RunState, limitMWac: number) {
+    const s = copy(state);
+    check(!s.offeredCard && !s.ending && Number.isFinite(limitMWac) && limitMWac > 0 && limitMWac <= getDerivedStats(s).combinedNameplateMWac, 'Vientirajan pitää sopia selvitettyyn hankkeeseen');
+    s.grid.exportLimitMWac=limitMWac; s.grid.technicalStatus='confirmed';s.tracks.grid='contracted';return output(s);
+  }
+  return { createRun, getDerivedStats, getEligibleCards, offerCard, applyChoice, previewChoice, advanceTime, serializeRun, restoreRun, setDemoPhase, offerDemoMilestone, applyProcedureEffects, selectProcedureModel, confirmProcedureGrid };
 }

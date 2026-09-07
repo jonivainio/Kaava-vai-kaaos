@@ -1,0 +1,11 @@
+import {readFileSync,readdirSync,writeFileSync} from 'node:fs';
+import {createHash} from 'node:crypto';
+const root=new URL('../dist/',import.meta.url);
+const files=['./','index.html','manifest.webmanifest','icon-192.png','icon-512.png',...readdirSync(new URL('assets/',root)).map(f=>`assets/${f}`),...readdirSync(new URL('art/',root)).map(f=>`art/${f}`)];
+const version=createHash('sha256').update(files.filter(f=>f!=='./').map(f=>readFileSync(new URL(f,root))).reduce((all,b)=>Buffer.concat([all,b]),Buffer.alloc(0))).digest('hex').slice(0,14);
+const sw=`const CACHE='kaava-${version}';const FILES=${JSON.stringify(files)};
+self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES.map(f=>new URL(f,self.registration.scope).href)))));
+self.addEventListener('activate',e=>e.waitUntil(caches.keys().then(keys=>Promise.all(keys.filter(k=>k.startsWith('kaava-')&&k!==CACHE).map(k=>caches.delete(k)))).then(()=>self.clients.claim())));
+self.addEventListener('message',e=>{if(e.data==='ACTIVATE_AT_MENU')self.skipWaiting();});
+self.addEventListener('fetch',e=>{if(e.request.method!=='GET'||new URL(e.request.url).origin!==self.location.origin)return;e.respondWith(caches.open(CACHE).then(async cache=>{const hit=await cache.match(e.request);if(hit)return hit;try{return await fetch(e.request);}catch(error){if(e.request.mode==='navigate')return await cache.match(new URL('index.html',self.registration.scope).href);throw error;}}));});`;
+writeFileSync(new URL('sw.js',root),sw);console.log(`PWA ${version}: ${files.length} local resources precached; updates wait for the menu.`);

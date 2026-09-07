@@ -1,13 +1,12 @@
 import { defineConfig } from "vite";
-
 export default defineConfig({
-  publicDir: false,
   build: {
-    outDir: "dist/engine",
+    outDir: "dist/campaign",
+    copyPublicDir: false,
     lib: {
-      entry: "src/engine/index.ts",
+      entry: "src/campaign/index.ts",
       formats: ["es"],
-      fileName: "kaava-engine",
+      fileName: "kaava-campaign",
     },
   },
 });

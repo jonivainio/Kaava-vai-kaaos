@@ -1,0 +1,13 @@
+{
+  "id":"./",
+  "name":"Kaava vai kaaos",
+  "short_name":"Kaava vai kaaos",
+  "description":"Fiktiivistä hankekehitystä maanvuokrauksesta rakentamisvalmiuteen.",
+  "lang":"fi",
+  "start_url":"./",
+  "scope":"./",
+  "display":"standalone",
+  "background_color":"#eee9de",
+  "theme_color":"#263e35",
+  "icons":[{"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]
+}

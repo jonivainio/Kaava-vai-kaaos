@@ -1,5 +1,11 @@
 # Fiktiivinen riski- ja tilannepankki — v2
 
+## Käyttäjän idea 7.9.2026: yleisen tutkimuksen rahoitus
+
+Kehittäjälle tarjotaan osallistumista yleiseen, esimerkiksi kansalliseen poron, metsäpeuran, suden tai kotkan tutkimukseen. Tämä on eri asia kuin hankkeen oma selvitys. Esimerkkipanos on 20 000 €. Julkaistu tulos voi tukea hankkeen arviointia tai johtaa hankalampiin vaikutusjohtopäätöksiin, riippumatta osallistumisesta rahoitukseen. Tulos vaihtelee runeittain; rahoittaja ei osta suotuisaa tutkimusta.
+
+Toteutettu erillisessä kampanjassa R001–R003: rahoitusvalinta, siemenessä ennalta määrätty hyvä/huono tulos ja viiden kuukauden julkaisuaika. Hankekohtaiset selvitykset säilyvät erillisinä töinä. Tutkimusta ei nimetä minkään todellisen hankkeen tai organisaation mukaan. Myöhempi sisältö voi laajentaa seurauksia eri vaiheisiin; nykyinen erä ei mallinna oikean tutkimuskonsortion toimintaa.
+
 ## Käyttötarkoitus ja raja
 
 Tämä on pelin käsikirjoituspankki, ei oikeudellinen ohje, tarkistettu viranomaisvaatimusluettelo eikä kuvaus yksittäisestä oikeasta hankkeesta. Ensimmäisen paketin nimettyjä tositapauksia, paikkoja, hankkeita ja lähdeviitteitä ei tuoda tähän julkaistavaan pakettiin. Aiempi tutkimustyö on käsitteellistä taustaa; alla olevat tapahtumat ja satiiriset kärjistykset ovat keksittyjä.

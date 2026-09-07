@@ -5,6 +5,9 @@ test("tuotantopeli toimii repoalihakemistossa ja jatkuu offline-tilassa", async 
   context,
 }) => {
   await page.goto("./");
+  await page.evaluate(() =>
+    localStorage.setItem("kaava-vai-kaaos:swipe:tutorial", "done"),
+  );
   await page.evaluate(() => navigator.serviceWorker.ready);
   await expect
     .poll(() => page.evaluate(() => !!navigator.serviceWorker.controller))
@@ -12,25 +15,32 @@ test("tuotantopeli toimii repoalihakemistossa ja jatkuu offline-tilassa", async 
   await expect(
     page.getByRole("button", { name: /Kehittäjän työpöytä/ }),
   ).toHaveCount(0);
-  await page.getByRole("button", { name: /Uusi hanke/ }).click();
-  await page.getByTestId("choice-left").click();
+  await page.getByRole("button", { name: /Aloita hanke/ }).click();
+  await page.getByTestId("swipe-card").focus();
+  await page.keyboard.press("ArrowLeft");
+  await expect
+    .poll(() =>
+      page.evaluate(
+        () =>
+          JSON.parse(localStorage.getItem("kaava-vai-kaaos:swipe:2")!).state
+            .cursor,
+      ),
+    )
+    .toBe(1);
   const saved = await page.evaluate(() =>
-    localStorage.getItem("kaava-vai-kaaos:campaign:1"),
+    localStorage.getItem("kaava-vai-kaaos:swipe:2"),
   );
   await context.setOffline(true);
   await page.reload();
-  await page.getByRole("button", { name: /Jatka hanketta/ }).click();
-  await expect(
-    page.getByRole("heading", { name: "Sama pelto, kolme omistajaa" }),
-  ).toBeVisible();
+  await page.getByRole("button", { name: /Jatka ·/ }).click();
+  await expect(page.getByTestId("swipe-card")).toBeVisible();
   expect(
-    await page.evaluate(() =>
-      localStorage.getItem("kaava-vai-kaaos:campaign:1"),
-    ),
+    await page.evaluate(() => localStorage.getItem("kaava-vai-kaaos:swipe:2")),
   ).toBe(saved);
-  await page.getByTestId("choice-right").click();
+  await page.getByTestId("swipe-card").focus();
+  await page.keyboard.press("ArrowRight");
   await expect(
-    page.getByRole("heading", { name: "Tie ei kuulu kauppaan" }),
+    page.getByRole("button", { name: "Jatka tarinaa" }),
   ).toBeVisible();
 });
 test("odottava päivitys aktivoidaan valikossa, vanha välimuisti poistuu ja tallennus säilyy", async ({
@@ -40,14 +50,27 @@ test("odottava päivitys aktivoidaan valikossa, vanha välimuisti poistuu ja tal
     original = readFileSync(path, "utf8");
   try {
     await page.goto("./");
+    await page.evaluate(() =>
+      localStorage.setItem("kaava-vai-kaaos:swipe:tutorial", "done"),
+    );
     await page.evaluate(() => navigator.serviceWorker.ready);
     await expect
       .poll(() => page.evaluate(() => !!navigator.serviceWorker.controller))
       .toBe(true);
-    await page.getByRole("button", { name: /Uusi hanke/ }).click();
-    await page.getByTestId("choice-left").click();
+    await page.getByRole("button", { name: /Aloita hanke/ }).click();
+    await page.getByTestId("swipe-card").focus();
+    await page.keyboard.press("ArrowLeft");
+    await expect
+      .poll(() =>
+        page.evaluate(
+          () =>
+            JSON.parse(localStorage.getItem("kaava-vai-kaaos:swipe:2")!).state
+              .cursor,
+        ),
+      )
+      .toBe(1);
     const raw = await page.evaluate(() =>
-      localStorage.getItem("kaava-vai-kaaos:campaign:1"),
+      localStorage.getItem("kaava-vai-kaaos:swipe:2"),
     );
     await page.evaluate(() => caches.open("kaava-legacy-test"));
     writeFileSync(
@@ -66,20 +89,18 @@ test("odottava päivitys aktivoidaan valikossa, vanha välimuisti poistuu ja tal
         ),
       )
       .toBe(true);
-    await expect(
-      page.getByRole("heading", { name: "Sama pelto, kolme omistajaa" }),
-    ).toBeVisible();
-    await page.getByRole("button", { name: /KAAVA vai KAAOS/ }).click();
+    await expect(page.getByTestId("swipe-card")).toBeVisible();
+    await page.getByRole("button", { name: /Avaa aloitusvalikko/ }).click();
     await Promise.all([
       page.waitForEvent("load"),
-      page.getByRole("button", { name: "Päivitä tästä aloitusvalikosta" }).click(),
+      page
+        .getByRole("button", { name: "Päivitä tästä aloitusvalikosta" })
+        .click(),
     ]);
-    await expect(
-      page.getByRole("button", { name: /Jatka hanketta/ }),
-    ).toBeVisible();
+    await expect(page.getByRole("button", { name: /Jatka ·/ })).toBeVisible();
     expect(
       await page.evaluate(() =>
-        localStorage.getItem("kaava-vai-kaaos:campaign:1"),
+        localStorage.getItem("kaava-vai-kaaos:swipe:2"),
       ),
     ).toBe(raw);
     await expect

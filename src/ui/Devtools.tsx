@@ -3,7 +3,7 @@ import { createEngine, pilotPack } from "../engine";
 import type { Card, RunState, Side } from "../engine";
 import { manifest } from "../engine/content";
 import { Art, ART_KEYS, CardView } from "./CardView";
-import { Stats } from "./App";
+import { Stats } from "./LegacyStats";
 const e = createEngine();
 type Demo = { run: RunState; index: number; finished: boolean };
 function prepare(s: Demo): Demo {

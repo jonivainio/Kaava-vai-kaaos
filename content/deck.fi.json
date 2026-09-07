@@ -1,0 +1,502 @@
+{
+  "decisions": [
+    {
+      "id": "land",
+      "stage": 0,
+      "base": {
+        "title": "Kaksi nimeä puuttuu.",
+        "speaker": "Maanomistaja",
+        "art": "landowner",
+        "question": "Tuotantoalueen muut kiinteistöt on vuokrattu. Kaksi omistajaa allekirjoittaa vain, jos he saavat muita korkeamman vuokran.",
+        "options": [
+          {
+            "label": "Sovitaan heidän kanssaan eri ehdot",
+            "action": "special",
+            "note": "Allekirjoitukset saadaan. Muut voivat myöhemmin pyytää samaa."
+          },
+          {
+            "label": "Pidetään kaikille samat ehdot",
+            "action": "uniform",
+            "note": "He voivat suostua — tai jättää allekirjoittamatta."
+          }
+        ]
+      }
+    },
+    {
+      "id": "road",
+      "stage": 0,
+      "base": {
+        "title": "Raja meni väärään kohtaan.",
+        "speaker": "Maanomistaja",
+        "art": "map",
+        "question": "Yhden vuokrasopimuksen karttaliitteessä kiinteistöraja on väärässä kohdassa. Suunnitellut paikat mahtuvat oikeallekin alueelle. Korjaatko tämän liitteen vai tarkistatko samalla muutkin?",
+        "options": [
+          {
+            "label": "Korjataan tämän sopimuksen kartta",
+            "action": "oldRoad",
+            "note": "Virheellinen liite korjataan ja hyväksytetään sopimusosapuolilla."
+          },
+          {
+            "label": "Tarkistetaan kaikki karttaliitteet",
+            "action": "newRoad",
+            "note": "Laajempi tarkistus vie enemmän työtä. Samantyyppiset virheet löytyvät kerralla."
+          }
+        ]
+      }
+    },
+    {
+      "id": "defence",
+      "stage": 1,
+      "base": {
+        "title": "Lausunto pyydetään heti.",
+        "question": "Puolustusvoimille tarvitaan voimalapaikat ja enimmäiskorkeus. Lähetätkö nykyisen suunnitelman vai teetkö samalla suppeamman vertailuvaihtoehdon?",
+        "art": "radar",
+        "speaker": "Hankepäällikkö",
+        "options": [
+          {
+            "label": "Lähetetään nykyinen suunnitelma",
+            "action": "commission",
+            "note": "Puolustusvoimat voi puoltaa, vastustaa tai vaatia VTT:n selvityksen."
+          },
+          {
+            "label": "Tehdään myös suppeampi vaihtoehto",
+            "action": "rework",
+            "note": "Vertailu vie kuukauden. Sekään ei takaa puoltavaa lausuntoa."
+          }
+        ]
+      }
+    },
+    {
+      "id": "initiative",
+      "stage": 1,
+      "base": {
+        "title": "Kylä kuulee kuitenkin.",
+        "speaker": "Kunnan kaavoittaja",
+        "art": "planner",
+        "question": "Kaava-aloite on valmis. Asukkaat haluavat nähdä suunnitelman. Pidätkö kyläillan ennen aloitteen jättämistä vai vasta kun kunta aloittaa valmistelun?",
+        "options": [
+          {
+            "label": "Tavataan asukkaat ensin",
+            "action": "smaller",
+            "note": "Palaute ehtii mukaan aloitteeseen."
+          },
+          {
+            "label": "Jätetään aloite ensin",
+            "action": "explain",
+            "note": "Tilaisuudessa voidaan esitellä kunnan päättämä työohjelma."
+          }
+        ]
+      }
+    },
+    {
+      "id": "surveys",
+      "stage": 1,
+      "base": {
+        "title": "Kaksi tarjousta, kaksi kevättä.",
+        "speaker": "YVA-konsultti",
+        "art": "ecologist",
+        "question": "YVA-konsulttien tarjoukset ovat 55 000 € tällä maastokaudella tai 38 000 € seuraavalla. Työn sisältö on sama. Maksatko aikaisemmasta valmistumisesta vai säästätkö ja hyväksyt noin vuoden viiveen?",
+        "options": [
+          {
+            "label": "55 000 €: työ alkaa tällä kaudella",
+            "action": "now",
+            "note": "Kalliimpi YVA-konsultti aloittaa nyt. Hanke etenee aiemmin."
+          },
+          {
+            "label": "38 000 €: työ alkaa ensi kaudella",
+            "action": "nextSeason",
+            "note": "Sama työn sisältö halvemmalla. YVA ja kaavavalmistelu viivästyvät noin vuoden."
+          }
+        ]
+      }
+    },
+    {
+      "id": "programme",
+      "stage": 1,
+      "base": {
+        "title": "Kaikki vaikutukset samalle kartalle.",
+        "question": "YVA-ohjelman lausunnossa pyydetään tarkastelua tuulivoimasta, paneelialueista ja sähkönsiirrosta yhdessä. Käyttekö rajaukset läpi yhteisessä työpajassa vai konsulttien kirjallisena tarkistuksena?",
+        "art": "documents",
+        "speaker": "Yhteysviranomainen",
+        "options": [
+          {
+            "label": "Pidetään yhteinen työpaja",
+            "action": "workshop",
+            "note": "Eri alojen asiantuntijat sovittavat tarkastelut yhteen."
+          },
+          {
+            "label": "Kootaan kirjallinen tarkistus",
+            "action": "written",
+            "note": "Samat vaikutukset käsitellään, mutta erilliset vastaukset pitää yhdistää."
+          }
+        ]
+      }
+    },
+    {
+      "id": "research",
+      "stage": 1,
+      "base": {
+        "title": "Rahoittaisitko tutkimusta?",
+        "speaker": "Tutkimusryhmä",
+        "art": "reindeer",
+        "question": "Valtakunnallinen lajiseuranta etsii rahoittajia. Tulokset julkaistaan kaikille vasta ehdotusvaiheessa. Hankkeen omat selvitykset tarvitaan silti.",
+        "options": [
+          {
+            "label": "Osallistutaan rahoitukseen",
+            "action": "fund",
+            "note": "Rahoitus tukee yleistä tutkimusta. Suotuisaa tulosta ei luvata."
+          },
+          {
+            "label": "Odotetaan julkisia tuloksia",
+            "action": "observe",
+            "note": "Sama tieto tulee myös ilman rahoitusosuutta."
+          }
+        ]
+      }
+    },
+    {
+      "id": "nature",
+      "stage": 2,
+      "base": {
+        "title": "Sääksi lentää tästä.",
+        "speaker": "Luontoasiantuntija",
+        "art": "osprey",
+        "question": "{countCap} voimalaa osuu sääksen pesän ja kalavesien väliselle lentoreitille. Voit poistaa ne tai selvittää, riittääkö siirto alueen toiselle reunalle.",
+        "options": [
+          {
+            "label": "Poistetaan {count} voimalaa",
+            "action": "avoid",
+            "note": "Voimaloita jää vähemmän, mutta tämä lentoreitti väistetään."
+          },
+          {
+            "label": "Siirretään voimalat reunalle",
+            "action": "relocate",
+            "note": "Paikat säilyvät vain, jos uusi sijoittelu todella välttää reitin."
+          }
+        ]
+      },
+      "solar": {
+        "title": "Sammakko ehti ensin.",
+        "speaker": "Luontoasiantuntija",
+        "art": "frog",
+        "question": "Kahdeksan hehtaaria on viitasammakon lisääntymisalueen vieressä. Voit jättää sen pois tai tutkia, riittääkö ojituksen muuttaminen.",
+        "options": [
+          {
+            "label": "Jätetään kahdeksan hehtaaria pois",
+            "action": "avoid",
+            "note": "Paneelialue pienenee. Herkän alueen vesitalous säilytetään."
+          },
+          {
+            "label": "Muutetaan ojitussuunnitelmaa",
+            "action": "relocate",
+            "note": "Pinta-ala säilyy vain, jos vesitalous saadaan turvattua."
+          }
+        ]
+      }
+    },
+    {
+      "id": "solarNature",
+      "stage": 2,
+      "base": {
+        "title": "Viitasammakko jäi paneelikenttään.",
+        "question": "Paneelialueen 8 ha:n osassa on viitasammakon lisääntymispaikka. Jätätkö osan vesitalouksineen rauhaan vai selvitätkö vaihtoehdot ja haetko tarvittaessa poikkeuslupaa?",
+        "art": "frog",
+        "speaker": "Luontoasiantuntija",
+        "options": [
+          {
+            "label": "Rajataan 8 ha paneelien ulkopuolelle",
+            "action": "solarAvoid",
+            "note": "Paneelialue pienenee. Lisääntymispaikka ja sen vesitalous säilyvät."
+          },
+          {
+            "label": "Selvitetään poikkeusluvan edellytykset",
+            "action": "solarStudy",
+            "note": "Lupaa ei luvata. Selvitys vie 6 kk; kielteinen ratkaisu pakottaa pienentämään."
+          }
+        ]
+      }
+    },
+    {
+      "id": "noise",
+      "stage": 2,
+      "base": {
+        "title": "Naapuri tuli melukartalle.",
+        "speaker": "Melumallintaja",
+        "art": "consultant",
+        "question": "Naapuriin suunnitellaan toista tuulihanketta. Yhteinen melulaskenta ylittää 40 dB asuin- ja lomarakennusten kohdalla. Siirrätkö {count} voimalaa vai ajatko niitä hiljaisemmin?",
+        "options": [
+          {
+            "label": "Siirretään {count} voimalaa kauemmas",
+            "action": "moveNoise",
+            "note": "Määrä säilyy. Uudet paikat mallinnetaan uudelleen."
+          },
+          {
+            "label": "Valitaan hiljaisempi ajotapa",
+            "action": "quietNights",
+            "note": "Melu vähenee. Tuotanto pienenee, nimellisteho pysyy samana."
+          }
+        ]
+      },
+      "solar": {
+        "title": "Paneelit näkyvät tupaan.",
+        "speaker": "Naapuri",
+        "art": "cottage",
+        "question": "Naapuri näkee paneelikentän suoraan olohuoneestaan. Reunaan voi jättää puustoa tai paneelit voi sijoittaa alemmas maastoon.",
+        "options": [
+          {
+            "label": "Jätetään puustoinen suojavyöhyke",
+            "action": "moveNoise",
+            "note": "Reunasta jää neljä hehtaaria paneelien ulkopuolelle."
+          },
+          {
+            "label": "Siirretään paneelit alemmaksi",
+            "action": "quietNights",
+            "note": "Pinta-ala säilyy, mutta matala kohta tarvitsee tarkemman kuivatussuunnitelman."
+          }
+        ]
+      }
+    },
+    {
+      "id": "height",
+      "stage": 2,
+      "base": {
+        "title": "Taivaallakin on rajat.",
+        "speaker": "Ilmailuasiantuntija",
+        "art": "radar",
+        "question": "{countCap} voimalaa ylittää lentoaseman lentoesterajapinnan. Siirrätkö ne sopivammalle alueelle vai selvitätkö Finavian kautta, voidaanko nykyiset paikat silti hyväksyä?",
+        "options": [
+          {
+            "label": "Selvitetään nykyisten paikkojen kelpoisuus",
+            "action": "lower",
+            "note": "Esiselvitys vie aikaa. Paikat voivat säilyä tai {count} voimalaa jäädä pois; luvan ratkaisee Traficom."
+          },
+          {
+            "label": "Siirretään {count} voimalaa",
+            "action": "moveHeight",
+            "note": "Korkeus ja määrä säilyvät. Uudet paikat, tiet ja vaikutukset selvitetään."
+          }
+        ]
+      },
+      "solar": {
+        "title": "Vesi valitsee reittinsä.",
+        "speaker": "Vesiasiantuntija",
+        "art": "wetland",
+        "question": "Rankkasateen vedet valuvat pellolta naapurille. Paneelikenttä tarvitsee uuden vesienhallintaratkaisun.",
+        "options": [
+          {
+            "label": "Varataan neljä hehtaaria vesille",
+            "action": "lower",
+            "note": "Paneelipinta-ala pienenee. Vesi viivytetään omalla alueella."
+          },
+          {
+            "label": "Rakennetaan salaojat ja tasausallas",
+            "action": "moveHeight",
+            "note": "Paneelialue säilyy. Suunnitelma tarkistetaan virtaamalaskelmalla."
+          }
+        ]
+      }
+    },
+    {
+      "id": "solarWater",
+      "stage": 2,
+      "base": {
+        "title": "Vanha vesienkäsittely jatkuu.",
+        "question": "Turvetuotanto on päättynyt, mutta vesienkäsittelyrakenteita ei saa vielä purkaa. 10 ha aurinkoalueesta jää niiden alle. Jätätkö sen kaavasta pois vai odotatko tarkkailua ja ratkaisua?",
+        "art": "wetland",
+        "speaker": "Vesiasiantuntija",
+        "options": [
+          {
+            "label": "Jätetään 10 ha pois paneelialueesta",
+            "action": "wetland",
+            "note": "Jälkihoito jatkuu. Muu paneelialue voidaan suunnitella eteenpäin."
+          },
+          {
+            "label": "Odotetaan tarkkailua ja viranomaisratkaisua",
+            "action": "waterStudy",
+            "note": "Lisäaikaa 6 kk. Alue voi säilyä tai osoittautua myös linnustolle tärkeäksi."
+          }
+        ]
+      }
+    },
+    {
+      "id": "opinions",
+      "stage": 2,
+      "base": {
+        "title": "Postilaatikossa on kylä.",
+        "question": "Kaavaluonnoksesta tuli paljon kielteisiä mielipiteitä. Samat maisema- ja meluhuolet toistuvat. Järjestätkö pienryhmäillat vai julkaisetko havainnekuvat ja vastaukset verkossa?",
+        "art": "cottage",
+        "speaker": "Kunnan kaavoittaja",
+        "options": [
+          {
+            "label": "Järjestetään pienryhmäillat",
+            "action": "illustrate",
+            "note": "Kuullaan myös paikallisia havaintoja. Valmisteluun kuluu kuukausi."
+          },
+          {
+            "label": "Julkaistaan kuvat ja vastaukset",
+            "action": "respond",
+            "note": "Kaikki kysymykset käsitellään. Pelkkä verkkojulkaisu ei välttämättä rauhoita keskustelua."
+          }
+        ]
+      }
+    },
+    {
+      "id": "feedback",
+      "stage": 2,
+      "base": {
+        "title": "Aita katkaisee yhteyden.",
+        "question": "Luonnonvarakeskus ja Metsähallitus kiinnittävät huomiota paneeliaitojen ja tuulialueen yhteiseen estevaikutukseen. Avataanko leveä kulkuyhteys vai tiivistetäänkö paneelit erillisiin lohkoihin?",
+        "art": "reindeer",
+        "speaker": "Luontoasiantuntija",
+        "options": [
+          {
+            "label": "Varataan 6 ha kulkuyhteydelle",
+            "action": "removeEdge",
+            "note": "Paneelialue pienenee. Yhteyden toimivuus osoitetaan arvioinnissa."
+          },
+          {
+            "label": "Tiivistetään paneelit erillisiin lohkoihin",
+            "action": "answer",
+            "note": "Pinta-ala säilyy. Suunnittelu tarkentuu ja lohkojen väliin jätetään toimiva yhteys."
+          }
+        ]
+      }
+    },
+    {
+      "id": "natura",
+      "stage": 3,
+      "base": {
+        "title": "Odotetaanko vielä tutkimusta?",
+        "speaker": "Luontoasiantuntija",
+        "art": "documents",
+        "question": "Yleinen {species} tutkimus voi auttaa säilyttämään herkän reunan. Nykyinen tieto puoltaa pienennystä. Odotatko tulosta? Haitallinen tulos voi osoittaa koko jäljelle jäävän sijoittelun kelpaamattomaksi.",
+        "options": [
+          {
+            "label": "Rajataan reuna ja päivitetään arvio",
+            "action": "updateNatura",
+            "note": "Rajataan herkkä osa ja arvioidaan vaikutukset nykyisellä tiedolla."
+          },
+          {
+            "label": "Odotetaan tutkimuksen tuloksia",
+            "action": "keepNatura",
+            "note": "Odotus vie aikaa. Hyvä tulos voi säästää pienennyksen; huono voi estää tämän sijoittelun."
+          }
+        ]
+      }
+    },
+    {
+      "id": "leases",
+      "stage": 3,
+      "base": {
+        "title": "Arvio on vanhempi kuin suunnitelma.",
+        "question": "Sijoittelu muuttui selostuksen jälkeen. Viranomainen pyytää varmistamaan perustellun päätelmän ajantasaisuuden. Päivitätkö melu- ja luontotarkastelut vai perusteletko, miksi muutos on vähäinen?",
+        "art": "documents",
+        "speaker": "YVA-konsultti",
+        "options": [
+          {
+            "label": "Päivitetään muuttuneiden alueiden arvio",
+            "action": "renew",
+            "note": "Lisäaikaa 2 kk. Myös Natura-arvio täydennetään, jos vaikutukset muuttuvat."
+          },
+          {
+            "label": "Perustellaan aiemman arvioinnin riittävyys",
+            "action": "keepLease",
+            "note": "Jos muutos on olennainen, vanha arvio ei riitä. Päätösaineisto voi jäädä puutteelliseksi."
+          }
+        ]
+      }
+    },
+    {
+      "id": "hearing",
+      "stage": 3,
+      "base": {
+        "title": "Yksi yhteys puuttuu vielä.",
+        "question": "Lausunnossa pyydetään selventämään, kuka toteuttaa luontohaittojen lievennykset ja miten niiden toimivuus varmistetaan. Täydennättekö suunnitelman itse vai sovitteko sisällön yhteisessä neuvottelussa?",
+        "art": "authority",
+        "speaker": "Ympäristöviranomainen",
+        "options": [
+          {
+            "label": "Täydennetään vastuut ja toteutustapa",
+            "action": "supplement",
+            "note": "Toimet kirjoitetaan toteuttamiskelpoisiksi ennen hyväksymistä."
+          },
+          {
+            "label": "Pidetään rajattu viranomaisneuvottelu",
+            "action": "justify",
+            "note": "Yhteinen käsittely vie kuukauden ja selventää vaatimukset."
+          }
+        ]
+      }
+    },
+    {
+      "id": "proposal",
+      "stage": 3,
+      "base": {
+        "title": "Vielä se yksi näkymä.",
+        "speaker": "Kunnan kaavoittaja",
+        "art": "planner",
+        "question": "Kaavaehdotuksesta muistutetaan tärkeän maiseman vuoksi. Voit rajata hankkeen reunaa tai perustella nykyisen ratkaisun havainnekuvilla.",
+        "options": [
+          {
+            "label": "Rajataan maiseman puoleista reunaa",
+            "action": "trim",
+            "note": "Yksi voimala jää pois. Muutos viedään päätösaineistoon."
+          },
+          {
+            "label": "Perustellaan nykyinen sijoittelu",
+            "action": "defend",
+            "note": "Kaava ratkaistaan selvitysten ja vastineiden perusteella."
+          }
+        ]
+      },
+      "solar": {
+        "title": "Vielä se yksi näkymä.",
+        "speaker": "Kunnan kaavoittaja",
+        "art": "planner",
+        "question": "Kaavaehdotuksesta muistutetaan avoimen peltomaiseman vuoksi. Voit pienentää reunaa tai perustella nykyisen rajauksen havainnekuvilla.",
+        "options": [
+          {
+            "label": "Jätetään neljä hehtaaria reunasta pois",
+            "action": "trim",
+            "note": "Pinta-ala pienenee. Muutos viedään päätösaineistoon."
+          },
+          {
+            "label": "Perustellaan nykyinen rajaus",
+            "action": "defend",
+            "note": "Kaava ratkaistaan selvitysten ja vastineiden perusteella."
+          }
+        ]
+      }
+    }
+  ],
+  "external": [
+    {
+      "id": "external-0",
+      "kind": "external",
+      "title": "Omistaja lopettaa hankekehityksen.",
+      "art": "finance",
+      "body": "Hankeyhtiön omistaja vetäytyy uusien hankkeiden kehittämisestä. Myyntiä yritetään, mutta jatkajaa ei löydy. Maaehdot eivät olleet tämän päätöksen syy."
+    },
+    {
+      "id": "external-1",
+      "kind": "external",
+      "title": "Kunta sanoi ei.",
+      "art": "authority",
+      "body": "Kunta päättää olla aloittamatta tämän alueen kaavoitusta. Myöskään pienempi vaihtoehto ei saa tukea. Hyväkään aloite ei velvoita kuntaa kaavoittamaan."
+    },
+    {
+      "id": "external-2",
+      "kind": "external",
+      "title": "Reittiä ei löydy.",
+      "art": "substation",
+      "body": "Verkon jatkoselvitys sulkee myös varavaihtoehdon. Toteuttamiskelpoista liittymistä ei saada sovittua. Omistaja ei jatka hanketta ilman sähköverkkoon pääsyä."
+    },
+    {
+      "id": "external-3",
+      "kind": "external",
+      "title": "Rahoittaja vetäytyi.",
+      "art": "finance",
+      "body": "Rahoittaja lopettaa uusien hankkeiden rahoituksen muuttuneen markkinatilanteen vuoksi. Korvaavaa rahoittajaa ei löydy. Tämä hanke päättyy, vaikka aineisto olisi kunnossa."
+    }
+  ]
+}

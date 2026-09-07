@@ -1,0 +1,64 @@
+{
+  "version": "swipe-2",
+  "seedsPerStrategy": 3000,
+  "totalRuns": 9000,
+  "strategies": {
+    "random": {
+      "external": 1045,
+      "choices": 943,
+      "ready": 1012,
+      "minDecisions": 2,
+      "maxDecisions": 18,
+      "stageExternals": [
+        261,
+        267,
+        261,
+        256
+      ],
+      "modes": {
+        "wind": 0,
+        "solar": 0,
+        "hybrid": 3000
+      }
+    },
+    "careful": {
+      "external": 1045,
+      "choices": 0,
+      "ready": 1955,
+      "minDecisions": 2,
+      "maxDecisions": 18,
+      "stageExternals": [
+        261,
+        267,
+        261,
+        256
+      ],
+      "modes": {
+        "wind": 0,
+        "solar": 0,
+        "hybrid": 3000
+      }
+    },
+    "risky": {
+      "external": 1045,
+      "choices": 1627,
+      "ready": 328,
+      "minDecisions": 2,
+      "maxDecisions": 18,
+      "stageExternals": [
+        261,
+        267,
+        261,
+        256
+      ],
+      "modes": {
+        "wind": 0,
+        "solar": 0,
+        "hybrid": 3000
+      }
+    }
+  },
+  "failures": [],
+  "mode": "hybrid",
+  "randomWithinTarget": true
+}

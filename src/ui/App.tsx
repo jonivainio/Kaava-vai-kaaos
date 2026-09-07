@@ -1,598 +1,481 @@
-import { lazy, Suspense, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import {
-  createCampaign,
-  currentCampaignCard,
-  applyCampaignChoice,
-  previewCampaignChoice,
-  waitCampaign,
-  waitingMonths,
-  physical,
+  createGame,
+  currentDecision,
+  choose,
+  continueStory,
+  token,
+  serializeGame,
+  restoreGame,
   STAGES,
-  serializeCampaign,
-  restoreCampaign,
-  campaignPack,
-} from "../campaign";
-import type { Campaign } from "../campaign";
-import type { Mode, RunState, Side } from "../engine";
-import { Art, CardView } from "./CardView";
+} from "../game";
+import type { Game, Mode, Side } from "../game";
+import { SwipeCard } from "./SwipeCard";
+import { Score } from "./Score";
+import { AssetHud, AssetIcon } from "./AssetHud";
+import {
+  readSaved,
+  saveCurrent,
+  recovery,
+  tutorialDone,
+  markTutorialDone,
+  exportText,
+  requestGameFullscreen,
+} from "./gameStorage";
 import Updates from "./Updates";
-import { downloadText, readGame, readRecovery, saveGame } from "./storage";
-const Devtools = import.meta.env.DEV ? lazy(() => import("./Devtools")) : null;
-const fmt = (n: number) =>
-  n.toLocaleString("fi-FI", { maximumFractionDigits: 1 });
-const MODE_NAMES = { wind: "Tuuli", solar: "Aurinko", hybrid: "Hybridi" };
-const JOB_NAMES: Record<string, string> = {
-  grid_initial: "Liittymän esiselvitys",
-  ecology_surveys: "Hankkeen luontoselvitykset",
-  groundwater_study: "Vesitalouden vaikutusselvitys",
-  wind_measurement: "Tuulimittaus",
-  municipality_decision: "Kunnan valmistelupäätös",
-  rtb_permits: "Rakentamisvaiheen lupakäsittely",
-};
-const stageLabel = (game: Campaign, stage: number) =>
-  !game.run.site.yvaRequired && stage === 2
-    ? "Vaikutusselvitysten ohjelma"
-    : !game.run.site.yvaRequired && stage === 3
-      ? "Vaikutusselvitykset ja kaavaluonnos"
-      : STAGES[stage];
-export function Stats({ run }: { run: RunState }) {
-  const d = physical.getDerivedStats(run);
-  return (
-    <>
-      <div className="assets">
-        {run.mode !== "solar" && (
-          <div>
-            <span className="asset-label">Tuuli</span>
-            <strong>
-              {d.windCount}
-              <small> kpl</small>
-              <i> / </i>
-              {d.windHeightCapM}
-              <small> m</small>
-              <i> / </i>
-              {d.windCompatible ? fmt(d.windMWac) : "Avoin"}
-              <small> MW</small>
-            </strong>
-            <span>
-              {fmt(d.windExternalKm)} km liittymä{" "}
-              {run.mode === "hybrid" ? "· yhteinen" : ""}
-            </span>
-          </div>
-        )}
-        {run.mode !== "wind" && (
-          <div>
-            <span className="asset-label">Aurinko</span>
-            <strong>
-              {fmt(d.solarHa)}
-              <small> ha</small>
-            </strong>
-            <span>
-              {fmt(d.solarExternalKm)} km liittymä{" "}
-              {run.mode === "hybrid" ? "· yhteinen" : ""}
-            </span>
-          </div>
-        )}
-      </div>
-      <div className="meters">
-        {(
-          [
-            ["budget", "Budjetti"],
-            ["trust", "Luottamus"],
-            ["quality", "Selvitysvalmius"],
-            ["patience", "Kärsivällisyys"],
-          ] as const
-        ).map(([key, label]) => (
-          <div key={key} className={run.resources[key] < 20 ? "low" : ""}>
-            <div>
-              <span>{label}</span>
-              <b>{run.resources[key]}</b>
-            </div>
-            <div
-              className="meter"
-              role="meter"
-              aria-label={label}
-              aria-valuenow={run.resources[key]}
-              aria-valuemin={0}
-              aria-valuemax={100}
-            >
-              <i style={{ width: `${run.resources[key]}%` }} />
-            </div>
-          </div>
-        ))}
-      </div>
-    </>
-  );
-}
-function Report({ game }: { game: Campaign }) {
-  const d = physical.getDerivedStats(game.run);
-  return (
-    <div className="report">
-      <span className="eyebrow">Hankkeen kehitystulos</span>
-      <h1>
-        {game.ending === "readyToBuild"
-          ? "Valmis seuraavaan vaiheeseen."
-          : "Hanke päättyi tähän."}
-      </h1>
-      <p>{game.endingDetail}</p>
-      <dl>
-        <div>
-          <dt>Kaava hyväksytty</dt>
-          <dd>{game.facts.planAdopted ? "Kyllä" : "Ei"}</dd>
-        </div>
-        <div>
-          <dt>Rakentamisvalmius</dt>
-          <dd>{game.facts.readyToBuild ? "RtB" : "Ei saavutettu"}</dd>
-        </div>
-        <div>
-          <dt>Tuulivoimalat</dt>
-          <dd>
-            {game.initial.windCount} → {d.windCount} kpl
-          </dd>
-        </div>
-        <div>
-          <dt>Aurinkoalue</dt>
-          <dd>
-            {game.initial.solarHa} → {fmt(d.solarHa)} ha
-          </dd>
-        </div>
-        <div>
-          <dt>Liittymä</dt>
-          <dd>
-            {game.initial.uniqueExternalKm} → {fmt(d.uniqueExternalKm)} km
-          </dd>
-        </div>
-        <div>
-          <dt>Aika / päätökset</dt>
-          <dd>
-            {game.run.elapsedMonths} kk / {game.records.length}
-          </dd>
-        </div>
-        <div>
-          <dt>Yleisen tutkimuksen rahoitus</dt>
-          <dd>{fmt(game.research.contributionEUR)} €</dd>
-        </div>
-      </dl>
-      <blockquote>
-        {game.ending === "readyToBuild"
-          ? "Hanke valmistui kehityksestä. Kansiorakenne kestää vielä yhden vaiheen."
-          : "Kaikki hankkeet eivät valmistu. Päätöshistoria sentään valmistui."}
-      </blockquote>
-      <p className="small">
-        RtB tarkoittaa tämän fiktiivisen skenaarion rakentamisvalmiutta.
-        Rakentamista ei ole aloitettu.
-      </p>
-    </div>
-  );
-}
+const modeNames = { wind: "Tuuli", solar: "Aurinko", hybrid: "Hybridi" };
 export default function App() {
-  const [saved, setSaved] = useState(readGame),
-    [recovery, setRecovery] = useState(readRecovery),
-    [game, setGame] = useState<Campaign | null>(null),
-    [mode, setMode] = useState<Mode>("hybrid"),
-    [screen, setScreen] = useState<"menu" | "play" | "details" | "dev">("menu"),
+  const [saved, setSaved] = useState(readSaved),
+    [game, setGame] = useState<Game | null>(null),
+    [screen, setScreen] = useState<"menu" | "play" | "tutorial">("menu"),
+    [mode] = useState<Mode>("hybrid"),
+    [seed, setSeed] = useState(""),
     [error, setError] = useState(""),
-    [notice, setNotice] = useState(""),
-    [seed, setSeed] = useState("");
-  const current = useRef<Campaign | null>(null);
-  function install(s: Campaign) {
+    [settings, setSettings] = useState(false),
+    [info, setInfo] = useState(false),
+    [backup, setBackup] = useState(recovery);
+  const current = useRef<Game | null>(null);
+  const put = (s: Game) => {
     current.current = s;
     setGame(s);
+    setSaved({ ok: true, state: s });
     try {
-      saveGame(s);
-      setSaved({ ok: true, state: s });
-      setRecovery(readRecovery());
+      saveCurrent(s);
+      setBackup(recovery());
       setError("");
     } catch {
       setError(
-        "Tallennus ei onnistunut. Vie pelikerta talteen ennen sulkemista.",
+        "Tallennus ei onnistunut. Voit viedä pelikerran talteen valikosta.",
       );
     }
-  }
-  function start() {
-    const generated =
+  };
+  const start = () => {
+    requestGameFullscreen();
+    const value =
       seed.trim() ||
       Array.from(crypto.getRandomValues(new Uint32Array(2)), (n) =>
         n.toString(36),
       ).join("-");
-    install(
-      createCampaign(
-        generated,
+    put(
+      createGame(
+        value,
         mode,
         saved?.ok ? saved.state.run.projectIdentity.nameId : undefined,
       ),
     );
-    setScreen("play");
-    setNotice("");
-  }
-  function decide(token: string, side: Side) {
+    setScreen(tutorialDone() ? "play" : "tutorial");
+    setSettings(false);
+  };
+  const decide = (expected: string, side: Side) => {
+    const s = current.current;
+    if (!s || token(s) !== expected) return;
     try {
-      const s = current.current;
-      if (!s || s.run.offeredCard?.token !== token) return;
-      const card = currentCampaignCard(s);
-      const next = applyCampaignChoice(s, token, side);
-      install(next);
-      setNotice(
-        card
-          ? `${card.choices[side].label}. ${next.run.offeredOutcomeState?.text ?? ""}`
-          : "",
-      );
+      put(choose(s, expected, side));
     } catch (e) {
-      setError(e instanceof Error ? e.message : String(e));
+      setError(String(e));
     }
-  }
-  const card = game ? currentCampaignCard(game) : null;
-  if (screen === "dev" && Devtools)
-    return (
-      <Suspense fallback={<p>Ladataan työpöytää…</p>}>
-        <Devtools onClose={() => setScreen("menu")} />
-      </Suspense>
-    );
+  };
+  const next = () => {
+    const s = current.current;
+    if (!s) return;
+    try {
+      put(continueStory(s, token(s)));
+    } catch (e) {
+      setError(String(e));
+    }
+  };
+  const c = game ? currentDecision(game) : null,
+    story = game?.stories[0];
+  const ios =
+    typeof navigator !== "undefined" &&
+    /iPhone|iPad|iPod/.test(navigator.userAgent) &&
+    !window.matchMedia("(display-mode: standalone)").matches;
   return (
-    <div className={`app ${screen === "menu" ? "menu-app" : ""}`}>
-      <header className="masthead">
-        <button className="wordmark" onClick={() => setScreen("menu")}>
-          KAAVA <em>vai</em> KAAOS<span>Hankekehitystä kortti kerrallaan</span>
-        </button>
-        <span className="edition">KENTTÄPAINOS / 01</span>
-      </header>
-      {screen === "menu" ? (
-        <main className="menu">
-          <div className="menu-illustration">
-            <Art artKey="substation" />
-            <span className="stamp">
-              MAANVUOKRAUKSESTA
+    <div className="world">
+      <div className={`phone-shell ${screen === "menu" ? "at-menu" : ""}`}>
+        <header className="game-header">
+          <button
+            className="brand"
+            aria-label="Avaa aloitusvalikko"
+            onClick={() => setScreen("menu")}
+          >
+            kaava <i>vai</i> kaaos<span className="brand-dot">✦</span>
+          </button>
+          <button
+            className="menu-dot"
+            aria-label="Avaa pelivalikko"
+            onClick={() => setSettings(true)}
+          >
+            •••
+          </button>
+        </header>
+        {screen === "menu" ? (
+          <main className="start-screen">
+            <div className="start-art" aria-hidden="true">
+              <img
+                src={`${import.meta.env.BASE_URL}art/hybridscape.svg`}
+                alt=""
+              />
+            </div>
+            <div className="game-title">
+              <span>KAAVA</span>
+              <em>vai</em>
+              <span>
+                KAAOS<span className="title-star">✦</span>
+              </span>
+            </div>
+            <p className="start-copy">
+              Yksi hanke. Kaksi vaihtoehtoa.
               <br />
-              RAKENTAMISVALMIUTEEN
-            </span>
-          </div>
-          <section className="intro">
-            <Updates />
-            <p className="eyebrow">Yksi hanke. Kaksi ratkaisua.</p>
-            <h1>
-              Hyvä suunnitelma.
-              <br />
-              <em>Muuttuvat olosuhteet.</em>
-            </h1>
-            <p>
-              Neuvottele maa, sovita vaikutukset ja vie hanke päätöksentekoon.
-              Kaavahyväksynnän jälkeen edessä on vielä rakentamisvalmius.
+              Harvoin helppoja päätöksiä.
             </p>
-            <div className="mode-picker" role="group" aria-label="Hankemuoto">
+            <div
+              className="mode-tabs"
+              role="group"
+              aria-label="Valitse hankemuoto"
+            >
               {(["wind", "solar", "hybrid"] as const).map((m) => (
                 <button
-                  aria-pressed={mode === m}
-                  className={mode === m ? "selected" : ""}
-                  onClick={() => setMode(m)}
                   key={m}
+                  aria-pressed={mode === m}
+                  disabled={m !== "hybrid"}
                 >
-                  {MODE_NAMES[m]}
+                  {m === "wind" ? "↟" : m === "solar" ? "☀" : "↟☀"}
+                  <span>{modeNames[m]}</span>
+                  {m !== "hybrid" && <small>Ei vielä valittavissa</small>}
                 </button>
               ))}
             </div>
             <button className="primary" onClick={start}>
-              Uusi hanke <span>↗</span>
+              Aloita hanke <span>↗</span>
             </button>
-            <button
-              className="secondary"
-              disabled={!saved?.ok}
-              onClick={() => {
-                if (saved?.ok) {
+            {saved?.ok && (
+              <button
+                className="continue-button"
+                onClick={() => {
+                  requestGameFullscreen();
                   current.current = saved.state;
                   setGame(saved.state);
-                  setScreen("play");
-                }
-              }}
+                  setScreen(tutorialDone() ? "play" : "tutorial");
+                }}
+              >
+                Jatka · {saved.state.run.projectIdentity.displayName}
+              </button>
+            )}
+            {saved && !saved.ok && (
+              <div className="error" role="alert">
+                Vanha tai vioittunut tallennus on turvassa.
+                <button
+                  onClick={() =>
+                    exportText(saved.recoverableRaw, "kaava-palautettava.json")
+                  }
+                >
+                  Vie tallennus
+                </button>
+              </div>
+            )}
+            <Updates />
+            <p className="fiction-note">
+              Fiktiivistä hankekehitystä. Ei tositapauksia.
+            </p>
+            {ios && (
+              <p className="install-note">
+                Koko ruutu iPhonella: Jaa → Lisää Koti-valikkoon.
+              </p>
+            )}
+          </main>
+        ) : (
+          game && (
+            <>
+              <AssetHud game={game} onInfo={() => setInfo(true)} />
+              <div className="chapter">
+                <span>
+                  {screen === "tutorial"
+                    ? "PIENI HARJOITUS"
+                    : STAGES[game.stage]}
+                </span>
+                <div aria-label={`Vaihe ${game.stage + 1} / 4`}>
+                  {STAGES.map((s, i) => (
+                    <i key={s} className={i <= game.stage ? "filled" : ""} />
+                  ))}
+                </div>
+              </div>
+              <main
+                className={`play-screen ${game.ending ? "end-screen" : ""}`}
+              >
+                {screen === "tutorial" ? (
+                  <>
+                    <section className="narrative">
+                      <span className="eyebrow">
+                        TÄMÄ EI VIELÄ RATKAISE MITÄÄN
+                      </span>
+                      <h1>Kokeile vetää.</h1>
+                      <p>
+                        Vedä korttia sivulle. Näet vaihtoehdon.
+                        <br />
+                        Päästä irti valitaksesi — tai vedä takaisin.
+                      </p>
+                    </section>
+                    <SwipeCard
+                      key="tutorial"
+                      token="tutorial"
+                      art="planner"
+                      speaker="Kokeilu on ilmainen"
+                      left="Kokeile vasemmalle"
+                      right="Kokeile oikealle"
+                      tutorial
+                      onChoose={() => {
+                        markTutorialDone();
+                        setScreen("play");
+                      }}
+                    />
+                  </>
+                ) : game.ending ? (
+                  <>
+                    <div className={`ending-stamp ${game.ending}`}>
+                      <span>{game.ending === "ready" ? "✦" : "×"}</span>
+                      {game.ending === "ready"
+                        ? "RAKENTAMISVALMIS"
+                        : game.ending === "external"
+                          ? "ULKOINEN ESTE"
+                          : "RATKAISUN SEURAUS"}
+                    </div>
+                    <h1>
+                      {game.ending === "ready" ? (
+                        <>
+                          Kaavasta
+                          <br />
+                          <em>käytäntöön.</em>
+                        </>
+                      ) : (
+                        <>
+                          Tähän päättyi
+                          <br />
+                          <em>tämä hanke.</em>
+                        </>
+                      )}
+                    </h1>
+                    <p className="end-reason">{game.endingReason}</p>
+                    <Score game={game} />
+                    {game.ending === "ready" ? (
+                      <div className="rtb-badge">
+                        RtB <span>Ready to build</span>
+                      </div>
+                    ) : (
+                      <p className="end-caption">
+                        {game.ending === "external"
+                          ? "Tätä estettä eivät valintasi olisi poistaneet."
+                          : "Tässä hankkeessa toinen ratkaisu olisi voinut auttaa."}
+                      </p>
+                    )}
+                    <button
+                      className="primary"
+                      onClick={() => setScreen("menu")}
+                    >
+                      Uusi mahdollisuus <span>↗</span>
+                    </button>
+                  </>
+                ) : story ? (
+                  <>
+                    <section
+                      className="narrative story-narrative"
+                      aria-live="polite"
+                    >
+                      <span className="eyebrow">
+                        {story.kind === "research"
+                          ? "TUTKIMUKSEN TULOS"
+                          : "SILLÄ VÄLIN"}
+                      </span>
+                      <h1>{story.title}</h1>
+                      <p>{story.body}</p>
+                    </section>
+                    <button
+                      className="story-card"
+                      onClick={next}
+                      aria-label="Jatka tarinaa"
+                    >
+                      <img
+                        src={`${import.meta.env.BASE_URL}art/${story.art}.svg`}
+                        alt=""
+                      />
+                      <span>
+                        Jatka <b>→</b>
+                      </span>
+                    </button>
+                  </>
+                ) : c ? (
+                  <>
+                    <section className="narrative" aria-live="polite">
+                      <p
+                        className="previous-result"
+                        data-testid="previous-result"
+                      >
+                        {game.lastOutcome}
+                      </p>
+                      <h1>{c.title}</h1>
+                      <p className="question">{c.question}</p>
+                    </section>
+                    <SwipeCard
+                      key={c.token}
+                      token={c.token}
+                      art={c.art}
+                      speaker={c.speaker}
+                      left={c.choices.left.label}
+                      right={c.choices.right.label}
+                      notes={{
+                        left: c.choices.left.note,
+                        right: c.choices.right.note,
+                      }}
+                      onChoose={decide}
+                    />
+                  </>
+                ) : null}
+              </main>
+              <footer className="project-footer">
+                <span>{game.run.projectIdentity.displayName}</span>
+                <small>{modeNames[game.run.mode]}hanke</small>
+              </footer>
+            </>
+          )
+        )}
+        {error && (
+          <div className="error" role="alert">
+            {error}
+          </div>
+        )}
+        {info && (
+          <div className="modal-backdrop" onClick={() => setInfo(false)}>
+            <section
+              className="sheet"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="numbers-title"
+              onClick={(e) => e.stopPropagation()}
             >
-              Jatka hanketta
-              {saved?.ok && (
-                <small>
-                  {saved.state.run.projectIdentity.displayName} ·{" "}
-                  {saved.state.run.elapsedMonths} kk
-                </small>
-              )}
-            </button>
-            <details className="seed-option">
-              <summary>Pelikerran siemen</summary>
-              <label>
-                Toistettava siemen
+              <button
+                autoFocus
+                className="close"
+                onClick={() => setInfo(false)}
+                aria-label="Sulje lukujen selitykset"
+              >
+                ×
+              </button>
+              <h2 id="numbers-title">Mitä luvut kertovat?</h2>
+              <p>
+                <b>Kokonaiskorkeus</b> on yhden voimalan korkeus maasta lavan
+                ylimpään kärkeen.
+              </p>
+              <p>
+                <b>Yhteisteho</b> on jäljellä olevien voimaloiden
+                nimellistehojen summa. Esimerkiksi 20 × 10 MW = 200 MW. Se ei
+                ole jatkuva tuotanto.
+              </p>
+              <p>
+                <b>Hehtaarit</b> ovat aurinkopaneeleille varattua pinta-alaa.
+              </p>
+              <p>
+                Kuvake tyhjenee, kun tuulivoiman yhteisteho tai aurinkoalue
+                pienenee alun suunnitelmasta.
+              </p>
+            </section>
+          </div>
+        )}
+        {settings && (
+          <div className="modal-backdrop" onClick={() => setSettings(false)}>
+            <section
+              className="sheet"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="menu-title"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                autoFocus
+                className="close"
+                onClick={() => setSettings(false)}
+                aria-label="Sulje pelivalikko"
+              >
+                ×
+              </button>
+              <h2 id="menu-title">Pieni hengähdys.</h2>
+              <button
+                className="secondary"
+                onClick={() => {
+                  setScreen("menu");
+                  setSettings(false);
+                }}
+              >
+                Aloitusvalikko
+              </button>
+              <label className="seed-label">
+                Seuraavan pelin siemen
                 <input
                   value={seed}
                   onChange={(e) => setSeed(e.target.value)}
                   maxLength={100}
-                  placeholder="Arvotaan uuden hankkeen alussa"
+                  placeholder="Arvotaan, jos jätät tyhjäksi"
                 />
               </label>
-            </details>
-            <details className="seed-option">
-              <summary>Tuo tallennettu pelikerta</summary>
-              <input
-                type="file"
-                accept="application/json,.json"
-                aria-label="Tuo pelikerta"
-                onChange={async (event) => {
-                  const file = event.target.files?.[0];
-                  if (!file) return;
-                  const raw = await file.text();
-                  const restored = restoreCampaign(raw);
-                  if (restored.ok) {
-                    install(restored.state);
-                    setScreen("play");
-                  } else setError("Tiedostoa ei voi avata: " + restored.error);
-                }}
-              />
-            </details>
-            {error && (
-              <p className="alert" role="alert">
-                {error}
+              <p className="menu-help">
+                Sama siemen toistaa hankkeen. Nuolinäppäimillä voi myös valita.
               </p>
-            )}
-            <p className="fiction">
-              Fiktiivistä hankekehityssatiiria. Ei yhteyttä todellisiin
-              hankkeisiin tai henkilöihin.
-            </p>
-            {saved && !saved.ok && (
-              <div className="alert" role="alert">
-                <b>Tallennusta ei voi avata tällä versiolla.</b>
-                <p>Alkuperäinen tallennus on säilytetty.</p>
+              {saved?.ok && (
                 <button
+                  className="secondary"
+                  onClick={() => exportText(serializeGame(saved.state))}
+                >
+                  Vie pelikerta
+                </button>
+              )}
+              {backup && (
+                <button
+                  className="secondary"
                   onClick={() =>
-                    downloadText(
-                      saved.recoverableRaw,
-                      "kaava-palautettava.json",
-                    )
+                    exportText(backup, "kaava-aiempi-tallennus.json")
                   }
                 >
-                  Vie alkuperäinen tallennus
+                  Vie aiempi tallennus
                 </button>
-              </div>
-            )}
-            {Devtools && (
-              <button className="text-button" onClick={() => setScreen("dev")}>
-                Kehittäjän työpöytä · prologi ja korttipilotti
-              </button>
-            )}
-            {recovery && (
-              <button
-                className="text-button"
-                onClick={() =>
-                  downloadText(recovery, "kaava-aiempi-palautettava.json")
-                }
-              >
-                Vie aiempi palautettava tallennus
-              </button>
-            )}
-          </section>
-        </main>
-      ) : (
-        game && (
-          <main className="game-layout">
-            <aside className="project-panel">
-              <div className="project-heading">
-                <span className="eyebrow">
-                  {MODE_NAMES[game.run.mode]}hanke
-                </span>
-                <h1>{game.run.projectIdentity.displayName}</h1>
-                <span className="month">
-                  {game.run.elapsedMonths}
-                  <small> hankekuukautta</small>
-                </span>
-              </div>
-              <div className="phase">
-                <b>0{game.stage + 1} / 07</b>
-                <span>{stageLabel(game, game.stage)}</span>
-              </div>
-              <Stats run={game.run} />
-              <nav className="stage-list" aria-label="Hankkeen vaiheet">
-                {STAGES.map((stage, i) => (
-                  <div
-                    key={stage}
-                    className={
-                      i === game.stage
-                        ? "active"
-                        : i < game.stage
-                          ? "complete"
-                          : ""
-                    }
-                  >
-                    <span>{i < game.stage ? "✓" : `0${i + 1}`}</span>
-                    {stageLabel(game, i)}
-                  </div>
-                ))}
-              </nav>
-              <button
-                className="text-button"
-                onClick={() =>
-                  setScreen(screen === "details" ? "play" : "details")
-                }
-              >
-                {screen === "details"
-                  ? "Takaisin korttiin"
-                  : "Hankekansio · selvitykset ja päätökset"}{" "}
-                ↗
-              </button>
-              <button
-                className="text-button"
-                onClick={() =>
-                  downloadText(serializeCampaign(game), "kaava-hanke.json")
-                }
-              >
-                Vie pelikerta
-              </button>
-            </aside>
-            <section className="play-panel">
-              {error && (
-                <div role="alert" className="alert">
-                  {error}
-                </div>
               )}
-              {game.ending && screen !== "details" ? (
-                <>
-                  <Report game={game} />
-                  <button className="primary" onClick={() => setScreen("menu")}>
-                    Takaisin aloitukseen →
-                  </button>
-                  <button
-                    className="text-button"
-                    onClick={() => setScreen("details")}
-                  >
-                    Avaa päätöshistoria
-                  </button>
-                </>
-              ) : screen === "details" ? (
-                <section className="details">
-                  <h2>Hankekansio</h2>
-                  <p className="small">
-                    Siemen: {game.run.seed} · Vaalikausi vaihtuu kuussa{" "}
-                    {game.world.electionMonth}. Budjetti on kehitysrahan
-                    peli-indeksi, ei eurotili. Tutkimuspanos ilmoitetaan
-                    erikseen euroina.
-                  </p>
-                  <h3>Suunnitelman luvut</h3>
-                  <p>
-                    Tuuli{" "}
-                    {fmt(physical.getDerivedStats(game.run).windPlannedMWac)} MW
-                    · tuottoindeksi {game.run.windYieldIndex}. Aurinko{" "}
-                    {fmt(physical.getDerivedStats(game.run).solarMWp)} MWp /{" "}
-                    {fmt(physical.getDerivedStats(game.run).solarMWac)} MWac.
-                    Vientiraja{" "}
-                    {game.run.grid.exportLimitMWac === null
-                      ? "selvitettävä"
-                      : `${game.run.grid.exportLimitMWac} MWac`}
-                    .
-                  </p>
-                  <p className="small">
-                    Pelin aurinkooletus on 0,65 MWp/ha ja DC/AC-suhde 1,25.
-                    Nimellisteho ei tarkoita samanaikaista tuotantoa.
-                  </p>
-                  <h3>Työt</h3>
-                  {game.run.jobs.map((j) => (
-                    <div className="job" key={j.id}>
-                      <b>{JOB_NAMES[j.jobId] ?? "Hankkeen selvitystyö"}</b>
-                      <span>
-                        {j.status === "completed"
-                          ? `Valmis · kk ${j.completedAt}`
-                          : `Käynnissä · valmis kk ${j.dueAt}`}
-                      </span>
-                    </div>
-                  ))}
-                  <h3>Yleinen tutkimus</h3>
-                  <p>
-                    {game.world.species} lajiseuranta · rahoitusosuus{" "}
-                    {fmt(game.research.contributionEUR)} €.{" "}
-                    {game.research.published
-                      ? "Tulokset julkaistu."
-                      : game.research.dueAt
-                        ? `Julkaisu odotettavissa kuussa ${game.research.dueAt}.`
-                        : "Rahoituspäätöstä ei ole vielä tehty."}
-                  </p>
-                  <h3>Tilanneviestit</h3>
-                  {game.notices.map((n, i) => (
-                    <p key={i}>{n}</p>
-                  ))}
-                  <h3>Päätöshistoria</h3>
-                  {game.records.map((r, i) => (
-                    <div className="history-row" key={`${r.cardId}-${i}`}>
-                      <span>{r.month} kk</span>
-                      <span>
-                        <b>
-                          {
-                            campaignPack.cards.find((c) => c.id === r.cardId)
-                              ?.title
-                          }
-                        </b>
-                        <br />
-                        {
-                          campaignPack.cards.find((c) => c.id === r.cardId)
-                            ?.choices[r.side].label
-                        }
-                      </span>
-                    </div>
-                  ))}
-                </section>
-              ) : card ? (
-                <>
-                  <div className="turn-caption">
-                    <span>
-                      PÄÄTÖS {String(game.records.length + 1).padStart(2, "0")}
-                    </span>
-                    <span>← kaksi tapaa edetä →</span>
-                  </div>
-                  <CardView
-                    card={card}
-                    token={game.run.offeredCard!.token}
-                    onChoose={decide}
-                    preview={(side) => {
-                      const p = previewCampaignChoice(game, side);
-                      const before = physical.getDerivedStats(game.run),
-                        changes: string[] = [];
-                      if (p.stats.windCount !== before.windCount)
-                        changes.push(
-                          `Tuuli ${p.stats.windCount - before.windCount} kpl`,
-                        );
-                      if (p.stats.solarHa !== before.solarHa)
-                        changes.push(
-                          `Aurinko ${fmt(p.stats.solarHa - before.solarHa)} ha`,
-                        );
-                      if (p.stats.windMWac !== before.windMWac)
-                        changes.push(`Tuuli ${fmt(p.stats.windMWac)} MW`);
-                      if (p.stats.windHeightCapM !== before.windHeightCapM)
-                        changes.push(`Korkeus ${p.stats.windHeightCapM} m`);
-                      if (p.stats.uniqueExternalKm !== before.uniqueExternalKm)
-                        changes.push(
-                          `Liittymä ${fmt(p.stats.uniqueExternalKm)} km`,
-                        );
-                      return {
-                        budget: p.resources.budget - game.run.resources.budget,
-                        months: p.months,
-                        fatal: !!p.ending && p.ending !== "readyToBuild",
-                        detail: p.detail,
-                        changes,
-                      };
-                    }}
-                    subtitle={
-                      card.id.startsWith("R")
-                        ? `Yleinen ${game.world.species} tutkimus · erillään hankeselvityksistä`
-                        : undefined
+              <label className="import-label">
+                Tuo pelikerta
+                <input
+                  type="file"
+                  accept="application/json,.json"
+                  aria-label="Tuo pelikerta"
+                  onChange={async (e) => {
+                    const f = e.target.files?.[0];
+                    if (!f) return;
+                    const raw = await f.text(),
+                      r = restoreGame(raw);
+                    if (r.ok) {
+                      put(r.state);
+                      setScreen("play");
+                      setSettings(false);
+                    } else {
+                      setError(
+                        "Tätä tallennusta ei voi avata uudessa pelissä. Alkuperäinen tiedosto säilyy.",
+                      );
+                      setBackup(raw);
                     }
-                  />
-                  {notice && (
-                    <p className="outcome" role="status">
-                      {notice}
-                    </p>
-                  )}
-                </>
-              ) : (
-                <div className="waiting">
-                  <Art artKey="consultant" />
-                  <p className="eyebrow">Työt etenevät rinnakkain</p>
-                  <h2>Maastolla on oma kalenterinsa.</h2>
-                  <p>
-                    Seuraava vaihe tarvitsee tilatun selvityksen tuloksen.
-                    Odotetaan {waitingMonths(game)} kuukautta seuraavaan
-                    valmistumiseen tai julkaisuun.
-                  </p>
-                  <button
-                    className="primary"
-                    onClick={() => {
-                      try {
-                        install(waitCampaign(game));
-                      } catch (e) {
-                        setError(String(e));
-                      }
-                    }}
-                  >
-                    Odota {waitingMonths(game)} kk →
-                  </button>
-                </div>
+                  }}
+                />
+              </label>
+              {game && (
+                <button
+                  className="secondary"
+                  onClick={() => {
+                    setScreen("tutorial");
+                    setSettings(false);
+                  }}
+                >
+                  Kokeile ohjausta uudelleen
+                </button>
               )}
             </section>
-          </main>
-        )
-      )}
-      <footer>
-        <span>KAAVA VAI KAAOS</span>
-        <span>Paikallinen yksinpeli · tallentuu tällä laitteella</span>
-      </footer>
+          </div>
+        )}
+      </div>
     </div>
   );
 }

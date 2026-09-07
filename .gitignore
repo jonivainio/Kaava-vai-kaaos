@@ -11,3 +11,4 @@ test-results-offline/
 playwright-report/
 .env
 .env.*
+.deploy/

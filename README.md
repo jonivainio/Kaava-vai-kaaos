@@ -1,66 +1,48 @@
 # Kaava vai kaaos
 
-Paikallinen suomalainen hankekehityskorttipeli: tuuli-, aurinko- tai hybridihanke maanvuokrauksesta kaavahyväksyntään ja RtB:hen. Yksi kortti ja kaksi päätöstä, siemenellinen skenaario, rinnakkaiset selvitykset sekä jatkettava pelikerta.
+**[Avaa peli puhelimella](https://kaava-vai-kaaos.lofty-duck-5676.chatgpt.site)** — Sites-verkkoversio on omistajan yksityinen kokeilu; kirjaudu samalla tilillä. Lähdekoodi: [GitHub](https://github.com/jonivainio/Kaava-vai-kaaos).
 
-Kampanjassa on 76 erikseen kirjoitettua korttia ja seitsemän vaiheen menettely. Onnistunut peli käyttää 55–59 päätöstä. Alkuperäinen 64 kortin pilotti ja 80 nimen pankki on säilytetty. Kehitystilan työpöydällä on pilottikatselin ja 12 päätöksen prologi. Tuotantopelissä ei ole kehittäjän testitiloja.
+Suomalainen hankekehityskorttipeli. Kehitä fiktiivinen hybridihanke maanvuokrauksesta YVA:n ja kaavoituksen kautta rakentamisvalmiuteen. 18 päätöstä, välitarinoita ja 65 mahdollista hybridikohtaamista. Tuuli ja Aurinko ovat valikossa vielä suljettuja. Vanha 64 kortin pilotti ja pitkä kampanja on säilytetty erillisenä vertailuaineistona.
 
-## Käynnistys
+Vedä korttia hiirellä tai sormella. Vedon aikana näet vaihtoehdon ja ennakkotiedon; palauta keskelle peruuttaaksesi. Nuolinäppäimet toimivat myös. Lyhyt tutorial ei tee päätöstä. Voittoruudulla saat pisteet ja selitykset viiveiden, pienennysten ja sijoittelun tiivistämisen vähennyksille.
 
-Node.js 22+ ja pnpm 11:
+Mobiiliselaimessa koko näytön tilaa pyydetään **Aloita hanke** / **Jatka** -eleestä, jos selain tukee sitä. iPhonessa käytä **Jaa → Lisää Koti-valikkoon**. Sivusto toimii myös tavallisessa selainikkunassa. Automaattista fullscreeniä ilman käyttäjän elettä ei voida luvata kaikissa selaimissa.
+
+## Paikallinen käynnistys
+
+Node.js 22+ ja pnpm:
 
 ```sh
 pnpm install --frozen-lockfile
 pnpm dev
 ```
 
-Avaa päätteen paikallinen osoite, tavallisesti http://127.0.0.1:5173. Valitse hankemuoto ja **Uusi hanke**. Käytä painikkeita, vaakavetoa tai nuolinäppäimiä. **Jatka hanketta** palauttaa tallennetun tilanteen arpomatta mitään uudelleen. Hankekansiossa ovat päätöshistoria ja JSON-vienti.
+Avaa päätteen paikallinen osoite, yleensä http://127.0.0.1:5173. Pelivalikosta voi antaa toistettavan siemenen. **Jatka** palauttaa nimen, tilanteen ja keskeneräiset työt arpomatta mitään uudelleen. Tallennus on selaimen localStoragessa; eri laite tai osoite ei jaa sitä. JSON-vienti ja tuonti löytyvät pelivalikosta. Väärän version tallennus säilytetään vientiin. Käytä yhtä pelikertaa yhdessä välilehdessä.
 
-Tallennus on selaimen localStoragessa. Eri portti tai selain käyttää eri tallennusta; siirrä pelikerta JSON-tiedostolla. Virheellistä tallennusta ei muuteta uudeksi peliksi, ja alkuperäisen tekstin voi viedä talteen. Pelaa yhtä pelikertaa yhdessä välilehdessä: samanaikaisia kirjoituksia ei ole koordinoitu.
-
-## Tarkistukset ja build
+## Testit
 
 ```sh
 pnpm test
-pnpm run typecheck
-pnpm run build
+pnpm typecheck
+pnpm build
 pnpm exec playwright install chromium
-pnpm run test:e2e
-pnpm run test:offline
-pnpm run simulate
+pnpm test:e2e
+pnpm test:offline
+node tools/simulate-swipe.mjs 3000 hybrid
+python tools/validate_swipe.py
+python tools/validate_content.py
+python tools/test_pack.py
+python tools/validate_campaign.py
 ```
 
-Build tekee selaimen pelin `dist/`-kansioon sekä erilliset ES-moduulit `dist/engine/kaava-engine.js` ja `dist/campaign/kaava-campaign.js`. Simulaatio käyttää viimeisintä buildia. Molemmat moottorit ovat puhdasta TypeScriptiä ilman Reactia, DOMia, palvelinta tai pelinaikaista LLM:ää.
+Kolme viimeistä Python-komentoa tarvitsevat requirements-content.txt:n riippuvuudet. Build tekee selainpelin dist-kansioon sekä perustan, vanhan kampanjan ja uuden pelin erilliset ES-moduulit. Simulaatio käyttää viimeisintä buildia. Ei palvelinta tai pelinaikaista tekoälyä.
 
-Pythonin sisältötestit omassa ympäristössä:
+## Jatkokehitys
 
-```powershell
-python -m venv .venv
-.venv\Scripts\python -m pip install -r requirements-content.txt
-.venv\Scripts\python tools/validate_content.py
-.venv\Scripts\python tools/test_pack.py
-.venv\Scripts\python tools/validate_campaign.py
-```
+- Aktiivinen sisältö: `content/deck.fi.json` ja `content/encounters.fi.json`. Teksti ei suorita efektejä. Uudet komennot tarvitsevat tyypin, toteutuksen ja testin.
+- [Tilasopimus](docs/TILASOPIMUS_SWIPE.md): determinismi, ajastus, portit, pisteet ja tallennus.
+- [Sisällön uskottavuustarkistus ja lähteet](docs/SISALTOAUDITOINTI_2026-09-08.md).
+- [Testitulokset ja rajoitukset](reports/QA_SWIPE_2026-09-08.md).
+- [Täsmällinen seuraavan työn lähtökohta](NEXT_STEPS.md).
 
-Tässä työympäristössä Python-riippuvuudet ovat projektin `.python-deps`-kansiossa ja Chromium `.playwright`-kansiossa. Ajossa asetettiin vain prosessin `PYTHONPATH` ja `PLAYWRIGHT_BROWSERS_PATH`. Globaaleja asetuksia ei muutettu. Tulokset ja testaamatta jääneet asiat: [QA-raportti](reports/QA_2026-09-07.md).
-
-## Rakenne
-
-- `src/engine`: perustan efektit, fyysiset kohteet, kello, RNG ja tallennus; [tilasopimus 01](docs/TILASOPIMUS_01.md).
-- `src/campaign`: menettely, yleinen tutkimus ja hyväksymisen/RtB:n portit; [kampanjan tilasopimus](docs/TILASOPIMUS_RTB.md).
-- `src/ui`: käyttöliittymä, tallennusadapteri ja kehitystilan sisältökatselin.
-- `tools/build_campaign.mjs`: kampanjan kirjoitettu lähde; tuottaa `content/cards.campaign.fi.json` ja `content/campaign_flow.json`. Efektit eivät synny tekstin tulkinnasta.
-- `tools/build_art.mjs`: 19 alkuperäisen SVG-kuvan lähde; [taiteen tarkistus](docs/TAIDE_JA_QA.md).
-- `tools/build_pwa.mjs`: offline-välimuisti ja päivitys; [paikallinen PWA](docs/PAIKALLINEN_PWA.md).
-
-```ts
-import { createCampaign, previewCampaignChoice, applyCampaignChoice,
-  serializeCampaign, restoreCampaign } from './src/campaign';
-
-let game = createCampaign('valmis-1', 'hybrid');
-const preview = previewCampaignChoice(game, 'left');
-game = applyCampaignChoice(game, game.run.offeredCard!.token, 'left');
-const loaded = restoreCampaign(serializeCampaign(game));
-// Virheessä loaded.recoverableRaw säilytetään vientiä varten.
-```
-
-Lähdekoodin tallentaminen GitHubiin ei julkaise pelisivustoa. Internetjulkaisua ei ole tehty. Työn seuraava lähtökohta: [NEXT_STEPS.md](NEXT_STEPS.md).
+Peli on fiktiota. Kustannukset, käsittelyajat, riskimäärät ja onnistumisprosentit ovat pelisääntöjä, eivät hankkeiden tilastoa tai viranomaisohjeita.

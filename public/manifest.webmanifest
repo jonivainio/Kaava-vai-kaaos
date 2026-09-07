@@ -6,8 +6,10 @@
   "lang":"fi",
   "start_url":"./",
   "scope":"./",
-  "display":"standalone",
-  "background_color":"#eee9de",
-  "theme_color":"#263e35",
+  "display":"fullscreen",
+  "display_override":["fullscreen","standalone"],
+  "orientation":"portrait-primary",
+  "background_color":"#faf5ec",
+  "theme_color":"#281744",
   "icons":[{"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any"},{"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}]
 }

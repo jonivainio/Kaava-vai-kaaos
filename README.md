@@ -1,6 +1,6 @@
 # Kaava vai kaaos
 
-**[Avaa peli puhelimella](https://kaava-vai-kaaos.lofty-duck-5676.chatgpt.site)** — Sites-verkkoversio on omistajan yksityinen kokeilu; kirjaudu samalla tilillä. Lähdekoodi: [GitHub](https://github.com/jonivainio/Kaava-vai-kaaos).
+**[Avaa peli puhelimella](https://kaava-vai-kaaos.joni-vainio.chatgpt.site)** — Sites-verkkoversio on omistajan yksityinen kokeilu; kirjaudu samalla tilillä. Lähdekoodi: [GitHub](https://github.com/jonivainio/Kaava-vai-kaaos).
 
 Suomalainen hankekehityskorttipeli. Kehitä fiktiivinen hybridihanke maanvuokrauksesta YVA:n ja kaavoituksen kautta rakentamisvalmiuteen. 18 päätöstä, välitarinoita ja 65 mahdollista hybridikohtaamista. Tuuli ja Aurinko ovat valikossa vielä suljettuja. Vanha 64 kortin pilotti ja pitkä kampanja on säilytetty erillisenä vertailuaineistona.
 

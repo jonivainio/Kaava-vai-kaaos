@@ -7,10 +7,10 @@
     "dev": "vite --host 127.0.0.1",
     "test": "vitest run",
     "typecheck": "tsc --noEmit",
-    "build": "tsc --noEmit && vite build && node tools/build_pwa.mjs && vite build --config vite.engine.config.ts && vite build --config vite.campaign.config.ts && vite build --config vite.game.config.ts",
+    "build": "tsc --noEmit && vite build && node tools/build_pwa.mjs && vite build --config vite.engine.config.ts && vite build --config vite.campaign.config.ts && vite build --config vite.game.config.ts && vite build --config vite.v5.config.ts",
     "test:e2e": "playwright test",
     "test:offline": "playwright test --config playwright.offline.config.ts",
-    "simulate": "node tools/simulate-swipe.mjs 3000"
+    "simulate": "node tools/simulate-v5.mjs 3000"
   },
   "dependencies": {
     "@fontsource/lilita-one": "^5.3.0",
@@ -22,6 +22,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.63.0",
+    "@types/node": "^22.20.1",
     "@types/react": "^19.2.18",
     "@types/react-dom": "^19.2.7",
     "prettier": "^3.9.6",

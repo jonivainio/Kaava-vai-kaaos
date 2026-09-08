@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import type { Side } from "../game";
+import type { Side } from "../game/v5";
 interface Props {
   token: string;
   art: string;
@@ -9,6 +9,7 @@ interface Props {
   notes?: Record<Side, string>;
   onChoose: (token: string, side: Side) => void;
   tutorial?: boolean;
+  story?: { title: string; body: string; eyebrow: string };
 }
 export function SwipeCard({
   token,
@@ -19,6 +20,7 @@ export function SwipeCard({
   notes,
   onChoose,
   tutorial,
+  story,
 }: Props) {
   const [dx, setDx] = useState(0),
     [exit, setExit] = useState<Side | null>(null);
@@ -53,6 +55,7 @@ export function SwipeCard({
         e.ctrlKey ||
         e.metaKey ||
         e.altKey ||
+        document.querySelector('[role="dialog"]') ||
         ["INPUT", "TEXTAREA", "SELECT", "BUTTON"].includes(
           (e.target as HTMLElement)?.tagName,
         )
@@ -68,7 +71,7 @@ export function SwipeCard({
   }, [token]);
   const side = dx < -12 ? "left" : dx > 12 ? "right" : null;
   return (
-    <div className="swipe-area">
+    <div className={`swipe-area ${story ? "narration-swipe" : ""}`}>
       <div className="card-stack">
         <div
           ref={root}
@@ -77,7 +80,7 @@ export function SwipeCard({
           tabIndex={0}
           role="group"
           aria-roledescription="Pyyhkäistävä kortti"
-          aria-label={`${speaker}. Vasen: ${left}. ${notes?.left ?? ""} Oikea: ${right}. ${notes?.right ?? ""} Voit käyttää myös nuolinäppäimiä.`}
+          aria-label={story ? `${story.title}. Pyyhkäise kumpaan tahansa suuntaan tai käytä nuolinäppäimiä jatkaaksesi.` : `${speaker}. Vasen: ${left}. ${notes?.left ?? ""} Oikea: ${right}. ${notes?.right ?? ""} Voit käyttää myös nuolinäppäimiä.`}
           style={
             !exit
               ? {
@@ -131,12 +134,18 @@ export function SwipeCard({
             setDx(0);
           }}
         >
-          <img
+          {story ? <article className="narration-paper">
+            <span className="eyebrow">{story.eyebrow}</span>
+            <span className="paper-ornament" aria-hidden="true">✦</span>
+            <h1>{story.title}</h1>
+            <p>{story.body}</p>
+            <span className="paper-rule" aria-hidden="true" />
+          </article> : <><img
             src={`${import.meta.env.BASE_URL}art/${art}.svg`}
             alt=""
             draggable={false}
           />
-          <div className="speaker-tag">{speaker}</div>
+          <div className="speaker-tag">{speaker}</div></>}
           {side && (
             <div className={`swipe-bubble ${side}`} aria-live="polite">
               {side === "left" ? left : right}
@@ -150,7 +159,7 @@ export function SwipeCard({
           )}
         </div>
       </div>
-      <div className="choice-hints" aria-hidden="true">
+      {story ? <p className="story-swipe-hint"><span aria-hidden="true">←</span> Pyyhkäise jatkaaksesi <span aria-hidden="true">→</span></p> : <div className="choice-hints" aria-hidden="true">
         <span>
           <b>←</b>
           {left}
@@ -159,9 +168,9 @@ export function SwipeCard({
           {right}
           <b>→</b>
         </span>
-      </div>
+      </div>}
       <p className="drag-instruction">
-        {side
+        {story ? "Molemmat suunnat vievät tarinaa eteenpäin" : side
           ? "Päästä irti valitaksesi · vedä takaisin peruuttaaksesi"
           : "Vedä korttia vasemmalle tai oikealle"}
       </p>

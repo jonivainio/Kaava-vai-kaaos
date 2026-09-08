@@ -22,8 +22,7 @@ test("tuotantopeli toimii repoalihakemistossa ja jatkuu offline-tilassa", async 
     .poll(() =>
       page.evaluate(
         () =>
-          JSON.parse(localStorage.getItem("kaava-vai-kaaos:swipe:2")!).state
-            .cursor,
+          JSON.parse(localStorage.getItem("kaava-vai-kaaos:swipe:2")!).revision,
       ),
     )
     .toBe(1);
@@ -39,9 +38,8 @@ test("tuotantopeli toimii repoalihakemistossa ja jatkuu offline-tilassa", async 
   ).toBe(saved);
   await page.getByTestId("swipe-card").focus();
   await page.keyboard.press("ArrowRight");
-  await expect(
-    page.getByRole("button", { name: "Jatka tarinaa" }),
-  ).toBeVisible();
+  await expect.poll(() => page.evaluate(() => JSON.parse(localStorage.getItem("kaava-vai-kaaos:swipe:2")!).revision)).toBe(2);
+  await expect(page.locator('[role="alert"]')).toHaveCount(0);
 });
 test("odottava päivitys aktivoidaan valikossa, vanha välimuisti poistuu ja tallennus säilyy", async ({
   page,
@@ -64,8 +62,7 @@ test("odottava päivitys aktivoidaan valikossa, vanha välimuisti poistuu ja tal
       .poll(() =>
         page.evaluate(
           () =>
-            JSON.parse(localStorage.getItem("kaava-vai-kaaos:swipe:2")!).state
-              .cursor,
+            JSON.parse(localStorage.getItem("kaava-vai-kaaos:swipe:2")!).revision,
         ),
       )
       .toBe(1);

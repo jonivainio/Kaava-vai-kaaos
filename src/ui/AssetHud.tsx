@@ -1,6 +1,6 @@
 import { useId } from "react";
-import { getDerivedStats } from "../game";
-import type { Game } from "../game";
+import { getDerivedStats } from "../game/v5";
+import type { Game } from "../game/v5";
 export function AssetIcon({
   type,
   ratio = 1,
@@ -76,6 +76,8 @@ export function AssetIcon({
 export function AssetHud({ game, onInfo }: { game: Game; onInfo: () => void }) {
   const d = getDerivedStats(game.run),
     f = (n: number) => n.toLocaleString("fi-FI", { maximumFractionDigits: 1 });
+  const heights = game.run.assets.windSites.filter(site => !site.exclusions.length).map(site => site.totalHeightM);
+  const height = heights.length ? Math.min(...heights) === Math.max(...heights) ? f(heights[0]!) : `${f(Math.min(...heights))}–${f(Math.max(...heights))}` : "0";
   return (
     <section
       className={`asset-hud ${game.run.mode}`}
@@ -99,7 +101,7 @@ export function AssetHud({ game, onInfo }: { game: Game; onInfo: () => void }) {
           </div>
           <div className="number-stat">
             <strong>
-              {d.windHeightCapM}
+              {height}
               <small> m</small>
             </strong>
             <span>Kokonaiskorkeus</span>

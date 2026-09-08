@@ -1,18 +1,23 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   createGame,
   currentDecision,
+  currentStory,
+  endingView,
+  canOpenEpilogue,
+  openEpilogue,
   choose,
   continueStory,
   token,
   serializeGame,
   restoreGame,
   STAGES,
-} from "../game";
-import type { Game, Mode, Side } from "../game";
+} from "../game/v5";
+import type { Game, Mode, Side } from "../game/v5";
 import { SwipeCard } from "./SwipeCard";
 import { Score } from "./Score";
-import { AssetHud, AssetIcon } from "./AssetHud";
+import { AssetHud } from "./AssetHud";
+import { MomentArt } from "./MomentArt";
 import {
   readSaved,
   saveCurrent,
@@ -35,6 +40,8 @@ export default function App() {
     [info, setInfo] = useState(false),
     [backup, setBackup] = useState(recovery);
   const current = useRef<Game | null>(null);
+  const playArea = useRef<HTMLElement | null>(null);
+  useEffect(() => { playArea.current?.scrollTo({ top: 0 }); }, [game?.revision, screen]);
   const put = (s: Game) => {
     current.current = s;
     setGame(s);
@@ -75,9 +82,9 @@ export default function App() {
       setError(String(e));
     }
   };
-  const next = () => {
+  const next = (expected: string) => {
     const s = current.current;
-    if (!s) return;
+    if (!s || token(s) !== expected) return;
     try {
       put(continueStory(s, token(s)));
     } catch (e) {
@@ -85,7 +92,10 @@ export default function App() {
     }
   };
   const c = game ? currentDecision(game) : null,
-    story = game?.stories[0];
+    story = game ? currentStory(game) : null,
+    ending = game ? endingView(game) : null,
+    wait = game?.scenes[0]?.kind === "wait",
+    ended = game?.ending && !game.scenes.length;
   const ios =
     typeof navigator !== "undefined" &&
     /iPhone|iPad|iPod/.test(navigator.userAgent) &&
@@ -188,20 +198,26 @@ export default function App() {
           game && (
             <>
               <AssetHud game={game} onInfo={() => setInfo(true)} />
+              {game.battery.status === "included" && <div className="battery-strip" aria-label="Akkuvarasto">
+                <b>Akku</b><span>Lataus {game.battery.chargeMW.toLocaleString("fi-FI")} MW</span>
+                <span>Purku {game.battery.dischargeMW.toLocaleString("fi-FI")} MW</span>
+                <span>{game.battery.energyMWh.toLocaleString("fi-FI")} MWh</span>
+              </div>}
               <div className="chapter">
                 <span>
                   {screen === "tutorial"
                     ? "PIENI HARJOITUS"
-                    : STAGES[game.stage]}
+                    : STAGES[game.stage - 1]}
                 </span>
-                <div aria-label={`Vaihe ${game.stage + 1} / 4`}>
+                <div aria-label={`Vaihe ${game.stage} / 4`}>
                   {STAGES.map((s, i) => (
-                    <i key={s} className={i <= game.stage ? "filled" : ""} />
+                    <i key={s} className={i < game.stage ? "filled" : ""} />
                   ))}
                 </div>
               </div>
               <main
-                className={`play-screen ${game.ending ? "end-screen" : ""}`}
+                ref={playArea}
+                className={`play-screen ${ended ? "end-screen" : ""} ${story?.kind === "transition" ? "transition-screen" : ""}`}
               >
                 {screen === "tutorial" ? (
                   <>
@@ -215,6 +231,7 @@ export default function App() {
                         <br />
                         Päästä irti valitaksesi — tai vedä takaisin.
                       </p>
+                      <p className="tutorial-story-note">Tarinahetket ovat tekstikortteja. Niissä molemmat suunnat jatkavat tarinaa.</p>
                     </section>
                     <SwipeCard
                       key="tutorial"
@@ -230,44 +247,13 @@ export default function App() {
                       }}
                     />
                   </>
-                ) : game.ending ? (
+                ) : ended && game.ending && ending ? (
                   <>
-                    <div className={`ending-stamp ${game.ending}`}>
-                      <span>{game.ending === "ready" ? "✦" : "×"}</span>
-                      {game.ending === "ready"
-                        ? "RAKENTAMISVALMIS"
-                        : game.ending === "external"
-                          ? "ULKOINEN ESTE"
-                          : "RATKAISUN SEURAUS"}
-                    </div>
-                    <h1>
-                      {game.ending === "ready" ? (
-                        <>
-                          Kaavasta
-                          <br />
-                          <em>käytäntöön.</em>
-                        </>
-                      ) : (
-                        <>
-                          Tähän päättyi
-                          <br />
-                          <em>tämä hanke.</em>
-                        </>
-                      )}
-                    </h1>
-                    <p className="end-reason">{game.endingReason}</p>
+                    <MomentArt kind={game.ending.kind === "win" ? "win" : "loss"} />
+                    <h1>{ending.title}</h1>
+                    <p className="end-reason">{ending.body}</p>
                     <Score game={game} />
-                    {game.ending === "ready" ? (
-                      <div className="rtb-badge">
-                        RtB <span>Ready to build</span>
-                      </div>
-                    ) : (
-                      <p className="end-caption">
-                        {game.ending === "external"
-                          ? "Tätä estettä eivät valintasi olisi poistaneet."
-                          : "Tässä hankkeessa toinen ratkaisu olisi voinut auttaa."}
-                      </p>
-                    )}
+                    {canOpenEpilogue(game) && <button className="secondary" onClick={() => put(openEpilogue(game, token(game)))}>Vapaaehtoinen jälkitarina · akkuosan luovutus</button>}
                     <button
                       className="primary"
                       onClick={() => setScreen("menu")}
@@ -275,41 +261,36 @@ export default function App() {
                       Uusi mahdollisuus <span>↗</span>
                     </button>
                   </>
-                ) : story ? (
+                ) : story?.kind === "transition" ? (
                   <>
+                    <MomentArt kind="transition" stage={story.stage ?? game.stage} />
                     <section
                       className="narrative story-narrative"
                       aria-live="polite"
                     >
                       <span className="eyebrow">
-                        {story.kind === "transition"
-                          ? "SEURAAVA VAIHE"
-                          : story.kind === "finding"
-                            ? "ARVIOINNIN TULOS"
-                            : story.kind === "research"
-                              ? "TUTKIMUKSEN TULOS"
-                              : "SILLÄ VÄLIN"}
+                        SEURAAVA VAIHE
                       </span>
                       <h1>{story.title}</h1>
                       <p>{story.body}</p>
                     </section>
                     <button
-                      className="story-card"
-                      onClick={next}
-                      aria-label="Jatka tarinaa"
+                      className="primary transition-next"
+                      onClick={() => next(token(game))}
+                      aria-label="Siirry seuraavaan vaiheeseen"
                     >
-                      <img
-                        src={`${import.meta.env.BASE_URL}art/${story.art}.svg`}
-                        alt=""
-                      />
-                      <span>
-                        {story.kind === "transition"
-                          ? "Siirry vaiheeseen"
-                          : "Jatka"}{" "}
-                        <b>→</b>
-                      </span>
+                      Siirry vaiheeseen <span>→</span>
                     </button>
                   </>
+                ) : story || wait ? (
+                  <><SwipeCard key={token(game)} token={token(game)} art="" speaker="" left="Jatka tarinaa" right="Jatka tarinaa"
+                    story={story ? { title: story.title, body: story.body, eyebrow: story.result ? "ARVIOINNIN TULOS" : "TARINA JATKUU" }
+                      : { title: "Työt käynnissä", body: "Odota seuraavaan valmistumiseen.", eyebrow: "AIKA ETENEE" }}
+                    onChoose={expected => next(expected)} />
+                    {story?.id === "start" && <details className="owner-goals"><summary>Omistajan lähtötavoite ja jatkoraja</summary>
+                      <p>{game.initial.windCount} voimalaa / {game.initial.windMW} MW, {game.initial.solarHa} ha aurinkoaluetta. Valmistelussa harkitaan lisäksi 100 MW lataus- ja purkutehon, 200 MWh:n akkua.</p>
+                      <p>Jatkoon tarvitaan vähintään {game.initial.minimumWindMW} MW tuulta tai {game.initial.minimumSolarHa} ha aurinkoaluetta sekä {100 * game.initial.minimumScopeRatio} % alkuperäisestä painotetusta laajuustavoitteesta. Tuuli painaa 60 %, aurinko 30 % ja akku 10 %.</p>
+                    </details>}</>
                 ) : c ? (
                   <>
                     <section className="narrative" aria-live="polite">
@@ -321,17 +302,18 @@ export default function App() {
                       </p>
                       <h1>{c.title}</h1>
                       <p className="question">{c.question}</p>
+                      {c.id === "BESS-P4-02" && game.battery.connectionApprovalExpires !== null && <p className="deadline-note">Hyväksyntä voimassa vielä {(game.battery.connectionApprovalExpires - game.calendar.now).toLocaleString("fi-FI")} kk.</p>}
                     </section>
                     <SwipeCard
-                      key={c.token}
-                      token={c.token}
+                      key={token(game)}
+                      token={token(game)}
                       art={c.art}
                       speaker={c.speaker}
-                      left={c.choices.left.label}
-                      right={c.choices.right.label}
+                      left={c.options[0].label}
+                      right={c.options[1].label}
                       notes={{
-                        left: c.choices.left.note,
-                        right: c.choices.right.note,
+                        left: c.options[0].note,
+                        right: c.options[1].note,
                       }}
                       onChoose={decide}
                     />
@@ -380,6 +362,7 @@ export default function App() {
               <p>
                 <b>Hehtaarit</b> ovat aurinkopaneeleille varattua pinta-alaa.
               </p>
+              <p><b>Akku</b>: latausteho ja purkuteho ilmoitetaan megawatteina (MW), varastoitava energia megawattitunteina (MWh). Akun purku ei lisää tuulivoimaloiden nimellistehoa.</p>
               <p>
                 Kuvake tyhjenee, kun tuulivoiman yhteisteho tai aurinkoalue
                 pienenee alun suunnitelmasta.

@@ -1,4 +1,32 @@
-# Työn tila — alueet ja menettelyn rytmi, 8.9.2026
+# V5 valmis paikallisesti — julkaisu tarkistetaan seuraavaksi, 9.9.2026
+
+Aktiivinen peli on `src/game/v5` + `content/v5.fi.json`, sisältö `v5-fi-03ae27238966`, säännöt `v5-rules-1`, tallennus `swipe-v5-1`. V5-käsikirjoitus säilyy ensisijaisena muuttamattomana lähteenä. Kaikki 159 päätöstä, 89 tapahtumaa ja 143 tuloshaaraa on kytketty. UI käyttää v5:tä; tarinat ovat pyyhkäistäviä tekstikortteja, vaiheiden vaihdot omia näkymiään. 61 uutta SVG:tä, yhteensä 82. Vain Hybridi avoinna valikossa.
+
+Toteutettu ja testattu: rinnakkainen kriittisen polun kalenteri, nimistä erillinen maailma, paikkojen ja tapausten pysyvät ID:t, viivästetyt käsittelyt, todelliset sopimusmääräajat ja korvaavat paikat, BESSin luvat/tehot/epilogi, lupavoitto ja 400/200/250/150-pistekirjanpito. Tilasopimus `docs/v5/TILASOPIMUS.md`. Sisältö- ja kuvakartta `reports/v5/content-coverage.json`, haaratulokset `reports/v5/result-branch-tests.json`, K01–K60 ja rajaukset `reports/v5/QA_V5.md`.
+
+Viimeiset tarkistukset: 355/355 TS-testiä (02:02), tyypitys ja build, 17 Python-testiä sekä lähdetuonti/vanhat sisältövalidoinnit. Chromium 9/9 (360/390/430/1163 px, kosketus/peruutus, koko peli ja 3 siirtymän lataus), tuotannon offline/päivitys 2/2. Kuvapilotti, kuusi galleriasivua ja käyttöliittymäkuvat katsottu. Fyysinen puhelin, iOS/Safari, Firefox ja asennettu puhelin-PWA eivät ole testattuja.
+
+Lopullinen 30 000 pelin validointi: kolme politiikkaa samoilla 10 000 uusilla siemenillä, ei suoritusvirheitä. Satunnainen vertailu: voitto 36,47 %, ulkoinen loppu 33,12 %, valintaloppu 28,71 %, laajuusloppu 1,70 %. Varovainen voitti 65,24 %, talouspainotteinen 61,83 %. Alussa arvottu ulkoinen este 33,90 %, ei sama kuin toteutunut loppuluokka. SHA:t ja todelliset nimittäjät simulaatioraporteissa. Vanhojen kehitysajojen löydetyt virheet on korjattu ja säilytetty historiaan.
+
+Käyttäjä on valtuuttanut GitHub-pushin ja julkisen julkaisun samaan Sites-projektiin `appgprj_6a9f15554f248191b0170ac9b997e896`. Access-mode tarkistettu public. Viimeinen toimitusvaihe: commit/push, testatusta buildista version tallennus ja julkaisu, sitten `tools/check-public-v5.mjs` puhtaalla selaimella ilman tunnuksia. Täydennä julkaisutunnisteet ja todellinen tulos `reports/v5/release.json` ja `public-check.json`:iin. Osoite säilyy `https://kaava-vai-kaaos.joni-vainio.chatgpt.site`. Älä väitä julkista koetta tehdyksi ennen sen onnistumista.
+
+Seuraava varsinainen kehitystyö: käyttäjän mobiilikoe ja v5:n toimituksellinen palaute yksittäisten ID:iden avulla. Aloita uusi v5-peli; yhteensopimaton 007-tallenne säilyy vientiin eikä sen vanhaa kortti-indeksiä muunnettu. Työkalut: `/?review-v5` vain kehityksessä, `tools/trace-v5.mjs` ja `tools/simulate-v5.mjs`. Älä tuo vanhoja pelaajatekstejä tai RtB-maalitilaa takaisin v5:n päälle. Erillisten Tuuli-/Aurinko-tilojen avaaminen on jatkotehtävä.
+
+---
+Alla säilytetty historia kuvaa aiempia välitiloja, ei nykyistä työjonoa.
+## Aiempi inventointimerkintä (tilanne ennen yllä kuvattua toteutusta)
+
+Aktiivinen toimeksianto: käyttäjän v5-paketti, ensisijaisena muuttamaton käsikirjoitus hakemistossa `docs/source-v5/KAAVA_VAI_KAAOS_CODEX_v5/`. Aloitusohje, toteutusohje, koko käsikirjoitus, muutoskooste, lähdedokumentti ja K01–K60 on luettu. Paketin eheystarkistus läpäisty. Lähtötilanne puhdas commit `b032765605de236464042a574700b69fe49475a0`; työhaara `codex/v5-content-logic`. Inventointi: `docs/v5/INVENTOINTI.md`.
+
+**Ei vielä valmis eikä julkaistu:** nykyinen UI käyttää edelleen 007-peliä. V5:n 248 tekstisisältöä on tuotu täsmällisesti `tools/import_v5.py`:llä (toistoajo `--check`). Erillinen `docs/v5/SOURCE_AUDIT.json` säilyttää ehdot ja tekstikenttien vastaavuuden. Julkiset v5-tyypit, rinnakkainen työkalenteri, omaisuusmuutokset, maailmasiemenet, menettelyporttien apurit ja uusi pisteytys ovat hakemistossa `src/game/v5`. Koko peliohjaaja, kaikkien 159 päätöksen säännöt ja 89 tapahtuman ehdot, UI-kytkentä, täysi tallennusvalidointi ja kattavuusraportti ovat vielä tehtävinä. Pelkkä tekstituonti ei ole toteutettu ketju.
+
+Varmennettu tässä työssä: lähtöversion 82 testiä, tyypitys/build; v5:n 11 sisältö- ja kalenteritestiä sekä tyypitys ensimmäisten moduulien jälkeen. Myöhemmin lisättyjä world/assets/score/procedure-moduuleja ei vielä testattu. Käyttäytymistestit, 3 000 kehitys-/10 000 erillistä loppusimulaatiosiementä, Pythonin aiemmat sisältötestit ja uudet tuontitestit, 360/390/430 px + desktop, offline/päivitys ja lopullinen build ovat vielä tehtäviä.
+
+Kuusi alkuperäistä SVG-koekuvaa on tehty ja oikeasti katsottu yhdessä 390 px korttileveydellä (`reports/v5/art/pilot-six.png`, `tools/render-v5-art-pilot.mjs`). Kuvat: contract-pages, owner-plan, shared-line, reserve-wetland, lease-renewal, battery-limits. Vaihtelevat lähikuvat, henkilö, maisema, ilmakuva ja laitteisto; jatka tästä monipuolisella aihekohtaisella kuvituksella. Tämä on kuvituksen koe, ei pelin selainhyväksyntä. Sovelluksen kuvituskytkentä ja loput kuvat puuttuvat.
+
+Seuraava toteutus: v5:n case-/work-/outcome-sääntökytkennät täsmällisten ID:iden perusteella, ensin maanvuokrauksen uudet ketjut ja viivästetty tulos, sitten vaiheet 2–4, BESS, määräajat ja lopullinen lupaportti. Älä käytä viiteluetteloa automaattisena jonona. Kaikki lähteen 143 tuloshaaraa tarvitsevat oikeat ehtonsa ja negatiiviset kelpoisuustestit. Sääntökello ei saa käyttää perustan 96 kk lopetusrajaa tai lisätä joka kortista kuukautta. Säilytä nimisiemen ja fyysisten kohteiden pysyvät ID:t. UI siirretään v5:een vasta toimivan kokonaisuuden jälkeen. Julkaise samaan julkiseen Sites-projektiin vasta hyväksytystä lopputuloksesta; käyttäjä on valtuuttanut GitHub-pushin ja julkisen julkaisun.
+
+Alla aiemman julkaistun version vertailutila (ei v5:n ohje):
 
 Aktiivinen peli on src/game, sisältöversio **swipe-fi-007**. Säilytä käyttäjän hyväksymä violetti/vaalea mobiili-ilme. Valikossa vain Hybridi; erilliset Tuuli ja Aurinko odottavat omaa sisältökokeilua. Vanha src/campaign, 64 kortin pilotti ja 80 nimen pankki ovat säilytettyä vertailuaineistoa.
 

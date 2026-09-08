@@ -1,0 +1,39 @@
+TEHTÄVÄ: Integroi Kaava vai kaaos -peliin tämän paketin v5-käsikirjoitus, sen oikeat seurausketjut ja aiheeseen sopivat korttikuvat. Toteuta muutokset olemassa olevaan projektiin ja testaa ne. Älä pysähdy pelkkään suunnitelmaan tai vaihda ainoastaan tekstejä vanhan logiikan päälle.
+
+LUE TÄSSÄ JÄRJESTYKSESSÄ:
+1. Projektin AGENTS.md ja NEXT_STEPS.md sekä paketin 01_CODEX_TOTEUTUSOHJE.md.
+2. KAAVA_VAI_KAAOS_v5_MUUTOSSELOSTE.md.
+3. Koko KAAVA_VAI_KAAOS_TARKISTUSDOKUMENTTI_v5.md vaihe kerrallaan. Tämä on toimeksiannon ensisijainen sisältö, ei keskustelumuisti tai vanha JSON-pakka.
+4. 02_HYVAKSYNTATESTIT.md. Käytä 03_SISALTOINDEKSI.json- ja 04_SISALTOKATTAVUUS.md-tiedostoja kattavuuden tarkistamiseen. Lähteet ja niiden rajat ovat KAAVA_VAI_KAAOS_v5_LAHTEET.md:ssä.
+
+TUNNISTA NYKYINEN TILANNE ENNEN MUUTOKSIA:
+Tarkista työkopion haara, commit, git status, tallennusversio ja nykyiset testit. Säilytä julkaisemattomat muutokseni. Ohjeen vertailucommit on b032765605de236464042a574700b69fe49475a0, mutta älä palauta projektia siihen: paikallinen versio voi olla uudempi. Tarkistetussa repossa aktiivinen peli on src/game; vanha src/campaign ja pilottipakat ovat arkistoa. Säilytä nykyinen violetti/vaalea mobiili-ilme ja toimiva pyyhkäisy.
+
+SISÄLTÖ EI OLE UUSI VAPAA KIRJOITUSTEHTÄVÄ:
+Säilytä v5:n pelaajatekstit, muun muassa käyttäjän suorat muokkaukset. Älä palauta ”herkkä reuna” -ilmauksia, päälle liimattuja loppuvitsejä tai toteutusmetaa pelaajatekstiin. Näytä kortin otsikko, korttiteksti, valinnan pyyhkäisyteksti ja toteutunut vastaus — ei ID:tä, kenttänimiä tai haaran ehtoa. Kirjoita mahdollinen tarpeellinen tekstikorjaus erillisenä ehdotuksena, älä vaihda sisältöä huomaamatta.
+
+ERITYISEN TÄRKEÄT MUUTOKSET:
+- Poista aktiiviset sisällöt UUSI-P1-02, UUSI-P1-10, BESS-P1-04, initiative ja programme. Aloite ja YVA-ohjelma jäävät hankkeen prosessiin. Säilyvät variantit tarvitsevat omat toimintonsa.
+- P3-SOPIMUS on nyt oikea A/B-päätös. EV-YHTEISASEMA tarkoittaa v5:ssä yhteisjohtoliitynnän kariutumista, ei yhteisaseman rakentamista.
+- Toteuta puuttuvien sopimussivujen, oman voimalan väärinkäsityksen, etusijaristiriidan, kariutuvan yhteisliitynnän, selvitysten tilausjärjestyksen, märän varapalstan myönteisen kosteikkoratkaisun sekä loppuvaiheen vuokrasopimusmääräaikojen ketjut.
+- Erottele välitön vastaus, työn valmistuminen ja myöhemmin oikeassa käsittelyvaiheessa tuleva tulos. Tuloksen laji, alue, paikat, lähdepäätös ja valittu ratkaisu pysyvät samoina.
+- Sisältöpankissa on 159 päätöstä/varianttia ja 89 tapahtumaa. Älä näytä kaikkia samalla pelikerralla äläkä ohita tärkeitä jatkoja vanhan 18 päätöksen rajan takia.
+- Rinnakkaisia töitä tai samoja poistettuja paikkoja ei lasketa kahdesti. Tutkimuksen tilaaminen ei luo riskiä tai muuta maailmaa huonommaksi. Selvitystulos voi silti paljastaa todellisen ongelman, joka vaatii ratkaisun.
+- BESS on valinnainen. Sen MW, MWh, lataus- ja purkuteho sekä sen omat ehdot erotetaan tuulesta ja aurinkopinta-alasta. Pois jätetty BESS ei jätä turhia akkutapahtumia tai lupavaatimuksia ydinhankkeeseen.
+- Voitto on hankkeen tarvittavan kaava- ja lupakokonaisuuden valmistuminen vaadittuun lainvoimaiseen tilaan, ei vain kaavahyväksyntä eikä vanhan RtB-tavoitteen koko toteutus-/rahoitusketju. Voiton jälkeen ei enää uutta tappiota.
+- Toteuta v5:n pistejaottelu 400/200/250/150 ja dokumentoi puuttuvien laskentakaavojen kalibrointi. Noin 1/3 ulkoinen tappio, 1/3 valintatappio ja 1/3 voitto on testattava tavoite nimetylle vertailustrategialle, ei kaikkien pelaajien pakotettu lopputulos.
+
+TYÖTAPA:
+Tee ensin nykyisen sisällön ja v5:n ID-kohdistus, sitten tilamallin/ajastuksen välttämättömät muutokset ja edustavat ketjut. Siirrä sen jälkeen loput sisällöt, pisteytys, tallennus ja kuvitus. Säilytä repon SVG-taidelinja: kuuden edustavan kuvan koe-erä ensin, visuaalinen tarkistus normaalissa korttikoossa ja vasta sitten muut aihepäivitykset. Älä rasteroi tekstejä kuviin tai käytä maksullista lisäpalvelua.
+
+PIDÄ TEKNINEN TOTEUTUS JA LÄHDE EROSSA:
+Kirjoita haarojen ehdot ja vaikutukset tyypitetysti; älä suorita Markdownia, käytä evalia tai päättele vaikutusta yksittäisestä sanasta. Kytketyt tunnisteet on viitelista, ei lista automaattisesti peräkkäin näytettävistä tapahtumista. Säilytä determinismi, tapauskohtainen tilahistoria, tallenteiden turvallinen käsittely ja olemassa oleva puhdas TypeScript-moottori.
+
+TESTAA JA RAPORTOI:
+Aja nykyisen projektin testit, tyypitys, build, selaintestit ja offline/päivitystesti sekä paketin K01–K60-hyväksymistestit. Tee jokaiselle relevantille tuloshaaralle testi; tarkista myös puuttuvilla ehdoilla estyvät tapahtumat. Raportoi kaikkien 248 lähde-ID:n kohdistus, valmiit ja keskeneräiset osat, kuva-/tekstinäyttö ja simulaatioiden todelliset luvut sekä siemenet. Pelkkä tiedoston olemassaolo tai onnistunut build ei ole koko tehtävän hyväksyntä.
+
+Puuttuvissa teknisissä yksityiskohdissa valitse lähteen tarkoituksen säilyttävä ratkaisu ja dokumentoi oletus. Tarinan, oikeudellisen merkityksen tai keskeisen pelisäännön ristiriitaa ei saa täyttää hiljaisella arvauksella. Kysy vain aidosti ratkaisematon asia, jatka muuta työtä.
+
+Jos työskentelyraja tulee vastaan, jätä ajettava välitila ja täsmällinen NEXT_STEPS.md, jotta työ jatkuu samasta kohdasta. Älä nimeä osasuoritusta valmiiksi. Noudata nykyistä käyttäjän ja repon commit/push/julkaisuvaltuutusta; ei force-pushia, muiden projektien muutoksia tai keskeneräisen pelin julkaisua.
+
+Aloita inventoinnista ja jatka toteutukseen tämän toimeksiannon puitteissa.

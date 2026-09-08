@@ -1,0 +1,20 @@
+PASS — Toimitusaineiston eheys ja indeksin vastaavuus
+Ensisijainen lähde: KAAVA_VAI_KAAOS_TARKISTUSDOKUMENTTI_v5.md
+SHA-256: 03ae272389667c41412e8fef7a86f091db147aa72fbe6907a54b79661d3003f2
+Yksikäsitteisiä sisältö-ID:itä: 248
+Päätöksiä/variantteja: 159; tapahtumia/tuloksia/loppuja: 89
+Nimettyjä Haara-otsikoita lähteessä: 143
+Pyyhkäisyvalintoja: 318; kaikki tämän v5-version valintatekstit enintään 60 merkkiä
+Vaiheotsikot: 1, 2, 3, 4; täydellisiä interlude-ID:itä: 13
+Viisi poistettua ID:tä eivät ole lähdesisällössä; P3-SOPIMUS on päätös
+Kaikki eksplisiittiset Kytketyt tunnisteet -viitteet löytyvät lähteestä
+Hyväksymistestisuunnitelman rivejä: 60 (EI ajettuja pelitestejä)
+Paketin tiedostotarkistuksia: 10
+Vaihe 1: 20 päätöstä, 9 tapahtumaa
+Vaihe 2: 33 päätöstä, 16 tapahtumaa
+Vaihe 3: 67 päätöstä, 28 tapahtumaa
+Vaihe 4: 39 päätöstä, 36 tapahtumaa
+
+RAJAUS: tämä ei aja pelin TypeScript-moottoria, selaintestejä tai tasapainosimulaatiota.
+Tämä ei todista oikeudellista ajantasaisuutta, seurausketjujen runtime-toimintaa tai kuvituksen laatua.
+Indeksin referenced_ids on tekstiviitejoukko, ei suoritettava tapahtumagraafi.

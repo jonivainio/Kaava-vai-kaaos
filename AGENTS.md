@@ -1,5 +1,7 @@
 # Kaava vai kaaos — pysyvät ohjeet, v2
 
+**Aktiivinen toimeksianto 8.9.2026: v5-integraatio.** `docs/source-v5/KAAVA_VAI_KAAOS_CODEX_v5/01_CODEX_TOTEUTUSOHJE.md` ja v5-käsikirjoitus ovat tämän päivityksen ensisijaiset ohjeet ja sisältölähde. Vanhojen alla olevien 18 kortin, RtB:n, pisteiden tai sävyohjeiden ei saa palauttaa vanhaa sisältöä v5:n päälle. Pelaajakentät säilytetään täsmällisinä; vain käsikirjoituksen sallitut muuttujat täytetään. Käyttäjä pyytää monipuolisia, selvästi toisistaan erottuvia korttigrafiikoita nykyisellä SVG-tyylillä. Lähdeaineistoa ei muokata eikä keskeneräistä v5:tä julkaista.
+
 Toteuta vain aktiivinen toimeksianto. Lue `NEXT_STEPS.md` ja tehtävän tarvitsemat dokumentit; älä lue koko aineistoa joka työssä. Mallin valitsee käyttäjä: älä väitä vaihtaneesi sitä promptin perusteella.
 
 - **Sävy:** surkuhupaisa hankekehityssatiiri, ei koulutusvisaa. Kuiva viranomaiskieli, yllättävät löydöt, suhteettomat pyynnöt, ristiriitaiset ohjeet ja palaavat seuraukset. Myös hyviä uutisia. `docs/SAVY_JA_HUUMORI.md` määrää sävyn.

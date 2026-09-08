@@ -1,0 +1,1194 @@
+[
+  {
+    "event": "EV-SOPIMUSSIVUT",
+    "branch": "b-85eec8a52400",
+    "source": "land-map-versions",
+    "choice": "A",
+    "caseId": "case:missingPages",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-SOPIMUSSIVUT",
+    "branch": "b-aa0f8eae678e",
+    "source": "land-map-versions",
+    "choice": "A",
+    "caseId": "case:missingPages",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-VOIMALALUPAUS",
+    "branch": "b-915a04e1d174",
+    "source": "land-area-explained",
+    "choice": "A",
+    "caseId": "case:promisedTurbine",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-VOIMALALUPAUS",
+    "branch": "b-dd5b71df865f",
+    "source": "land-area-explained",
+    "choice": "A",
+    "caseId": "case:promisedTurbine",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-VOIMALALUPAUS",
+    "branch": "b-a79dc8067a62",
+    "source": "land-area-explained",
+    "choice": "B",
+    "caseId": "case:promisedTurbine",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-VOIMALALUPAUS",
+    "branch": "b-e401599045b9",
+    "source": "land-area-explained",
+    "choice": "A",
+    "caseId": "case:promisedTurbine",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-MAARIITA",
+    "branch": "b-7aa8a3a10b56",
+    "source": "UUSI-P1-MAARIITA",
+    "choice": "B",
+    "caseId": "case:promisedTurbine",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-MAARIITA",
+    "branch": "b-7118d7abb4bc",
+    "source": "UUSI-P1-MAARIITA",
+    "choice": "B",
+    "caseId": "case:promisedTurbine",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-ETUSIJA",
+    "branch": "b-615e4e577439",
+    "source": "UUSI-P1-05",
+    "choice": "A",
+    "caseId": "case:priority",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-ETUSIJA",
+    "branch": "b-08bea42a4eb3",
+    "source": "UUSI-P1-05",
+    "choice": "A",
+    "caseId": "case:priority",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-SELVITYSJARJESTYS",
+    "branch": "b-67a9b9fbfce2",
+    "source": "UUSI-P1-09",
+    "choice": "A",
+    "caseId": "case:studyOrder",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-SELVITYSJARJESTYS",
+    "branch": "b-5998ee107bae",
+    "source": "UUSI-P1-09",
+    "choice": "A",
+    "caseId": "case:studyOrder",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-PV",
+    "branch": "b-4a0d6eae8837",
+    "source": "defence",
+    "choice": "A",
+    "caseId": "case:defence",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-PV",
+    "branch": "b-5e407a863b39",
+    "source": "defence",
+    "choice": "A",
+    "caseId": "case:defence",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-PV",
+    "branch": "b-ca58bedca54c",
+    "source": "UUSI-P2-08",
+    "choice": "A",
+    "caseId": "case:higherDefence",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-PV",
+    "branch": "b-8d3395254c47",
+    "source": "defence",
+    "choice": "A",
+    "caseId": "case:defence",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-68918709f52a",
+    "source": "nature",
+    "choice": "B",
+    "caseId": "case:ospreyFlight",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-4ade28ea1bd9",
+    "source": "nature",
+    "choice": "B",
+    "caseId": "case:ospreyFlight",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-5efc2c49dc54",
+    "source": "nature-reindeer-calving",
+    "choice": "B",
+    "caseId": "case:deerCalving",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-66c5a2bc8029",
+    "source": "nature-reindeer-calving",
+    "choice": "B",
+    "caseId": "case:deerCalving",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-cdff35bbc13e",
+    "source": "nature-reindeer-route",
+    "choice": "B",
+    "caseId": "case:deerCorridor",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-bd9f13e8aa1a",
+    "source": "nature-reindeer-route",
+    "choice": "B",
+    "caseId": "case:deerCorridor",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-de743eda2d5a",
+    "source": "nature-squirrel",
+    "choice": "B",
+    "caseId": "case:squirrelCorridor",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-4e0d5f462d81",
+    "source": "nature-squirrel",
+    "choice": "B",
+    "caseId": "case:squirrelCorridor",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-4fcf688a10dd",
+    "source": "nature-bird-area",
+    "choice": "B",
+    "caseId": "case:birdResting",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-dfb9cc758552",
+    "source": "nature-bird-area",
+    "choice": "B",
+    "caseId": "case:birdResting",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-c90a8ea3a0ee",
+    "source": "UUSI-P3-08",
+    "choice": "B",
+    "caseId": "case:batActivity",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-5201d88c0536",
+    "source": "UUSI-P3-08",
+    "choice": "B",
+    "caseId": "case:batActivity",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-KOTKA",
+    "branch": "b-ab1649e5fd91",
+    "source": "golden-known",
+    "choice": "B",
+    "caseId": "case:goldenTerritory",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-KOTKA",
+    "branch": "b-b0ed9a155239",
+    "source": "golden-known",
+    "choice": "B",
+    "caseId": "case:goldenTerritory",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-PORO",
+    "branch": "b-2eb132beed3b",
+    "source": "herding-pasture",
+    "choice": "B",
+    "caseId": "case:herdingCorridor",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-PORO",
+    "branch": "b-425800cad437",
+    "source": "herding-pasture",
+    "choice": "B",
+    "caseId": "case:herdingCorridor",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-AURINKOLUONTO",
+    "branch": "b-c339b2411a3c",
+    "source": "solarNature",
+    "choice": "B",
+    "caseId": "case:frogWater",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-AURINKOLUONTO",
+    "branch": "b-2ef35a5f72b1",
+    "source": "solarNature",
+    "choice": "B",
+    "caseId": "case:frogWater",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-AURINKOLUONTO",
+    "branch": "b-de743eda2d5a",
+    "source": "solar-squirrel",
+    "choice": "B",
+    "caseId": "case:solarSquirrel",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-AURINKOLUONTO",
+    "branch": "b-6cdf9c3b644d",
+    "source": "solar-squirrel",
+    "choice": "B",
+    "caseId": "case:solarSquirrel",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-AURINKOLUONTO",
+    "branch": "b-685f9c0b4b2f",
+    "source": "solar-bird-area",
+    "choice": "B",
+    "caseId": "case:solarBirds",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-AURINKOLUONTO",
+    "branch": "b-55bffcfacef0",
+    "source": "solar-bird-area",
+    "choice": "B",
+    "caseId": "case:solarBirds",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-BESS-VERKKO",
+    "branch": "b-19d187eaeedd",
+    "source": "BESS-P2-01",
+    "choice": "A",
+    "caseId": "case:batteryGrid",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-BESS-VERKKO",
+    "branch": "b-8221ecf6ed95",
+    "source": "BESS-P2-01",
+    "choice": "A",
+    "caseId": "case:batteryGrid",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-BESS-VERKKO",
+    "branch": "b-41c9b996dffa",
+    "source": "BESS-P2-01",
+    "choice": "A",
+    "caseId": "case:batteryGrid",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-BESS-TURVA",
+    "branch": "b-7f63a4aa86ce",
+    "source": "BESS-P3-07",
+    "choice": "A",
+    "caseId": "case:batterySupplierChange",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-BESS-TURVA",
+    "branch": "b-869d0966fa6f",
+    "source": "BESS-P3-07",
+    "choice": "A",
+    "caseId": "case:batterySupplierChange",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-BESS-TURVA",
+    "branch": "b-a4ee46f41180",
+    "source": "BESS-P3-03",
+    "choice": "A",
+    "caseId": "case:batteryIncidentWater",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-BESS-TURVA",
+    "branch": "b-01984454250c",
+    "source": "BESS-P3-03",
+    "choice": "A",
+    "caseId": "case:batteryIncidentWater",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-BESS-TURVA",
+    "branch": "b-864dfc7343ab",
+    "source": "BESS-P1-03",
+    "choice": "B",
+    "caseId": "case:batteryFlood",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-BESS-TURVA",
+    "branch": "b-18b83d0ad76b",
+    "source": "BESS-P1-03",
+    "choice": "B",
+    "caseId": "case:batteryFlood",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-MAA",
+    "branch": "b-a9a851bde444",
+    "source": "UUSI-P1-01",
+    "choice": "A",
+    "caseId": "case:jointOwners",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-MAA",
+    "branch": "b-56fcc47fabb8",
+    "source": "UUSI-P1-01",
+    "choice": "A",
+    "caseId": "case:jointOwners",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-MAA",
+    "branch": "b-54a3814be149",
+    "source": "UUSI-P1-01",
+    "choice": "A",
+    "caseId": "case:jointOwners",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-NAAPURITIETO",
+    "branch": "b-59a9660da17a",
+    "source": "programme-cumulative",
+    "choice": "A",
+    "caseId": "case:neighbourData",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-NAAPURITIETO",
+    "branch": "b-6382d72d9a62",
+    "source": "programme-cumulative",
+    "choice": "B",
+    "caseId": "case:neighbourData",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-VAIHTOEHDOT",
+    "branch": "b-a78762b7d65a",
+    "source": "UUSI-P2-02",
+    "choice": "B",
+    "caseId": "case:ospreyAlternatives",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-VAIHTOEHDOT",
+    "branch": "b-4c977e50f220",
+    "source": "UUSI-P2-02",
+    "choice": "B",
+    "caseId": "case:ospreyAlternatives",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-MAASTOKAUSI",
+    "branch": "b-0b3409b88c41",
+    "source": "UUSI-P2-09",
+    "choice": "A",
+    "caseId": "case:coldFrogVisit",
+    "dueAt": 1
+  },
+  {
+    "event": "EV-MAASTOKAUSI",
+    "branch": "b-b45d4f1d6038",
+    "source": "UUSI-P2-09",
+    "choice": "A",
+    "caseId": "case:coldFrogVisit",
+    "dueAt": 1
+  },
+  {
+    "event": "EV-MAASTOKAUSI",
+    "branch": "b-540cb956df24",
+    "source": "UUSI-P2-09",
+    "choice": "A",
+    "caseId": "case:coldFrogVisit",
+    "dueAt": 1
+  },
+  {
+    "event": "EV-ILMAILU",
+    "branch": "b-808e711fdd84",
+    "source": "height",
+    "choice": "A",
+    "caseId": "case:aviation",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-ILMAILU",
+    "branch": "b-691e17cf057d",
+    "source": "height",
+    "choice": "B",
+    "caseId": "case:aviation",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-ILMAILU",
+    "branch": "b-4982ac570cc7",
+    "source": "height",
+    "choice": "A",
+    "caseId": "case:aviation",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-ILMAILU",
+    "branch": "b-422d5c7f58df",
+    "source": "height",
+    "choice": "A",
+    "caseId": "case:aviation",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-MELU",
+    "branch": "b-27f31f0f1c12",
+    "source": "noise",
+    "choice": "A",
+    "caseId": "case:windNoise",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-MELU",
+    "branch": "b-ce33c95285d0",
+    "source": "noise",
+    "choice": "A",
+    "caseId": "case:windNoise",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-MELU",
+    "branch": "b-c526506cf709",
+    "source": "noise",
+    "choice": "A",
+    "caseId": "case:windNoise",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-MELU",
+    "branch": "b-4123b3c2c8de",
+    "source": "noise",
+    "choice": "B",
+    "caseId": "case:windNoise",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-MELU",
+    "branch": "b-ae43d2ca2475",
+    "source": "noise",
+    "choice": "B",
+    "caseId": "case:windNoise",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-VESI",
+    "branch": "b-7e9e04d1d0aa",
+    "source": "solar-rain",
+    "choice": "B",
+    "caseId": "case:solarStormwater",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-VESI",
+    "branch": "b-87c1c2f94369",
+    "source": "solar-rain",
+    "choice": "B",
+    "caseId": "case:solarStormwater",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-VESI",
+    "branch": "b-2b23b42caf1e",
+    "source": "solar-postcare",
+    "choice": "B",
+    "caseId": "case:peatPostcare",
+    "dueAt": 7
+  },
+  {
+    "event": "EV-VESI",
+    "branch": "b-7e564365a50c",
+    "source": "solar-postcare",
+    "choice": "B",
+    "caseId": "case:peatPostcare",
+    "dueAt": 7
+  },
+  {
+    "event": "EV-MAISEMA",
+    "branch": "b-3f12fef79029",
+    "source": "UUSI-P3-09",
+    "choice": "A",
+    "caseId": "case:winterWindLandscape",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-MAISEMA",
+    "branch": "b-c08517e2f617",
+    "source": "UUSI-P3-09",
+    "choice": "A",
+    "caseId": "case:winterWindLandscape",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-MAISEMA",
+    "branch": "b-ae91a44511fd",
+    "source": "solar-view-road",
+    "choice": "B",
+    "caseId": "case:solarLandscape",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-MAISEMA",
+    "branch": "b-80f6b79a0d24",
+    "source": "solar-view-road",
+    "choice": "B",
+    "caseId": "case:solarLandscape",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-PALAUTE",
+    "branch": "b-b0803c3b4bc4",
+    "source": "opinions",
+    "choice": "A",
+    "caseId": "case:missingView",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-PALAUTE",
+    "branch": "b-6078d68cf223",
+    "source": "opinions",
+    "choice": "A",
+    "caseId": "case:missingView",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-PALAUTE",
+    "branch": "b-59c477710293",
+    "source": "opinions-club",
+    "choice": "B",
+    "caseId": "case:associationObservation",
+    "dueAt": 1
+  },
+  {
+    "event": "EV-PALAUTE",
+    "branch": "b-88ec1e7619b3",
+    "source": "opinions-club",
+    "choice": "B",
+    "caseId": "case:associationObservation",
+    "dueAt": 1
+  },
+  {
+    "event": "EV-PALAUTE",
+    "branch": "b-19d217b85ab9",
+    "source": "opinions-noise",
+    "choice": "A",
+    "caseId": "case:missingNoiseAppendix",
+    "dueAt": 1
+  },
+  {
+    "event": "EV-PALAUTE",
+    "branch": "b-8ea51dfdc37b",
+    "source": "herding-opinions",
+    "choice": "A",
+    "caseId": "case:herdingFence",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-NATURA",
+    "branch": "b-1cd8dfc1ee5a",
+    "source": "UUSI-P2-07",
+    "choice": "A",
+    "caseId": "case:naturaDeer",
+    "dueAt": 6
+  },
+  {
+    "event": "EV-NATURA",
+    "branch": "b-124ca579a4bd",
+    "source": "UUSI-P2-07",
+    "choice": "A",
+    "caseId": "case:naturaDeer",
+    "dueAt": 6
+  },
+  {
+    "event": "EV-NATURA",
+    "branch": "b-1d9d98c357e0",
+    "source": "UUSI-P3-13",
+    "choice": "B",
+    "caseId": "case:naturaBog",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-NATURA",
+    "branch": "b-d24a9e574afc",
+    "source": "UUSI-P3-13",
+    "choice": "B",
+    "caseId": "case:naturaBog",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-NATURA",
+    "branch": "b-026bfd950db3",
+    "source": "UUSI-P4-07",
+    "choice": "A",
+    "caseId": "case:naturaBog",
+    "dueAt": 8
+  },
+  {
+    "event": "EV-NATURA",
+    "branch": "b-a4e99c4147a8",
+    "source": "UUSI-P4-07",
+    "choice": "A",
+    "caseId": "case:naturaBog",
+    "dueAt": 8
+  },
+  {
+    "event": "EV-KORJAUS",
+    "branch": "b-23c7737ccf29",
+    "source": "UUSI-P3-01",
+    "choice": "B",
+    "caseId": "case:yvaDeerLandscape",
+    "dueAt": 6
+  },
+  {
+    "event": "EV-KORJAUS",
+    "branch": "b-605b9eb6912e",
+    "source": "UUSI-P3-01",
+    "choice": "B",
+    "caseId": "case:yvaDeerLandscape",
+    "dueAt": 6
+  },
+  {
+    "event": "EV-KORJAUS",
+    "branch": "b-db3aa4a4c5b0",
+    "source": "UUSI-P3-01",
+    "choice": "B",
+    "caseId": "case:yvaDeerLandscape",
+    "dueAt": 6
+  },
+  {
+    "event": "EV-AJANTASAISUUS",
+    "branch": "b-3800eebef961",
+    "source": "UUSI-P4-03",
+    "choice": "B",
+    "caseId": "case:wrongCoordinates",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-AJANTASAISUUS",
+    "branch": "b-50cf86eb5f52",
+    "source": "UUSI-P4-03",
+    "choice": "B",
+    "caseId": "case:wrongCoordinates",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-AJANTASAISUUS",
+    "branch": "b-ac1ba471530d",
+    "source": "UUSI-P4-03",
+    "choice": "A",
+    "caseId": "case:wrongCoordinates",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-VERKKO",
+    "branch": "b-27973548b00a",
+    "source": "UUSI-P2-04",
+    "choice": "A",
+    "caseId": "case:gridOptions",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-VERKKO",
+    "branch": "b-2f0096ceaf1a",
+    "source": "UUSI-P2-04",
+    "choice": "A",
+    "caseId": "case:gridOptions",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-VERKKO",
+    "branch": "b-0ff67c1458c8",
+    "source": "UUSI-P2-04",
+    "choice": "B",
+    "caseId": "case:gridOptions",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-VERKKO",
+    "branch": "b-cf7f990fe67f",
+    "source": "UUSI-P2-04",
+    "choice": "A",
+    "caseId": "case:gridOptions",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-KUNTA",
+    "branch": "b-4228adf0246f",
+    "source": "UUSI-P4-10",
+    "choice": "A",
+    "caseId": "case:councilSettlementGroup",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-KUNTA",
+    "branch": "b-5bf572f8c1f4",
+    "source": "UUSI-P4-10",
+    "choice": "A",
+    "caseId": "case:councilSettlementGroup",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-KUNTA",
+    "branch": "b-c4222a9f966a",
+    "source": "UUSI-P4-10",
+    "choice": "A",
+    "caseId": "case:councilSettlementGroup",
+    "dueAt": 2
+  },
+  {
+    "event": "land",
+    "branch": "b-db379f8c7c83",
+    "source": "land",
+    "choice": "B",
+    "caseId": "case:vuokraehdot",
+    "dueAt": 0
+  },
+  {
+    "event": "land",
+    "branch": "b-90deccd36bb1",
+    "source": "land",
+    "choice": "B",
+    "caseId": "case:vuokraehdot",
+    "dueAt": 0
+  },
+  {
+    "event": "land",
+    "branch": "b-624496d6bebf",
+    "source": "land",
+    "choice": "B",
+    "caseId": "case:vuokraehdot",
+    "dueAt": 0
+  },
+  {
+    "event": "land-signing",
+    "branch": "b-db379f8c7c83",
+    "source": "land-signing",
+    "choice": "B",
+    "caseId": "case:vuokraehdot",
+    "dueAt": 0
+  },
+  {
+    "event": "land-signing",
+    "branch": "b-90deccd36bb1",
+    "source": "land-signing",
+    "choice": "B",
+    "caseId": "case:vuokraehdot",
+    "dueAt": 0
+  },
+  {
+    "event": "land-signing",
+    "branch": "b-624496d6bebf",
+    "source": "land-signing",
+    "choice": "B",
+    "caseId": "case:vuokraehdot",
+    "dueAt": 0
+  },
+  {
+    "event": "land-index",
+    "branch": "b-db379f8c7c83",
+    "source": "land-index",
+    "choice": "B",
+    "caseId": "case:vuokraehdot",
+    "dueAt": 0
+  },
+  {
+    "event": "land-index",
+    "branch": "b-90deccd36bb1",
+    "source": "land-index",
+    "choice": "B",
+    "caseId": "case:vuokraehdot",
+    "dueAt": 0
+  },
+  {
+    "event": "land-index",
+    "branch": "b-624496d6bebf",
+    "source": "land-index",
+    "choice": "B",
+    "caseId": "case:vuokraehdot",
+    "dueAt": 0
+  },
+  {
+    "event": "land-minimum",
+    "branch": "b-db379f8c7c83",
+    "source": "land-minimum",
+    "choice": "B",
+    "caseId": "case:vuokraehdot",
+    "dueAt": 0
+  },
+  {
+    "event": "land-minimum",
+    "branch": "b-90deccd36bb1",
+    "source": "land-minimum",
+    "choice": "B",
+    "caseId": "case:vuokraehdot",
+    "dueAt": 0
+  },
+  {
+    "event": "land-minimum",
+    "branch": "b-624496d6bebf",
+    "source": "land-minimum",
+    "choice": "B",
+    "caseId": "case:vuokraehdot",
+    "dueAt": 0
+  },
+  {
+    "event": "EV-SELVITYSJARJESTYS",
+    "branch": "b-30b8bc484946",
+    "source": "UUSI-P1-09",
+    "choice": "B",
+    "caseId": "case:studyOrder",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-SELVITYSJARJESTYS",
+    "branch": "b-e7a72f3cf10e",
+    "source": "UUSI-P1-09",
+    "choice": "B",
+    "caseId": "case:studyOrder",
+    "dueAt": 6
+  },
+  {
+    "event": "EV-PV",
+    "branch": "b-5e407a863b39",
+    "source": "defence",
+    "choice": "A",
+    "caseId": "case:defence",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-VTT-TULOS",
+    "branch": "b-a53978d0ae85",
+    "source": "EV-PV",
+    "choice": null,
+    "caseId": "case:defence",
+    "dueAt": 8
+  },
+  {
+    "event": "EV-PV",
+    "branch": "b-5e407a863b39",
+    "source": "defence",
+    "choice": "A",
+    "caseId": "case:defence",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-VTT-TULOS",
+    "branch": "b-6a4df06a122e",
+    "source": "EV-PV",
+    "choice": null,
+    "caseId": "case:defence",
+    "dueAt": 8
+  },
+  {
+    "event": "EV-PV",
+    "branch": "b-5e407a863b39",
+    "source": "defence",
+    "choice": "A",
+    "caseId": "case:defence",
+    "dueAt": 2
+  },
+  {
+    "event": "EV-VTT-TULOS",
+    "branch": "b-9790aa8d3856",
+    "source": "EV-PV",
+    "choice": null,
+    "caseId": "case:defence",
+    "dueAt": 8
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-b4aba7d0d806",
+    "source": "UUSI-P3-14",
+    "choice": "A",
+    "caseId": "case:deerCalving",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-LUONTO",
+    "branch": "b-e57749bf06b6",
+    "source": "UUSI-P3-14",
+    "choice": "A",
+    "caseId": "case:deerCalving",
+    "dueAt": 4
+  },
+  {
+    "event": "EV-KOTKA",
+    "branch": "b-b81508679f08",
+    "source": "UUSI-P4-KOTKAPAIKAT",
+    "choice": "A",
+    "caseId": "case:goldenTerritory",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-KOTKA",
+    "branch": "b-a874a801fc54",
+    "source": "UUSI-P4-KOTKAPAIKAT",
+    "choice": "A",
+    "caseId": "case:goldenTerritory",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-VALITUS",
+    "branch": "b-ca50c128c365",
+    "source": "EV-VALITUS",
+    "choice": null,
+    "caseId": "case:court",
+    "dueAt": 12
+  },
+  {
+    "event": "EV-VALITUS",
+    "branch": "b-1bb00a5a5a08",
+    "source": "EV-VALITUS",
+    "choice": null,
+    "caseId": "case:court",
+    "dueAt": 12
+  },
+  {
+    "event": "EV-VALITUS",
+    "branch": "b-775f70cd3afb",
+    "source": "EV-VALITUS",
+    "choice": null,
+    "caseId": "case:court",
+    "dueAt": 12
+  },
+  {
+    "event": "EV-VALITUS",
+    "branch": "b-81569175a176",
+    "source": "UUSI-P4-11",
+    "choice": "A",
+    "caseId": "case:court",
+    "dueAt": 12
+  },
+  {
+    "event": "EV-VALITUS",
+    "branch": "b-dd4355024d60",
+    "source": "UUSI-P4-11",
+    "choice": "A",
+    "caseId": "case:court",
+    "dueAt": 12
+  },
+  {
+    "event": "EV-VALITUS",
+    "branch": "b-4260824e2ed4",
+    "source": "UUSI-P4-11",
+    "choice": "A",
+    "caseId": "case:court",
+    "dueAt": 12
+  },
+  {
+    "event": "EV-OPTIO",
+    "branch": "b-063f9a2e38ef",
+    "source": "UUSI-P4-VUOKRAJATKO",
+    "choice": "A",
+    "caseId": "case:leaseExtension",
+    "dueAt": 52
+  },
+  {
+    "event": "EV-OPTIO",
+    "branch": "b-5d83ce19671e",
+    "source": "UUSI-P4-VUOKRAJATKO",
+    "choice": "A",
+    "caseId": "case:leaseExtension",
+    "dueAt": 52
+  },
+  {
+    "event": "EV-OPTIO",
+    "branch": "b-bcbc68878e4c",
+    "source": "UUSI-P4-VUOKRAJATKO",
+    "choice": "A",
+    "caseId": "case:leaseExtension",
+    "dueAt": 52
+  },
+  {
+    "event": "EV-MELU",
+    "branch": "b-ae43d2ca2475",
+    "source": "noise",
+    "choice": "B",
+    "caseId": "case:windNoise",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-MELU",
+    "branch": "b-5c13406fb4ef",
+    "source": "UUSI-P4-02",
+    "choice": "A",
+    "caseId": "case:windNoise",
+    "dueAt": 11
+  },
+  {
+    "event": "EV-MELU",
+    "branch": "b-ae43d2ca2475",
+    "source": "noise",
+    "choice": "B",
+    "caseId": "case:windNoise",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-MELU",
+    "branch": "b-73eb8f765487",
+    "source": "UUSI-P4-02",
+    "choice": "B",
+    "caseId": "case:windNoise",
+    "dueAt": 5
+  },
+  {
+    "event": "EV-MELU",
+    "branch": "b-ae43d2ca2475",
+    "source": "noise",
+    "choice": "B",
+    "caseId": "case:windNoise",
+    "dueAt": 3
+  },
+  {
+    "event": "EV-MELU",
+    "branch": "b-4fad4999b05e",
+    "source": "UUSI-P4-02",
+    "choice": "A",
+    "caseId": "case:windNoise",
+    "dueAt": 11
+  },
+  {
+    "event": "EV-TUTKIMUS",
+    "branch": "b-b8660491841c",
+    "source": "research",
+    "choice": "A",
+    "caseId": "case:researchLocal0",
+    "dueAt": 7
+  },
+  {
+    "event": "EV-TUTKIMUS",
+    "branch": "b-f6c430b63b0b",
+    "source": "research",
+    "choice": "A",
+    "caseId": "case:researchLocal1",
+    "dueAt": 7
+  },
+  {
+    "event": "EV-TUTKIMUS",
+    "branch": "b-a589d9b463ae",
+    "source": "research",
+    "choice": "A",
+    "caseId": "case:researchLocal2",
+    "dueAt": 7
+  },
+  {
+    "event": "EV-TUTKIMUS",
+    "branch": "b-4782d9f03617",
+    "source": "research",
+    "choice": "A",
+    "caseId": "case:researchLocal3",
+    "dueAt": 7
+  },
+  {
+    "event": "EV-TUTKIMUS",
+    "branch": "b-383434c550ba",
+    "source": "research",
+    "choice": "A",
+    "caseId": "case:researchLocal4",
+    "dueAt": 7
+  },
+  {
+    "event": "EV-TUTKIMUS",
+    "branch": "b-44c460b45905",
+    "source": "research",
+    "choice": "A",
+    "caseId": "case:researchLocal5",
+    "dueAt": 7
+  },
+  {
+    "event": "EV-TUTKIMUS",
+    "branch": "b-b50223384e5a",
+    "source": "research",
+    "choice": "A",
+    "caseId": "case:researchLocal6",
+    "dueAt": 7
+  },
+  {
+    "event": "EV-TUTKIMUS",
+    "branch": "b-d905a2224968",
+    "source": "research",
+    "choice": "A",
+    "caseId": "case:researchLocal7",
+    "dueAt": 7
+  },
+  {
+    "event": "EV-TUTKIMUS",
+    "branch": "b-325c9858272f",
+    "source": "research",
+    "choice": "A",
+    "caseId": "case:researchLocal8",
+    "dueAt": 7
+  },
+  {
+    "event": "EV-TUTKIMUS",
+    "branch": "b-1d9738b4ec2e",
+    "source": "research",
+    "choice": "A",
+    "caseId": "case:researchLocal9",
+    "dueAt": 7
+  },
+  {
+    "event": "EV-TUTKIMUS",
+    "branch": "b-5e82c9e57b51",
+    "source": "EV-TUTKIMUS",
+    "choice": "A",
+    "caseId": "case:researchLocal10",
+    "dueAt": 7
+  }
+]

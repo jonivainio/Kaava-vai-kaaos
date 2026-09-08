@@ -1,5 +1,5 @@
-import { restoreGame, serializeGame } from "../game";
-import type { Game } from "../game";
+import { restoreGame, serializeGame } from "../game/v5";
+import type { Game } from "../game/v5";
 export const GAME_KEY = "kaava-vai-kaaos:swipe:2";
 export const BACKUP_KEY = "kaava-vai-kaaos:swipe:recoverable";
 export const OLD_KEY = "kaava-vai-kaaos:campaign:1";

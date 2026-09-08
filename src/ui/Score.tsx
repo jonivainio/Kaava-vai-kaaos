@@ -1,5 +1,5 @@
-import { getScore } from "../game";
-import type { Game } from "../game";
+import { getScore, scoreView } from "../game/v5";
+import type { Game } from "../game/v5";
 export function Score({ game }: { game: Game }) {
   const score = getScore(game);
   if (!score) return null;
@@ -9,7 +9,8 @@ export function Score({ game }: { game: Game }) {
         {score.total}
         <small> / {score.maximum} pistettä</small>
       </strong>
-      <p>Hanke maaliin. Näin suunnitelma muuttui:</p>
+      <h2>{scoreView(game).title}</h2>
+      <p>{scoreView(game).body}</p>
       {score.deductions.length ? (
         <ul>
           {score.deductions.map((line, i) => (

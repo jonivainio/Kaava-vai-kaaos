@@ -1,4 +1,4 @@
-# V5 valmis paikallisesti — julkaisu tarkistetaan seuraavaksi, 9.9.2026
+# V5 toteutettu ja julkaistu julkiseksi — 9.9.2026
 
 Aktiivinen peli on `src/game/v5` + `content/v5.fi.json`, sisältö `v5-fi-03ae27238966`, säännöt `v5-rules-1`, tallennus `swipe-v5-1`. V5-käsikirjoitus säilyy ensisijaisena muuttamattomana lähteenä. Kaikki 159 päätöstä, 89 tapahtumaa ja 143 tuloshaaraa on kytketty. UI käyttää v5:tä; tarinat ovat pyyhkäistäviä tekstikortteja, vaiheiden vaihdot omia näkymiään. 61 uutta SVG:tä, yhteensä 82. Vain Hybridi avoinna valikossa.
 
@@ -8,7 +8,7 @@ Viimeiset tarkistukset: 355/355 TS-testiä (02:02), tyypitys ja build, 17 Python
 
 Lopullinen 30 000 pelin validointi: kolme politiikkaa samoilla 10 000 uusilla siemenillä, ei suoritusvirheitä. Satunnainen vertailu: voitto 36,47 %, ulkoinen loppu 33,12 %, valintaloppu 28,71 %, laajuusloppu 1,70 %. Varovainen voitti 65,24 %, talouspainotteinen 61,83 %. Alussa arvottu ulkoinen este 33,90 %, ei sama kuin toteutunut loppuluokka. SHA:t ja todelliset nimittäjät simulaatioraporteissa. Vanhojen kehitysajojen löydetyt virheet on korjattu ja säilytetty historiaan.
 
-Käyttäjä on valtuuttanut GitHub-pushin ja julkisen julkaisun samaan Sites-projektiin `appgprj_6a9f15554f248191b0170ac9b997e896`. Access-mode tarkistettu public. Viimeinen toimitusvaihe: commit/push, testatusta buildista version tallennus ja julkaisu, sitten `tools/check-public-v5.mjs` puhtaalla selaimella ilman tunnuksia. Täydennä julkaisutunnisteet ja todellinen tulos `reports/v5/release.json` ja `public-check.json`:iin. Osoite säilyy `https://kaava-vai-kaaos.joni-vainio.chatgpt.site`. Älä väitä julkista koetta tehdyksi ennen sen onnistumista.
+Julkaistu samaan Sites-projektiin `appgprj_6a9f15554f248191b0170ac9b997e896`, versio 4, toteutuscommit `937bf50c69689eef2ad5eae4008ede29c6b2e744`. GitHubin main päivitetty. Access-mode public. `tools/check-public-v5.mjs` läpäisi koko 25 päätöksen pelin puhtaassa kirjautumattomassa selaimessa: HTTP 200, oikea bundlehash, 3 siirtymää ladattu uudelleen, 699 pisteen lupavoitto, ei selainvirheitä. Tulos `reports/v5/public-check.json`, julkaisutunnisteet `release.json`. Jaettava linkki: https://kaava-vai-kaaos.joni-vainio.chatgpt.site/ . Ei kirjautumista eikä ohitustunnuksia. Dokumentaation myöhempi commit vain kirjaa tämän kokeen.
 
 Seuraava varsinainen kehitystyö: käyttäjän mobiilikoe ja v5:n toimituksellinen palaute yksittäisten ID:iden avulla. Aloita uusi v5-peli; yhteensopimaton 007-tallenne säilyy vientiin eikä sen vanhaa kortti-indeksiä muunnettu. Työkalut: `/?review-v5` vain kehityksessä, `tools/trace-v5.mjs` ja `tools/simulate-v5.mjs`. Älä tuo vanhoja pelaajatekstejä tai RtB-maalitilaa takaisin v5:n päälle. Erillisten Tuuli-/Aurinko-tilojen avaaminen on jatkotehtävä.
 

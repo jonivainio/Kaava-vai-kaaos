@@ -1,0 +1,23 @@
+{
+  "projectId": "appgprj_6a9f15554f248191b0170ac9b997e896",
+  "sourceCommit": "937bf50c69689eef2ad5eae4008ede29c6b2e744",
+  "initialCommit": "b032765605de236464042a574700b69fe49475a0",
+  "localDiffIdentity": "initialCommit..sourceCommit; working tree clean when packaged",
+  "github": "https://github.com/jonivainio/Kaava-vai-kaaos",
+  "versionNumber": 4,
+  "versionId": "appgprj_6a9f15554f248191b0170ac9b997e896~appgver_5ea96ad3a6e881918e8817b69034288f",
+  "deploymentId": "appgdep_6aa0951b02a08191b862d0b695b1b563",
+  "deploymentStatus": "succeeded",
+  "url": "https://kaava-vai-kaaos.joni-vainio.chatgpt.site/",
+  "accessMode": "public",
+  "contentVersion": "v5-fi-03ae27238966",
+  "rulesVersion": "v5-rules-1",
+  "sourceSha256": "03ae272389667c41412e8fef7a86f091db147aa72fbe6907a54b79661d3003f2",
+  "engineBundleSha256": "ce0f98fa4f036e36c8e2db7e2eb83b17d349fb27089d9a17cad26a1a6fe842f1",
+  "localTarGzSha256": "5f588cf43b85f560f00d81ed6349e459b145c6767658edd8ed8e5bbbfda6ea11",
+  "uploadedTarSha256": "7047f377cbd6f679e5187ad48f37d87d23da7a2c26995d05f2680a984a863eb4",
+  "publicCheck": "public-check.json",
+  "anonymousFullRunVerifiedAt": "2026-09-08T23:08:12.825Z",
+  "physicalPhoneTested": false,
+  "postReleaseDocumentation": "A later Git commit records publication evidence only; deployed source remains sourceCommit."
+}

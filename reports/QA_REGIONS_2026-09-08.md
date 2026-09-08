@@ -24,4 +24,12 @@ Testaamatta: fyysinen puhelin, iOS/Safari, Firefox, ruudunlukija ja monen välil
 
 ## Julkaisu
 
-Käyttäjä pyysi nimenomaisesti julkaisua kaikille. Sivusto on sama .openai/hosting.json:n Sites-projekti. Julkaisun vastaus ja kirjautumattoman selaimen tarkistus lisätään alle niiden valmistuttua.
+Käyttäjä pyysi nimenomaisesti julkaisua kaikille. Sivusto on sama .openai/hosting.json:n Sites-projekti. Käyttöoikeus muutettiin public-tilaan (revision 2). Versio 3 julkaistiin onnistuneesti 8.9.2026 klo 12.51 Suomen aikaa.
+
+- Sovelluksen lähdecommit: `8ef7b01ac95412d1301db5bca8a63cb69ec5cacd`, push GitHubiin ja Sitesin lähderepoon onnistui.
+- Sites-versio: `appgprj_6a9f15554f248191b0170ac9b997e896~appgver_5574a885d2388191b70701ee839426f2`.
+- Julkaisu: `appgdep_6a9fda6613148191b7c26b7cb2b1d430`, status succeeded.
+- Osoite: https://kaava-vai-kaaos.joni-vainio.chatgpt.site.
+- Kirjautumaton uusi Chromium-konteksti: HTTP 200, aloitusvalikko näkyi, hanke käynnistyi, hiirellä veto kasvatti päätösmäärän kerran. Tallennuksesta tarkistettu **swipe-fi-007**, ei JavaScript-virheitä. Todiste: public-check-007.json ja qa-regions-public-menu.png. Ei valmista kirjautumistilaa tai kirjautumisen ohitustunnistetta.
+- Windowsissa ei ole Bashia. Paketti valmisteltiin Sitesin varsinaisella prepare-site-build.cjs-apuohjelmalla ja Windowsin tarilla. Kohde tarkistettiin uudeksi, projektin sisällä olevaksi hakemistoksi. Arkiston dist/index.html ja dist/.openai/hosting.json tarkistettiin ennen latausta. Paketti sisälsi vain buildin, ei lähdepuuta.
+- Näyttäminen pyydettiin nykyiseen Codex-välilehteen sen tunnisteella; open_in_codex palautti queued. Tämä ei ole väite Codex-välilehden visuaalisesta tarkistuksesta. Julkisen sivun koe tehtiin erillisessä Chromiumissa.

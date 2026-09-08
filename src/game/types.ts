@@ -1,6 +1,16 @@
 import type { Mode, RunState, Side } from "../engine";
 export type { Mode, Side };
 export type Stage = 0 | 1 | 2 | 3;
+/** Fictional regional profile, never a player-facing location. */
+export type Region = "west" | "central" | "lapland" | "east";
+export type Milestone = "yva" | "proposal";
+export interface Finding {
+  source: "nature" | "solarNature" | "solarWater" | "opinions" | "leases";
+  milestone: Milestone;
+  body: string;
+  blocking: boolean;
+  status: "pending" | "queued" | "revealed";
+}
 export type DecisionId =
   | "land"
   | "road"
@@ -92,12 +102,16 @@ export interface Story {
   title: string;
   body: string;
   art: string;
+  nextStage?: Stage;
+  findingSource?: Finding["source"];
   kind:
+    | "progress"
+    | "transition"
+    | "finding"
     | "bridge"
     | "research"
     | "aviation"
     | "defence"
-    | "solar"
     | "external"
     | "decision"
     | "adoption"
@@ -114,7 +128,10 @@ export interface Game {
   delays: { reason: string; months: number }[];
   compactions: string[];
   layoutTightened: boolean;
+  findings: Finding[];
+  milestones: Record<Milestone, boolean>;
   world: {
+    region: Region;
     externalStage: Stage | null;
     criticalIssue: "nature" | "natura" | "leases";
     ownersAgree: boolean;

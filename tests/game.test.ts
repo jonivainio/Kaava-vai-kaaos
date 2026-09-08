@@ -52,12 +52,12 @@ function play(
   return s;
 }
 describe("lyhyt vetopeli", () => {
-  it("vaiheissa on 2 / 5 / 7 / 4 päätöstä", () =>
+  it("vaiheissa on 2 / 5 / 6 / 5 päätöstä", () =>
     expect(
       [0, 1, 2, 3].map(
         (stage) => DECISIONS.filter((d) => d.stage === stage).length,
       ),
-    ).toEqual([2, 5, 7, 4]));
+    ).toEqual([2, 5, 6, 5]));
   it.each<Mode>(["wind", "solar", "hybrid"])(
     "%s toistuu ja päättyy oikeisiin portteihin",
     (mode) => {
@@ -146,7 +146,7 @@ describe("lyhyt vetopeli", () => {
   });
   it("melumoodi on ehdotus; jatkokortin pienempi malli muuttaa MW:t ja korkeuden", () => {
     let s = createGame("uusi-1", "wind");
-    while (!s.ending && s.cursor < 9)
+    while (!s.ending && (s.cursor < 9 || s.stories.length))
       s = s.stories.length
         ? continueStory(s, token(s))
         : choose(s, token(s), sideFor(s, safe[s.cursor]!));
@@ -279,6 +279,15 @@ describe("lyhyt vetopeli", () => {
       const v = VARIANTS.nature[s.encounters[7]! - 1];
       if (!v?.id.startsWith("golden-")) continue;
       s = choose(s, token(s), sideFor(s, "relocate"));
+      expect(s.lastOutcome).not.toContain("0,030");
+      expect(s.unresolved).toBeNull();
+      while (
+        s.findings.find((f) => f.source === "nature")!.status !== "revealed"
+      )
+        s = s.stories.length
+          ? continueStory(s, token(s))
+          : choose(s, token(s), sideFor(s, safe[s.cursor]!));
+      expect(s.stage).toBe(2);
       expect(s.lastOutcome).toContain("0,030");
       expect(!!s.unresolved).toBe(s.world.goldenNeighborRiskMilli + 30 > 60);
       checked++;

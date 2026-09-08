@@ -4,11 +4,15 @@ import { check, validatePack } from "../engine/content";
 import { freeze, hash } from "../engine/scenario";
 import { getDerivedStats } from "../engine/rules";
 import type { Card, CardPack, Effect, NamePool } from "../engine/types";
+import { REGIONS, PROFILES, pickEncounter } from "./regions";
+import progress from "../../content/progress.fi.json";
 import { CONTENT_VERSION, DECISIONS, EXTERNAL } from "./content";
 import { VARIANTS, SOLAR_VARIANTS, EXTRA_EXTERNAL } from "./variants";
 export { VARIANTS, SOLAR_VARIANTS, EXTRA_EXTERNAL } from "./variants";
 import type {
   Action,
+  Finding,
+  Milestone,
   CurrentDecision,
   Game,
   Mode,
@@ -72,6 +76,15 @@ const sceneSchema = z.strictObject({
   speaker: z.string(),
   options: z.tuple([optionSchema, optionSchema]),
 });
+const progressSceneSchema = z.strictObject({
+  title: z.string().min(1).max(70),
+  body: z.string().min(10).max(400),
+  art: z.string().regex(/^[a-z-]+$/),
+});
+z.strictObject({
+  transitions: z.array(progressSceneSchema).length(3),
+  interludes: z.array(z.array(progressSceneSchema).min(1)).length(4),
+}).parse(progress);
 export function validateGameContent(
   decisions: unknown = DECISIONS,
   variants: unknown = VARIANTS,
@@ -151,7 +164,7 @@ check(
     [0, 1, 2, 3].map(
       (stage) => DECISIONS.filter((d) => d.stage === stage).length,
     ),
-  ) === "[2,5,7,4]",
+  ) === "[2,5,6,5]",
   "Vaiheiden päätösmäärä on väärä",
 );
 
@@ -269,7 +282,9 @@ function physical(mode: Mode) {
     };
   });
   // An immediate statement does not commission a VTT study.
-  const statement = structuredClone(cards[DECISIONS.findIndex(d=>d.id === "defence")]!);
+  const statement = structuredClone(
+    cards[DECISIONS.findIndex((d) => d.id === "defence")]!,
+  );
   statement.id = "Z980";
   statement.choices.left.delayed = [];
   statement.choices.right.delayed = [];
@@ -330,7 +345,12 @@ export function randomUnit(seed: string, label: string) {
   return ((x ^ (x >>> 16)) >>> 0) / 4294967296;
 }
 function world(seed: string): Game["world"] {
+  const region =
+    REGIONS[Math.floor(randomUnit(seed, "region") * REGIONS.length)]!;
+  const profile = PROFILES[region];
+  const defence = randomUnit(seed, "defence");
   return {
+    region,
     externalStage:
       randomUnit(seed, "external") < 1 / 3
         ? (Math.floor(randomUnit(seed, "external-stage") * 4) as Stage)
@@ -358,19 +378,30 @@ function world(seed: string): Game["world"] {
     defence:
       randomUnit(seed, "external") < 1 / 3 &&
       Math.floor(randomUnit(seed, "external-stage") * 4) === 1 &&
-      randomUnit(seed, "defence-fatal") < 0.5
+      randomUnit(seed, "defence-fatal") < profile.fatal
         ? randomUnit(seed, "defence-reject") < 0.5
           ? "oppose"
           : "studyReject"
-        : (["clear", "study", "reduce"] as const)[
-            Math.floor(randomUnit(seed, "defence") * 3)
-          ]!,
+        : defence < profile.clear
+          ? "clear"
+          : defence < profile.clear + profile.reduce
+            ? "reduce"
+            : "study",
     solarPermit: randomUnit(seed, "solar-permit") < 0.5,
     solarWaterUseful: randomUnit(seed, "solar-water") < 0.5,
-    species: ["poron", "metsäpeuran", "suden", "kotkan"][
-      Math.floor(randomUnit(seed, "species") * 4)
-    ]!,
+    species: profile.species[Math.floor(randomUnit(seed, "species") * 4)]!,
   };
+}
+function selectedEncounters(seed: string, mode: Mode) {
+  const region = world(seed).region;
+  return DECISIONS.map((d) =>
+    pickEncounter(
+      region,
+      d.id,
+      (mode === "solar" ? SOLAR_VARIANTS[d.id] : undefined) ?? VARIANTS[d.id],
+      randomUnit(seed, `encounter-${d.id}`),
+    ),
+  );
 }
 export function createGame(
   seed: string,
@@ -395,16 +426,9 @@ export function createGame(
     delays: [],
     compactions: [],
     layoutTightened: false,
-    encounters: DECISIONS.map((d) =>
-      Math.floor(
-        randomUnit(seed, `encounter-${d.id}`) *
-          ((
-            (mode === "solar" ? SOLAR_VARIANTS[d.id] : undefined) ??
-            VARIANTS[d.id]
-          ).length +
-            1),
-      ),
-    ),
+    findings: [],
+    milestones: { yva: false, proposal: false },
+    encounters: selectedEncounters(seed, mode),
     world: world(seed),
     decisions: [],
     stories: [],
@@ -477,6 +501,19 @@ export function currentDecision(s: Game): CurrentDecision | null {
         : s.world.species === "suden"
           ? "ecologist"
           : "reindeer";
+  }
+  if (variant?.id.startsWith("herding-"))
+    scene.speaker = "Paliskunnan edustaja";
+  if (
+    d.id === "feedback" &&
+    s.world.region === "lapland" &&
+    !noiseFollowup(s)
+  ) {
+    scene.title = "Laidunten välinen yhteys pitää säilyttää.";
+    scene.question =
+      "Paliskunta ja viranomainen nostavat lausunnoissa esiin paneeliaidan vaikutuksen porojen kulkuun. Varataanko 6 ha leveälle yhteydelle vai tiivistetäänkö paneelit erillisiin lohkoihin?";
+    scene.art = "reindeer";
+    scene.speaker = "Paliskunnan edustaja";
   }
   if (d.id === "natura") {
     scene.question = (variant?.question ?? d.base.question).replaceAll(
@@ -654,24 +691,125 @@ function queueResearch(s: Game) {
     "research",
   );
 }
-function endStage(s: Game, stage: Stage) {
-  if (s.world.externalStage === stage) {
-    const options = [EXTERNAL[stage]!, ...EXTRA_EXTERNAL[stage]!];
-    if (stage === 2 && s.run.mode !== "solar")
-      options.push({
-        id: "external-golden-full",
-        kind: "external",
-        title: "Reviirin riski oli jo liian suuri.",
-        art: "eagle",
-        body: "Naapurihankkeiden maakotkan törmäysriskiksi arvioitiin 0,070 vuodessa tällä reviirillä. Arvioinnin vertailutaso on 0,06. Oman hankkeen pieninkään toteuttamiskelpoinen rajaus ei vältä lisähaittaa. Sijoittelulla tätä ei saada ratkaistua.",
-      });
-    s.stories.push(
-      structuredClone(
-        options[
-          Math.floor(randomUnit(s.run.seed, "external-story") * options.length)
-        ]!,
-      ),
+function pending(
+  s: Game,
+  source: Finding["source"],
+  milestone: Milestone,
+  body: string,
+  blocking = false,
+) {
+  check(
+    !s.findings.some((f) => f.source === source),
+    "Selvityksen seuraus on jo kirjattu",
+  );
+  s.findings.push({ source, milestone, body, blocking, status: "pending" });
+}
+function queueFindings(s: Game, milestone: Milestone) {
+  for (const f of s.findings.filter(
+    (f) => f.milestone === milestone && f.status === "pending",
+  )) {
+    f.status = "queued";
+    s.stories.push({
+      id: `finding-${f.source}`,
+      title: {
+        nature: "Luontovaikutuksista saatiin johtopäätös.",
+        solarNature: "Aurinkoalueen luontoratkaisu selvisi.",
+        solarWater: "Vesitalouden arvioon tuli vastaus.",
+        opinions: "Palautteen huomiot koottiin.",
+        leases: "Täydennysten riittävyys tarkistettiin.",
+      }[f.source],
+      body: f.body,
+      art:
+        f.source === "solarNature"
+          ? "frog"
+          : f.source === "solarWater"
+            ? "wetland"
+            : "documents",
+      kind: "finding",
+      findingSource: f.source,
+    });
+  }
+}
+function progressStory(s: Game) {
+  if (![4, 6, 9, 12, 15, 17].includes(s.cursor)) return;
+  if (s.cursor === 12) {
+    story(
+      s,
+      "progress-12",
+      "Yleisötilaisuus pidetty.",
+      "Selostus ja kaavaluonnos ovat nähtävillä. Tilaisuudessa riitti keskustelua, ja kysymykset kirjattiin. Viranomaiset ja yhdistykset valmistelevat lausuntojaan, asukkaat voivat jättää mielipiteitä.",
+      "cottage",
+      "progress",
     );
+    return;
+  }
+  const pool = progress.interludes[s.stage]!;
+  const offset = [6, 17].includes(s.cursor) ? 1 : 0;
+  const item =
+    pool[
+      (Math.floor(
+        randomUnit(s.run.seed, `progress-stage-${s.stage}`) * pool.length,
+      ) +
+        offset) %
+        pool.length
+    ]!;
+  story(s, `progress-${s.cursor}`, item.title, item.body, item.art, "progress");
+}
+function transition(s: Game, nextStage: Stage) {
+  const next = progress.transitions[nextStage - 1]!;
+  s.stories.push({
+    ...next,
+    id: `transition-${nextStage}`,
+    kind: "transition",
+    nextStage,
+  });
+}
+function externalStory(s: Game, stage: Stage) {
+  const options = [EXTERNAL[stage]!, ...EXTRA_EXTERNAL[stage]!];
+  if (
+    stage === 2 &&
+    s.run.mode !== "solar" &&
+    ["west", "lapland"].includes(s.world.region)
+  )
+    options.push({
+      id: "external-golden-full",
+      kind: "external",
+      title: "Reviirin riski oli jo liian suuri.",
+      art: "eagle",
+      body: "Perustellussa päätelmässä maakotkan yhteisvaikutukset jäävät ratkaisematta. Naapurihankkeiden reviiririski on jo 0,070 vuodessa, yli arvioinnin 0,06:n vertailutason. Myös oman hankkeen pienimmät vaihtoehdot lisäävät merkittävää haittaa. Toteuttamiskelpoista rajausta ei löydy.",
+    });
+  if (stage === 2 && s.world.region === "lapland")
+    options.push({
+      id: "external-herding",
+      kind: "external",
+      title: "Laidunkokonaisuus ei kestä lisähaittaa.",
+      art: "reindeer",
+      body: "Paliskunnan tiedot ja yhteisvaikutusten arvio osoittavat kaikkien toteuttamiskelpoisten vaihtoehtojen katkaisevan välttämättömän laidunyhteyden. Haittaa ei saada lievennettyä hyväksyttävästi. Hankkeelle ei jää jatkamisedellytyksiä.",
+    });
+  s.stories.push(
+    structuredClone(
+      options[
+        Math.floor(randomUnit(s.run.seed, "external-story") * options.length)
+      ]!,
+    ),
+  );
+}
+function endStage(s: Game, stage: Stage) {
+  if (stage === 3 && !s.milestones.proposal) {
+    s.milestones.proposal = true;
+    story(
+      s,
+      "proposal-review",
+      "Päätösaineisto kootaan.",
+      "Kaavaehdotuksen muistutukset ja lausunnot on saatu. Vastineet, täydennetyt vaikutusarviot ja tarvittavat luontoratkaisut tarkistetaan ennen päätösesitystä.",
+      "documents",
+      "progress",
+    );
+    queueFindings(s, "proposal");
+    return;
+  }
+  if (s.world.externalStage === stage && stage !== 2) {
+    externalStory(s, stage);
     return;
   }
   if (stage === 0) {
@@ -697,7 +835,6 @@ function endStage(s: Game, stage: Stage) {
     );
   }
   if (stage === 2) {
-    s.facts.assessed = s.unresolved === null;
     if (s.decisions.some((d) => d.action === "special"))
       story(
         s,
@@ -716,6 +853,23 @@ function endStage(s: Game, stage: Stage) {
       "documents",
     );
   }
+  if (stage === 2) {
+    queueFindings(s, "yva");
+    if (noiseFollowup(s))
+      story(
+        s,
+        "noise-statement",
+        "Melumoodin perustelu ei riitä.",
+        "Perusteltu päätelmä nostaa esiin melumallinnuksen lähtötiedon: ehdotetulta ajotavalta puuttuu riittävä valmistajan melutakuu. Ehdotusvaiheessa tarvitaan toinen ratkaisu.",
+        "authority",
+        "progress",
+      );
+    if (s.world.externalStage === 2) {
+      externalStory(s, 2);
+      return;
+    }
+  }
+  if (stage < 3) transition(s, (stage + 1) as Stage);
   if (stage === 3) {
     if (!s.research.published) {
       queueResearch(s);
@@ -762,8 +916,15 @@ export function choose(s0: Game, expectedToken: string, side: Side): Game {
       : definition.base;
   const engine = physical(s.run.mode),
     physicalSide = base.options[0].action === action ? "left" : "right";
-  const immediateStatement = c.id === "defence" && (s.run.mode === "solar" || s.world.defence === "clear" || s.world.defence === "oppose");
-  s.run = engine.offerCard(s.run, immediateStatement ? "Z980" : `C${201 + s.cursor}`);
+  const immediateStatement =
+    c.id === "defence" &&
+    (s.run.mode === "solar" ||
+      s.world.defence === "clear" ||
+      s.world.defence === "oppose");
+  s.run = engine.offerCard(
+    s.run,
+    immediateStatement ? "Z980" : `C${201 + s.cursor}`,
+  );
   s.run = engine.applyChoice(s.run, s.run.offeredCard!.token, physicalSide);
   let result = "";
   switch (action) {
@@ -839,7 +1000,8 @@ export function choose(s0: Game, expectedToken: string, side: Side): Game {
           ? "Kahdeksan hehtaaria rajataan pois. Luontoasiantuntija vahvistaa vesitalouden säilyvän."
           : "{countCap} voimalaa poistetaan. Luontoasiantuntija vahvistaa sääksen lentoreitin jäävän vapaaksi.";
       break;
-    case "relocate":
+    case "relocate": {
+      const priorIssue = s.unresolved;
       result =
         s.run.mode === "solar"
           ? "Ojituksen uusi ratkaisu viedään arviointiin. Pinta-ala pysyy toistaiseksi ennallaan."
@@ -858,7 +1020,21 @@ export function choose(s0: Game, expectedToken: string, side: Side): Game {
           s.unresolved =
             "Maakotkan yhteinen törmäysriski jäi siirron jälkeen tasolle 0,075 vuodessa reviirillä. Naapurihankkeiden vaikutus oli mukana. Valittu sijoittelu ei vältä merkittävää haittaa, eikä sitä hyväksytä.";
       }
+      pending(
+        s,
+        "nature",
+        "yva",
+        encounter(s)?.id.startsWith("golden-")
+          ? result
+          : (s.unresolved ??
+              "Lausunnot ja perusteltu päätelmä tukevat selvitettyä uutta sijoittelua. Arvio ei osoita tältä osin merkittävää haittaa; hankkeen koko säilyy."),
+        s.unresolved !== priorIssue,
+      );
+      s.unresolved = priorIssue;
+      result =
+        "Uusi sijoittelu viedään vaikutusarvioon. Sen riittävyys selviää YVA-selostuksen kuulemisen ja perustellun päätelmän yhteydessä.";
       break;
+    }
     case "moveNoise":
       if (s.run.mode === "solar") {
         remove(s, "screen_edge", 0, 4);
@@ -947,14 +1123,26 @@ export function choose(s0: Game, expectedToken: string, side: Side): Game {
     case "renew":
       delay(s, "Muuttuneen suunnitelman vaikutusarvioiden päivitys", 2);
       result =
-        "Muuttuneiden osien melu- ja luontovaikutukset päivitetään. Viranomainen toteaa päätelmän ajantasaiseksi; tarvittava Natura-täydennys liitetään aineistoon.";
+        "Muuttuneiden osien melu- ja luontovaikutukset päivitetään. Natura-täydennys ja vastaukset päätelmän huomioihin toimitetaan lausuttaviksi.";
+      pending(
+        s,
+        "leases",
+        "proposal",
+        "Viranomainen on tarkistanut täydennykset. Natura-arvion johtopäätös kattaa ehdotuksen, ja päivitetyt vaikutustiedot voidaan ottaa kaavapäätöksen pohjaksi.",
+      );
       break;
     case "keepLease":
       result =
         "Konsultti perustelee aiemman arvion soveltuvuuden muuttuneeseen suunnitelmaan. Viranomainen tarkistaa, ovatko johtopäätökset edelleen käyttökelpoisia.";
-      if (s.world.criticalIssue === "leases")
-        s.unresolved =
-          "Viranomainen totesi muutokset olennaisiksi. Täydennystä ei tehty, eikä vanha vaikutusarvio osoita valitun sijoittelun hyväksyttävyyttä. Ehdotusta ei hyväksytä puutteellisella aineistolla.";
+      pending(
+        s,
+        "leases",
+        "proposal",
+        s.world.criticalIssue === "leases"
+          ? "Lausunnossa muutokset todetaan olennaisiksi. Natura-arvio ja muuttuneiden osien vaikutustiedot jäivät täydentämättä. Aineisto ei osoita tämän ehdotuksen hyväksymisedellytyksiä."
+          : "Viranomainen tarkistaa perustelut: tässä tapauksessa aiemman vaikutusarvion johtopäätökset kattavat muutokset. Uutta Natura-täydennystä ei tarvita.",
+        s.world.criticalIssue === "leases",
+      );
       break;
     case "commission":
     case "rework":
@@ -1006,14 +1194,20 @@ export function choose(s0: Game, expectedToken: string, side: Side): Game {
     case "solarStudy":
       result =
         "Alueen vaihtoehdot ja tarvittavan luvan edellytykset selvitetään. Myönteistä ratkaisua ei voi ostaa.";
-      story(
+      pending(
         s,
-        "solar-nature-wait",
-        "Odotetaan luontoratkaisua.",
-        result,
-        "frog",
-        "solar",
+        "solarNature",
+        "proposal",
+        s.world.solarPermit
+          ? encounter(s)?.id === "solar-nest-water"
+            ? "Täydentävä linnustoarvio ja lausunto tukevat pienempää luontorajausta. Paneeliala säilyy. Ehdot ja seuranta viedään päätösaineistoon."
+            : "Täydentävät selvitykset on käsitelty. Tässä tapauksessa viitasammakkoa koskevan poikkeusluvan edellytykset täyttyvät ja lupa myönnetään ehdoin. Paneeliala säilyy."
+          : encounter(s)?.id === "solar-nest-water"
+            ? "Täydennys vahvistaa linnustoalueen merkityksen. 8 ha jätetään paneelien ulkopuolelle ja kaavaehdotuksen luontorajaus korjataan."
+            : "Viitasammakon poikkeusluvan edellytykset eivät täyty. 8 ha rajataan pois paneelialueesta; lisääntymispaikan vesitalous säilytetään.",
       );
+      result +=
+        " Työ etenee rinnakkain. Ratkaisu käsitellään ehdotusvaiheessa.";
       break;
     case "wetland":
       solarRemove(s, "solar_water", 10);
@@ -1023,14 +1217,15 @@ export function choose(s0: Game, expectedToken: string, side: Side): Game {
     case "waterStudy":
       result =
         "Vesienkäsittelyn vaihtoehdot ja tarkkailutiedot arvioidaan. Aluetta ei kuivateta kesken asian käsittelyn.";
-      story(
+      pending(
         s,
-        "solar-water-wait",
-        "Vesi ei odota aikataulua.",
-        result,
-        "wetland",
-        "solar",
+        "solarWater",
+        "yva",
+        s.world.solarWaterUseful
+          ? "Vesitalouden täydennys ja tarkkailutiedot tukevat tiiviimpää vesienkäsittelyä. Perusteltu päätelmä edellyttää tämän ratkaisun viemistä kaavaehdotukseen. Paneeliala säilyy; mahdolliset luvat käsitellään erikseen."
+          : "Lausunto ja perusteltu päätelmä edellyttävät laajan vesienkäsittelyalueen säilyttämistä. Tarkkailu vahvistaa myös linnustoarvot. 10 ha jätetään paneelialueen ulkopuolelle.",
       );
+      result += " Johtopäätös kootaan selostusvaiheen lopussa.";
       break;
     case "illustrate":
       delay(
@@ -1044,11 +1239,14 @@ export function choose(s0: Game, expectedToken: string, side: Side): Game {
     case "respond":
       result =
         "Kuvat ja vastaukset julkaistaan. Mielipiteiden määrä ei ratkaise kaavaa; perustellut vaikutushuolet on silti käsiteltävä.";
-      if (randomUnit(s.run.seed, "public-concern") < 0.5) {
-        delay(s, "Kielteisen palautteen vaatima lisäkäsittely", 2);
-        result +=
-          " Kunta pyytää vielä yhteisen keskustelun. Valmistelu viivästyy kaksi kuukautta.";
-      }
+      pending(
+        s,
+        "opinions",
+        "yva",
+        randomUnit(s.run.seed, "public-concern") < 0.5
+          ? "Lausunnot ja mielipiteet osoittavat vastauksissa paikallisia puutteita. Kunta pyytää lisäkeskustelun ja täsmennetyt vastineet. Ehdotuksen valmistelu pitenee kaksi kuukautta."
+          : "Palautteessa on eriäviä näkemyksiä, mutta julkaistut vastaukset käsittelevät olennaiset paikalliset havainnot. Erillistä lisäkierrosta ei tarvita.",
+      );
       break;
     case "supplement":
       result =
@@ -1077,6 +1275,9 @@ export function choose(s0: Game, expectedToken: string, side: Side): Game {
   }
   if (!(c.id === "feedback" && noiseFollowup(s)))
     result = encounter(s)?.results?.[action] ?? result;
+  if (action === "relocate")
+    result =
+      "Uusi sijoittelu viedään vaikutusarvioon. Riittävyys selviää selostuksen kuulemisen ja perustellun päätelmän yhteydessä; koko säilyy toistaiseksi.";
   if (action === "avoid" && encounter(s)?.id.startsWith("golden-"))
     result = `{countCap} riskialtteinta voimalaa poistetaan. Oma törmäysriski pienenee tasolle 0,010 ja reviirin yhteisriski tasolle ${((s.world.goldenNeighborRiskMilli + 10) / 1000).toLocaleString("fi-FI", { minimumFractionDigits: 3 })} vuodessa. Myös elinympäristöhaitat arvioidaan.`;
   const n =
@@ -1099,6 +1300,7 @@ export function choose(s0: Game, expectedToken: string, side: Side): Game {
     return freeze(s);
   }
   if (DECISIONS[s.cursor]?.stage !== s.stage) endStage(s, s.stage);
+  else progressStory(s);
   return freeze(s);
 }
 export function continueStory(s0: Game, expectedToken: string): Game {
@@ -1110,6 +1312,49 @@ export function continueStory(s0: Game, expectedToken: string): Game {
     current = s.stories.shift()!;
   s.revision++;
   s.lastOutcome = current.body;
+  if (current.kind === "transition") {
+    check(current.nextStage === s.stage + 1, "Virheellinen vaihesiirtymä");
+    s.stage = current.nextStage!;
+  }
+  if (current.id === "draft-done") s.milestones.yva = true;
+  if (current.kind === "finding") {
+    const f = s.findings.find((f) => f.source === current.findingSource)!;
+    check(f?.status === "queued", "Selvityksen tulos on jo käsitelty");
+    check(
+      f.milestone === "yva"
+        ? s.milestones.yva && s.stage === 2
+        : s.milestones.proposal && s.stage === 3,
+      "Tuloksen ajankohta on väärä",
+    );
+    f.status = "revealed";
+    if (f.blocking) s.unresolved = f.body;
+    if (f.source === "solarNature" || f.source === "solarWater") {
+      const nature = f.source === "solarNature";
+      const job = s.run.jobs.find(
+        (j) => j.jobId === (nature ? "solar_permit" : "solar_water"),
+      );
+      check(job, "Selvitystä ei ole tilattu");
+      delay(
+        s,
+        nature
+          ? "Aurinkoalueen luontoratkaisun odotus"
+          : "Vesitalouden tarkkailun odotus",
+        Math.max(0, job.dueAt - s.run.elapsedMonths),
+      );
+      if (!(nature ? s.world.solarPermit : s.world.solarWaterUseful))
+        solarRemove(
+          s,
+          nature ? "solar_nature" : "solar_water",
+          nature ? 8 : 10,
+        );
+    }
+    if (
+      f.source === "opinions" &&
+      randomUnit(s.run.seed, "public-concern") < 0.5
+    )
+      delay(s, "Palautteen vaatima lisäkäsittely", 2);
+  }
+  if (s.milestones.yva) s.facts.assessed = s.unresolved === null;
   if (current.kind === "external") {
     s.ending = "external";
     s.endingReason = current.body;
@@ -1156,32 +1401,6 @@ export function continueStory(s0: Game, expectedToken: string): Game {
     } else
       s.lastOutcome =
         "VTT:n selvitys valmistuu. Puolustusvoimat ei vastusta esitettyä hanketta. Paikat, korkeus ja nimellisteho säilyvät.";
-  }
-  if (current.kind === "solar") {
-    const nature = current.id === "solar-nature-wait",
-      job = s.run.jobs.find(
-        (j) => j.jobId === (nature ? "solar_permit" : "solar_water"),
-      )!;
-    delay(
-      s,
-      nature
-        ? "Aurinkoalueen luontoratkaisun selvitys ja käsittely"
-        : "Aurinkoalueen vesitalouden tarkkailu ja käsittely",
-      Math.max(0, job.dueAt - s.run.elapsedMonths),
-    );
-    const accepted = nature ? s.world.solarPermit : s.world.solarWaterUseful;
-    if (!accepted)
-      solarRemove(s, nature ? "solar_nature" : "solar_water", nature ? 8 : 10);
-    const variant = encounter(s, s.cursor - 1);
-    s.lastOutcome = accepted
-      ? nature
-        ? variant?.id === "solar-nest-water"
-          ? "Tarkempi selvitys tukee pienempää luontorajausta. Paneeliala säilyy; toimivuus varmistetaan toteutuksessa."
-          : "Vaihtoehdot on tutkittu, poikkeamisen edellytykset täyttyvät ja lupa myönnetään sitovin ehdoin. Paneeliala säilyy tässä tapauksessa."
-        : "Viranomainen hyväksyy tarkennetun vesienkäsittelyratkaisun. Paneeliala säilyy; jälkihoito ja tarkkailu jatkuvat päätösten mukaisesti."
-      : nature
-        ? "Selvitys ei tue suunniteltua käyttöä. Linnustollisesti merkittävää osaa ei voida käyttää; viitasammakkotapauksessa poikkeusluvan edellytykset eivät täyty. 8 ha rajataan paneelien ulkopuolelle."
-        : "Vesienkäsittely pitää säilyttää laajana. Märkä osa on myös linnustolle tärkeä. 10 ha jätetään paneelialueen ulkopuolelle.";
   }
   if (current.kind === "aviation") {
     const job = s.run.jobs.find((j) => j.jobId === "aviation_review");
@@ -1247,7 +1466,18 @@ export function continueStory(s0: Game, expectedToken: string): Game {
     s.ending = "ready";
     s.endingReason = "Hanke saavutti rakentamisvalmiuden.";
   }
-  if (!s.ending && !s.stories.length) s.stage = DECISIONS[s.cursor]?.stage ?? 3;
+  if (
+    !s.ending &&
+    !s.stories.length &&
+    s.cursor === DECISIONS.length &&
+    ["progress", "finding"].includes(current.kind)
+  )
+    endStage(s, 3);
+  if (s.run.ending && !s.ending) {
+    s.ending = "choices";
+    s.endingReason =
+      "Selvitysten edellyttämien rajausten jälkeen hankkeelle ei jää toteuttamiskelpoista kokoa.";
+  }
   return freeze(s);
 }
 
@@ -1269,7 +1499,26 @@ const gameSchema = z.strictObject({
     .max(20),
   compactions: z.array(z.string().min(1)).max(DECISIONS.length),
   layoutTightened: z.boolean(),
+  findings: z
+    .array(
+      z.strictObject({
+        source: z.enum([
+          "nature",
+          "solarNature",
+          "solarWater",
+          "opinions",
+          "leases",
+        ]),
+        milestone: z.enum(["yva", "proposal"]),
+        body: z.string().min(1),
+        blocking: z.boolean(),
+        status: z.enum(["pending", "queued", "revealed"]),
+      }),
+    )
+    .max(5),
+  milestones: z.strictObject({ yva: z.boolean(), proposal: z.boolean() }),
   world: z.strictObject({
+    region: z.enum(["west", "central", "lapland", "east"]),
     externalStage: z.number().int().min(0).max(3).nullable(),
     criticalIssue: z.enum(["nature", "natura", "leases"]),
     ownersAgree: z.boolean(),
@@ -1308,12 +1557,18 @@ const gameSchema = z.strictObject({
         title: z.string(),
         body: z.string(),
         art: z.string(),
+        nextStage: z.number().int().min(1).max(3).optional(),
+        findingSource: z
+          .enum(["nature", "solarNature", "solarWater", "opinions", "leases"])
+          .optional(),
         kind: z.enum([
+          "progress",
+          "transition",
+          "finding",
           "bridge",
           "research",
           "aviation",
           "defence",
-          "solar",
           "external",
           "decision",
           "adoption",
@@ -1321,7 +1576,7 @@ const gameSchema = z.strictObject({
         ]),
       }),
     )
-    .max(4),
+    .max(12),
   lastOutcome: z.string(),
   facts: z.strictObject({
     land: z.boolean(),
@@ -1375,25 +1630,36 @@ export function restoreGame(raw: string): RestoreResult {
     check(run.ok, run.ok ? "" : run.error);
     const s = { ...parsed, run: run.state } as Game;
     check(
-      s.encounters.every((v, i) => {
-        const d = DECISIONS[i]!;
-        return (
-          v ===
-          Math.floor(
-            randomUnit(s.run.seed, `encounter-${d.id}`) *
-              ((
-                (mode === "solar" ? SOLAR_VARIANTS[d.id] : undefined) ??
-                VARIANTS[d.id]
-              ).length +
-                1),
-          )
-        );
-      }),
+      JSON.stringify(s.encounters) ===
+        JSON.stringify(selectedEncounters(s.run.seed, mode)),
       "Korttivalikoima ei vastaa tallennettua skenaariota",
     );
     check(
       JSON.stringify(s.world) === JSON.stringify(world(s.run.seed)),
       "Maailmantiedot eivät vastaa siementä",
+    );
+    check(
+      new Set(s.findings.map((f) => f.source)).size === s.findings.length,
+      "Seuraus toistuu tallennuksessa",
+    );
+    check(
+      s.findings.every(
+        (f) =>
+          (f.status === "queued") ===
+            s.stories.some((st) => st.findingSource === f.source) &&
+          (f.status !== "revealed" || s.milestones[f.milestone]),
+      ),
+      "Tuloksen käsittelytila on ristiriidassa",
+    );
+    check(
+      s.stories.every(
+        (st) =>
+          st.kind !== "finding" ||
+          s.findings.some(
+            (f) => f.source === st.findingSource && f.status === "queued",
+          ),
+      ),
+      "Tuloksen lähde puuttuu",
     );
     check(
       s.cursor === s.decisions.length && s.cursor === s.run.decisionLog.length,

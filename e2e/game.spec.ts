@@ -166,17 +166,46 @@ test("lyhyt veto ja pystysuora veto eivät valitse, yksi vaakaveto valitsee kerr
 test("18 päätöstä ja välitarinat johtavat RtB-ruutuun", async ({ page }) => {
   await start(page);
   let steps = 0,
-    stories = 0;
+    stories = 0,
+    transitions = 0;
   while (
     (await page.getByTestId("swipe-card").count()) ||
     (await page.getByRole("button", { name: "Jatka tarinaa" }).count())
   ) {
-    if (steps++ > 35) throw new Error("Jumi");
+    if (steps++ > 90) throw new Error("Jumi");
     if (await page.getByRole("button", { name: "Jatka tarinaa" }).count()) {
+      const before = await page.evaluate(
+        (key) => JSON.parse(localStorage.getItem(key)!).state,
+        KEY,
+      );
+      if (before.stories[0].kind === "transition") {
+        transitions++;
+        await expect(page.locator(".eyebrow")).toContainText("SEURAAVA VAIHE");
+        await expect(page.locator(".story-card")).toContainText(
+          "Siirry vaiheeseen",
+        );
+        if (before.stories[0].nextStage === 2) {
+          await page.reload();
+          await page.getByRole("button", { name: /Jatka ·/ }).click();
+          await expect(page.locator(".story-narrative h1")).toHaveText(
+            "YVA-selostus ja kaavaluonnos",
+          );
+          await page.screenshot({
+            path: "test-results/swipe-yva-transition.png",
+          });
+        }
+      }
       stories++;
       if (stories === 2)
         await page.screenshot({ path: "test-results/swipe-story.png" });
       await page.getByRole("button", { name: "Jatka tarinaa" }).click();
+      if (before.stories[0].kind === "transition")
+        expect(
+          await page.evaluate(
+            (key) => JSON.parse(localStorage.getItem(key)!).state.stage,
+            KEY,
+          ),
+        ).toBe(before.stage + 1);
     } else {
       const cursor = await page.evaluate(
         (key) => JSON.parse(localStorage.getItem(key)!).state.cursor,
@@ -217,7 +246,8 @@ test("18 päätöstä ja välitarinat johtavat RtB-ruutuun", async ({ page }) =>
   await expect(
     page.getByRole("region", { name: "Pelikerran pisteet" }),
   ).toContainText("pistettä");
-  expect(stories).toBeGreaterThanOrEqual(5);
+  expect(stories).toBeGreaterThanOrEqual(14);
+  expect(transitions).toBe(3);
   await page.screenshot({ path: "test-results/swipe-victory.png" });
 });
 test("jatkaminen säilyttää nimen, tuloksen ja tarjotun tilanteen", async ({

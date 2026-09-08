@@ -342,7 +342,7 @@
     },
     {
       "id": "feedback",
-      "stage": 2,
+      "stage": 3,
       "base": {
         "title": "Aita katkaisee yhteyden.",
         "question": "Luonnonvarakeskus ja Metsähallitus kiinnittävät huomiota paneeliaitojen ja tuulialueen yhteiseen estevaikutukseen. Avataanko leveä kulkuyhteys vai tiivistetäänkö paneelit erillisiin lohkoihin?",

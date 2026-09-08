@@ -1,8 +1,8 @@
 # Kaava vai kaaos
 
-**[Avaa peli puhelimella](https://kaava-vai-kaaos.joni-vainio.chatgpt.site)** — Sites-verkkoversio on omistajan yksityinen kokeilu; kirjaudu samalla tilillä. Lähdekoodi: [GitHub](https://github.com/jonivainio/Kaava-vai-kaaos).
+**[Avaa peli puhelimella](https://kaava-vai-kaaos.joni-vainio.chatgpt.site)** — julkinen testiversio, ei vaadi ChatGPT-kirjautumista. Linkin voi jakaa testaajille. Lähdekoodi: [GitHub](https://github.com/jonivainio/Kaava-vai-kaaos).
 
-Suomalainen hankekehityskorttipeli. Kehitä fiktiivinen hybridihanke maanvuokrauksesta YVA:n ja kaavoituksen kautta rakentamisvalmiuteen. 18 päätöstä, välitarinoita ja 65 mahdollista hybridikohtaamista. Tuuli ja Aurinko ovat valikossa vielä suljettuja. Vanha 64 kortin pilotti ja pitkä kampanja on säilytetty erillisenä vertailuaineistona.
+Suomalainen hankekehityskorttipeli. Kehitä fiktiivinen hybridihanke maanvuokrauksesta YVA:n ja kaavoituksen kautta rakentamisvalmiuteen. 18 päätöstä, välitarinoita ja 69 mahdollista hybridikohtaamista. Vaiheiden vaihtuminen näkyy erikseen, ja osa seurauksista selviää vasta myöhemmässä käsittelyssä. Tuuli ja Aurinko ovat valikossa vielä suljettuja. Vanha 64 kortin pilotti ja pitkä kampanja on säilytetty erillisenä vertailuaineistona.
 
 Vedä korttia hiirellä tai sormella. Vedon aikana näet vaihtoehdon ja ennakkotiedon; palauta keskelle peruuttaaksesi. Nuolinäppäimet toimivat myös. Lyhyt tutorial ei tee päätöstä. Voittoruudulla saat pisteet ja selitykset viiveiden, pienennysten ja sijoittelun tiivistämisen vähennyksille.
 
@@ -39,8 +39,10 @@ Kolme viimeistä Python-komentoa tarvitsevat requirements-content.txt:n riippuvu
 
 ## Jatkokehitys
 
-- Aktiivinen sisältö: `content/deck.fi.json` ja `content/encounters.fi.json`. Teksti ei suorita efektejä. Uudet komennot tarvitsevat tyypin, toteutuksen ja testin.
+- Aktiivinen sisältö: `content/deck.fi.json`, `content/encounters.fi.json` ja `content/progress.fi.json`. Teksti ei suorita efektejä. Uudet komennot tarvitsevat tyypin, toteutuksen ja testin.
 - [Tilasopimus](docs/TILASOPIMUS_SWIPE.md): determinismi, ajastus, portit, pisteet ja tallennus.
+- [Alueprofiilit, ajastus ja lähteet](docs/ALUEET_JA_AJASTUS.md).
+- [Alueversion testit ja julkaisun tarkistus](reports/QA_REGIONS_2026-09-08.md).
 - [Sisällön uskottavuustarkistus ja lähteet](docs/SISALTOAUDITOINTI_2026-09-08.md).
 - [Testitulokset ja rajoitukset](reports/QA_SWIPE_2026-09-08.md).
 - [Täsmällinen seuraavan työn lähtökohta](NEXT_STEPS.md).

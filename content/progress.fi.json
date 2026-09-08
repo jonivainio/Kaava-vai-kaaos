@@ -1,0 +1,94 @@
+{
+  "transitions": [
+    {
+      "title": "Kaava-aloite ja YVA-ohjelma",
+      "body": "Maanvuokrauksesta siirrytään aloitteen ja arviointiohjelman valmisteluun. Sovitaan, mitä vaihtoehtoja ja vaikutuksia selvitetään. Kunta ratkaisee kaavoituksen käynnistämisen.",
+      "art": "planner"
+    },
+    {
+      "title": "YVA-selostus ja kaavaluonnos",
+      "body": "Maastotietoja ja arviointiohjelmasta saatua palautetta käytetään vaihtoehtojen arviointiin. Nyt valmistellaan selostus ja kaavaluonnos. Niiden kuuleminen ja perusteltu päätelmä tulevat vaiheen lopussa.",
+      "art": "documents"
+    },
+    {
+      "title": "Kaavaehdotus ja hyväksyntä",
+      "body": "Selostuksen kuuleminen on päättynyt ja perusteltu päätelmä saatu. Seuraavaksi vastataan puutteisiin, täydennetään tarvittaessa Natura-arviota ja valmistellaan kaavaehdotus. Hyväksyntä ratkaistaan vasta tämän jälkeen.",
+      "art": "authority"
+    }
+  ],
+  "interludes": [
+    [
+      {
+        "title": "Työ hankkeen parissa jatkuu.",
+        "body": "Karttaliitteet ja sopimukset käydään läpi. Tällä kertaa tiedoston nimessä on vain yksi sana: lopullinen.",
+        "art": "map"
+      }
+    ],
+    [
+      {
+        "title": "Kunnassa pidettiin iltakoulu.",
+        "body": "Esittelit hankkeen lähtökohdat ja alustavat vaihtoehdot. Kysymyksiä tuli, päätöksiä ei vielä tehty.",
+        "art": "planner"
+      },
+      {
+        "title": "YVA-ohjelma saa muotonsa.",
+        "body": "Konsultti kokoaa selvitysten työohjelmaa. Tuuli, aurinko ja sähkönsiirto mahtuvat samaan arviointiin, vaikka eivät samalle karttasivulle.",
+        "art": "documents"
+      },
+      {
+        "title": "Asiat etenevät.",
+        "body": "Hankeryhmä käy läpi aikataulun ja tehtäväjaon. Seuraavat selvitykset valmistellaan samalla kun aiemmat työt jatkuvat.",
+        "art": "consultant"
+      },
+      {
+        "title": "Ohjelmasta keskusteltiin.",
+        "body": "Yleisötilaisuudessa käytiin läpi arvioinnin sisältöä. Asukkaiden kysymykset kirjataan mukaan ohjelmavaiheen palautteeseen.",
+        "art": "cottage"
+      }
+    ],
+    [
+      {
+        "title": "Kaava-asiakirjoja valmistellaan.",
+        "body": "Kaavoittaja sovittaa selvitysten rajauksia kartalle. Yhdessä tiedostossa oli vielä edellinen sijoittelu. Nyt kaikilla on sama versio.",
+        "art": "map"
+      },
+      {
+        "title": "Selostus valmistuu hiljalleen.",
+        "body": "Asiantuntijat kirjoittavat vaikutusarvioita ja vertaavat vaihtoehtoja. Keskeneräiset tutkimukset jatkavat rinnalla; viranomaisen johtopäätöstä ei vielä ole.",
+        "art": "documents"
+      },
+      {
+        "title": "Työpäivä ilman uutta käännettä.",
+        "body": "Kartat päivittyvät ja liitteet valmistuvat. Kaikki hankekehitys ei mahdu dramaattiseen sähköpostiin.",
+        "art": "consultant"
+      },
+      {
+        "title": "Maisemakuvat saatiin kasaan.",
+        "body": "Havainnekuvat liitetään vaihtoehtojen vertailuun. Myös vastaranta otettiin mukaan; kartan reunaan maailma ei pääty.",
+        "art": "windscape"
+      }
+    ],
+    [
+      {
+        "title": "Vastineita kirjoitetaan.",
+        "body": "Lausunnot ja mielipiteet käydään läpi aihe kerrallaan. Sama huoli voi esiintyä monessa kirjeessä, mutta vastaus tarvitsee silti perustelut.",
+        "art": "documents"
+      },
+      {
+        "title": "Kunnassa pidettiin uusi iltakoulu.",
+        "body": "Esittelit muutetun suunnitelman ja sen perustelut. Keskustelu auttaa valmistelua; kaavapäätöstä ei tehdä tässä huoneessa tänä iltana.",
+        "art": "planner"
+      },
+      {
+        "title": "Ehdotuksen liitteet tarkistetaan.",
+        "body": "Kaavakarttaa, määräyksiä ja vaikutusarvioita luetaan rinnakkain. Tavoitteena on, että kaikki kolme kuvaavat samaa hanketta.",
+        "art": "map"
+      },
+      {
+        "title": "Hanke etenee työpöydillä.",
+        "body": "Täydennyksiä viimeistellään. Julkinen tutkimus, omat selvitykset ja viranomaiskäsittely kulkevat omia aikataulujaan.",
+        "art": "documents"
+      }
+    ]
+  ]
+}

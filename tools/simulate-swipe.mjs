@@ -1,5 +1,6 @@
 import { writeFileSync } from "node:fs";
 import {
+  CONTENT_VERSION,
   createGame,
   currentDecision,
   choose,
@@ -13,6 +14,7 @@ if (!Number.isInteger(count) || count < 100 || count > 30000)
 const safe = ["special","oldRoad","commission","smaller","now","workshop","fund","avoid","solarAvoid","moveNoise","moveHeight","wetland","respond","removeEdge","updateNatura","renew","supplement","defend"];
 const report = {
   version: "swipe-2",
+  contentVersion: CONTENT_VERSION,
   seedsPerStrategy: count,
   totalRuns: count * 3,
   strategies: {},
@@ -34,7 +36,7 @@ for (const strategy of ["random", "careful", "risky"]) {
     let s = createGame(`balance-${i}`, mode),
       steps = 0;
     try {
-      while (!s.ending && steps++ < 60) {
+      while (!s.ending && steps++ < 90) {
         if (s.stories.length) s = continueStory(s, token(s));
         else {
           const c = currentDecision(s);
@@ -76,7 +78,7 @@ report.randomWithinTarget = Object.values(report.strategies.random)
   .slice(0, 3)
   .every((n) => Math.abs(n / count - 1 / 3) < 0.035);
 writeFileSync(
-  new URL(`../reports/swipe-balance-${count}${process.argv[3] ? "-"+process.argv[3] : ""}.json`, import.meta.url),
+  new URL(`../reports/swipe-balance-${CONTENT_VERSION}-${count}${process.argv[3] ? "-"+process.argv[3] : ""}.json`, import.meta.url),
   JSON.stringify(report, null, 2) + "\n",
 );
 if (report.failures.length || !report.randomWithinTarget) process.exitCode = 1;

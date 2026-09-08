@@ -126,7 +126,10 @@ describe("hybridin uudet haarat", () => {
       const before = getDerivedStats(s.run).windCount;
       s = decide(s, "commission");
       expect(restoreGame(serializeGame(s)).ok).toBe(true);
-      if (outcome === "clear" || outcome === "oppose") expect(s.run.jobs.some(j=>j.jobId === "defence_review")).toBe(false);
+      if (outcome === "clear" || outcome === "oppose")
+        expect(s.run.jobs.some((j) => j.jobId === "defence_review")).toBe(
+          false,
+        );
       if (outcome === "clear") {
         expect(s.lastOutcome).toContain("ei vastusta");
         continue;
@@ -178,12 +181,34 @@ describe("hybridin uudet haarat", () => {
       );
       const loaded = restoreGame(serializeGame(s));
       expect(loaded.ok).toBe(true);
-      s = continueStory(s, token(s));
-      expect(getDerivedStats(s.run).windCount).toBe(d.windCount);
-      expect(getDerivedStats(s.run).solarHa).toBe(
-        d.solarHa - (accepted ? 0 : 8),
+      expect(getDerivedStats(s.run).solarHa).toBe(d.solarHa);
+      expect(s.findings.find((f) => f.source === "solarNature")!.status).toBe(
+        "pending",
       );
-      expect(s.delays.some((d) => d.months > 0)).toBe(true);
+      while (s.stories[0]?.findingSource !== "solarNature")
+        s = s.stories.length
+          ? continueStory(s, token(s))
+          : decide(s, safe[currentDecision(s)!.id]);
+      expect(s.stage).toBe(3);
+      const beforeResult = getDerivedStats(s.run);
+      const newLoss = s.run.assets.exclusionGroups
+        .solar_nature!.solarIds.slice(0, 8)
+        .filter(
+          (id) =>
+            !s.run.assets.solarParcels.find((p) => p.id === id)!.exclusions
+              .length,
+        ).length;
+      s = continueStory(s, token(s));
+      expect(getDerivedStats(s.run).windCount).toBe(beforeResult.windCount);
+      expect(getDerivedStats(s.run).solarHa).toBe(
+        beforeResult.solarHa - (accepted ? 0 : newLoss),
+      );
+      expect(s.findings.find((f) => f.source === "solarNature")!.status).toBe(
+        "revealed",
+      );
+      expect(s.run.jobs.find((j) => j.jobId === "solar_permit")!.status).toBe(
+        "completed",
+      );
     }
   });
   it("pisteet ovat vain voitolle; viive, teho, korkeus, ha ja tiivistys perustellaan", () => {

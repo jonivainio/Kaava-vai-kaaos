@@ -1,0 +1,65 @@
+{
+  "version": "swipe-2",
+  "contentVersion": "swipe-fi-007",
+  "seedsPerStrategy": 3000,
+  "totalRuns": 9000,
+  "strategies": {
+    "random": {
+      "external": 1045,
+      "choices": 945,
+      "ready": 1010,
+      "minDecisions": 2,
+      "maxDecisions": 18,
+      "stageExternals": [
+        261,
+        267,
+        261,
+        256
+      ],
+      "modes": {
+        "wind": 1000,
+        "solar": 1000,
+        "hybrid": 1000
+      }
+    },
+    "careful": {
+      "external": 1044,
+      "choices": 5,
+      "ready": 1951,
+      "minDecisions": 2,
+      "maxDecisions": 18,
+      "stageExternals": [
+        261,
+        267,
+        261,
+        255
+      ],
+      "modes": {
+        "wind": 1000,
+        "solar": 1000,
+        "hybrid": 1000
+      }
+    },
+    "risky": {
+      "external": 1045,
+      "choices": 1627,
+      "ready": 328,
+      "minDecisions": 2,
+      "maxDecisions": 18,
+      "stageExternals": [
+        261,
+        267,
+        261,
+        256
+      ],
+      "modes": {
+        "wind": 1000,
+        "solar": 1000,
+        "hybrid": 1000
+      }
+    }
+  },
+  "failures": [],
+  "mode": "all",
+  "randomWithinTarget": true
+}

@@ -282,9 +282,13 @@ export default function App() {
                       aria-live="polite"
                     >
                       <span className="eyebrow">
-                        {story.kind === "research"
-                          ? "TUTKIMUKSEN TULOS"
-                          : "SILLÄ VÄLIN"}
+                        {story.kind === "transition"
+                          ? "SEURAAVA VAIHE"
+                          : story.kind === "finding"
+                            ? "ARVIOINNIN TULOS"
+                            : story.kind === "research"
+                              ? "TUTKIMUKSEN TULOS"
+                              : "SILLÄ VÄLIN"}
                       </span>
                       <h1>{story.title}</h1>
                       <p>{story.body}</p>
@@ -299,7 +303,10 @@ export default function App() {
                         alt=""
                       />
                       <span>
-                        Jatka <b>→</b>
+                        {story.kind === "transition"
+                          ? "Siirry vaiheeseen"
+                          : "Jatka"}{" "}
+                        <b>→</b>
                       </span>
                     </button>
                   </>

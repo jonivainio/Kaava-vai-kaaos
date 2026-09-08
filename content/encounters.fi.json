@@ -105,7 +105,10 @@
         "id": "initiative-cottage",
         "title": "Mökkiläisetkin haluavat mukaan.",
         "question": "Mökkiläisyhdistys ehtii yhteiseen iltaan vasta kesällä. Odotatko keskustelua ennen kaava-aloitetta vai jätätkö aloitteen nyt ja pidät tilaisuuden valmistelun aikana?",
-        "labels": ["Odotetaan yhteistä tilaisuutta", "Jätetään aloite nyt"]
+        "labels": [
+          "Odotetaan yhteistä tilaisuutta",
+          "Jätetään aloite nyt"
+        ]
       }
     ],
     "surveys": [
@@ -208,7 +211,10 @@
         "id": "nature-reindeer-route",
         "title": "Metsäpeuran kulkuyhteys kapenee.",
         "question": "Seuranta osoittaa metsäpeurojen kulkevan {gen} voimalapaikan välistä. Tiet ja voimalat kaventaisivat yhteyttä. Poistatko paikat vai tutkitko siirtoa hankealueen reunalle?",
-        "labels": ["Avataan leveä kulkuyhteys", "Tutkitaan paikkojen siirtoa"],
+        "labels": [
+          "Avataan leveä kulkuyhteys",
+          "Tutkitaan paikkojen siirtoa"
+        ],
         "notes": [
           "{countCap} voimalaa ja niiden tiehaarat jäävät pois.",
           "Koko säilyy vain, jos yhteys todella pysyy toimivana."
@@ -257,6 +263,25 @@
         },
         "failure": "Tarkempi arvio vahvisti laajan lintualueen merkityksen. Valittu uusi sijoittelu jätti merkittävän haitan jäljelle, eikä sitä hyväksytä.",
         "art": "wetland"
+      },
+      {
+        "id": "herding-pasture",
+        "title": "Laidunkierto kulkee tästä.",
+        "question": "Paliskunnan laiduntiedot näyttävät porojen käyttämän yhteyden. {countCap} voimalapaikkaa ja niiden tiet kaventaisivat sitä. Jätätkö paikat pois vai tutkitko siirtoa ja yhteyden leventämistä?",
+        "labels": [
+          "Säilytetään leveä laidunyhteys",
+          "Tutkitaan siirtoa laidunten reunalle"
+        ],
+        "notes": [
+          "{countCap} voimalaa jää pois. Laidunten yhteys arvioidaan kokonaisuutena.",
+          "Paikat säilyvät vain, jos yhteys toimii. Muiden maankäyttöhankkeiden haitat ovat mukana."
+        ],
+        "results": {
+          "avoid": "{countCap} riskipaikkaa ja niiden tiehaarat jätetään pois. Paliskunnan laiduntiedot viedään jäljelle jäävän vaihtoehdon arviointiin.",
+          "relocate": "Siirtovaihtoehto selvitetään yhdessä paliskunnan kanssa. Yhteisvaikutusten johtopäätös saadaan selostusvaiheen lopussa."
+        },
+        "failure": "Laidunyhteys jäi siirtovaihtoehdossakin liian kapeaksi. Paliskunnan tiedot ja yhteisvaikutusten arvio osoittavat merkittävää haittaa poronhoidolle. Valittu vaihtoehto ei osoita hyväksymisedellytyksiä.",
+        "art": "reindeer"
       }
     ],
     "noise": [
@@ -353,6 +378,18 @@
         "title": "Arvio ei lopu kaavarajaan.",
         "question": "Metsähallitus pyytää tarkastelemaan lajien liikkumista myös hankealueen ulkopuolella. Käyttekö tarkastelualueen yhdessä läpi vai täydennättekö sen kirjallisesti?",
         "art": "map"
+      },
+      {
+        "id": "herding-programme",
+        "title": "Paliskunta kutsutaan mukaan.",
+        "question": "Poronhoidon vaikutuksia varten tarvitaan laidunkierron ja kokoamispaikkojen tiedot. Käydäänkö aineisto läpi yhteisessä työpajassa vai kootaan ensin kirjalliset tiedot?",
+        "art": "reindeer"
+      },
+      {
+        "id": "programme-cumulative",
+        "title": "Naapurihankkeet samalle kartalle.",
+        "question": "Lähialueella kehitetään useita hankkeita. Melu, linnusto ja sähkönsiirto tarvitsevat yhteisvaikutusten tarkastelun. Kutsutaanko tekijät työpajaan vai sovitaanko lähtötiedot kirjallisesti?",
+        "art": "map"
       }
     ],
     "solarNature": [
@@ -401,6 +438,12 @@
         "title": "Sama huoli sadassa viestissä.",
         "question": "Asukkaiden mielipiteissä toistuu huoli yhteismelusta. Laskelmat pitää selittää ymmärrettävästi. Esitteletkö ne pienryhmissä vai julkaisetko kuvat ja vastaukset verkossa?",
         "art": "consultant"
+      },
+      {
+        "id": "herding-opinions",
+        "title": "Porojen kulku herättää kysymyksiä.",
+        "question": "Paliskunta kysyy paneeliaidoista ja tuulialueen kulkuyhteyksistä. Järjestätkö yhteisen karttatarkastelun vai julkaisetko havainnekuvat ja kirjalliset vastaukset?",
+        "art": "reindeer"
       }
     ],
     "hearing": [

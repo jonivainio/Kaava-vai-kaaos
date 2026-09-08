@@ -16,10 +16,14 @@ def collect(value):
     elif isinstance(value,list):
         for item in value: collect(item)
 collect(deck);collect(variants)
+progress=json.loads((ROOT/"content/progress.fi.json").read_text(encoding="utf-8"))
+collect(progress)
+assert len(progress["transitions"])==3
+assert len(progress["interludes"])==4
 for item in deck['decisions']:
     assert item['id'] not in ids
     ids.add(item['id'])
-assert [sum(d['stage']==s for d in deck['decisions']) for s in range(4)]==[2,5,7,4]
+assert [sum(d['stage']==s for d in deck['decisions']) for s in range(4)]==[2,5,6,5]
 assert {'solarNature','solarWater','defence','opinions'} <= ids
 for family in ('variants','solarVariants'):
     for group,items in variants[family].items():

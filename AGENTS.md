@@ -1,6 +1,6 @@
 # Kaava vai kaaos — pysyvät ohjeet
 
-**Julkaistu 9.9.2026:** aktiivinen peli `src/game/v5` + `content/v5.fi.json`, 159 päätös-ID:tä ja 89 tapahtumaa. 21 peruspäätöksen tavoite + ehdolliset jatkot, neljä vaihetta ja lupavoitto. V5:n omat sisältö-/sääntösopimukset ohittavat alla säilytetyt vanhojen versioiden kuvaustekstit. Tilanne ja varmennukset: `NEXT_STEPS.md`, `reports/v5/QA_V5.md`. Tuuli ja Aurinko edelleen suljettuja valikossa.
+**Julkaistu 9.9.2026:** aktiivinen peli `src/game/v5` + `content/v5.fi.json`, 159 päätös-ID:tä ja 89 tapahtumaa. 18 peruspäätöksen tavoite + ehdolliset jatkot (`v5-rules-2`, akulla enintään kaksi peruspäätöstä), neljä vaihetta ja lupavoitto. V5:n omat sisältö-/sääntösopimukset ohittavat alla säilytetyt vanhojen versioiden kuvaustekstit. Tilanne ja varmennukset: `NEXT_STEPS.md`, `reports/v5/QA_V5.md`. Tuuli ja Aurinko edelleen suljettuja valikossa.
 
 **Aktiivinen toimeksianto 8.9.2026: v5-integraatio.** `docs/source-v5/KAAVA_VAI_KAAOS_CODEX_v5/01_CODEX_TOTEUTUSOHJE.md` ja v5-käsikirjoitus ovat tämän päivityksen ensisijaiset ohjeet ja sisältölähde. Vanhojen alla olevien 18 kortin, RtB:n, pisteiden tai sävyohjeiden ei saa palauttaa vanhaa sisältöä v5:n päälle. Pelaajakentät säilytetään täsmällisinä; vain käsikirjoituksen sallitut muuttujat täytetään. Käyttäjä pyytää monipuolisia, selvästi toisistaan erottuvia korttigrafiikoita nykyisellä SVG-tyylillä. Lähdeaineistoa ei muokata eikä keskeneräistä v5:tä julkaista.
 

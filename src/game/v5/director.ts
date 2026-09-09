@@ -12,7 +12,7 @@ import { sample } from "./world";
 import { batteryPreparationReady, prepareBatteryApplications } from "./batteryPreparation";
 import type { GameV5, Stage } from "./types";
 
-export const PACING = { baseDecisions: { 1: 4, 2: 6, 3: 7, 4: 4 }, preparationMonths: { 1: 6, 2: 10, 3: 12, 4: 6 } } as const;
+export const PACING = { baseDecisions: { 1: 3, 2: 5, 3: 6, 4: 4 }, preparationMonths: { 1: 6, 2: 10, 3: 12, 4: 6 }, batteryBaseLimit: 2 } as const;
 const stageSource = { 1: "start", 2: "transition-1", 3: "transition-2", 4: "transition-3" } as const;
 const researchIds = ["natura", "natura-review", "natura-season", "natura-applicable"];
 function group(game: GameV5, id: string): string {
@@ -53,7 +53,9 @@ export function countBaseChoice(game: GameV5, id: string): void {
 }
 function candidate(game: GameV5): string | undefined {
   const stage = game.stage;
-  const available = game.stageDecks[stage].filter(id => !game.seenIds.includes(id) && !game.facts[`selected:${stage}:${group(game, id)}`] && ruleFor(id).eligible(game, id));
+  const batteryBaseCount = game.decisions.filter(d => ruleFor(d.contentId).role === "base" && ruleFor(d.contentId).spec(game, d.contentId).component === "bess").length;
+  const available = game.stageDecks[stage].filter(id => !game.seenIds.includes(id) && !game.facts[`selected:${stage}:${group(game, id)}`] && ruleFor(id).eligible(game, id) &&
+    (ruleFor(id).spec(game, id).component !== "bess" || batteryBaseCount < PACING.batteryBaseLimit));
   if (!available.length) return;
   if (stage === 2 && game.battery.status === "undecided" && baseCount(game) >= 2) return "BESS-P2-04";
   if (stage === 2) {
@@ -72,6 +74,11 @@ function candidate(game: GameV5): string | undefined {
     }
   }
   if (baseCount(game) >= PACING.baseDecisions[stage]) return;
+  if (stage === 4 && game.run.mode === "hybrid" &&
+    !game.decisions.some(d => entry(d.contentId).stage === stage && game.cases[d.caseId]?.component === "solar")) {
+    const solar = available.find(id => ruleFor(id).spec(game, id).component === "solar");
+    if (solar) return solar;
+  }
   return available[0];
 }
 function showWait(game: GameV5): void { game.scenes.push({ id: "@wait", caseId: null, branchId: null, kind: "wait", outcomeId: null, nextStage: null }); }

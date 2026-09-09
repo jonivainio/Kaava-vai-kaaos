@@ -2,6 +2,7 @@ import { getDerivedStats, restoreRun } from "../../engine";
 import { branchText, countWord, entry, interpolate, CONTENT_VERSION } from "./content";
 import { initialiseDecks, direct, beginStage, countBaseChoice } from "./director";
 import { initialState } from "./state";
+import { recordAssetChanges } from "./assetChanges";
 import { ruleFor } from "./rules";
 import { advanceToNextWork, publishDue, settleCompletedWork } from "./timeline";
 import { pick, sample } from "./world";
@@ -118,6 +119,7 @@ export function choose(game: GameV5, expected: string, side: Side): GameV5 {
   next.actions.push({ kind: "choice", token: expected, side });
   if (next.ending) next.scenes.unshift({ ...scene, kind: "epilogue" });
   settleCompletedWork(next); publishDue(next); direct(next);
+  recordAssetChanges(game, next);
   return next;
 }
 export function continueStory(game: GameV5, expected: string): GameV5 {
@@ -134,6 +136,15 @@ export function continueStory(game: GameV5, expected: string): GameV5 {
   next.revision++;
   next.actions.push({ kind: "continue", token: expected });
   direct(next);
+  // One player-facing wait may cover several silent completions. Resolve each in
+  // calendar order, stopping immediately at a real event, decision or transition.
+  if (scene.kind === "wait") {
+    for (let steps = 0; next.scenes[0]?.kind === "wait"; steps++) {
+      if (steps >= 400) throw new Error("Consecutive work waits did not settle");
+      next.scenes.shift(); advanceToNextWork(next); direct(next);
+    }
+  }
+  recordAssetChanges(game, next);
   return next;
 }
 export function getScore(game: GameV5) { return game.ending?.kind === "win" ? game.ending.score : null; }
@@ -159,7 +170,7 @@ export function restoreGame(raw: string): { ok: true; state: GameV5 } | { ok: fa
   try {
     if (raw.length > 8_000_000) throw new Error("Tallennus on liian suuri.");
     const saved = JSON.parse(raw) as GameV5;
-    if (saved?.version !== "swipe-v5-1" || saved.contentVersion !== CONTENT_VERSION || saved.rulesVersion !== "v5-rules-1") throw new Error("Tallennuksen sisältö- tai sääntöversio ei vastaa tätä peliä.");
+    if (saved?.version !== "swipe-v5-1" || saved.contentVersion !== CONTENT_VERSION || saved.rulesVersion !== "v5-rules-2") throw new Error("Tallennuksen sisältö- tai sääntöversio ei vastaa tätä peliä.");
     if (!Array.isArray(saved.actions) || saved.actions.length > 2000) throw new Error("Virheellinen toimintohistoria.");
     const initial = restoreRun(JSON.stringify(saved.initialRun));
     const physical = restoreRun(JSON.stringify(saved.run));

@@ -1,0 +1,39 @@
+{
+  "strategy": "canonical A, same seeds before/after; counts include required followups, exclude optional post-win epilogue",
+  "before": {
+    "count": 1000,
+    "completed": 1000,
+    "wins": 650,
+    "errors": [],
+    "consecutiveWaits": 9751,
+    "decisions": 19566,
+    "waits": 23374,
+    "winningDecisions": 15722,
+    "winningComponents": {
+      "wind": 5619,
+      "solar": 3023,
+      "bess": 2158,
+      "shared": 4922
+    },
+    "batteryRuns": 618,
+    "batteryDecisions": 2032
+  },
+  "after": {
+    "count": 1000,
+    "completed": 1000,
+    "wins": 653,
+    "errors": [],
+    "consecutiveWaits": 0,
+    "decisions": 16900,
+    "waits": 13849,
+    "winningDecisions": 13704,
+    "winningComponents": {
+      "wind": 4920,
+      "solar": 3706,
+      "bess": 1360,
+      "shared": 3718
+    },
+    "batteryRuns": 641,
+    "batteryDecisions": 1324
+  }
+}

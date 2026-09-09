@@ -6,7 +6,7 @@ Ensisijainen pelaajasisältö: `docs/source-v5/KAAVA_VAI_KAAOS_CODEX_v5/KAAVA_VA
 
 `src/game/v5/index.ts` tarjoaa `createGame`, `currentDecision`, `currentStory`, `previewChoice`, `choose`, `continueStory`, `token`, `getDerivedStats`, `serializeGame`, `restoreGame`, `getScore`, `openEpilogue` ja näkymämuotoilut. Fyysinen perusta ja sen `createRun`/`applyChoice`-rajapinta jäävät `src/engine`:en. React ei kirjoita hankkeen mekaanista tilaa suoraan.
 
-`GameV5` on serialisoitava tietue. Tunnisteet: tallennus `swipe-v5-1`, sisältö `v5-fi-03ae27238966`, säännöt `v5-rules-1`. Se sisältää lähtötilan, nykyiset fyysiset paikat, piilotetun maailmaprofiilin, neljä kehitysvaihetta, työkalenterin, tapaukset, tulosjonon, sopimukset, BESSin, lupatilat, kustannukset, laatuhavainnot, päätöshistorian ja käyttöliittymälle tarkoitetut kohtaukset.
+`GameV5` on serialisoitava tietue. Tunnisteet: tallennus `swipe-v5-1`, sisältö `v5-fi-03ae27238966`, säännöt `v5-rules-2`. Se sisältää lähtötilan, nykyiset fyysiset paikat, piilotetun maailmaprofiilin, neljä kehitysvaihetta, työkalenterin, tapaukset, tulosjonon, sopimukset, BESSin, lupatilat, kustannukset, laatuhavainnot, päätöshistorian ja käyttöliittymälle tarkoitetut kohtaukset. `assetChanges` säilyttää kunkin HUD-luvun viimeisimmän todellisen ennen/jälkeen-arvon ja muutosrevision. Preview ei kirjoita tätä, eikä muuttumaton tarina tyhjennä merkintää.
 
 Jokainen vahvistus palauttaa uuden tilan. Vanhalla tokenilla tehty toisto palauttaa alkuperäisen tilan eikä laskuta mitään. Vasemman/oikean esitysjärjestys johdetaan vakaasta avaimesta; sääntö saa aina kanonisen A/B-valinnan. Esikatselu ei suorita sääntöä tai kuluta satunnaisuutta. Maailma, nimi ja kuvituksen valinta käyttävät erillisiä avaimia. Nimi, sen ID, pooliversio ja nimi-RNG säilyvät tallenteessa.
 
@@ -24,7 +24,9 @@ Voimalamäärä, merenpinnasta erillinen kokonaiskorkeus, mallin nimellisteho ja
 
 Yksi yhteinen kello odottaa seuraavaa valmistuvaa työtä. Rinnakkaiset kestot eivät summaudu. Vertailukalenteri kuvaa samoja tarpeellisia töitä ilman kyseistä vältettävää lisäviivettä. Pisteytettävä lisäaika on toteutuneen ja vertailukellon erotus. Myöhempi yhteinen ulkoinen odotus voi imeä aiempaa lisäviivettä. Vuokra-ajan varoitus säilyttää lisäksi varoitushetken todennetun vältettävän viiveen, jotta myöhempi ulkoinen odotus ei pyyhi tapahtunutta sopimusketjua historiasta.
 
-Tavallinen tarinapyyhkäisy lisää 0 kuukautta. Työn odotuskortti etenee oikeaan valmistumishetkeen. Vaihesiirtymä vahvistetaan erikseen. Kuulemis- ja asiakirjatarinoilla on toteutuneeseen valmisteluun liittyvät ehdot; ne eivät myönnä lupia tai korjaa puuttuvia selvityksiä.
+Tavallinen tarinapyyhkäisy lisää 0 kuukautta. Työn odotuskortti etenee valmistumishetki kerrallaan ensimmäiseen varsinaiseen tapahtumaan, päätökseen tai vaihesiirtymään. Hiljaiset valmistumiset eivät lisää peräkkäisiä odotusruutuja; kello ja riippuvuudet käsitellään silti järjestyksessä. Vaihesiirtymä vahvistetaan erikseen. Kuulemis- ja asiakirjatarinoilla on toteutuneeseen valmisteluun liittyvät ehdot; ne eivät myönnä lupia tai korjaa puuttuvia selvityksiä.
+
+Rytmitys käyttäjän 9.9. palautteen jälkeen: peruskiintiöt 3/5/6/4 = 18 päätöstä aiemman 21:n sijaan. Akun peruspäätöksiä valitaan enintään kaksi koko peliin. Jo avatun ketjun välttämätön jatko ei häviä kiintiöön. Hybridin selostus- ja ehdotusvaiheisiin varmistetaan aurinkopäätös, muut ehdot ja siemenjärjestys säilyvät. Sääntöversion 1 tallenne säilyy raakamuodossa vientiin; vanhaa päätöshistoriaa ei tulkita lyhyemmän pakan indekseiksi.
 
 Tutkimusrahoitus ei muuta julkista tulosta. Rahoitus on toteutunut kehityskulu, julkaisu on itsenäinen tapahtuma. Päätös odottaa voi siirtää kriittistä polkua; pienemmällä selvitettyllä vaihtoehdolla jatkava hanke voi edetä tutkimuksen ollessa taustalla.
 

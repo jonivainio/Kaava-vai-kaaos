@@ -2,6 +2,37 @@ import { test, expect, type Page } from "@playwright/test";
 import { createGame, choose, continueStory, currentDecision, sourceChoice, token, serializeGame } from "../dist/v5/index.js";
 import { readFileSync } from "node:fs";
 const KEY = "kaava-vai-kaaos:swipe:2";
+for (const width of [360, 430]) test(`last asset changes remain legible and survive reload at ${width}px`, async ({ page }) => {
+  test.setTimeout(60000);
+  await page.setViewportSize({ width, height: 844 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  let fixture;
+  for (let seed = 0; seed < 120 && !fixture; seed++) {
+    let game = createGame(`hud-changes-${seed}`);
+    for (let step = 0; step < 250 && !game.ending; step++) {
+      game = currentDecision(game) ? choose(game, token(game), sourceChoice(game, "left") === "A" ? "left" : "right") : continueStory(game, token(game));
+      if (["count", "height", "power", "solar"].every(key => game.assetChanges[key]) && game.assetChanges.height.to.includes("–")) { fixture = game; break; }
+    }
+  }
+  expect(fixture).toBeTruthy();
+  await page.goto("/");
+  await page.evaluate(raw => {
+    localStorage.setItem("kaava-vai-kaaos:swipe:2", raw);
+    localStorage.setItem("kaava-vai-kaaos:swipe:tutorial", "done");
+  }, serializeGame(fixture));
+  await page.reload(); await page.getByRole("button", { name: /Jatka ·/ }).click();
+  for (const metric of ["count", "height", "power", "solar"]) {
+    const label = page.getByTestId(`asset-change-${metric}`);
+    await expect(label).toBeVisible();
+    await expect(label).toContainText(fixture.assetChanges[metric].from);
+    await expect(label).toContainText(fixture.assetChanges[metric].to);
+    expect(await label.evaluate(node => node.scrollWidth <= node.clientWidth + 1)).toBe(true);
+  }
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+  await page.screenshot({ path: `reports/pacing/hud-${width}.png` });
+  await page.reload(); await page.getByRole("button", { name: /Jatka ·/ }).click();
+  expect((await saved(page)).assetChanges).toEqual(fixture.assetChanges);
+});
 async function start(page: Page, seed = "v5-browser") {
   await page.goto("/");
   await page.evaluate(() => localStorage.setItem("kaava-vai-kaaos:swipe:tutorial", "done"));
@@ -26,7 +57,7 @@ for (const width of [360, 390, 430, 1163]) test(`v5 story and decision swipes at
   await page.emulateMedia({ reducedMotion: "reduce" });
   await start(page);
   await expect(page.locator(".narration-paper")).toBeVisible();
-  await page.screenshot({ path: `reports/v5/browser/story-${width}.png` });
+  await page.screenshot({ path: `reports/pacing/browser/story-${width}.png` });
   const initial = await saved(page);
   await swipe(page, "left", 20);
   expect(await saved(page)).toEqual(initial);
@@ -37,7 +68,7 @@ for (const width of [360, 390, 430, 1163]) test(`v5 story and decision swipes at
   await expect(page.locator(".question")).toBeVisible();
   const image = page.locator('.swipe-card img');
   expect(await image.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
-  await page.screenshot({ path: `reports/v5/browser/decision-${width}.png` });
+  await page.screenshot({ path: `reports/pacing/browser/decision-${width}.png` });
   await swipe(page, "left");
   await expect.poll(async () => (await saved(page)).decisions.length).toBe(1);
   await expect(page.locator('[role="alert"]')).toHaveCount(0);
@@ -79,7 +110,7 @@ for (const width of [360, 430]) test(`longest actual source fields remain readab
       const element = page.locator(selector);
       if (await element.count()) expect(await element.evaluate(node => node.scrollWidth <= node.clientWidth + 1)).toBe(true);
     }
-    await page.screenshot({ path: `reports/v5/browser/long-${width}-${item.id.replace(/[^a-z0-9-]/gi, "-")}.png` });
+    await page.screenshot({ path: `reports/pacing/browser/long-${width}-${item.id.replace(/[^a-z0-9-]/gi, "-")}.png` });
   }
   const results = entries.flatMap((item: any) => [...item.branches.map((branch: any) => ({ id: item.id, variant: branch.id, text: `${item.body}\n\n${branch.text}` })),
     ...["A", "B"].flatMap(choice => item.choices[choice] ? [{ id: item.id, variant: choice, text: item.choices[choice].result }] : [])]);
@@ -89,7 +120,7 @@ for (const width of [360, 430]) test(`longest actual source fields remain readab
   await expect(paragraph).toHaveText(result.text);
   expect(await paragraph.evaluate(node => getComputedStyle(node).textOverflow)).not.toBe("ellipsis");
   await paragraph.scrollIntoViewIfNeeded();
-  await page.screenshot({ path: `reports/v5/browser/long-result-${width}.png` });
+  await page.screenshot({ path: `reports/pacing/browser/long-result-${width}.png` });
 });
 
 test("a complete v5 run follows the same decisions, waits and stage transitions in the browser", async ({ page }) => {
@@ -114,7 +145,7 @@ test("a complete v5 run follows the same decisions, waits and stage transitions 
       await page.reload(); await page.getByRole("button", { name: /Jatka ·/ }).click();
       expect(await page.evaluate(key => localStorage.getItem(key), KEY)).toBe(snapshot);
       await expect(page.locator(".transition-screen")).toBeVisible();
-      await page.screenshot({ path: `reports/v5/browser/transition-${transitions}.png` });
+      await page.screenshot({ path: `reports/pacing/browser/transition-${transitions}.png` });
       await page.getByRole("button", { name: "Siirry seuraavaan vaiheeseen" }).click();
       model = continueStory(model, token(model));
     } else {
@@ -130,7 +161,7 @@ test("a complete v5 run follows the same decisions, waits and stage transitions 
   expect(transitions).toBe(3);
   await expect(page.getByRole("heading", { name: "Hanke on luvitettu" })).toBeVisible();
   await expect(page.locator(".score-total")).toContainText(String(model.ending.score.total));
-  await page.screenshot({ path: "reports/v5/browser/win.png" });
+  await page.screenshot({ path: "reports/pacing/browser/win.png" });
 });
 
 test("local review exposes every ID and branch without changing the ordinary save", async ({ page }) => {

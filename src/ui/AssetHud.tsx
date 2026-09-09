@@ -1,6 +1,7 @@
 import { useId } from "react";
 import { getDerivedStats } from "../game/v5";
 import type { Game } from "../game/v5";
+import { assetValues } from "../game/v5/assetChanges";
 export function AssetIcon({
   type,
   ratio = 1,
@@ -76,8 +77,14 @@ export function AssetIcon({
 export function AssetHud({ game, onInfo }: { game: Game; onInfo: () => void }) {
   const d = getDerivedStats(game.run),
     f = (n: number) => n.toLocaleString("fi-FI", { maximumFractionDigits: 1 });
-  const heights = game.run.assets.windSites.filter(site => !site.exclusions.length).map(site => site.totalHeightM);
-  const height = heights.length ? Math.min(...heights) === Math.max(...heights) ? f(heights[0]!) : `${f(Math.min(...heights))}–${f(Math.max(...heights))}` : "0";
+  const { height } = assetValues(game);
+  const change = (metric: "count" | "height" | "power" | "solar", unit: string) => {
+    const last = game.assetChanges[metric];
+    return last ? <span key={`${metric}:${last.revision}`} className="asset-change" data-testid={`asset-change-${metric}`}
+      title={`Viimeisin muutos: ${last.from} → ${last.to} ${unit}`} aria-label={`Viimeisin muutos: ${last.from} → ${last.to} ${unit}`}>
+      <span>{last.from}</span><span aria-hidden="true">→</span><b>{last.to}</b>
+    </span> : null;
+  };
   return (
     <section
       className={`asset-hud ${game.run.mode}`}
@@ -98,6 +105,7 @@ export function AssetHud({ game, onInfo }: { game: Game; onInfo: () => void }) {
               {d.windCount}
               <small> kpl</small>
             </strong>
+            {change("count", "kpl")}
           </div>
           <div className="number-stat">
             <strong>
@@ -105,6 +113,7 @@ export function AssetHud({ game, onInfo }: { game: Game; onInfo: () => void }) {
               <small> m</small>
             </strong>
             <span>Kokonaiskorkeus</span>
+            {change("height", "m")}
           </div>
           <div className="number-stat">
             <strong>
@@ -112,6 +121,7 @@ export function AssetHud({ game, onInfo }: { game: Game; onInfo: () => void }) {
               <small> MW</small>
             </strong>
             <span>Yhteisteho</span>
+            {change("power", "MW")}
           </div>
         </div>
       )}
@@ -129,6 +139,7 @@ export function AssetHud({ game, onInfo }: { game: Game; onInfo: () => void }) {
             {f(d.solarHa)}
             <small> ha</small>
           </strong>
+          {change("solar", "ha")}
           {game.run.mode === "solar" && <span>Aurinkoalue</span>}
         </div>
       )}

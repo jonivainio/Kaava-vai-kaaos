@@ -239,6 +239,27 @@ img {
 .solar .solar-stats strong {
   font-size: 30px;
 }
+.asset-hud .asset-change {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  column-gap: 3px;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #ffce66;
+  margin-top: 3px;
+  animation: asset-change-arrives 0.65s ease-out;
+}
+.asset-hud .asset-change span { font-size: inherit; color: inherit; }
+.asset-hud .asset-change > span:first-child { color: #d7c7ed; }
+@keyframes asset-change-arrives {
+  from { background: #80663d; transform: translateY(-3px); }
+  to { background: transparent; transform: translateY(0); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .asset-hud .asset-change { animation: none; }
+}
 .info-button {
   position: absolute;
   right: 5px;

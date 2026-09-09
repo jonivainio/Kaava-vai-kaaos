@@ -4,6 +4,8 @@ import { createHash } from 'node:crypto';
 import { createGame, currentDecision, choose, continueStory, sourceChoice, token, serializeGame } from '../dist/v5/index.js';
 
 const url = 'https://kaava-vai-kaaos.joni-vainio.chatgpt.site/';
+const reportDir = process.argv[2] ?? 'reports/v5';
+if (!/^reports\/[a-z0-9/-]+$/.test(reportDir)) throw new Error('Invalid report directory');
 const browser = await chromium.launch({ headless: true });
 // Deliberately no storageState, auth headers, bypass tokens or inherited browser profile.
 const context = await browser.newContext({ viewport: { width: 390, height: 844 }, reducedMotion: 'reduce' });
@@ -19,7 +21,7 @@ async function swipe(direction) {
   await page.mouse.move(x + (direction === 'left' ? -125 : 125), y, { steps: 8 }); await page.mouse.up();
 }
 try {
-  mkdirSync('reports/v5/public', { recursive: true });
+  mkdirSync(`${reportDir}/public`, { recursive: true });
   const response = await page.goto(url, { waitUntil: 'networkidle', timeout: 60000 });
   expect(response.status()).toBe(200); expect(new URL(page.url()).origin).toBe(new URL(url).origin);
   await expect(page.getByRole('button', { name: /Aloita hanke/ })).toBeVisible({ timeout: 20000 });
@@ -29,9 +31,9 @@ try {
   const expectedHash = createHash('sha256').update(readFileSync(`dist/${scriptPath.replace(/^\//, '')}`)).digest('hex');
   const receivedHash = createHash('sha256').update(await scriptResponse.body()).digest('hex');
   expect(receivedHash).toBe(expectedHash);
-  await page.screenshot({ path: 'reports/v5/public/menu.png' });
+  await page.screenshot({ path: `${reportDir}/public/menu.png` });
   await page.evaluate(() => localStorage.setItem('kaava-vai-kaaos:swipe:tutorial', 'done'));
-  const seed = 'v5-ui-win-2';
+  const seed = process.argv[3] ?? 'v5-ui-win-2';
   await page.getByRole('button', { name: 'Avaa pelivalikko' }).click();
   await page.getByPlaceholder('Arvotaan, jos jätät tyhjäksi').fill(seed);
   await page.getByRole('button', { name: 'Sulje pelivalikko' }).click();
@@ -53,17 +55,17 @@ try {
     }
     await expect.poll(async () => (await saved()).revision).toBe(model.revision);
     expect(serializeGame(await saved())).toBe(serializeGame(model));
-    if (turns === 2) await page.screenshot({ path: 'reports/v5/public/game.png' });
+    if (turns === 2) await page.screenshot({ path: `${reportDir}/public/game.png` });
   }
   expect(model.ending?.kind).toBe('win'); expect(transitions).toBe(3); expect(errors).toEqual([]);
   await expect(page.getByRole('heading', { name: 'Hanke on luvitettu' })).toBeVisible();
-  await page.screenshot({ path: 'reports/v5/public/win.png' });
+  await page.screenshot({ path: `${reportDir}/public/win.png` });
   const result = { url: page.url(), httpStatus: response.status(), contentVersion: model.contentVersion,
     rulesVersion: model.rulesVersion, deployedScript: scriptPath, deployedScriptSha256: receivedHash,
     anonymousFreshContext: true, initialCookieCount, bypassOrAuthHeaders: false,
     fullRun: true, seed, canonicalStrategy: 'A', decisions: model.decisions.length, transitions,
     reloads: transitions, score: model.ending.score.total, viewport: { width: 390, height: 844 },
     errors, checkedAt: new Date().toISOString() };
-  writeFileSync('reports/v5/public-check.json', JSON.stringify(result, null, 2) + '\n');
+  writeFileSync(`${reportDir}/public-check.json`, JSON.stringify(result, null, 2) + '\n');
   console.log(JSON.stringify(result));
 } finally { await context.close(); await browser.close(); }

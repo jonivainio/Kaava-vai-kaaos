@@ -1,0 +1,41 @@
+{
+  "strategy": "canonical A, same seeds before/after; counts include required followups, exclude optional post-win epilogue",
+  "beforeBundleSha256": "ce0f98fa4f036e36c8e2db7e2eb83b17d349fb27089d9a17cad26a1a6fe842f1",
+  "afterBundleSha256": "98877d3f7811604e14e565c7e15ed04c30834f264eb190d8125fc689b16bfc39",
+  "before": {
+    "count": 1000,
+    "completed": 1000,
+    "wins": 650,
+    "errors": [],
+    "consecutiveWaits": 9751,
+    "decisions": 19566,
+    "waits": 23374,
+    "winningDecisions": 15722,
+    "winningComponents": {
+      "wind": 5619,
+      "solar": 3023,
+      "bess": 2158,
+      "shared": 4922
+    },
+    "batteryRuns": 618,
+    "batteryDecisions": 2032
+  },
+  "after": {
+    "count": 1000,
+    "completed": 1000,
+    "wins": 653,
+    "errors": [],
+    "consecutiveWaits": 0,
+    "decisions": 16969,
+    "waits": 13262,
+    "winningDecisions": 13777,
+    "winningComponents": {
+      "wind": 5180,
+      "solar": 2979,
+      "bess": 1433,
+      "shared": 4185
+    },
+    "batteryRuns": 631,
+    "batteryDecisions": 1367
+  }
+}

@@ -1,3 +1,17 @@
+# Pelikerran tiivistys ja muutosluvut — 9.9.2026
+
+Aktiivinen sääntöversio on nyt `v5-rules-2`, sisältö edelleen muuttamaton `v5-fi-03ae27238966`. Käyttäjän uuden palautteen mukaan peruskiintiö on 18 (3/5/6/4) aiemman 21:n sijaan. Akulle valitaan enintään kaksi peruspäätöstä, tarpeelliset jatkot käsitellään. Hybridin selostus- ja ehdotusvaiheessa varmistetaan aurinkosisältö. Tuuli on keskimäärin selvästi suurin aihe, aurinko toinen, akku pienin.
+
+Yksi odotuspyyhkäisy käsittelee peräkkäiset hiljaiset valmistumiset kellon järjestyksessä seuraavaan todelliseen tulokseen/päätökseen/siirtymään. Päällekkäisiä odotuksia ei summata eikä tulostapahtumia ohiteta. HUD:n `assetChanges` säilyttää voimalamäärän, korkeusvälin, MW:n ja hehtaarien viimeisimmät toteutuneet muutokset. Preview ei muuta niitä; lataus säilyttää ne.
+
+Varmennettu: 359/359 testiä, tyypitys/build ja täsmällinen sisältötuonti. Chromium 11/11, mukana neljän muuttuneen luvun 360/430 px:n näkymä ja lataus. Offline/päivitys 2/2. Fyysistä puhelinta ei testattu. Vertailu samoilla 1000 siemenellä: voitolliset kierrokset 24,19 → 21,10 päätöstä, akkua sisältävien kierrosten akkupäätökset 3,29 → 2,17, peräkkäiset odotusruudut 9751 → 0. Lopullinen erillinen 3000 satunnaisen valinnan peliä: 1140 voittoa, 985 ulkoista loppua, 842 valintaloppua, 33 laajuusloppua, 0 virhettä.
+
+Raportit: `reports/pacing/QA.md`, `comparison.json`, muutoslukujen kuvat ja julkaisun jälkeen `public-check.json`/`release.json`. Edellisen `v5-rules-1`-tallenteen raakasisältö säilyy vientiin; aloita tätä muutosta kokeillessa uusi peli. Vanhaa päätöshistoriaa ei tulkita uuden pakan mukaan. Säilytä alkuperäisen v5-toimituksen raportit historiallisina.
+
+Seuraava vaihe tässä toimituksessa: julkinen julkaisu samaan osoitteeseen, kirjautumaton tarkistus ja julkaisutietojen tallennus. Seuraava kehitystehtävä: käyttäjän palaute oikealta puhelimelta, erityisesti muutoslukujen luettavuus ja kierroksen rytmi. Älä lisää takaisin peräkkäisiä odotusruutuja tai kasvata akkupakkaa muiden aiheiden kustannuksella.
+
+---
+Aiempi v5-toimitus ja sen historia:
 # V5 toteutettu ja julkaistu julkiseksi — 9.9.2026
 
 Aktiivinen peli on `src/game/v5` + `content/v5.fi.json`, sisältö `v5-fi-03ae27238966`, säännöt `v5-rules-1`, tallennus `swipe-v5-1`. V5-käsikirjoitus säilyy ensisijaisena muuttamattomana lähteenä. Kaikki 159 päätöstä, 89 tapahtumaa ja 143 tuloshaaraa on kytketty. UI käyttää v5:tä; tarinat ovat pyyhkäistäviä tekstikortteja, vaiheiden vaihdot omia näkymiään. 61 uutta SVG:tä, yhteensä 82. Vain Hybridi avoinna valikossa.

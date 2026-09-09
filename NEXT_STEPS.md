@@ -8,7 +8,11 @@ Varmennettu: 359/359 testiä, tyypitys/build ja täsmällinen sisältötuonti. C
 
 Raportit: `reports/pacing/QA.md`, `comparison.json`, muutoslukujen kuvat ja julkaisun jälkeen `public-check.json`/`release.json`. Edellisen `v5-rules-1`-tallenteen raakasisältö säilyy vientiin; aloita tätä muutosta kokeillessa uusi peli. Vanhaa päätöshistoriaa ei tulkita uuden pakan mukaan. Säilytä alkuperäisen v5-toimituksen raportit historiallisina.
 
-Seuraava vaihe tässä toimituksessa: julkinen julkaisu samaan osoitteeseen, kirjautumaton tarkistus ja julkaisutietojen tallennus. Seuraava kehitystehtävä: käyttäjän palaute oikealta puhelimelta, erityisesti muutoslukujen luettavuus ja kierroksen rytmi. Älä lisää takaisin peräkkäisiä odotusruutuja tai kasvata akkupakkaa muiden aiheiden kustannuksella.
+**Julkaisu estynyt, odottaa kohdekohtaista käyttäjän hyväksyntää.** Toteutuscommit `75ca4ebf79a7c1ca2e16e5470b80ec8634ffc12a` on GitHubin main-haarassa. Automaattinen hyväksyntätarkistus hylkäsi kahdesti lähdekoodin pushin Sites-liittimen palauttamaan `https://git.chatgpt-team.site/d2ef006c-46e1-4f27-bbff-5c4572efba0d/appgprj_6a9f15554f248191b0170ac9b997e896.git`-kohteeseen. Syy: arvioija piti vain GitHub-kohdetta valtuutettuna. Toisessa yrityksessä mukana oli jo tarkistettu manifestin, julkaisun ja liittimen projektitunnusten vastaavuus sekä tieto lähdekoodin julkisuudesta GitHubissa. Älä kierrä estoa eri siirtotavalla tai uudella endpointilla. Tarvitaan käyttäjän nimenomainen hyväksyntä tälle Sites-lähdevarastolle, sitten uusi lyhytikäinen tunnus.
+
+Valmis validoitu julkaisuarkisto `.deploy/kaava-pacing-final.tar.gz`, SHA-256 `0433aac441a9b2117c45b98909e0a0a1d0ee1aed211d8f023c69415de1edcd2c`; tarkistettu moottoribundle `98877d3f7811604e14e565c7e15ed04c30834f264eb190d8125fc689b16bfc39`. Sitesiin ei tallennettu tai julkaistu tästä uutta versiota. Julkinen pelilinkki on yhä v5-rules-1. Hyväksynnän jälkeen sama Sites-projekti, lähdepush, tarkka täysi HEAD, version tallennus arkistolla ja julkaisu nykyisellä public-oikeudella. Lopuksi `node tools/check-public-v5.mjs reports/pacing` ilman auth-/ohitustunnuksia; siemen `v5-ui-win-2` voittaa nykyisessä mallissa 22 päätöksellä. Poista README:n julkaisun odotusmerkintä vasta onnistuneen julkaisun jälkeen.
+
+Seuraava kehitystehtävä: käyttäjän palaute oikealta puhelimelta, erityisesti muutoslukujen luettavuus ja kierroksen rytmi. Älä lisää takaisin peräkkäisiä odotusruutuja tai kasvata akkupakkaa muiden aiheiden kustannuksella.
 
 ---
 Aiempi v5-toimitus ja sen historia:

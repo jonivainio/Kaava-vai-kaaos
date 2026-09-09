@@ -2,6 +2,8 @@
 
 **[Avaa peli puhelimella](https://kaava-vai-kaaos.joni-vainio.chatgpt.site)** — julkinen testiversio, ei vaadi ChatGPT-kirjautumista. Linkin voi jakaa testaajille. Lähdekoodi: [GitHub](https://github.com/jonivainio/Kaava-vai-kaaos).
 
+Viimeisin rytmitys- ja muutoslukupäivitys on tässä repossa testattuna. Sen Sites-julkaisu odottaa lähdevaraston siirtolupaa; yllä oleva linkki käyttää vielä edellistä versiota. Tarkka tila: [NEXT_STEPS](NEXT_STEPS.md).
+
 Suomalainen hankekehityskorttipeli. Kehitä fiktiivinen hybridihanke maanvuokrauksesta YVA:n ja kaavoituksen kautta luvitetuksi. V5:n sisältöpankissa on 159 päätöstä, 89 tapahtumaa ja 143 tuloshaaraa. Yhteen peliin valikoituu osa sisällöstä: neljä vaihetta, 18 peruspäätöksen tavoite sekä tarvittavat jatkopäätökset. Akulla on enintään kaksi satunnaisesti valittavaa peruspäätöstä; aiempien päätösten tarpeelliset jatkot käsitellään. Tuuliaiheita painotetaan eniten, aurinkoa toiseksi ja akkua vähiten. Hyväksyminen yksin ei ole voitto; tarvittavien lupien ja lainvoiman on oltava kunnossa. Tuuli ja Aurinko ovat valikossa vielä suljettuja. Vanha 64 kortin pilotti ja aiemmat kampanjat säilyvät vertailuaineistona.
 
 Vedä korttia hiirellä tai sormella. Vedon aikana näet valinnan; palauta keskelle peruuttaaksesi. Nuolinäppäimet toimivat myös. Tarinat ovat omia tekstikorttejaan, joissa kumpikin suunta jatkaa samaa tarinaa. Vaiheiden vaihtuminen vahvistetaan erikseen. Lupavoitosta saat enintään 1 000 pistettä ja perustelut vähennyksille. Vapaaehtoinen akku-epilogi ei peru voittoa.

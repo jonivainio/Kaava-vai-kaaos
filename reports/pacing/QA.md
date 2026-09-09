@@ -37,4 +37,6 @@ Vanha moottoribundle: `ce0f98fa4f036e36c8e2db7e2eb83b17d349fb27089d9a17cad26a1a6
 - `node tools/compare-pacing.mjs 1000`: vanha vertailubundle otettiin talteen `.deploy/v5-before-pacing.mjs`:ksi ennen ensimmäistä buildia. `--reuse-before` käyttää jo ajettua saman siemenjoukon vertailuriviä; uudet jälkimmäiset pelit ajetaan joka kerta. Tuoreessa checkoutissa vertailubundle on rakennettava lähtöcommitista ensin.
 - Lopullisen satunnaisstrategian 3 000 siementä: `reports/v5/simulation/pacing-release.json`. Aiemmat `pacing-final*` ja `comparison-draft.json` ovat viimeistelyn väliajoja, eivät lopullisen bundlen tuloksia.
 
-Julkaisun ja kirjautumattoman kokeen tunnisteet täydennetään `release.json`:iin ja `public-check.json`:iin. Fyysisen puhelimen testi jää käyttäjälle.
+Lopullinen 3000 satunnaisvalinnan ajo: 1140 voittoa, 985 ulkoista loppua, 842 valintaloppua, 33 laajuusloppua, 0 suoritusvirhettä. Kaikki otoksen siemenet ovat nimittäjässä.
+
+Julkaisu estyi automaattiseen hyväksyntätarkistukseen: se hylkäsi kaksi lähdepush-yritystä saman Sites-projektin liittimen palauttamaan git.chatgpt-team.site-varastoon, koska ei pitänyt tätä kohdetta käyttäjän valtuuttamana. GitHub-push onnistui. Validoitu arkisto on valmis, mutta Sitesiin ei tallennettu eikä julkaistu uutta versiota; siksi myöskään uuden julkaisun kirjautumatonta koetta ei ajettu. Jatko tarvitsee erillisen kohdehyväksynnän. Julkaisun ja kokeen todelliset tunnisteet kirjataan vasta onnistumisen jälkeen. Fyysisen puhelimen testi jää käyttäjälle.

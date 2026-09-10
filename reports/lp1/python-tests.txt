@@ -1,0 +1,22 @@
+test_baseline_is_valid (__main__.ContentContractTests.test_baseline_is_valid) ... ok
+test_branch_cannot_be_drawn_as_ambient_card (__main__.ContentContractTests.test_branch_cannot_be_drawn_as_ambient_card) ... ok
+test_card_case_reference_is_rejected (__main__.ContentContractTests.test_card_case_reference_is_rejected) ... ok
+test_content_cannot_write_approval_gate (__main__.ContentContractTests.test_content_cannot_write_approval_gate) ... ok
+test_demo_phase_mismatch_is_rejected (__main__.ContentContractTests.test_demo_phase_mismatch_is_rejected) ... ok
+test_demo_queued_branch_cannot_skip_due_time (__main__.ContentContractTests.test_demo_queued_branch_cannot_skip_due_time) ... ok
+test_duplicate_card_is_rejected (__main__.ContentContractTests.test_duplicate_card_is_rejected) ... ok
+test_duplicate_name_is_rejected (__main__.ContentContractTests.test_duplicate_name_is_rejected) ... ok
+test_editorial_version_mismatch_is_rejected (__main__.ContentContractTests.test_editorial_version_mismatch_is_rejected) ... ok
+test_embedded_external_url_is_rejected (__main__.ContentContractTests.test_embedded_external_url_is_rejected) ... ok
+test_humor_chain_has_two_distinct_branches (__main__.ContentContractTests.test_humor_chain_has_two_distinct_branches) ... ok
+test_missing_editorial_is_rejected (__main__.ContentContractTests.test_missing_editorial_is_rejected) ... ok
+test_name_suffix_is_enforced (__main__.ContentContractTests.test_name_suffix_is_enforced) ... ok
+test_real_case_register_is_rejected (__main__.ContentContractTests.test_real_case_register_is_rejected) ... ok
+test_unknown_queued_card_is_rejected (__main__.ContentContractTests.test_unknown_queued_card_is_rejected) ... ok
+test_unknown_track_value_is_rejected (__main__.ContentContractTests.test_unknown_track_value_is_rejected) ... ok
+test_wind_removal_cannot_run_in_solar_only_mode (__main__.ContentContractTests.test_wind_removal_cannot_run_in_solar_only_mode) ... ok
+
+----------------------------------------------------------------------
+Ran 17 tests in 1.424s
+
+OK

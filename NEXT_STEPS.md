@@ -1,12 +1,12 @@
-# Lisäpaketti 01 — toteutus ja varmennus kesken (10.9.2026)
+# Lisäpaketti 01 — toteutettu ja varmennettu (11.9.2026)
 
-Aktiivinen toimeksianto: `docs/source-lp1/KAAVA_VAI_KAAOS_LISAPAKETTI_01/00_ALOITA_TASTA.txt` ja sen 01–06-ohjeet. Lähtöcommit e123ec68de0c94a40f05230a3d50a49752ff9bec, työpuu alussa puhdas. Alkuperäinen v5 ja aiemmat rytmiparannukset säilyvät. Julkinen peli on vielä edellinen hyväksytty versio.
+Aktiivinen peli käyttää sääntöversiota `v5-lp1-1`. V5:n muuttumaton lähde ja LP1:n 27 lisä-ID:tä muodostavat 275 ID:n sisältöpankin. Tuuli, Aurinko ja Hybridi ovat valittavissa. Ehdollinen hybridin aurinkojatko säilyttää pelikerran identiteetin, historian ja toteutuneet kustannukset sekä päivittää lupapolun ja pisteytyksen. Lisätty 18 SVG-kuvaa ja tapauskohtaisia loppureaktioita. Aiemmat pyyhkäisyt, muutosluvut ja enintään kolmen ajankulkukortin raja säilyvät.
 
-Toteutuksessa: 27 LP1-ID:tä erillisenä tekstikerroksena, keskitetty pelimuotopolitiikka, avatut Tuuli/Aurinko-valinnat, aurinkojatkon tarjous ja atominen muutos, omat aurinkoprofiilit, DC/AC-erottelu, kuntakohtaiset tilat, 18 uutta SVG-kuvaa sekä uusia tapauskohtaisia loppureaktioita. Tilasopimus: `docs/LP1_TILASOPIMUS.md`.
+Varmennettu: 442 TS-testiä; 23 Chromium-koetta ja lopullisen asettelun 4 leveyskoetta; 3 offline-/päivityskoetta; 17 Python-testiä; 399 paketin eheystarkistusta; tyypitys ja build. 60 hyväksymistapauksen evidenssi: `reports/lp1/QA.md` ja `acceptance.json`. 15 000 loppusimulaatiota, ei suoritusvirheitä. Hybridin riippumattomien valintojen vertailussa 1 057/3 000 maaliin (35,2 %), joista 13 aurinkojatkolla. Eri politiikkojen ja pelimuotojen tulokset on raportoitu erikseen. Simuloitu mekaaninen lähdecommit: `4eef7799dfbb25f5ed04a670095da134b988a7a2`; myöhemmät muutokset koskevat asettelua, testejä ja raportteja.
 
-Tähän mennessä ajettu: lähtöversion TS-testit ja build, paketin 399 eheystarkistusta, uuden version tyypitys/build, 300 pelimuotokoepeliä, 27 uuden teknisen tapahtumahaaraan positiiviset sekä väärän lähteen/valinnan/revision/työn negatiiviset testit, aurinkojatkon ja pisteytyksen erilliset testit. 1 500 kehityssimulaatiota ilman suoritusvirheitä. Nämä ovat välituloksia, eivät LP1:n koko hyväksyntä.
+Tilasopimus: `docs/LP1_TILASOPIMUS.md`. Lähteet: `docs/source-lp1/KAAVA_VAI_KAAOS_LISAPAKETTI_01/`. Testien käyttämät oikeista pelipoluista kerätyt tallenteet: `reports/lp1/fixtures/`. Vanhan rules-3-tallenteen raakasisältö säilyy vientiin; päivitystä varten aloitetaan uusi pelikerta. Älä tulkitse vanhoja valintoja uuden pakan mukaan.
 
-Seuraavaksi: kaikkien 60 hyväksymistapauksen kattavuus ja puuttuvat rajatestit, koko regressiosarja, 15 000 loppusimulaatiota, kuvien oikea katselmus, kaikki pelimuodot ja aurinkojatko selaimessa 360/390/430 px + desktop, offline/päivitys, julkinen julkaisu ja kirjautumaton tarkistus. Säilytä uusi 3-kortin ajankulkuraja ja alkuperäiset v5-lähdehashit. Älä merkitse tätä valmiiksi pelkän buildin tai tekstien perusteella.
+Julkaisu ja kirjautumaton tarkistus tehdään seuraavaksi; niiden todelliset tunnisteet kirjataan `reports/lp1/release.json`- ja `public-check.json`-tiedostoihin. Fyysistä puhelinta, iOS/Safaria tai puhelimeen asennettua PWA:ta ei ole testattu. Seuraava kehityksen lähtökohta on käyttäjien palaute uusista pelimuodoista ja aurinkojatkon ymmärrettävyydestä. Säilytä keskitetty pelimuotopolitiikka, tuloshaarojen lähde-/valinta-/revisio-/valmistumisehdot ja todellinen lupamaali.
 
 ---
 # Tarinoiden tiivistys ja reaktiot — 10.9.2026

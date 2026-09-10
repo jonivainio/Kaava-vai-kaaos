@@ -1,0 +1,115 @@
+$ tsc --noEmit && vite build && node tools/build_pwa.mjs && vite build --config vite.engine.config.ts && vite build --config vite.campaign.config.ts && vite build --config vite.game.config.ts && vite build --config vite.v5.config.ts
+vite v7.3.6 building client environment for production...
+transforming...
+node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/util.js (330:0): A comment
+
+"// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+
+in "node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/regexes.js (70:0): A comment
+
+"/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+ * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+ * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+
+in "node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 347 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                            1.03 kB │ gzip:   0.54 kB
+dist/assets/lilita-one-latin-400-normal-87r-Z-Re.woff2    10.67 kB
+dist/assets/lilita-one-latin-400-normal-DXkechA3.woff     13.52 kB
+dist/assets/nunito-sans-latin-700-normal-CICRJDmU.woff2   13.84 kB
+dist/assets/nunito-sans-latin-400-normal-AkRraKH2.woff2   13.89 kB
+dist/assets/nunito-sans-latin-900-normal-BhewUpNa.woff2   14.06 kB
+dist/assets/nunito-sans-latin-700-italic-BWjcSM-B.woff2   14.60 kB
+dist/assets/nunito-sans-latin-700-normal-CLVG92B9.woff    17.41 kB
+dist/assets/nunito-sans-latin-400-normal-DY9yCUyQ.woff    17.51 kB
+dist/assets/nunito-sans-latin-900-normal-CVRJ8ULY.woff    17.56 kB
+dist/assets/nunito-sans-latin-700-italic-Dj9XgNcK.woff    18.33 kB
+dist/assets/index-DofTzxJi.css                            21.35 kB │ gzip:   5.54 kB
+dist/assets/vendor-CZA78smF.js                           418.44 kB │ gzip: 126.95 kB
+dist/assets/index-DlkrG6V6.js                            509.08 kB │ gzip: 126.10 kB
+
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rollupOptions.output.manualChunks to improve chunking: https://rollupjs.org/configuration-options/#output-manualchunks
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.57s
+PWA d68f4a557db2c9: 118 local resources precached; updates wait for the menu.
+vite v7.3.6 building client environment for production...
+transforming...
+node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/util.js (330:0): A comment
+
+"// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+
+in "node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/regexes.js (70:0): A comment
+
+"/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+ * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+ * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+
+in "node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 280 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/engine/kaava-engine.js  450.37 kB │ gzip: 105.94 kB
+✓ built in 748ms
+vite v7.3.6 building client environment for production...
+transforming...
+node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/regexes.js (70:0): A comment
+
+"/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+ * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+ * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+
+in "node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/util.js (330:0): A comment
+
+"// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+
+in "node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 281 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/campaign/kaava-campaign.js  553.27 kB │ gzip: 120.87 kB
+✓ built in 776ms
+vite v7.3.6 building client environment for production...
+transforming...
+node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/util.js (330:0): A comment
+
+"// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+
+in "node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/regexes.js (70:0): A comment
+
+"/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+ * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+ * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+
+in "node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 286 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/game/kaava-game.js  552.83 kB │ gzip: 136.05 kB
+✓ built in 779ms
+vite v7.3.6 building client environment for production...
+transforming...
+node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/regexes.js (70:0): A comment
+
+"/** Anchors a pattern source. The interpolation lives here rather than at the call site because
+ * esbuild will not drop a `@__PURE__` call whose own argument interpolates a variable, but it
+ * will drop `anchor(dateSource)`. Keeping it inline pinned `date` into every bundle. */"
+
+in "node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/regexes.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/util.js (330:0): A comment
+
+"// Wrapped in a `@__PURE__` IIFE: esbuild never tree-shakes a top-level initializer that contains a member access on `Number`, so the bare object literal survived into every bundle."
+
+in "node_modules/.pnpm/zod@4.5.4/node_modules/zod/v4/core/util.js" contains an annotation that Rollup cannot interpret due to the position of the comment. The comment will be removed to avoid issues.
+✓ 313 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/v5/index.js  1,035.08 kB │ gzip: 217.24 kB
+✓ built in 1.16s

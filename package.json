@@ -10,7 +10,7 @@
     "build": "tsc --noEmit && vite build && node tools/build_pwa.mjs && vite build --config vite.engine.config.ts && vite build --config vite.campaign.config.ts && vite build --config vite.game.config.ts && vite build --config vite.v5.config.ts",
     "test:e2e": "playwright test",
     "test:offline": "playwright test --config playwright.offline.config.ts",
-    "simulate": "node tools/simulate-v5.mjs 3000"
+    "simulate": "node tools/simulate-lp1.mjs 3000"
   },
   "dependencies": {
     "@fontsource/lilita-one": "^5.3.0",

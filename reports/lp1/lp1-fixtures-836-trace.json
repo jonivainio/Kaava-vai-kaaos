@@ -1,0 +1,6600 @@
+{
+  "trace": [
+    {
+      "n": 0,
+      "now": 0,
+      "stage": 1,
+      "id": "start",
+      "kind": "event",
+      "branch": null,
+      "choice": null,
+      "recovery": "available"
+    },
+    {
+      "n": 1,
+      "now": 0,
+      "stage": 1,
+      "id": "land",
+      "kind": "decision",
+      "branch": null,
+      "choice": "A",
+      "recovery": "available"
+    },
+    {
+      "n": 2,
+      "now": 0,
+      "stage": 1,
+      "id": "UUSI-P1-09",
+      "kind": "decision",
+      "branch": null,
+      "choice": "B",
+      "recovery": "available"
+    },
+    {
+      "n": 3,
+      "now": 0,
+      "stage": 1,
+      "id": "UUSI-P1-04",
+      "kind": "decision",
+      "branch": null,
+      "choice": "B",
+      "recovery": "available"
+    },
+    {
+      "n": 4,
+      "now": 0,
+      "stage": 1,
+      "id": "@wait",
+      "kind": "wait",
+      "branch": null,
+      "choice": null,
+      "recovery": "available"
+    },
+    {
+      "n": 5,
+      "now": 8,
+      "stage": 1,
+      "id": "EV-SELVITYSJARJESTYS",
+      "kind": "event",
+      "branch": "b-e7a72f3cf10e",
+      "choice": null,
+      "recovery": "available"
+    },
+    {
+      "n": 6,
+      "now": 19,
+      "stage": 1,
+      "id": "transition-1",
+      "kind": "transition",
+      "branch": null,
+      "choice": null,
+      "recovery": "available"
+    },
+    {
+      "n": 7,
+      "now": 19,
+      "stage": 2,
+      "id": "defence",
+      "kind": "decision",
+      "branch": null,
+      "choice": "B",
+      "recovery": "available"
+    },
+    {
+      "n": 8,
+      "now": 19,
+      "stage": 2,
+      "id": "@wait",
+      "kind": "wait",
+      "branch": null,
+      "choice": null,
+      "recovery": "available"
+    },
+    {
+      "n": 9,
+      "now": 22,
+      "stage": 2,
+      "id": "EV-PV",
+      "kind": "event",
+      "branch": "b-5e407a863b39",
+      "choice": null,
+      "recovery": "available"
+    },
+    {
+      "n": 10,
+      "now": 28,
+      "stage": 2,
+      "id": "EV-VTT-TULOS",
+      "kind": "event",
+      "branch": "b-a53978d0ae85",
+      "choice": null,
+      "recovery": "available"
+    },
+    {
+      "n": 11,
+      "now": 28,
+      "stage": 2,
+      "id": "LP1-T02",
+      "kind": "decision",
+      "branch": null,
+      "choice": "B",
+      "recovery": "available"
+    },
+    {
+      "n": 12,
+      "now": 28,
+      "stage": 2,
+      "id": "BESS-P2-04",
+      "kind": "decision",
+      "branch": null,
+      "choice": "B",
+      "recovery": "available"
+    },
+    {
+      "n": 13,
+      "now": 28,
+      "stage": 2,
+      "id": "research-seasons",
+      "kind": "decision",
+      "branch": null,
+      "choice": "A",
+      "recovery": "available"
+    },
+    {
+      "n": 14,
+      "now": 28,
+      "stage": 2,
+      "id": "UUSI-P2-06",
+      "kind": "decision",
+      "branch": null,
+      "choice": "A",
+      "recovery": "available"
+    },
+    {
+      "n": 15,
+      "now": 29,
+      "stage": 2,
+      "id": "LP1-E-T02",
+      "kind": "event",
+      "branch": "mitigation",
+      "choice": null,
+      "recovery": "available"
+    },
+    {
+      "n": 16,
+      "now": 31,
+      "stage": 2,
+      "id": "transition-2",
+      "kind": "transition",
+      "branch": null,
+      "choice": null,
+      "recovery": "available"
+    },
+    {
+      "n": 17,
+      "now": 31,
+      "stage": 3,
+      "id": "solar-water",
+      "kind": "decision",
+      "branch": null,
+      "choice": "B",
+      "recovery": "available"
+    },
+    {
+      "n": 18,
+      "now": 31,
+      "stage": 3,
+      "id": "golden-known",
+      "kind": "decision",
+      "branch": null,
+      "choice": "A",
+      "recovery": "available"
+    },
+    {
+      "n": 19,
+      "now": 31,
+      "stage": 3,
+      "id": "external-golden-full",
+      "kind": "event",
+      "branch": null,
+      "choice": null,
+      "recovery": "offered"
+    },
+    {
+      "n": 20,
+      "now": 31,
+      "stage": 3,
+      "id": "LP1-H01",
+      "kind": "decision",
+      "branch": null,
+      "choice": "A",
+      "recovery": "offered"
+    },
+    {
+      "n": 21,
+      "now": 31,
+      "stage": 3,
+      "id": "LP1-E-H01",
+      "kind": "event",
+      "branch": "converted",
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 22,
+      "now": 31,
+      "stage": 3,
+      "id": "UUSI-P3-13",
+      "kind": "decision",
+      "branch": null,
+      "choice": "B",
+      "recovery": "accepted"
+    },
+    {
+      "n": 23,
+      "now": 31,
+      "stage": 3,
+      "id": "solarWater",
+      "kind": "decision",
+      "branch": null,
+      "choice": "B",
+      "recovery": "accepted"
+    },
+    {
+      "n": 24,
+      "now": 31,
+      "stage": 3,
+      "id": "solar-drain",
+      "kind": "decision",
+      "branch": null,
+      "choice": "B",
+      "recovery": "accepted"
+    },
+    {
+      "n": 25,
+      "now": 31,
+      "stage": 3,
+      "id": "solar-nest-water",
+      "kind": "decision",
+      "branch": null,
+      "choice": "B",
+      "recovery": "accepted"
+    },
+    {
+      "n": 26,
+      "now": 31,
+      "stage": 3,
+      "id": "@wait",
+      "kind": "wait",
+      "branch": null,
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 27,
+      "now": 33,
+      "stage": 3,
+      "id": "LP1-E-H02",
+      "kind": "event",
+      "branch": "reuse",
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 28,
+      "now": 45,
+      "stage": 3,
+      "id": "EV-VESI",
+      "kind": "event",
+      "branch": "b-7e9e04d1d0aa",
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 29,
+      "now": 45,
+      "stage": 3,
+      "id": "EV-VESI",
+      "kind": "event",
+      "branch": "b-2b23b42caf1e",
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 30,
+      "now": 45,
+      "stage": 3,
+      "id": "draft-done",
+      "kind": "event",
+      "branch": null,
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 31,
+      "now": 45,
+      "stage": 3,
+      "id": "transition-3",
+      "kind": "transition",
+      "branch": null,
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 32,
+      "now": 45,
+      "stage": 4,
+      "id": "EV-AURINKOLUONTO",
+      "kind": "event",
+      "branch": "b-2ef35a5f72b1",
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 33,
+      "now": 45,
+      "stage": 4,
+      "id": "EV-NATURA",
+      "kind": "event",
+      "branch": "b-1d9d98c357e0",
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 34,
+      "now": 45,
+      "stage": 4,
+      "id": "EV-AURINKOLUONTO",
+      "kind": "event",
+      "branch": "b-685f9c0b4b2f",
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 35,
+      "now": 45,
+      "stage": 4,
+      "id": "LP1-Y01",
+      "kind": "decision",
+      "branch": null,
+      "choice": "B",
+      "recovery": "accepted"
+    },
+    {
+      "n": 36,
+      "now": 45,
+      "stage": 4,
+      "id": "UUSI-P4-04",
+      "kind": "decision",
+      "branch": null,
+      "choice": "A",
+      "recovery": "accepted"
+    },
+    {
+      "n": 37,
+      "now": 45,
+      "stage": 4,
+      "id": "hearing-condition",
+      "kind": "decision",
+      "branch": null,
+      "choice": "A",
+      "recovery": "accepted"
+    },
+    {
+      "n": 38,
+      "now": 45,
+      "stage": 4,
+      "id": "evidence-joint",
+      "kind": "decision",
+      "branch": null,
+      "choice": "A",
+      "recovery": "accepted"
+    },
+    {
+      "n": 39,
+      "now": 47,
+      "stage": 4,
+      "id": "LP1-E-Y01",
+      "kind": "event",
+      "branch": "separated",
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 40,
+      "now": 48,
+      "stage": 4,
+      "id": "EV-LIEVENNYS",
+      "kind": "event",
+      "branch": null,
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 41,
+      "now": 53,
+      "stage": 4,
+      "id": "EV-HYVAKSYNTA",
+      "kind": "event",
+      "branch": null,
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 42,
+      "now": 66,
+      "stage": 4,
+      "id": "EV-VALITUS",
+      "kind": "event",
+      "branch": "b-ca50c128c365",
+      "choice": null,
+      "recovery": "accepted"
+    },
+    {
+      "n": 43,
+      "now": 66,
+      "stage": 4,
+      "id": "EV-LAINVOIMA",
+      "kind": "event",
+      "branch": null,
+      "choice": null,
+      "recovery": "accepted"
+    }
+  ],
+  "g": {
+    "version": "swipe-v5-1",
+    "contentVersion": "v5-fi-03ae27238966-lp1-ab0413638fd3",
+    "rulesVersion": "v5-lp1-1",
+    "assetChanges": {
+      "count": {
+        "from": "15",
+        "to": "0",
+        "revision": 21
+      },
+      "power": {
+        "from": "150",
+        "to": "0",
+        "revision": 21
+      },
+      "height": {
+        "from": "300",
+        "to": "0",
+        "revision": 21
+      },
+      "solar": {
+        "from": "141",
+        "to": "133",
+        "revision": 36
+      }
+    },
+    "originMode": "hybrid",
+    "activeMode": "solar",
+    "routeCategory": "hybrid_solar",
+    "modeAuditWarnings": [],
+    "solarDesign": {
+      "exportLimitMW": 78,
+      "inverterMWac": 78,
+      "dcLowMWp": 97.5,
+      "dcHighMWp": 117,
+      "profile": "openField",
+      "annualLowMWh": 102763,
+      "annualHighMWh": 123315,
+      "investmentEstimateEuros": 0,
+      "logisticsKm": 0,
+      "intraSiteCableKm": 1.5
+    },
+    "municipalities": [
+      {
+        "id": "municipality:1",
+        "placeIds": [
+          "W1",
+          "W2",
+          "W3",
+          "W4",
+          "W5",
+          "W6",
+          "W7",
+          "W8",
+          "W9",
+          "W10",
+          "W11",
+          "W12",
+          "W13",
+          "W14",
+          "W15",
+          "W16",
+          "W17",
+          "W18"
+        ],
+        "parcelIds": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7",
+          "S8",
+          "S9",
+          "S10",
+          "S11",
+          "S12",
+          "S13",
+          "S14",
+          "S15",
+          "S16",
+          "S17",
+          "S18",
+          "S19",
+          "S20",
+          "S21",
+          "S22",
+          "S23",
+          "S24",
+          "S25",
+          "S26",
+          "S27",
+          "S28",
+          "S29",
+          "S30",
+          "S31",
+          "S32",
+          "S33",
+          "S34",
+          "S35",
+          "S36",
+          "S37",
+          "S38",
+          "S39",
+          "S40",
+          "S41",
+          "S42",
+          "S43",
+          "S44",
+          "S45",
+          "S46",
+          "S47",
+          "S48",
+          "S49",
+          "S50",
+          "S51",
+          "S52",
+          "S53",
+          "S54",
+          "S55",
+          "S56",
+          "S57",
+          "S58",
+          "S59",
+          "S60",
+          "S61",
+          "S62",
+          "S63",
+          "S64",
+          "S65",
+          "S66",
+          "S67",
+          "S68",
+          "S69",
+          "S70",
+          "S71",
+          "S72",
+          "S73",
+          "S74",
+          "S75",
+          "S76",
+          "S77",
+          "S78",
+          "S79",
+          "S80",
+          "S81",
+          "S82",
+          "S83",
+          "S84",
+          "S85",
+          "S86",
+          "S87",
+          "S88",
+          "S89",
+          "S90",
+          "S91",
+          "S92",
+          "S93",
+          "S94",
+          "S95",
+          "S96",
+          "S97",
+          "S98",
+          "S99",
+          "S100",
+          "S101",
+          "S102",
+          "S103",
+          "S104",
+          "S105",
+          "S106",
+          "S107",
+          "S108",
+          "S109",
+          "S110",
+          "S111",
+          "S112",
+          "S113",
+          "S114",
+          "S115",
+          "S116",
+          "S117",
+          "S118",
+          "S119",
+          "S120",
+          "S121",
+          "S122",
+          "S123",
+          "S124",
+          "S125",
+          "S126",
+          "S127",
+          "S128",
+          "S129",
+          "S130",
+          "S131",
+          "S132",
+          "S133",
+          "S134",
+          "S135",
+          "S136",
+          "S137",
+          "S138",
+          "S139",
+          "S140",
+          "S141",
+          "S142"
+        ],
+        "included": true,
+        "adopted": true,
+        "final": true,
+        "finalAt": 54,
+        "planRevision": 7
+      },
+      {
+        "id": "municipality:2",
+        "placeIds": [],
+        "parcelIds": [
+          "S143",
+          "S144",
+          "S145",
+          "S146",
+          "S147",
+          "S148",
+          "S149",
+          "S150"
+        ],
+        "included": false,
+        "adopted": false,
+        "final": false,
+        "finalAt": null,
+        "planRevision": 6
+      }
+    ],
+    "recovery": {
+      "status": "accepted",
+      "failure": {
+        "kind": "external",
+        "contentId": "external-golden-full",
+        "caseId": null,
+        "sourceId": "external-golden-full",
+        "originalCause": "external",
+        "values": {},
+        "revealedBasis": "external-golden-full",
+        "blockedComponents": [
+          "wind"
+        ],
+        "otherBlocks": [],
+        "alternativesExhausted": true
+      },
+      "additionalFailures": [],
+      "offeredAt": 31,
+      "acceptedAt": 31,
+      "revision": 2,
+      "review": "reuse",
+      "minimumHa": 40,
+      "minimumMWac": 20.8,
+      "controlledLand": true,
+      "independentAccess": true,
+      "independentGrid": true,
+      "ownerFunding": true,
+      "sharedBarrier": false,
+      "unresolvedGridDesign": false,
+      "excludedParcelIds": [],
+      "evidence": [
+        {
+          "workId": "case:stage1:work:stagePreparation:1",
+          "affectedComponents": [
+            "solar",
+            "shared"
+          ],
+          "placeIds": [],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "covered",
+          "reason": "Aurinko- ja yhteinen aineisto säilyy; muuttunut suunnitelma tarkistetaan."
+        },
+        {
+          "workId": "case:vuokraehdot:work:land:A:contract-callback:1",
+          "affectedComponents": [
+            "wind"
+          ],
+          "placeIds": [
+            "W1",
+            "W2"
+          ],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "historical",
+          "reason": "Tuuliosa jäi pois."
+        },
+        {
+          "workId": "case:studyOrder:work:UUSI-P1-09:B:EV-SELVITYSJARJESTYS:1",
+          "affectedComponents": [
+            "solar",
+            "shared"
+          ],
+          "placeIds": [],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "covered",
+          "reason": "Aurinko- ja yhteinen aineisto säilyy; muuttunut suunnitelma tarkistetaan."
+        },
+        {
+          "workId": "case:sharedConnection:work:ownRoute",
+          "affectedComponents": [
+            "solar",
+            "shared"
+          ],
+          "placeIds": [],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "covered",
+          "reason": "Aurinko- ja yhteinen aineisto säilyy; muuttunut suunnitelma tarkistetaan."
+        },
+        {
+          "workId": "case:studyOrder:work:secondEcology",
+          "affectedComponents": [
+            "solar",
+            "shared"
+          ],
+          "placeIds": [],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "covered",
+          "reason": "Aurinko- ja yhteinen aineisto säilyy; muuttunut suunnitelma tarkistetaan."
+        },
+        {
+          "workId": "case:stage2:work:stagePreparation:2",
+          "affectedComponents": [
+            "solar",
+            "shared"
+          ],
+          "placeIds": [],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "covered",
+          "reason": "Aurinko- ja yhteinen aineisto säilyy; muuttunut suunnitelma tarkistetaan."
+        },
+        {
+          "workId": "case:stage2:work:municipalPresentation",
+          "affectedComponents": [
+            "solar",
+            "shared"
+          ],
+          "placeIds": [],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "covered",
+          "reason": "Aurinko- ja yhteinen aineisto säilyy; muuttunut suunnitelma tarkistetaan."
+        },
+        {
+          "workId": "case:defence:work:defence:B:EV-PV:1",
+          "affectedComponents": [
+            "wind"
+          ],
+          "placeIds": [
+            "W9",
+            "W10",
+            "W11",
+            "W12"
+          ],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "historical",
+          "reason": "Tuuliosa jäi pois."
+        },
+        {
+          "workId": "case:defence:work:EV-PV:event:EV-VTT-TULOS:1",
+          "affectedComponents": [
+            "wind"
+          ],
+          "placeIds": [
+            "W9",
+            "W10",
+            "W11",
+            "W12"
+          ],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "historical",
+          "reason": "Tuuliosa jäi pois."
+        },
+        {
+          "workId": "case:lp1_tv:work:deskModel",
+          "affectedComponents": [
+            "wind"
+          ],
+          "placeIds": [
+            "W5",
+            "W6",
+            "W7"
+          ],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "historical",
+          "reason": "Tuuliosa jäi pois."
+        },
+        {
+          "workId": "case:lp1_tv:work:tvMitigationDesign",
+          "affectedComponents": [
+            "wind"
+          ],
+          "placeIds": [
+            "W5",
+            "W6",
+            "W7"
+          ],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "historical",
+          "reason": "Tuuliosa jäi pois."
+        },
+        {
+          "workId": "case:stage2:work:programmeHearing",
+          "affectedComponents": [
+            "solar",
+            "shared"
+          ],
+          "placeIds": [],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "covered",
+          "reason": "Aurinko- ja yhteinen aineisto säilyy; muuttunut suunnitelma tarkistetaan."
+        },
+        {
+          "workId": "case:stage3:work:stagePreparation:3",
+          "affectedComponents": [
+            "solar",
+            "shared"
+          ],
+          "placeIds": [],
+          "parcelIds": [],
+          "planRevision": 0,
+          "status": "deltaRequired",
+          "reason": "Aurinko- ja yhteinen aineisto säilyy; muuttunut suunnitelma tarkistetaan."
+        },
+        {
+          "workId": "case:frogWater:work:solar-water:B:EV-AURINKOLUONTO:1",
+          "affectedComponents": [
+            "solar"
+          ],
+          "placeIds": [],
+          "parcelIds": [
+            "S55",
+            "S56",
+            "S57",
+            "S58",
+            "S59",
+            "S60",
+            "S61",
+            "S62",
+            "S63"
+          ],
+          "planRevision": 0,
+          "status": "deltaRequired",
+          "reason": "Aurinko- ja yhteinen aineisto säilyy; muuttunut suunnitelma tarkistetaan."
+        },
+        {
+          "workId": "case:goldenTerritory:work:golden-known:A:EV-KOTKA:1",
+          "affectedComponents": [
+            "wind"
+          ],
+          "placeIds": [
+            "W17",
+            "W18",
+            "W1"
+          ],
+          "parcelIds": [],
+          "planRevision": 1,
+          "status": "historical",
+          "reason": "Tuuliosa jäi pois."
+        }
+      ],
+      "cancellations": [
+        {
+          "id": "case:goldenTerritory:work:golden-known:A:EV-KOTKA:1",
+          "reason": "Tuuliosan tuleva työ ei ole enää tarpeen."
+        },
+        {
+          "id": "case:vuokraehdot:work:land:A:contract-callback:1:outcome",
+          "reason": "Tuuliosan tuleva tulos."
+        },
+        {
+          "id": "case:goldenTerritory:work:golden-known:A:EV-KOTKA:1:outcome",
+          "reason": "Tuuliosan tuleva tulos."
+        }
+      ],
+      "assessments": [
+        {
+          "failure": {
+            "kind": "external",
+            "contentId": "external-golden-full",
+            "caseId": null,
+            "sourceId": "external-golden-full",
+            "originalCause": "external",
+            "values": {},
+            "revealedBasis": "external-golden-full",
+            "blockedComponents": [
+              "wind"
+            ],
+            "otherBlocks": [],
+            "alternativesExhausted": true
+          },
+          "eligible": true,
+          "month": 31
+        }
+      ],
+      "previousPermits": [
+        {
+          "id": "construction",
+          "component": "shared",
+          "required": true,
+          "status": "needed",
+          "planRevision": 0,
+          "dueAt": null,
+          "finalAt": null
+        },
+        {
+          "id": "aviation",
+          "component": "wind",
+          "required": true,
+          "status": "needed",
+          "planRevision": 0,
+          "dueAt": null,
+          "finalAt": null
+        }
+      ]
+    },
+    "narration": {
+      "progressCount": 3,
+      "progressStages": [
+        1,
+        2,
+        3
+      ],
+      "lastWasProgress": false,
+      "updates": []
+    },
+    "run": {
+      "schemaVersion": "1",
+      "rulesVersion": "foundation-1",
+      "contentVersion": "pilot-fi-002",
+      "contentFingerprint": "5240872e",
+      "runId": "run-47d4e297",
+      "seed": "lp1-fixtures-836",
+      "rngState": 1197239102,
+      "nameRngState": 15343764,
+      "mode": "hybrid",
+      "phase": "01",
+      "provenance": "scenario",
+      "elapsedMonths": 0,
+      "remainingWaitMonths": 0,
+      "projectIdentity": {
+        "nameId": "N005",
+        "displayName": "Utuviiksensuo",
+        "namePoolVersion": "1.0"
+      },
+      "site": {
+        "aviationConflict": true,
+        "birdEvidenceOutdated": false,
+        "defenceConflict": false,
+        "draftFeedbackQuiet": false,
+        "frogConflict": false,
+        "goldenEagleConflict": false,
+        "grantRejected": true,
+        "gridConstraint": false,
+        "gridCrossingConflict": false,
+        "landscapeConflict": false,
+        "miningOverlap": false,
+        "ospreyConflict": false,
+        "proceduralReversal": false,
+        "regionalRequired": false,
+        "reindeerConflict": false,
+        "renewfmCallEligible": false,
+        "seaEagleConflict": false,
+        "shadowConflict": false,
+        "solarPlanningRequired": false,
+        "solarShade": false,
+        "sulphateRisk": false,
+        "waterRisk": false,
+        "windClass": "good",
+        "yvaNeedsSupplement": false,
+        "yvaRequired": true
+      },
+      "revealedSite": {},
+      "assets": {
+        "windSites": [
+          {
+            "id": "W1",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "case:goldenTerritory",
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W2",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W3",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W4",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W5",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W6",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W7",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W8",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W9",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W10",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W11",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W12",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W13",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W14",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W15",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W16",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W17",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "case:goldenTerritory",
+              "windComponentAbandoned"
+            ]
+          },
+          {
+            "id": "W18",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": [
+              "case:goldenTerritory",
+              "windComponentAbandoned"
+            ]
+          }
+        ],
+        "solarParcels": [
+          {
+            "id": "S1",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S2",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S3",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S4",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S5",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S6",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S7",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S8",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S9",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S10",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S11",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S12",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S13",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S14",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S15",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S16",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S17",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S18",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S19",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S20",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S21",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S22",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S23",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S24",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S25",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S26",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S27",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S28",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S29",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S30",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S31",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S32",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S33",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S34",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S35",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S36",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S37",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S38",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S39",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S40",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S41",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S42",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S43",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S44",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S45",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S46",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S47",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S48",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S49",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S50",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S51",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S52",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S53",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S54",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S55",
+            "hectares": 1,
+            "exclusions": [
+              "case:frogWater"
+            ]
+          },
+          {
+            "id": "S56",
+            "hectares": 1,
+            "exclusions": [
+              "case:frogWater"
+            ]
+          },
+          {
+            "id": "S57",
+            "hectares": 1,
+            "exclusions": [
+              "case:frogWater"
+            ]
+          },
+          {
+            "id": "S58",
+            "hectares": 1,
+            "exclusions": [
+              "case:frogWater"
+            ]
+          },
+          {
+            "id": "S59",
+            "hectares": 1,
+            "exclusions": [
+              "case:frogWater"
+            ]
+          },
+          {
+            "id": "S60",
+            "hectares": 1,
+            "exclusions": [
+              "case:frogWater"
+            ]
+          },
+          {
+            "id": "S61",
+            "hectares": 1,
+            "exclusions": [
+              "case:frogWater"
+            ]
+          },
+          {
+            "id": "S62",
+            "hectares": 1,
+            "exclusions": [
+              "case:frogWater"
+            ]
+          },
+          {
+            "id": "S63",
+            "hectares": 1,
+            "exclusions": [
+              "case:frogWater"
+            ]
+          },
+          {
+            "id": "S64",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S65",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S66",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S67",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S68",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S69",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S70",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S71",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S72",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S73",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S74",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S75",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S76",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S77",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S78",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S79",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S80",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S81",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S82",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S83",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S84",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S85",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S86",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S87",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S88",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S89",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S90",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S91",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S92",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S93",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S94",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S95",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S96",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S97",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S98",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S99",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S100",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S101",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S102",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S103",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S104",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S105",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S106",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S107",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S108",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S109",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S110",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S111",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S112",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S113",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S114",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S115",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S116",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S117",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S118",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S119",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S120",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S121",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S122",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S123",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S124",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S125",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S126",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S127",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S128",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S129",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S130",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S131",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S132",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S133",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S134",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S135",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S136",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S137",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S138",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S139",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S140",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S141",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S142",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S143",
+            "hectares": 1,
+            "exclusions": [
+              "case:lp1_municipal"
+            ]
+          },
+          {
+            "id": "S144",
+            "hectares": 1,
+            "exclusions": [
+              "case:lp1_municipal"
+            ]
+          },
+          {
+            "id": "S145",
+            "hectares": 1,
+            "exclusions": [
+              "case:lp1_municipal"
+            ]
+          },
+          {
+            "id": "S146",
+            "hectares": 1,
+            "exclusions": [
+              "case:lp1_municipal"
+            ]
+          },
+          {
+            "id": "S147",
+            "hectares": 1,
+            "exclusions": [
+              "case:lp1_municipal"
+            ]
+          },
+          {
+            "id": "S148",
+            "hectares": 1,
+            "exclusions": [
+              "case:lp1_municipal"
+            ]
+          },
+          {
+            "id": "S149",
+            "hectares": 1,
+            "exclusions": [
+              "case:lp1_municipal"
+            ]
+          },
+          {
+            "id": "S150",
+            "hectares": 1,
+            "exclusions": [
+              "case:lp1_municipal"
+            ]
+          }
+        ],
+        "exclusionGroups": {
+          "co_owned_parcel": {
+            "windIds": [
+              "W12",
+              "W13"
+            ],
+            "solarIds": []
+          },
+          "drainage_edge": {
+            "windIds": [],
+            "solarIds": [
+              "S1",
+              "S2",
+              "S3",
+              "S4",
+              "S5",
+              "S6",
+              "S7",
+              "S8",
+              "S9",
+              "S10"
+            ]
+          },
+          "aviation_conflict": {
+            "windIds": [
+              "W4",
+              "W5"
+            ],
+            "solarIds": []
+          },
+          "reindeer_corridor": {
+            "windIds": [
+              "W3",
+              "W4"
+            ],
+            "solarIds": [
+              "S45",
+              "S46",
+              "S47",
+              "S48",
+              "S49",
+              "S50",
+              "S51",
+              "S52",
+              "S53",
+              "S54",
+              "S55",
+              "S56",
+              "S57",
+              "S58"
+            ]
+          },
+          "golden_eagle_ridge": {
+            "windIds": [
+              "W4",
+              "W5",
+              "W6"
+            ],
+            "solarIds": []
+          },
+          "white_tailed_eagle_route": {
+            "windIds": [
+              "W18"
+            ],
+            "solarIds": []
+          },
+          "osprey_flight_route": {
+            "windIds": [
+              "W9"
+            ],
+            "solarIds": []
+          },
+          "frog_hydrology": {
+            "windIds": [],
+            "solarIds": [
+              "S1",
+              "S2",
+              "S3",
+              "S4",
+              "S5",
+              "S6",
+              "S7",
+              "S8",
+              "S9",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "sulphate_soil": {
+            "windIds": [],
+            "solarIds": [
+              "S10",
+              "S11",
+              "S12",
+              "S13",
+              "S14",
+              "S15",
+              "S16",
+              "S17"
+            ]
+          },
+          "shadow_conflict": {
+            "windIds": [
+              "W5"
+            ],
+            "solarIds": []
+          },
+          "landscape_ridge": {
+            "windIds": [
+              "W3",
+              "W4",
+              "W5"
+            ],
+            "solarIds": []
+          },
+          "shaded_edge": {
+            "windIds": [],
+            "solarIds": [
+              "S67",
+              "S68",
+              "S69",
+              "S70",
+              "S71",
+              "S72"
+            ]
+          }
+        }
+      },
+      "windHeightCapM": 300,
+      "selectedModelId": "F10",
+      "grid": {
+        "segments": [
+          {
+            "id": "external-1",
+            "km": 6,
+            "component": "shared",
+            "active": true,
+            "revision": 0
+          }
+        ],
+        "exportLimitMWac": null,
+        "technicalStatus": "unassessed",
+        "routeHistory": []
+      },
+      "resources": {
+        "budget": 100,
+        "trust": 50,
+        "quality": 15,
+        "patience": 75
+      },
+      "economicsIndex": 65,
+      "windYieldIndex": 100,
+      "flags": {
+        "adoptionDecisionPositive": false,
+        "adoptionGatesSatisfied": false,
+        "anchorLeaseSigned": false,
+        "aviationLayoutAdjusted": false,
+        "birdAdequacyReviewNeeded": false,
+        "birdEvidenceCurrent": false,
+        "coOwnerIssueResolved": false,
+        "coOwnerTalks": false,
+        "conclusionActionsMapped": false,
+        "defenceRedesignNeeded": false,
+        "defenceStudyNeeded": false,
+        "documentFullReviewNeeded": false,
+        "documentsSynced": false,
+        "draftFeedbackProcessed": false,
+        "drainageEdgeRemoved": false,
+        "drainageRightsReviewed": false,
+        "ecologyReady": false,
+        "economicsReviewNeeded": false,
+        "electionDue": false,
+        "epilogueEnabled": false,
+        "exportLimitStudyNeeded": false,
+        "finalQaDone": false,
+        "frogAreaAvoided": false,
+        "frogHydrologyStudyNeeded": false,
+        "fundingDecisionReady": false,
+        "fundingPhasingNeeded": false,
+        "goldenEagleLayoutAdjusted": false,
+        "goldenEagleRedesignNeeded": false,
+        "gridAlternativesMapped": false,
+        "gridCrossingStudyNeeded": false,
+        "gridResponseReady": false,
+        "gridRouteStudyNeeded": false,
+        "groundwaterRedesignNeeded": false,
+        "groundwaterStudyReady": false,
+        "hybridPivotAvailable": false,
+        "hybridProfileStudyNeeded": false,
+        "landTalksStarted": false,
+        "landscapeLayoutAdjusted": false,
+        "layoutFreezeNeeded": false,
+        "leaseDeadlineNear": false,
+        "leaseExtended": false,
+        "leaseRedesignNeeded": false,
+        "miningFallbackDesigned": false,
+        "miningOverlapReviewed": false,
+        "newCouncilBriefed": false,
+        "newCouncilGoalsHeard": false,
+        "noGrantBaseCase": false,
+        "noiseCurrent": false,
+        "oasNeedsUpdate": false,
+        "oasReviewed": false,
+        "ospreyLayoutAdjusted": false,
+        "ospreyRedesignNeeded": false,
+        "pivotUsed": false,
+        "ppaCompetitionStarted": false,
+        "ppaNegotiationsStarted": false,
+        "programmeScopeMeeting": false,
+        "regionalEvidenceReady": false,
+        "regionalFallbackDesigned": false,
+        "regionalRedesignNeeded": false,
+        "reindeerLayoutAdjusted": false,
+        "residentViewsRecorded": false,
+        "seaEagleLayoutAdjusted": false,
+        "seaEagleStudyNeeded": false,
+        "shadowCurtailmentStudyNeeded": false,
+        "shadowLayoutAdjusted": false,
+        "sharedGridDesignAdvanced": false,
+        "solarPlanningRouteConfirmed": false,
+        "solarScaleAlternativeNeeded": false,
+        "solarShadeAdjusted": false,
+        "solarShadeRedesignNeeded": false,
+        "sulphateLayoutAdjusted": false,
+        "sulphatePlanNeeded": false,
+        "visualsNeedUpdate": false,
+        "waterExpertAssigned": false,
+        "windDesktopUpdated": false,
+        "windMeasured": false,
+        "windResultProcessed": false,
+        "yieldRedesignNeeded": false,
+        "yvaAdequacyConfirmed": false,
+        "yvaAlternativeNeeded": false,
+        "yvaProgrammeReviewed": false,
+        "yvaSupplementReady": false
+      },
+      "tracks": {
+        "municipality": "unstarted",
+        "regional": "notRequired",
+        "grid": "unstarted",
+        "funding": "unstarted",
+        "yva": "programme"
+      },
+      "jobs": [],
+      "pendingEvents": [],
+      "offeredCard": null,
+      "offeredOutcomeState": null,
+      "seenCardIds": [],
+      "decisionLog": [],
+      "timeline": [],
+      "ending": null,
+      "nextSequence": 1
+    },
+    "initialRun": {
+      "schemaVersion": "1",
+      "rulesVersion": "foundation-1",
+      "contentVersion": "pilot-fi-002",
+      "contentFingerprint": "5240872e",
+      "runId": "run-47d4e297",
+      "seed": "lp1-fixtures-836",
+      "rngState": 1197239102,
+      "nameRngState": 15343764,
+      "mode": "hybrid",
+      "phase": "01",
+      "provenance": "scenario",
+      "elapsedMonths": 0,
+      "remainingWaitMonths": 0,
+      "projectIdentity": {
+        "nameId": "N005",
+        "displayName": "Utuviiksensuo",
+        "namePoolVersion": "1.0"
+      },
+      "site": {
+        "aviationConflict": true,
+        "birdEvidenceOutdated": false,
+        "defenceConflict": false,
+        "draftFeedbackQuiet": false,
+        "frogConflict": false,
+        "goldenEagleConflict": false,
+        "grantRejected": true,
+        "gridConstraint": false,
+        "gridCrossingConflict": false,
+        "landscapeConflict": false,
+        "miningOverlap": false,
+        "ospreyConflict": false,
+        "proceduralReversal": false,
+        "regionalRequired": false,
+        "reindeerConflict": false,
+        "renewfmCallEligible": false,
+        "seaEagleConflict": false,
+        "shadowConflict": false,
+        "solarPlanningRequired": false,
+        "solarShade": false,
+        "sulphateRisk": false,
+        "waterRisk": false,
+        "windClass": "good",
+        "yvaNeedsSupplement": false,
+        "yvaRequired": true
+      },
+      "revealedSite": {},
+      "assets": {
+        "windSites": [
+          {
+            "id": "W1",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W2",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W3",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W4",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W5",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W6",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W7",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W8",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W9",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W10",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W11",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W12",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W13",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W14",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W15",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W16",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W17",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          },
+          {
+            "id": "W18",
+            "modelId": "F10",
+            "totalHeightM": 300,
+            "exclusions": []
+          }
+        ],
+        "solarParcels": [
+          {
+            "id": "S1",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S2",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S3",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S4",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S5",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S6",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S7",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S8",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S9",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S10",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S11",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S12",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S13",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S14",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S15",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S16",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S17",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S18",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S19",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S20",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S21",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S22",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S23",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S24",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S25",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S26",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S27",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S28",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S29",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S30",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S31",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S32",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S33",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S34",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S35",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S36",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S37",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S38",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S39",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S40",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S41",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S42",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S43",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S44",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S45",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S46",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S47",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S48",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S49",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S50",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S51",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S52",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S53",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S54",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S55",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S56",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S57",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S58",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S59",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S60",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S61",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S62",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S63",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S64",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S65",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S66",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S67",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S68",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S69",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S70",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S71",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S72",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S73",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S74",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S75",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S76",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S77",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S78",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S79",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S80",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S81",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S82",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S83",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S84",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S85",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S86",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S87",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S88",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S89",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S90",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S91",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S92",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S93",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S94",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S95",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S96",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S97",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S98",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S99",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S100",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S101",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S102",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S103",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S104",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S105",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S106",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S107",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S108",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S109",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S110",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S111",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S112",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S113",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S114",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S115",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S116",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S117",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S118",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S119",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S120",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S121",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S122",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S123",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S124",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S125",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S126",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S127",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S128",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S129",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S130",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S131",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S132",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S133",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S134",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S135",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S136",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S137",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S138",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S139",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S140",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S141",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S142",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S143",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S144",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S145",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S146",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S147",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S148",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S149",
+            "hectares": 1,
+            "exclusions": []
+          },
+          {
+            "id": "S150",
+            "hectares": 1,
+            "exclusions": []
+          }
+        ],
+        "exclusionGroups": {
+          "co_owned_parcel": {
+            "windIds": [
+              "W12",
+              "W13"
+            ],
+            "solarIds": []
+          },
+          "drainage_edge": {
+            "windIds": [],
+            "solarIds": [
+              "S1",
+              "S2",
+              "S3",
+              "S4",
+              "S5",
+              "S6",
+              "S7",
+              "S8",
+              "S9",
+              "S10"
+            ]
+          },
+          "aviation_conflict": {
+            "windIds": [
+              "W4",
+              "W5"
+            ],
+            "solarIds": []
+          },
+          "reindeer_corridor": {
+            "windIds": [
+              "W3",
+              "W4"
+            ],
+            "solarIds": [
+              "S45",
+              "S46",
+              "S47",
+              "S48",
+              "S49",
+              "S50",
+              "S51",
+              "S52",
+              "S53",
+              "S54",
+              "S55",
+              "S56",
+              "S57",
+              "S58"
+            ]
+          },
+          "golden_eagle_ridge": {
+            "windIds": [
+              "W4",
+              "W5",
+              "W6"
+            ],
+            "solarIds": []
+          },
+          "white_tailed_eagle_route": {
+            "windIds": [
+              "W18"
+            ],
+            "solarIds": []
+          },
+          "osprey_flight_route": {
+            "windIds": [
+              "W9"
+            ],
+            "solarIds": []
+          },
+          "frog_hydrology": {
+            "windIds": [],
+            "solarIds": [
+              "S1",
+              "S2",
+              "S3",
+              "S4",
+              "S5",
+              "S6",
+              "S7",
+              "S8",
+              "S9",
+              "S10",
+              "S11",
+              "S12"
+            ]
+          },
+          "sulphate_soil": {
+            "windIds": [],
+            "solarIds": [
+              "S10",
+              "S11",
+              "S12",
+              "S13",
+              "S14",
+              "S15",
+              "S16",
+              "S17"
+            ]
+          },
+          "shadow_conflict": {
+            "windIds": [
+              "W5"
+            ],
+            "solarIds": []
+          },
+          "landscape_ridge": {
+            "windIds": [
+              "W3",
+              "W4",
+              "W5"
+            ],
+            "solarIds": []
+          },
+          "shaded_edge": {
+            "windIds": [],
+            "solarIds": [
+              "S67",
+              "S68",
+              "S69",
+              "S70",
+              "S71",
+              "S72"
+            ]
+          }
+        }
+      },
+      "windHeightCapM": 300,
+      "selectedModelId": "F10",
+      "grid": {
+        "segments": [
+          {
+            "id": "external-1",
+            "km": 6,
+            "component": "shared",
+            "active": true,
+            "revision": 0
+          }
+        ],
+        "exportLimitMWac": null,
+        "technicalStatus": "unassessed",
+        "routeHistory": []
+      },
+      "resources": {
+        "budget": 100,
+        "trust": 50,
+        "quality": 15,
+        "patience": 75
+      },
+      "economicsIndex": 65,
+      "windYieldIndex": 100,
+      "flags": {
+        "adoptionDecisionPositive": false,
+        "adoptionGatesSatisfied": false,
+        "anchorLeaseSigned": false,
+        "aviationLayoutAdjusted": false,
+        "birdAdequacyReviewNeeded": false,
+        "birdEvidenceCurrent": false,
+        "coOwnerIssueResolved": false,
+        "coOwnerTalks": false,
+        "conclusionActionsMapped": false,
+        "defenceRedesignNeeded": false,
+        "defenceStudyNeeded": false,
+        "documentFullReviewNeeded": false,
+        "documentsSynced": false,
+        "draftFeedbackProcessed": false,
+        "drainageEdgeRemoved": false,
+        "drainageRightsReviewed": false,
+        "ecologyReady": false,
+        "economicsReviewNeeded": false,
+        "electionDue": false,
+        "epilogueEnabled": false,
+        "exportLimitStudyNeeded": false,
+        "finalQaDone": false,
+        "frogAreaAvoided": false,
+        "frogHydrologyStudyNeeded": false,
+        "fundingDecisionReady": false,
+        "fundingPhasingNeeded": false,
+        "goldenEagleLayoutAdjusted": false,
+        "goldenEagleRedesignNeeded": false,
+        "gridAlternativesMapped": false,
+        "gridCrossingStudyNeeded": false,
+        "gridResponseReady": false,
+        "gridRouteStudyNeeded": false,
+        "groundwaterRedesignNeeded": false,
+        "groundwaterStudyReady": false,
+        "hybridPivotAvailable": false,
+        "hybridProfileStudyNeeded": false,
+        "landTalksStarted": false,
+        "landscapeLayoutAdjusted": false,
+        "layoutFreezeNeeded": false,
+        "leaseDeadlineNear": false,
+        "leaseExtended": false,
+        "leaseRedesignNeeded": false,
+        "miningFallbackDesigned": false,
+        "miningOverlapReviewed": false,
+        "newCouncilBriefed": false,
+        "newCouncilGoalsHeard": false,
+        "noGrantBaseCase": false,
+        "noiseCurrent": false,
+        "oasNeedsUpdate": false,
+        "oasReviewed": false,
+        "ospreyLayoutAdjusted": false,
+        "ospreyRedesignNeeded": false,
+        "pivotUsed": false,
+        "ppaCompetitionStarted": false,
+        "ppaNegotiationsStarted": false,
+        "programmeScopeMeeting": false,
+        "regionalEvidenceReady": false,
+        "regionalFallbackDesigned": false,
+        "regionalRedesignNeeded": false,
+        "reindeerLayoutAdjusted": false,
+        "residentViewsRecorded": false,
+        "seaEagleLayoutAdjusted": false,
+        "seaEagleStudyNeeded": false,
+        "shadowCurtailmentStudyNeeded": false,
+        "shadowLayoutAdjusted": false,
+        "sharedGridDesignAdvanced": false,
+        "solarPlanningRouteConfirmed": false,
+        "solarScaleAlternativeNeeded": false,
+        "solarShadeAdjusted": false,
+        "solarShadeRedesignNeeded": false,
+        "sulphateLayoutAdjusted": false,
+        "sulphatePlanNeeded": false,
+        "visualsNeedUpdate": false,
+        "waterExpertAssigned": false,
+        "windDesktopUpdated": false,
+        "windMeasured": false,
+        "windResultProcessed": false,
+        "yieldRedesignNeeded": false,
+        "yvaAdequacyConfirmed": false,
+        "yvaAlternativeNeeded": false,
+        "yvaProgrammeReviewed": false,
+        "yvaSupplementReady": false
+      },
+      "tracks": {
+        "municipality": "unstarted",
+        "regional": "notRequired",
+        "grid": "unstarted",
+        "funding": "unstarted",
+        "yva": "programme"
+      },
+      "jobs": [],
+      "pendingEvents": [],
+      "offeredCard": null,
+      "offeredOutcomeState": null,
+      "seenCardIds": [],
+      "decisionLog": [],
+      "timeline": [],
+      "ending": null,
+      "nextSequence": 1
+    },
+    "initial": {
+      "windCount": 18,
+      "windMW": 180,
+      "windHeightM": 300,
+      "windYield": 100,
+      "solarHa": 150,
+      "solarMWp": 97.5,
+      "solarMWac": 78,
+      "bessChargeMW": 100,
+      "bessDischargeMW": 100,
+      "bessMWh": 200,
+      "weights": {
+        "wind": 0.6,
+        "solar": 0.3,
+        "bess": 0.1
+      },
+      "minimumWindMW": 50,
+      "minimumSolarHa": 40,
+      "minimumScopeRatio": 0.25
+    },
+    "revision": 44,
+    "planRevision": 7,
+    "stage": 4,
+    "calendar": {
+      "now": 71,
+      "baselineNow": 64,
+      "avoidableCriticalDelayMonths": 7,
+      "orders": [
+        {
+          "id": "case:stage1:work:stagePreparation:1",
+          "caseId": "case:stage1",
+          "sourceId": "start",
+          "planRevision": 0,
+          "component": "shared",
+          "duration": 6,
+          "baselineDuration": 6,
+          "dependencies": [],
+          "season": null,
+          "costId": null,
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 0,
+          "startedAt": 0,
+          "dueAt": 6,
+          "baselineStart": 0,
+          "baselineDue": 6,
+          "status": "completed",
+          "completedAt": 6,
+          "sequence": 1
+        },
+        {
+          "id": "case:vuokraehdot:work:land:A:contract-callback:1",
+          "caseId": "case:vuokraehdot",
+          "sourceId": "land",
+          "planRevision": 0,
+          "component": "wind",
+          "duration": 8,
+          "baselineDuration": 8,
+          "dependencies": [],
+          "season": null,
+          "costId": null,
+          "observation": "0.9644175039138645",
+          "delayCause": "normal",
+          "orderedAt": 0,
+          "startedAt": 0,
+          "dueAt": 8,
+          "baselineStart": 0,
+          "baselineDue": 8,
+          "status": "completed",
+          "completedAt": 8,
+          "sequence": 2,
+          "binding": {
+            "sourceId": "land",
+            "choice": "A",
+            "eventId": "contract-callback"
+          }
+        },
+        {
+          "id": "case:studyOrder:work:UUSI-P1-09:B:EV-SELVITYSJARJESTYS:1",
+          "caseId": "case:studyOrder",
+          "sourceId": "UUSI-P1-09",
+          "planRevision": 0,
+          "component": "shared",
+          "duration": 8,
+          "baselineDuration": 8,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:studyOrder:cost:UUSI-P1-09:B:EV-SELVITYSJARJESTYS:1",
+          "observation": "0.20027116918936372",
+          "delayCause": "normal",
+          "orderedAt": 0,
+          "startedAt": 0,
+          "dueAt": 8,
+          "baselineStart": 0,
+          "baselineDue": 8,
+          "status": "completed",
+          "completedAt": 8,
+          "sequence": 3,
+          "binding": {
+            "sourceId": "UUSI-P1-09",
+            "choice": "B",
+            "eventId": "EV-SELVITYSJARJESTYS"
+          }
+        },
+        {
+          "id": "case:sharedConnection:work:ownRoute",
+          "caseId": "case:sharedConnection",
+          "sourceId": "UUSI-P1-04",
+          "planRevision": 0,
+          "component": "shared",
+          "duration": 3,
+          "baselineDuration": 3,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:sharedConnection:cost:ownRoute",
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 0,
+          "startedAt": 0,
+          "dueAt": 3,
+          "baselineStart": 0,
+          "baselineDue": 3,
+          "status": "completed",
+          "completedAt": 3,
+          "sequence": 4
+        },
+        {
+          "id": "case:studyOrder:work:secondEcology",
+          "caseId": "case:studyOrder",
+          "sourceId": "UUSI-P1-09",
+          "planRevision": 0,
+          "component": "shared",
+          "duration": 11,
+          "baselineDuration": 4,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:studyOrder:cost:secondEcology",
+          "observation": "specified-work",
+          "delayCause": "choice",
+          "orderedAt": 8,
+          "startedAt": 8,
+          "dueAt": 19,
+          "baselineStart": 8,
+          "baselineDue": 12,
+          "status": "completed",
+          "completedAt": 19,
+          "sequence": 5
+        },
+        {
+          "id": "case:stage2:work:stagePreparation:2",
+          "caseId": "case:stage2",
+          "sourceId": "transition-1",
+          "planRevision": 0,
+          "component": "shared",
+          "duration": 10,
+          "baselineDuration": 10,
+          "dependencies": [],
+          "season": null,
+          "costId": null,
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 19,
+          "startedAt": 19,
+          "dueAt": 29,
+          "baselineStart": 12,
+          "baselineDue": 22,
+          "status": "completed",
+          "completedAt": 29,
+          "sequence": 6
+        },
+        {
+          "id": "case:stage2:work:municipalPresentation",
+          "caseId": "case:stage2",
+          "sourceId": "interludes[1][0]",
+          "planRevision": 0,
+          "component": "shared",
+          "duration": 0.5,
+          "baselineDuration": 0.5,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:stage2:cost:municipalPresentation",
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 19,
+          "startedAt": 19,
+          "dueAt": 19.5,
+          "baselineStart": 12,
+          "baselineDue": 12.5,
+          "status": "completed",
+          "completedAt": 19.5,
+          "sequence": 7
+        },
+        {
+          "id": "case:defence:work:defence:B:EV-PV:1",
+          "caseId": "case:defence",
+          "sourceId": "defence",
+          "planRevision": 0,
+          "component": "wind",
+          "duration": 3,
+          "baselineDuration": 3,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:defence:cost:defence:B:EV-PV:1",
+          "observation": "0.5279556666500866",
+          "delayCause": "normal",
+          "orderedAt": 19,
+          "startedAt": 19,
+          "dueAt": 22,
+          "baselineStart": 12,
+          "baselineDue": 15,
+          "status": "completed",
+          "completedAt": 22,
+          "sequence": 8,
+          "binding": {
+            "sourceId": "defence",
+            "choice": "B",
+            "eventId": "EV-PV"
+          }
+        },
+        {
+          "id": "case:defence:work:EV-PV:event:EV-VTT-TULOS:1",
+          "caseId": "case:defence",
+          "sourceId": "EV-PV",
+          "planRevision": 0,
+          "component": "wind",
+          "duration": 6,
+          "baselineDuration": 6,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:defence:cost:EV-PV:event:EV-VTT-TULOS:1",
+          "observation": "0.08127300790511072",
+          "delayCause": "normal",
+          "orderedAt": 22,
+          "startedAt": 22,
+          "dueAt": 28,
+          "baselineStart": 15,
+          "baselineDue": 21,
+          "status": "completed",
+          "completedAt": 28,
+          "sequence": 9,
+          "binding": {
+            "sourceId": "EV-PV",
+            "choice": null,
+            "eventId": "EV-VTT-TULOS"
+          }
+        },
+        {
+          "id": "case:lp1_tv:work:deskModel",
+          "caseId": "case:lp1_tv",
+          "sourceId": "LP1-T02",
+          "planRevision": 0,
+          "component": "wind",
+          "duration": 1,
+          "baselineDuration": 1,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:lp1_tv:cost:deskModel",
+          "observation": "0.03914931998588145",
+          "delayCause": "normal",
+          "orderedAt": 28,
+          "startedAt": 28,
+          "dueAt": 29,
+          "baselineStart": 21,
+          "baselineDue": 22,
+          "status": "completed",
+          "completedAt": 29,
+          "sequence": 10,
+          "binding": {
+            "sourceId": "LP1-T02",
+            "choice": "B",
+            "eventId": "LP1-E-T02"
+          }
+        },
+        {
+          "id": "case:lp1_tv:work:tvMitigationDesign",
+          "caseId": "case:lp1_tv",
+          "sourceId": "LP1-E-T02",
+          "planRevision": 0,
+          "component": "wind",
+          "duration": 1,
+          "baselineDuration": 1,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:lp1_tv:cost:tvMitigationDesign",
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 29,
+          "startedAt": 29,
+          "dueAt": 30,
+          "baselineStart": 22,
+          "baselineDue": 23,
+          "status": "completed",
+          "completedAt": 30,
+          "sequence": 11
+        },
+        {
+          "id": "case:stage2:work:programmeHearing",
+          "caseId": "case:stage2",
+          "sourceId": "interludes[1][3]",
+          "planRevision": 0,
+          "component": "shared",
+          "duration": 1,
+          "baselineDuration": 1,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:stage2:cost:programmeHearing",
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 30,
+          "startedAt": 30,
+          "dueAt": 31,
+          "baselineStart": 23,
+          "baselineDue": 24,
+          "status": "completed",
+          "completedAt": 31,
+          "sequence": 12
+        },
+        {
+          "id": "case:stage3:work:stagePreparation:3",
+          "caseId": "case:stage3",
+          "sourceId": "transition-2",
+          "planRevision": 0,
+          "component": "shared",
+          "duration": 12,
+          "baselineDuration": 12,
+          "dependencies": [],
+          "season": null,
+          "costId": null,
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 31,
+          "startedAt": 31,
+          "dueAt": 43,
+          "baselineStart": 24,
+          "baselineDue": 36,
+          "status": "completed",
+          "completedAt": 43,
+          "sequence": 13
+        },
+        {
+          "id": "case:frogWater:work:solar-water:B:EV-AURINKOLUONTO:1",
+          "caseId": "case:frogWater",
+          "sourceId": "solar-water",
+          "planRevision": 0,
+          "component": "solar",
+          "duration": 5,
+          "baselineDuration": 5,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:frogWater:cost:solar-water:B:EV-AURINKOLUONTO:1",
+          "observation": "0.8380086005199701",
+          "delayCause": "normal",
+          "orderedAt": 31,
+          "startedAt": 31,
+          "dueAt": 36,
+          "baselineStart": 24,
+          "baselineDue": 29,
+          "status": "completed",
+          "completedAt": 36,
+          "sequence": 14,
+          "binding": {
+            "sourceId": "solar-water",
+            "choice": "B",
+            "eventId": "EV-AURINKOLUONTO"
+          }
+        },
+        {
+          "id": "case:goldenTerritory:work:golden-known:A:EV-KOTKA:1",
+          "caseId": "case:goldenTerritory",
+          "sourceId": "golden-known",
+          "planRevision": 1,
+          "component": "wind",
+          "duration": 4,
+          "baselineDuration": 4,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:goldenTerritory:cost:golden-known:A:EV-KOTKA:1",
+          "observation": "0.17410050285980105",
+          "delayCause": "normal",
+          "orderedAt": 31,
+          "startedAt": 31,
+          "dueAt": 35,
+          "baselineStart": 24,
+          "baselineDue": 28,
+          "status": "cancelled",
+          "completedAt": null,
+          "sequence": 15,
+          "binding": {
+            "sourceId": "golden-known",
+            "choice": "A",
+            "eventId": "EV-KOTKA"
+          }
+        },
+        {
+          "id": "case:lp1_solar_continuation:work:converted",
+          "caseId": "case:lp1_solar_continuation",
+          "sourceId": "LP1-H01",
+          "planRevision": 2,
+          "component": "solar",
+          "duration": 0,
+          "baselineDuration": 0,
+          "dependencies": [],
+          "season": null,
+          "costId": null,
+          "observation": "0.11000973009504378",
+          "delayCause": "normal",
+          "orderedAt": 31,
+          "startedAt": 31,
+          "dueAt": 31,
+          "baselineStart": 24,
+          "baselineDue": 24,
+          "status": "completed",
+          "completedAt": 31,
+          "sequence": 16,
+          "binding": {
+            "sourceId": "LP1-H01",
+            "choice": "A",
+            "eventId": "LP1-E-H01"
+          }
+        },
+        {
+          "id": "case:lp1_solar_continuation:work:solarContinuationReview",
+          "caseId": "case:lp1_solar_continuation",
+          "sourceId": "LP1-E-H01",
+          "planRevision": 2,
+          "component": "solar",
+          "duration": 2,
+          "baselineDuration": 2,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:lp1_solar_continuation:cost:solarContinuationReview",
+          "observation": "0.8704664041288197",
+          "delayCause": "normal",
+          "orderedAt": 31,
+          "startedAt": 31,
+          "dueAt": 33,
+          "baselineStart": 24,
+          "baselineDue": 26,
+          "status": "completed",
+          "completedAt": 33,
+          "sequence": 17,
+          "binding": {
+            "sourceId": "LP1-E-H01",
+            "choice": null,
+            "eventId": "LP1-E-H02"
+          }
+        },
+        {
+          "id": "case:naturaBog:work:UUSI-P3-13:B:EV-NATURA:1",
+          "caseId": "case:naturaBog",
+          "sourceId": "UUSI-P3-13",
+          "planRevision": 2,
+          "component": "shared",
+          "duration": 5,
+          "baselineDuration": 5,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:naturaBog:cost:UUSI-P3-13:B:EV-NATURA:1",
+          "observation": "0.5864426095504314",
+          "delayCause": "normal",
+          "orderedAt": 31,
+          "startedAt": 31,
+          "dueAt": 36,
+          "baselineStart": 24,
+          "baselineDue": 29,
+          "status": "completed",
+          "completedAt": 36,
+          "sequence": 18,
+          "binding": {
+            "sourceId": "UUSI-P3-13",
+            "choice": "B",
+            "eventId": "EV-NATURA"
+          }
+        },
+        {
+          "id": "case:peatPostcare:work:solarWater:B:EV-VESI:1",
+          "caseId": "case:peatPostcare",
+          "sourceId": "solarWater",
+          "planRevision": 2,
+          "component": "solar",
+          "duration": 7,
+          "baselineDuration": 7,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:peatPostcare:cost:solarWater:B:EV-VESI:1",
+          "observation": "0.49567943904548883",
+          "delayCause": "normal",
+          "orderedAt": 31,
+          "startedAt": 31,
+          "dueAt": 38,
+          "baselineStart": 24,
+          "baselineDue": 31,
+          "status": "completed",
+          "completedAt": 38,
+          "sequence": 19,
+          "binding": {
+            "sourceId": "solarWater",
+            "choice": "B",
+            "eventId": "EV-VESI"
+          }
+        },
+        {
+          "id": "case:solarStormwater:work:solar-drain:B:EV-VESI:1",
+          "caseId": "case:solarStormwater",
+          "sourceId": "solar-drain",
+          "planRevision": 2,
+          "component": "solar",
+          "duration": 4,
+          "baselineDuration": 4,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:solarStormwater:cost:solar-drain:B:EV-VESI:1",
+          "observation": "0.12572594569064677",
+          "delayCause": "normal",
+          "orderedAt": 31,
+          "startedAt": 31,
+          "dueAt": 35,
+          "baselineStart": 24,
+          "baselineDue": 28,
+          "status": "completed",
+          "completedAt": 35,
+          "sequence": 20,
+          "binding": {
+            "sourceId": "solar-drain",
+            "choice": "B",
+            "eventId": "EV-VESI"
+          }
+        },
+        {
+          "id": "case:solarBirds:work:solar-nest-water:B:EV-AURINKOLUONTO:1",
+          "caseId": "case:solarBirds",
+          "sourceId": "solar-nest-water",
+          "planRevision": 2,
+          "component": "solar",
+          "duration": 5,
+          "baselineDuration": 5,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:solarBirds:cost:solar-nest-water:B:EV-AURINKOLUONTO:1",
+          "observation": "0.5708709163591266",
+          "delayCause": "normal",
+          "orderedAt": 31,
+          "startedAt": 31,
+          "dueAt": 36,
+          "baselineStart": 24,
+          "baselineDue": 29,
+          "status": "completed",
+          "completedAt": 36,
+          "sequence": 21,
+          "binding": {
+            "sourceId": "solar-nest-water",
+            "choice": "B",
+            "eventId": "EV-AURINKOLUONTO"
+          }
+        },
+        {
+          "id": "case:stage3:work:draftDocuments:2",
+          "caseId": "case:stage3",
+          "sourceId": "interludes[2][0]",
+          "planRevision": 2,
+          "component": "shared",
+          "duration": 2,
+          "baselineDuration": 2,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:stage3:cost:draftDocuments:2",
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 43,
+          "startedAt": 43,
+          "dueAt": 45,
+          "baselineStart": 36,
+          "baselineDue": 38,
+          "status": "completed",
+          "completedAt": 45,
+          "sequence": 22
+        },
+        {
+          "id": "case:stage4:work:stagePreparation:4",
+          "caseId": "case:stage4",
+          "sourceId": "transition-3",
+          "planRevision": 4,
+          "component": "shared",
+          "duration": 6,
+          "baselineDuration": 6,
+          "dependencies": [],
+          "season": null,
+          "costId": null,
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 45,
+          "startedAt": 45,
+          "dueAt": 51,
+          "baselineStart": 38,
+          "baselineDue": 44,
+          "status": "completed",
+          "completedAt": 51,
+          "sequence": 23
+        },
+        {
+          "id": "case:stage4:work:proposalHearing",
+          "caseId": "case:stage4",
+          "sourceId": "interludes[3][0]",
+          "planRevision": 4,
+          "component": "shared",
+          "duration": 4,
+          "baselineDuration": 4,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:stage4:cost:proposalHearing",
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 45,
+          "startedAt": 45,
+          "dueAt": 49,
+          "baselineStart": 38,
+          "baselineDue": 42,
+          "status": "completed",
+          "completedAt": 49,
+          "sequence": 24
+        },
+        {
+          "id": "case:lp1_municipal:work:separabilityCheck",
+          "caseId": "case:lp1_municipal",
+          "sourceId": "LP1-Y01",
+          "planRevision": 7,
+          "component": "shared",
+          "duration": 2,
+          "baselineDuration": 2,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:lp1_municipal:cost:separabilityCheck",
+          "observation": "0.09120039595291018",
+          "delayCause": "normal",
+          "orderedAt": 45,
+          "startedAt": 45,
+          "dueAt": 47,
+          "baselineStart": 38,
+          "baselineDue": 40,
+          "status": "completed",
+          "completedAt": 47,
+          "sequence": 25,
+          "binding": {
+            "sourceId": "LP1-Y01",
+            "choice": "B",
+            "eventId": "LP1-E-Y01"
+          }
+        },
+        {
+          "id": "case:screeningAgreement:work:hearing-condition:A:EV-LIEVENNYS:1",
+          "caseId": "case:screeningAgreement",
+          "sourceId": "hearing-condition",
+          "planRevision": 7,
+          "component": "solar",
+          "duration": 3,
+          "baselineDuration": 3,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:screeningAgreement:cost:hearing-condition:A:EV-LIEVENNYS:1",
+          "observation": "0.8691809515003115",
+          "delayCause": "normal",
+          "orderedAt": 45,
+          "startedAt": 45,
+          "dueAt": 48,
+          "baselineStart": 38,
+          "baselineDue": 41,
+          "status": "completed",
+          "completedAt": 48,
+          "sequence": 26,
+          "binding": {
+            "sourceId": "hearing-condition",
+            "choice": "A",
+            "eventId": "EV-LIEVENNYS"
+          }
+        },
+        {
+          "id": "case:changedAssessment:work:evidence-joint:A:EV-AJANTASAISUUS:1",
+          "caseId": "case:changedAssessment",
+          "sourceId": "evidence-joint",
+          "planRevision": 7,
+          "component": "shared",
+          "duration": 4,
+          "baselineDuration": 4,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:changedAssessment:cost:evidence-joint:A:EV-AJANTASAISUUS:1",
+          "observation": "0.03173909382894635",
+          "delayCause": "normal",
+          "orderedAt": 45,
+          "startedAt": 45,
+          "dueAt": 49,
+          "baselineStart": 38,
+          "baselineDue": 42,
+          "status": "completed",
+          "completedAt": 49,
+          "sequence": 27,
+          "binding": {
+            "sourceId": "evidence-joint",
+            "choice": "A",
+            "eventId": "EV-AJANTASAISUUS"
+          }
+        },
+        {
+          "id": "case:stage4:work:proposalDocuments:7",
+          "caseId": "case:stage4",
+          "sourceId": "interludes[3][2]",
+          "planRevision": 7,
+          "component": "shared",
+          "duration": 2,
+          "baselineDuration": 2,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:stage4:cost:proposalDocuments:7",
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 51,
+          "startedAt": 51,
+          "dueAt": 53,
+          "baselineStart": 44,
+          "baselineDue": 46,
+          "status": "completed",
+          "completedAt": 53,
+          "sequence": 28
+        },
+        {
+          "id": "case:municipalApproval:work:appealWindow:7:0",
+          "caseId": "case:municipalApproval",
+          "sourceId": "EV-HYVAKSYNTA",
+          "planRevision": 7,
+          "component": "shared",
+          "duration": 1,
+          "baselineDuration": 1,
+          "dependencies": [],
+          "season": null,
+          "costId": null,
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 53,
+          "startedAt": 53,
+          "dueAt": 54,
+          "baselineStart": 46,
+          "baselineDue": 47,
+          "status": "completed",
+          "completedAt": 54,
+          "sequence": 29
+        },
+        {
+          "id": "case:evidenceAppeal:work:actualEvidenceAppeal",
+          "caseId": "case:evidenceAppeal",
+          "sourceId": "EV-VALITUS",
+          "planRevision": 7,
+          "component": "shared",
+          "duration": 12,
+          "baselineDuration": 12,
+          "dependencies": [],
+          "season": null,
+          "costId": "case:evidenceAppeal:cost:actualEvidenceAppeal",
+          "observation": "0.9759087201673537",
+          "delayCause": "normal",
+          "orderedAt": 54,
+          "startedAt": 54,
+          "dueAt": 66,
+          "baselineStart": 47,
+          "baselineDue": 59,
+          "status": "completed",
+          "completedAt": 66,
+          "sequence": 30,
+          "binding": {
+            "sourceId": "EV-VALITUS",
+            "choice": null,
+            "eventId": "EV-VALITUS"
+          }
+        },
+        {
+          "id": "case:permits:work:permit:construction:7",
+          "caseId": "case:permits",
+          "sourceId": "EV-LUVAT",
+          "planRevision": 7,
+          "component": "shared",
+          "duration": 4,
+          "baselineDuration": 4,
+          "dependencies": [],
+          "season": null,
+          "costId": null,
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 66,
+          "startedAt": 66,
+          "dueAt": 70,
+          "baselineStart": 59,
+          "baselineDue": 63,
+          "status": "completed",
+          "completedAt": 70,
+          "sequence": 31
+        },
+        {
+          "id": "case:permits:work:permit:waterTreatmentChange:7",
+          "caseId": "case:permits",
+          "sourceId": "EV-LUVAT",
+          "planRevision": 7,
+          "component": "shared",
+          "duration": 4,
+          "baselineDuration": 4,
+          "dependencies": [],
+          "season": null,
+          "costId": null,
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 66,
+          "startedAt": 66,
+          "dueAt": 70,
+          "baselineStart": 59,
+          "baselineDue": 63,
+          "status": "completed",
+          "completedAt": 70,
+          "sequence": 32
+        },
+        {
+          "id": "case:permits:work:permitAppeal:construction:7",
+          "caseId": "case:permits",
+          "sourceId": "EV-LUVAT",
+          "planRevision": 7,
+          "component": "shared",
+          "duration": 1,
+          "baselineDuration": 1,
+          "dependencies": [],
+          "season": null,
+          "costId": null,
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 70,
+          "startedAt": 70,
+          "dueAt": 71,
+          "baselineStart": 63,
+          "baselineDue": 64,
+          "status": "completed",
+          "completedAt": 71,
+          "sequence": 33
+        },
+        {
+          "id": "case:permits:work:permitAppeal:waterTreatmentChange:7",
+          "caseId": "case:permits",
+          "sourceId": "EV-LUVAT",
+          "planRevision": 7,
+          "component": "shared",
+          "duration": 1,
+          "baselineDuration": 1,
+          "dependencies": [],
+          "season": null,
+          "costId": null,
+          "observation": "specified-work",
+          "delayCause": "normal",
+          "orderedAt": 70,
+          "startedAt": 70,
+          "dueAt": 71,
+          "baselineStart": 63,
+          "baselineDue": 64,
+          "status": "completed",
+          "completedAt": 71,
+          "sequence": 34
+        }
+      ],
+      "nextSequence": 35,
+      "advances": [
+        {
+          "from": 0,
+          "to": 3,
+          "baselineFrom": 0,
+          "baselineTo": 3,
+          "reason": "Yhteinen johto, pienempi lasku",
+          "waitingFor": [
+            "case:sharedConnection:work:ownRoute"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 3,
+          "to": 6,
+          "baselineFrom": 3,
+          "baselineTo": 6,
+          "reason": "Uusi hanke",
+          "waitingFor": [
+            "case:stage1:work:stagePreparation:1"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 6,
+          "to": 8,
+          "baselineFrom": 6,
+          "baselineTo": 8,
+          "reason": "Kovia vaatimuksia",
+          "waitingFor": [
+            "case:vuokraehdot:work:land:A:contract-callback:1"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 8,
+          "to": 19,
+          "baselineFrom": 8,
+          "baselineTo": 12,
+          "reason": "Mihin ensimmäiset selvitysrahat käytetään?",
+          "waitingFor": [
+            "case:studyOrder:work:secondEcology"
+          ],
+          "avoidableMonths": 7
+        },
+        {
+          "from": 19,
+          "to": 19.5,
+          "baselineFrom": 12,
+          "baselineTo": 12.5,
+          "reason": "Hanke esiteltiin kunnalle",
+          "waitingFor": [
+            "case:stage2:work:municipalPresentation"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 19.5,
+          "to": 22,
+          "baselineFrom": 12.5,
+          "baselineTo": 15,
+          "reason": "Puolustusvoimien lausunto",
+          "waitingFor": [
+            "case:defence:work:defence:B:EV-PV:1"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 22,
+          "to": 28,
+          "baselineFrom": 15,
+          "baselineTo": 21,
+          "reason": "Puolustusvoimilta tuli vastaus",
+          "waitingFor": [
+            "case:defence:work:EV-PV:event:EV-VTT-TULOS:1"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 28,
+          "to": 29,
+          "baselineFrom": 21,
+          "baselineTo": 22,
+          "reason": "Kaava-aloite ja YVA-ohjelma",
+          "waitingFor": [
+            "case:stage2:work:stagePreparation:2"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 29,
+          "to": 30,
+          "baselineFrom": 22,
+          "baselineTo": 23,
+          "reason": "Vastaanottoarviosta saatiin vastaus",
+          "waitingFor": [
+            "case:lp1_tv:work:tvMitigationDesign"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 30,
+          "to": 31,
+          "baselineFrom": 23,
+          "baselineTo": 24,
+          "reason": "Ohjelmavaiheen yleisötilaisuus pidettiin",
+          "waitingFor": [
+            "case:stage2:work:programmeHearing"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 31,
+          "to": 33,
+          "baselineFrom": 24,
+          "baselineTo": 26,
+          "reason": "Aurinkohankkeen valmistelu jatkuu",
+          "waitingFor": [
+            "case:lp1_solar_continuation:work:solarContinuationReview"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 33,
+          "to": 35,
+          "baselineFrom": 26,
+          "baselineTo": 28,
+          "reason": "Alapuolinen oja on jo täynnä",
+          "waitingFor": [
+            "case:solarStormwater:work:solar-drain:B:EV-VESI:1"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 35,
+          "to": 36,
+          "baselineFrom": 28,
+          "baselineTo": 29,
+          "reason": "Kuivatus ulottuu lisääntymispaikalle",
+          "waitingFor": [
+            "case:frogWater:work:solar-water:B:EV-AURINKOLUONTO:1"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 36,
+          "to": 38,
+          "baselineFrom": 29,
+          "baselineTo": 31,
+          "reason": "Vesienkäsittely ei päättynyt turvetuotannon mukana",
+          "waitingFor": [
+            "case:peatPostcare:work:solarWater:B:EV-VESI:1"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 38,
+          "to": 43,
+          "baselineFrom": 31,
+          "baselineTo": 36,
+          "reason": "YVA-selostus ja kaavaluonnos",
+          "waitingFor": [
+            "case:stage3:work:stagePreparation:3"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 43,
+          "to": 45,
+          "baselineFrom": 36,
+          "baselineTo": 38,
+          "reason": "Kaavaluonnos valmistuu",
+          "waitingFor": [
+            "case:stage3:work:draftDocuments:2"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 45,
+          "to": 47,
+          "baselineFrom": 38,
+          "baselineTo": 40,
+          "reason": "Yksi hanke, kaksi valtuustoa",
+          "waitingFor": [
+            "case:lp1_municipal:work:separabilityCheck"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 47,
+          "to": 48,
+          "baselineFrom": 40,
+          "baselineTo": 41,
+          "reason": "Naapurin suojapuusto on menossa hakkuuseen",
+          "waitingFor": [
+            "case:screeningAgreement:work:hearing-condition:A:EV-LIEVENNYS:1"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 48,
+          "to": 49,
+          "baselineFrom": 41,
+          "baselineTo": 42,
+          "reason": "Vastineet valmistuvat",
+          "waitingFor": [
+            "case:stage4:work:proposalHearing"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 49,
+          "to": 51,
+          "baselineFrom": 42,
+          "baselineTo": 44,
+          "reason": "Kaavaehdotus ja hyväksyntä",
+          "waitingFor": [
+            "case:stage4:work:stagePreparation:4"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 51,
+          "to": 53,
+          "baselineFrom": 44,
+          "baselineTo": 46,
+          "reason": "Ehdotuksen asiakirjat tarkistettiin",
+          "waitingFor": [
+            "case:stage4:work:proposalDocuments:7"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 53,
+          "to": 54,
+          "baselineFrom": 46,
+          "baselineTo": 47,
+          "reason": "Kaava on hyväksytty",
+          "waitingFor": [
+            "case:municipalApproval:work:appealWindow:7:0"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 54,
+          "to": 66,
+          "baselineFrom": 47,
+          "baselineTo": 59,
+          "reason": "Kaavasta tehty valitus ratkaistiin",
+          "waitingFor": [
+            "case:evidenceAppeal:work:actualEvidenceAppeal"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 66,
+          "to": 70,
+          "baselineFrom": 59,
+          "baselineTo": 63,
+          "reason": "Hankkeen kaikki tarvittavat luvat on saatu",
+          "waitingFor": [
+            "case:permits:work:permit:construction:7"
+          ],
+          "avoidableMonths": 0
+        },
+        {
+          "from": 70,
+          "to": 71,
+          "baselineFrom": 63,
+          "baselineTo": 64,
+          "reason": "Hankkeen kaikki tarvittavat luvat on saatu",
+          "waitingFor": [
+            "case:permits:work:permitAppeal:construction:7"
+          ],
+          "avoidableMonths": 0
+        }
+      ]
+    },
+    "world": {
+      "region": "east",
+      "herdingArea": false,
+      "forestDeerArea": true,
+      "squirrelArea": true,
+      "borderEffects": false,
+      "species": "golden",
+      "researchSpecies": "golden",
+      "researchCost": 15000,
+      "researchPublishedAt": 36,
+      "externalStage": 3,
+      "externalId": "external-golden-full",
+      "landComponent": "solar",
+      "ownersAgree": false,
+      "regionalPlanNeeded": false,
+      "regionalPlanDue": 68,
+      "regionalPlanForecast": 42,
+      "wetlandSameCatchment": true,
+      "solarDrainageProblem": true,
+      "observations": {
+        "independentSolar": 1,
+        "militaryRouteConflict": 0,
+        "yvaDiscretionary": 1
+      }
+    },
+    "battery": {
+      "status": "excluded",
+      "landSecured": false,
+      "separable": true,
+      "sharedEffects": false,
+      "chargeMW": 100,
+      "dischargeMW": 100,
+      "energyMWh": 200,
+      "equipmentRevision": 0,
+      "offeredChargeMW": null,
+      "offeredDischargeMW": null,
+      "gridStatus": "unassessed",
+      "technicalData": false,
+      "safetyAssessed": false,
+      "connectionApprovalExpires": null,
+      "connectionAgreement": false
+    },
+    "procedure": {
+      "landSecured": true,
+      "initiated": true,
+      "yvaRequired": true,
+      "yvaDetermined": true,
+      "programmeReady": true,
+      "yvaHearingComplete": true,
+      "yvaConclusion": true,
+      "draftFeedback": true,
+      "proposalHearingComplete": true,
+      "adopted": true,
+      "planFinal": true,
+      "documentRevision": 7,
+      "appeal": "closed",
+      "appealDueAt": null,
+      "permits": [
+        {
+          "id": "construction",
+          "component": "shared",
+          "required": true,
+          "status": "final",
+          "planRevision": 7,
+          "dueAt": 70,
+          "finalAt": 71
+        },
+        {
+          "id": "aviation",
+          "component": "wind",
+          "required": false,
+          "status": "needed",
+          "planRevision": 0,
+          "dueAt": null,
+          "finalAt": null
+        },
+        {
+          "id": "waterTreatmentChange",
+          "component": "solar",
+          "required": true,
+          "status": "final",
+          "planRevision": 7,
+          "dueAt": 70,
+          "finalAt": 71
+        }
+      ],
+      "repairRounds": 0
+    },
+    "cases": {
+      "case:stage1": {
+        "id": "case:stage1",
+        "sourceId": "start",
+        "family": "stage1",
+        "component": "shared",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 0,
+        "choice": null,
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "open",
+        "facts": {},
+        "fallback": "unexamined",
+        "rounds": 0,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "shared",
+          "solar",
+          "wind"
+        ]
+      },
+      "case:vuokraehdot": {
+        "id": "case:vuokraehdot",
+        "sourceId": "land",
+        "family": "vuokraehdot",
+        "component": "wind",
+        "species": null,
+        "mechanism": "land",
+        "planRevision": 0,
+        "choice": "A",
+        "placeIds": [
+          "W1",
+          "W2"
+        ],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "contractConfirmed": true,
+          "specialTerms": true,
+          "informedOthers": true,
+          "blocking": false,
+          "cancelledBySolarContinuation": true
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "wind"
+        ]
+      },
+      "case:studyOrder": {
+        "id": "case:studyOrder",
+        "sourceId": "UUSI-P1-09",
+        "family": "studyOrder",
+        "component": "shared",
+        "species": null,
+        "mechanism": "grid",
+        "planRevision": 0,
+        "choice": "B",
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "ecologyFirst": false,
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [
+          "b-e7a72f3cf10e"
+        ],
+        "affectedComponents": [
+          "shared",
+          "solar",
+          "wind"
+        ]
+      },
+      "case:sharedConnection": {
+        "id": "case:sharedConnection",
+        "sourceId": "UUSI-P1-04",
+        "family": "sharedConnection",
+        "component": "shared",
+        "species": null,
+        "mechanism": "grid",
+        "planRevision": 0,
+        "choice": "B",
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "shared",
+          "solar",
+          "wind"
+        ]
+      },
+      "case:stage2": {
+        "id": "case:stage2",
+        "sourceId": "transition-1",
+        "family": "stage2",
+        "component": "shared",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 0,
+        "choice": null,
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "open",
+        "facts": {},
+        "fallback": "unexamined",
+        "rounds": 0,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "shared",
+          "solar",
+          "wind"
+        ]
+      },
+      "case:defence": {
+        "id": "case:defence",
+        "sourceId": "defence",
+        "family": "defence",
+        "component": "wind",
+        "species": null,
+        "mechanism": "aviation",
+        "planRevision": 0,
+        "choice": "B",
+        "placeIds": [
+          "W9",
+          "W10",
+          "W11",
+          "W12"
+        ],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "smallerPrepared": true,
+          "blocking": false,
+          "cancelledBySolarContinuation": true
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [
+          "b-5e407a863b39",
+          "b-a53978d0ae85"
+        ],
+        "affectedComponents": [
+          "wind"
+        ]
+      },
+      "case:lp1_tv": {
+        "id": "case:lp1_tv",
+        "sourceId": "LP1-T02",
+        "family": "lp1_tv",
+        "component": "wind",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 0,
+        "choice": "B",
+        "placeIds": [
+          "W5",
+          "W6",
+          "W7"
+        ],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "lp1Prepared": true,
+          "lp1Committed": true,
+          "blocking": false,
+          "constructionMitigation": true,
+          "cancelledBySolarContinuation": true
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [
+          "mitigation"
+        ],
+        "affectedComponents": [
+          "wind"
+        ]
+      },
+      "case:batteryAddition": {
+        "id": "case:batteryAddition",
+        "sourceId": "BESS-P2-04",
+        "family": "batteryAddition",
+        "component": "bess",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 0,
+        "choice": "B",
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "blocking": false,
+          "cancelledBySolarContinuation": true
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "bess"
+        ]
+      },
+      "case:publicResearch": {
+        "id": "case:publicResearch",
+        "sourceId": "research-seasons",
+        "family": "publicResearch",
+        "component": "shared",
+        "species": "golden",
+        "mechanism": "flight",
+        "planRevision": 0,
+        "choice": "A",
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "funded": true,
+          "publishedAt": 48,
+          "awaitingPublication": true,
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "shared",
+          "solar",
+          "wind"
+        ]
+      },
+      "case:draftTiming": {
+        "id": "case:draftTiming",
+        "sourceId": "UUSI-P2-06",
+        "family": "draftTiming",
+        "component": "shared",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 0,
+        "choice": "A",
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "shared",
+          "solar",
+          "wind"
+        ]
+      },
+      "case:stage3": {
+        "id": "case:stage3",
+        "sourceId": "transition-2",
+        "family": "stage3",
+        "component": "shared",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 0,
+        "choice": null,
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "open",
+        "facts": {},
+        "fallback": "unexamined",
+        "rounds": 0,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "shared",
+          "solar",
+          "wind"
+        ]
+      },
+      "case:frogWater": {
+        "id": "case:frogWater",
+        "sourceId": "solar-water",
+        "family": "frogWater",
+        "component": "solar",
+        "species": "frog",
+        "mechanism": "water",
+        "planRevision": 0,
+        "choice": "B",
+        "placeIds": [],
+        "parcelIds": [
+          "S55",
+          "S56",
+          "S57",
+          "S58",
+          "S59",
+          "S60",
+          "S61",
+          "S62",
+          "S63"
+        ],
+        "status": "resolved",
+        "facts": {
+          "existingHabitatPreserved": false,
+          "smallerStudied": true,
+          "blocking": false
+        },
+        "fallback": "viable",
+        "rounds": 1,
+        "revealedBranches": [
+          "b-2ef35a5f72b1"
+        ],
+        "affectedComponents": [
+          "solar"
+        ]
+      },
+      "case:goldenTerritory": {
+        "id": "case:goldenTerritory",
+        "sourceId": "golden-known",
+        "family": "goldenTerritory",
+        "component": "wind",
+        "species": "golden",
+        "mechanism": "flight",
+        "planRevision": 0,
+        "choice": "A",
+        "placeIds": [
+          "W17",
+          "W18",
+          "W1"
+        ],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "removalChoice": "A",
+          "removedForNature": true,
+          "blocking": false,
+          "cancelledBySolarContinuation": true
+        },
+        "fallback": "viable",
+        "rounds": 1,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "wind"
+        ]
+      },
+      "case:lp1_solar_continuation": {
+        "id": "case:lp1_solar_continuation",
+        "sourceId": "LP1-H01",
+        "family": "lp1_solar_continuation",
+        "component": "solar",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 1,
+        "choice": "A",
+        "placeIds": [],
+        "parcelIds": [
+          "S42",
+          "S43",
+          "S44",
+          "S45",
+          "S46",
+          "S47",
+          "S48"
+        ],
+        "status": "resolved",
+        "facts": {
+          "blocking": false,
+          "lp1Prepared": true,
+          "lp1Committed": true,
+          "cancelledBySolarContinuation": true
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [
+          "converted",
+          "reuse"
+        ],
+        "affectedComponents": [
+          "solar"
+        ]
+      },
+      "case:naturaBog": {
+        "id": "case:naturaBog",
+        "sourceId": "UUSI-P3-13",
+        "family": "naturaBog",
+        "component": "shared",
+        "species": null,
+        "mechanism": "water",
+        "planRevision": 2,
+        "choice": "B",
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "routeAvoidance": false,
+          "naturaHarmAvoided": true,
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [
+          "b-1d9d98c357e0"
+        ],
+        "affectedComponents": [
+          "shared",
+          "solar"
+        ]
+      },
+      "case:peatPostcare": {
+        "id": "case:peatPostcare",
+        "sourceId": "solarWater",
+        "family": "peatPostcare",
+        "component": "solar",
+        "species": null,
+        "mechanism": "water",
+        "planRevision": 2,
+        "choice": "B",
+        "placeIds": [],
+        "parcelIds": [
+          "S28",
+          "S29",
+          "S30",
+          "S31",
+          "S32",
+          "S33",
+          "S34",
+          "S35",
+          "S36",
+          "S37",
+          "S38",
+          "S39",
+          "S40",
+          "S41"
+        ],
+        "status": "resolved",
+        "facts": {
+          "postcare": true,
+          "waterSolutionDesigned": true,
+          "lowerFlooding": false,
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [
+          "b-2b23b42caf1e"
+        ],
+        "affectedComponents": [
+          "solar"
+        ]
+      },
+      "case:solarStormwater": {
+        "id": "case:solarStormwater",
+        "sourceId": "solar-drain",
+        "family": "solarStormwater",
+        "component": "solar",
+        "species": null,
+        "mechanism": "water",
+        "planRevision": 2,
+        "choice": "B",
+        "placeIds": [],
+        "parcelIds": [
+          "S1",
+          "S2",
+          "S3",
+          "S4",
+          "S5",
+          "S6",
+          "S7",
+          "S8",
+          "S9",
+          "S10"
+        ],
+        "status": "resolved",
+        "facts": {
+          "postcare": false,
+          "waterSolutionDesigned": true,
+          "lowerFlooding": false,
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [
+          "b-7e9e04d1d0aa"
+        ],
+        "affectedComponents": [
+          "solar"
+        ]
+      },
+      "case:solarBirds": {
+        "id": "case:solarBirds",
+        "sourceId": "solar-nest-water",
+        "family": "solarBirds",
+        "component": "solar",
+        "species": "birds",
+        "mechanism": "habitat",
+        "planRevision": 2,
+        "choice": "B",
+        "placeIds": [],
+        "parcelIds": [
+          "S14",
+          "S15",
+          "S16",
+          "S17",
+          "S18",
+          "S19",
+          "S20",
+          "S21",
+          "S22",
+          "S23",
+          "S24",
+          "S25",
+          "S26"
+        ],
+        "status": "resolved",
+        "facts": {
+          "existingHabitatPreserved": true,
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [
+          "b-685f9c0b4b2f"
+        ],
+        "affectedComponents": [
+          "solar"
+        ]
+      },
+      "case:stage4": {
+        "id": "case:stage4",
+        "sourceId": "transition-3",
+        "family": "stage4",
+        "component": "shared",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 4,
+        "choice": null,
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "open",
+        "facts": {},
+        "fallback": "unexamined",
+        "rounds": 0,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "shared",
+          "solar"
+        ]
+      },
+      "case:lp1_municipal": {
+        "id": "case:lp1_municipal",
+        "sourceId": "LP1-Y01",
+        "family": "lp1_municipal",
+        "component": "shared",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 6,
+        "choice": "B",
+        "placeIds": [],
+        "parcelIds": [
+          "S143",
+          "S144",
+          "S145",
+          "S146",
+          "S147",
+          "S148",
+          "S149",
+          "S150"
+        ],
+        "status": "resolved",
+        "facts": {
+          "lp1Prepared": true,
+          "lp1Committed": true,
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [
+          "separated"
+        ],
+        "affectedComponents": [
+          "shared",
+          "solar"
+        ]
+      },
+      "case:closedMeeting": {
+        "id": "case:closedMeeting",
+        "sourceId": "UUSI-P4-04",
+        "family": "closedMeeting",
+        "component": "shared",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 7,
+        "choice": "A",
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "presenceViolation": false,
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "shared",
+          "solar"
+        ]
+      },
+      "case:screeningAgreement": {
+        "id": "case:screeningAgreement",
+        "sourceId": "hearing-condition",
+        "family": "screeningAgreement",
+        "component": "solar",
+        "species": null,
+        "mechanism": "landscape",
+        "planRevision": 7,
+        "choice": "A",
+        "placeIds": [],
+        "parcelIds": [
+          "S130",
+          "S131",
+          "S132",
+          "S133",
+          "S134",
+          "S135"
+        ],
+        "status": "resolved",
+        "facts": {
+          "treeAgreement": true,
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "solar"
+        ]
+      },
+      "case:changedAssessment": {
+        "id": "case:changedAssessment",
+        "sourceId": "evidence-joint",
+        "family": "changedAssessment",
+        "component": "shared",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 7,
+        "choice": "A",
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "directUpdate": true,
+          "assessedRevision": 7,
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 1,
+        "revealedBranches": [
+          "b-ac1ba471530d"
+        ],
+        "affectedComponents": [
+          "shared",
+          "solar"
+        ]
+      },
+      "case:municipalApproval": {
+        "id": "case:municipalApproval",
+        "sourceId": "EV-HYVAKSYNTA",
+        "family": "municipalApproval",
+        "component": "shared",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 7,
+        "choice": null,
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "open",
+        "facts": {},
+        "fallback": "unexamined",
+        "rounds": 0,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "shared",
+          "solar"
+        ]
+      },
+      "case:evidenceAppeal": {
+        "id": "case:evidenceAppeal",
+        "sourceId": "EV-VALITUS",
+        "family": "evidenceAppeal",
+        "component": "shared",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 7,
+        "choice": null,
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "resolved",
+        "facts": {
+          "evidenceChallenged": true,
+          "blocking": false
+        },
+        "fallback": "unexamined",
+        "rounds": 0,
+        "revealedBranches": [
+          "b-ca50c128c365"
+        ],
+        "affectedComponents": [
+          "shared",
+          "solar"
+        ]
+      },
+      "case:permits": {
+        "id": "case:permits",
+        "sourceId": "EV-LUVAT",
+        "family": "permits",
+        "component": "shared",
+        "species": null,
+        "mechanism": "procedure",
+        "planRevision": 7,
+        "choice": null,
+        "placeIds": [],
+        "parcelIds": [],
+        "status": "open",
+        "facts": {},
+        "fallback": "unexamined",
+        "rounds": 0,
+        "revealedBranches": [],
+        "affectedComponents": [
+          "shared",
+          "solar"
+        ]
+      }
+    },
+    "outcomes": [
+      {
+        "id": "case:vuokraehdot:work:land:A:contract-callback:1:outcome",
+        "caseId": "case:vuokraehdot",
+        "sourceId": "land",
+        "sourceChoice": "A",
+        "contentId": "contract-callback",
+        "branchId": null,
+        "workId": "case:vuokraehdot:work:land:A:contract-callback:1",
+        "dueAt": 8,
+        "milestone": "yva",
+        "planRevision": 0,
+        "sequence": 1,
+        "status": "cancelled"
+      },
+      {
+        "id": "case:studyOrder:work:UUSI-P1-09:B:EV-SELVITYSJARJESTYS:1:outcome",
+        "caseId": "case:studyOrder",
+        "sourceId": "UUSI-P1-09",
+        "sourceChoice": "B",
+        "contentId": "EV-SELVITYSJARJESTYS",
+        "branchId": "b-e7a72f3cf10e",
+        "workId": "case:studyOrder:work:UUSI-P1-09:B:EV-SELVITYSJARJESTYS:1",
+        "dueAt": 8,
+        "milestone": "any",
+        "planRevision": 0,
+        "sequence": 2,
+        "status": "revealed"
+      },
+      {
+        "id": "case:defence:work:defence:B:EV-PV:1:outcome",
+        "caseId": "case:defence",
+        "sourceId": "defence",
+        "sourceChoice": "B",
+        "contentId": "EV-PV",
+        "branchId": "b-5e407a863b39",
+        "workId": "case:defence:work:defence:B:EV-PV:1",
+        "dueAt": 22,
+        "milestone": "any",
+        "planRevision": 0,
+        "sequence": 3,
+        "status": "revealed"
+      },
+      {
+        "id": "case:defence:work:EV-PV:event:EV-VTT-TULOS:1:outcome",
+        "caseId": "case:defence",
+        "sourceId": "EV-PV",
+        "sourceChoice": null,
+        "contentId": "EV-VTT-TULOS",
+        "branchId": "b-a53978d0ae85",
+        "workId": "case:defence:work:EV-PV:event:EV-VTT-TULOS:1",
+        "dueAt": 28,
+        "milestone": "any",
+        "planRevision": 0,
+        "sequence": 4,
+        "status": "revealed"
+      },
+      {
+        "id": "case:lp1_tv:work:deskModel:outcome",
+        "caseId": "case:lp1_tv",
+        "sourceId": "LP1-T02",
+        "sourceChoice": "B",
+        "contentId": "LP1-E-T02",
+        "branchId": "mitigation",
+        "workId": "case:lp1_tv:work:deskModel",
+        "dueAt": 29,
+        "milestone": "any",
+        "planRevision": 0,
+        "sequence": 5,
+        "status": "revealed"
+      },
+      {
+        "id": "case:frogWater:work:solar-water:B:EV-AURINKOLUONTO:1:outcome",
+        "caseId": "case:frogWater",
+        "sourceId": "solar-water",
+        "sourceChoice": "B",
+        "contentId": "EV-AURINKOLUONTO",
+        "branchId": "b-2ef35a5f72b1",
+        "workId": "case:frogWater:work:solar-water:B:EV-AURINKOLUONTO:1",
+        "dueAt": 36,
+        "milestone": "proposal",
+        "planRevision": 0,
+        "sequence": 6,
+        "status": "revealed"
+      },
+      {
+        "id": "case:goldenTerritory:work:golden-known:A:EV-KOTKA:1:outcome",
+        "caseId": "case:goldenTerritory",
+        "sourceId": "golden-known",
+        "sourceChoice": "A",
+        "contentId": "EV-KOTKA",
+        "branchId": null,
+        "workId": "case:goldenTerritory:work:golden-known:A:EV-KOTKA:1",
+        "dueAt": 35,
+        "milestone": "yva",
+        "planRevision": 1,
+        "sequence": 7,
+        "status": "cancelled"
+      },
+      {
+        "id": "case:lp1_solar_continuation:work:converted:outcome",
+        "caseId": "case:lp1_solar_continuation",
+        "sourceId": "LP1-H01",
+        "sourceChoice": "A",
+        "contentId": "LP1-E-H01",
+        "branchId": "converted",
+        "workId": "case:lp1_solar_continuation:work:converted",
+        "dueAt": 31,
+        "milestone": "any",
+        "planRevision": 2,
+        "sequence": 8,
+        "status": "revealed"
+      },
+      {
+        "id": "case:lp1_solar_continuation:work:solarContinuationReview:outcome",
+        "caseId": "case:lp1_solar_continuation",
+        "sourceId": "LP1-E-H01",
+        "sourceChoice": null,
+        "contentId": "LP1-E-H02",
+        "branchId": "reuse",
+        "workId": "case:lp1_solar_continuation:work:solarContinuationReview",
+        "dueAt": 33,
+        "milestone": "any",
+        "planRevision": 2,
+        "sequence": 9,
+        "status": "revealed"
+      },
+      {
+        "id": "case:naturaBog:work:UUSI-P3-13:B:EV-NATURA:1:outcome",
+        "caseId": "case:naturaBog",
+        "sourceId": "UUSI-P3-13",
+        "sourceChoice": "B",
+        "contentId": "EV-NATURA",
+        "branchId": "b-1d9d98c357e0",
+        "workId": "case:naturaBog:work:UUSI-P3-13:B:EV-NATURA:1",
+        "dueAt": 36,
+        "milestone": "proposal",
+        "planRevision": 2,
+        "sequence": 10,
+        "status": "revealed"
+      },
+      {
+        "id": "case:peatPostcare:work:solarWater:B:EV-VESI:1:outcome",
+        "caseId": "case:peatPostcare",
+        "sourceId": "solarWater",
+        "sourceChoice": "B",
+        "contentId": "EV-VESI",
+        "branchId": "b-2b23b42caf1e",
+        "workId": "case:peatPostcare:work:solarWater:B:EV-VESI:1",
+        "dueAt": 38,
+        "milestone": "yva",
+        "planRevision": 2,
+        "sequence": 11,
+        "status": "revealed"
+      },
+      {
+        "id": "case:solarStormwater:work:solar-drain:B:EV-VESI:1:outcome",
+        "caseId": "case:solarStormwater",
+        "sourceId": "solar-drain",
+        "sourceChoice": "B",
+        "contentId": "EV-VESI",
+        "branchId": "b-7e9e04d1d0aa",
+        "workId": "case:solarStormwater:work:solar-drain:B:EV-VESI:1",
+        "dueAt": 35,
+        "milestone": "yva",
+        "planRevision": 2,
+        "sequence": 12,
+        "status": "revealed"
+      },
+      {
+        "id": "case:solarBirds:work:solar-nest-water:B:EV-AURINKOLUONTO:1:outcome",
+        "caseId": "case:solarBirds",
+        "sourceId": "solar-nest-water",
+        "sourceChoice": "B",
+        "contentId": "EV-AURINKOLUONTO",
+        "branchId": "b-685f9c0b4b2f",
+        "workId": "case:solarBirds:work:solar-nest-water:B:EV-AURINKOLUONTO:1",
+        "dueAt": 36,
+        "milestone": "proposal",
+        "planRevision": 2,
+        "sequence": 13,
+        "status": "revealed"
+      },
+      {
+        "id": "case:lp1_municipal:work:separabilityCheck:outcome",
+        "caseId": "case:lp1_municipal",
+        "sourceId": "LP1-Y01",
+        "sourceChoice": "B",
+        "contentId": "LP1-E-Y01",
+        "branchId": "separated",
+        "workId": "case:lp1_municipal:work:separabilityCheck",
+        "dueAt": 47,
+        "milestone": "any",
+        "planRevision": 7,
+        "sequence": 14,
+        "status": "revealed"
+      },
+      {
+        "id": "case:screeningAgreement:work:hearing-condition:A:EV-LIEVENNYS:1:outcome",
+        "caseId": "case:screeningAgreement",
+        "sourceId": "hearing-condition",
+        "sourceChoice": "A",
+        "contentId": "EV-LIEVENNYS",
+        "branchId": null,
+        "workId": "case:screeningAgreement:work:hearing-condition:A:EV-LIEVENNYS:1",
+        "dueAt": 48,
+        "milestone": "proposal",
+        "planRevision": 7,
+        "sequence": 15,
+        "status": "revealed"
+      },
+      {
+        "id": "case:changedAssessment:work:evidence-joint:A:EV-AJANTASAISUUS:1:outcome",
+        "caseId": "case:changedAssessment",
+        "sourceId": "evidence-joint",
+        "sourceChoice": "A",
+        "contentId": "EV-AJANTASAISUUS",
+        "branchId": "b-ac1ba471530d",
+        "workId": "case:changedAssessment:work:evidence-joint:A:EV-AJANTASAISUUS:1",
+        "dueAt": 49,
+        "milestone": "proposal",
+        "planRevision": 7,
+        "sequence": 16,
+        "status": "revealed"
+      },
+      {
+        "id": "case:evidenceAppeal:work:actualEvidenceAppeal:outcome",
+        "caseId": "case:evidenceAppeal",
+        "sourceId": "EV-VALITUS",
+        "sourceChoice": null,
+        "contentId": "EV-VALITUS",
+        "branchId": "b-ca50c128c365",
+        "workId": "case:evidenceAppeal:work:actualEvidenceAppeal",
+        "dueAt": 66,
+        "milestone": "any",
+        "planRevision": 7,
+        "sequence": 17,
+        "status": "revealed"
+      }
+    ],
+    "leases": [],
+    "costs": [
+      {
+        "id": "case:vuokraehdot:cost:special-terms",
+        "caseId": "case:vuokraehdot",
+        "sourceId": "land",
+        "month": 0,
+        "euros": 18000,
+        "category": "contractLiability",
+        "avoidable": false,
+        "reason": "Kovia vaatimuksia"
+      },
+      {
+        "id": "case:studyOrder:cost:UUSI-P1-09:B:EV-SELVITYSJARJESTYS:1",
+        "caseId": "case:studyOrder",
+        "sourceId": "UUSI-P1-09",
+        "month": 0,
+        "euros": 18000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Mihin ensimmäiset selvitysrahat käytetään?"
+      },
+      {
+        "id": "case:sharedConnection:cost:ownRoute",
+        "caseId": "case:sharedConnection",
+        "sourceId": "UUSI-P1-04",
+        "month": 0,
+        "euros": 6000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Yhteinen johto, pienempi lasku"
+      },
+      {
+        "id": "case:studyOrder:cost:secondEcology",
+        "caseId": "case:studyOrder",
+        "sourceId": "UUSI-P1-09",
+        "month": 8,
+        "euros": 55000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Mihin ensimmäiset selvitysrahat käytetään?"
+      },
+      {
+        "id": "case:stage2:cost:municipalPresentation",
+        "caseId": "case:stage2",
+        "sourceId": "interludes[1][0]",
+        "month": 19,
+        "euros": 900,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Hanke esiteltiin kunnalle"
+      },
+      {
+        "id": "case:defence:cost:defence:B:EV-PV:1",
+        "caseId": "case:defence",
+        "sourceId": "defence",
+        "month": 19,
+        "euros": 5000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Puolustusvoimien lausunto"
+      },
+      {
+        "id": "case:defence:cost:EV-PV:event:EV-VTT-TULOS:1",
+        "caseId": "case:defence",
+        "sourceId": "EV-PV",
+        "month": 22,
+        "euros": 15000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Puolustusvoimilta tuli vastaus"
+      },
+      {
+        "id": "case:lp1_tv:cost:deskModel",
+        "caseId": "case:lp1_tv",
+        "sourceId": "LP1-T02",
+        "month": 28,
+        "euros": 3000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Televisiokuva pätkii jo nyt"
+      },
+      {
+        "id": "case:publicResearch:cost:funding",
+        "caseId": "case:publicResearch",
+        "sourceId": "research-seasons",
+        "month": 28,
+        "euros": 15000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Seuranta tarvitsee yhden kauden lisää"
+      },
+      {
+        "id": "case:lp1_tv:cost:tvMitigationDesign",
+        "caseId": "case:lp1_tv",
+        "sourceId": "LP1-E-T02",
+        "month": 29,
+        "euros": 2000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Vastaanottoarviosta saatiin vastaus"
+      },
+      {
+        "id": "case:stage2:cost:programmeHearing",
+        "caseId": "case:stage2",
+        "sourceId": "interludes[1][3]",
+        "month": 30,
+        "euros": 1500,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Ohjelmavaiheen yleisötilaisuus pidettiin"
+      },
+      {
+        "id": "case:frogWater:cost:solar-water:B:EV-AURINKOLUONTO:1",
+        "caseId": "case:frogWater",
+        "sourceId": "solar-water",
+        "month": 31,
+        "euros": 14000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Kuivatus ulottuu lisääntymispaikalle"
+      },
+      {
+        "id": "case:goldenTerritory:cost:golden-known:A:EV-KOTKA:1",
+        "caseId": "case:goldenTerritory",
+        "sourceId": "golden-known",
+        "month": 31,
+        "euros": 8000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Maakotkan säännöllinen lentoreitti"
+      },
+      {
+        "id": "case:lp1_solar_continuation:cost:solarContinuationReview",
+        "caseId": "case:lp1_solar_continuation",
+        "sourceId": "LP1-E-H01",
+        "month": 31,
+        "euros": 8000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Aurinkohankkeen valmistelu jatkuu"
+      },
+      {
+        "id": "case:naturaBog:cost:UUSI-P3-13:B:EV-NATURA:1",
+        "caseId": "case:naturaBog",
+        "sourceId": "UUSI-P3-13",
+        "month": 31,
+        "euros": 14000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Voimajohdon rakentaminen voi kuivattaa Natura-suota"
+      },
+      {
+        "id": "case:peatPostcare:cost:solarWater:B:EV-VESI:1",
+        "caseId": "case:peatPostcare",
+        "sourceId": "solarWater",
+        "month": 31,
+        "euros": 18000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Vesienkäsittely ei päättynyt turvetuotannon mukana"
+      },
+      {
+        "id": "case:solarStormwater:cost:solar-drain:B:EV-VESI:1",
+        "caseId": "case:solarStormwater",
+        "sourceId": "solar-drain",
+        "month": 31,
+        "euros": 10000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Alapuolinen oja on jo täynnä"
+      },
+      {
+        "id": "case:solarBirds:cost:solar-nest-water:B:EV-AURINKOLUONTO:1",
+        "caseId": "case:solarBirds",
+        "sourceId": "solar-nest-water",
+        "month": 31,
+        "euros": 14000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Turvetuotanto loppui, linnut tulivat"
+      },
+      {
+        "id": "case:stage3:cost:draftDocuments:2",
+        "caseId": "case:stage3",
+        "sourceId": "interludes[2][0]",
+        "month": 43,
+        "euros": 5000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Kaavaluonnos valmistuu"
+      },
+      {
+        "id": "case:stage4:cost:proposalHearing",
+        "caseId": "case:stage4",
+        "sourceId": "interludes[3][0]",
+        "month": 45,
+        "euros": 2500,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Vastineet valmistuvat"
+      },
+      {
+        "id": "case:lp1_municipal:cost:separabilityCheck",
+        "caseId": "case:lp1_municipal",
+        "sourceId": "LP1-Y01",
+        "month": 45,
+        "euros": 6000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Yksi hanke, kaksi valtuustoa"
+      },
+      {
+        "id": "case:screeningAgreement:cost:treeCompensation",
+        "caseId": "case:screeningAgreement",
+        "sourceId": "hearing-condition",
+        "month": 45,
+        "euros": 9000,
+        "category": "contractLiability",
+        "avoidable": false,
+        "reason": "Naapurin suojapuusto on menossa hakkuuseen"
+      },
+      {
+        "id": "case:screeningAgreement:cost:hearing-condition:A:EV-LIEVENNYS:1",
+        "caseId": "case:screeningAgreement",
+        "sourceId": "hearing-condition",
+        "month": 45,
+        "euros": 2500,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Naapurin suojapuusto on menossa hakkuuseen"
+      },
+      {
+        "id": "case:changedAssessment:cost:evidence-joint:A:EV-AJANTASAISUUS:1",
+        "caseId": "case:changedAssessment",
+        "sourceId": "evidence-joint",
+        "month": 45,
+        "euros": 10000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Naapurin uusi sijoittelu muuttaa yhteisvaikutuksia"
+      },
+      {
+        "id": "case:stage4:cost:proposalDocuments:7",
+        "caseId": "case:stage4",
+        "sourceId": "interludes[3][2]",
+        "month": 51,
+        "euros": 5000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Ehdotuksen asiakirjat tarkistettiin"
+      },
+      {
+        "id": "case:evidenceAppeal:cost:actualEvidenceAppeal",
+        "caseId": "case:evidenceAppeal",
+        "sourceId": "EV-VALITUS",
+        "month": 54,
+        "euros": 14000,
+        "category": "development",
+        "avoidable": false,
+        "reason": "Kaavasta tehty valitus ratkaistiin"
+      }
+    ],
+    "quality": [],
+    "decisions": [
+      {
+        "token": "swipe-v5-1:1:land:case:vuokraehdot",
+        "contentId": "land",
+        "caseId": "case:vuokraehdot",
+        "choice": "A",
+        "side": "right",
+        "month": 0,
+        "planRevision": 0,
+        "branchId": null,
+        "result": "Sopimukset syntyvät. Myöhempi tasapuolisuuskeskustelu jää mahdolliseksi."
+      },
+      {
+        "token": "swipe-v5-1:2:UUSI-P1-09:case:studyOrder",
+        "contentId": "UUSI-P1-09",
+        "caseId": "case:studyOrder",
+        "choice": "B",
+        "side": "left",
+        "month": 0,
+        "planRevision": 0,
+        "branchId": null,
+        "result": "Liityntäselvitys ja alustava johtoreitti tilataan. Luontoselvitysten laajuus päätetään verkkotuloksen jälkeen."
+      },
+      {
+        "token": "swipe-v5-1:3:UUSI-P1-04:case:sharedConnection",
+        "contentId": "UUSI-P1-04",
+        "caseId": "case:sharedConnection",
+        "choice": "B",
+        "side": "right",
+        "month": 0,
+        "planRevision": 0,
+        "branchId": null,
+        "result": "Omaa reittiä suunnitellaan eteenpäin. Yhteisjohdon mahdollinen kustannussäästö jää käyttämättä."
+      },
+      {
+        "token": "swipe-v5-1:7:defence:case:defence",
+        "contentId": "defence",
+        "caseId": "case:defence",
+        "choice": "B",
+        "side": "right",
+        "month": 19,
+        "planRevision": 0,
+        "branchId": null,
+        "result": "Suunnittelija laatii suppeamman vaihtoehdon. Molemmat sijoittelut toimitetaan Puolustusvoimille."
+      },
+      {
+        "token": "swipe-v5-1:11:LP1-T02:case:lp1_tv",
+        "contentId": "LP1-T02",
+        "caseId": "case:lp1_tv",
+        "choice": "B",
+        "side": "right",
+        "month": 28,
+        "planRevision": 0,
+        "branchId": null,
+        "result": "Asiantuntija arvioi suunniteltujen voimaloiden vaikutusta lähetysreittiin. Paikan päällä tehtäviä mittauksia ei vielä tilata."
+      },
+      {
+        "token": "swipe-v5-1:12:BESS-P2-04:case:batteryAddition",
+        "contentId": "BESS-P2-04",
+        "caseId": "case:batteryAddition",
+        "choice": "B",
+        "side": "left",
+        "month": 28,
+        "planRevision": 0,
+        "branchId": null,
+        "result": "Nykyinen suunnitelma etenee ilman akkua. Mahdollinen myöhempi akkuhanke valmistellaan erikseen."
+      },
+      {
+        "token": "swipe-v5-1:13:research-seasons:case:publicResearch",
+        "contentId": "research-seasons",
+        "caseId": "case:publicResearch",
+        "choice": "A",
+        "side": "right",
+        "month": 28,
+        "planRevision": 0,
+        "branchId": null,
+        "result": "Rahoitusosuus sovitaan. Tutkimus jatkuu omassa aikataulussaan, ja hankkeen omat selvitykset etenevät rinnalla."
+      },
+      {
+        "token": "swipe-v5-1:14:UUSI-P2-06:case:draftTiming",
+        "contentId": "UUSI-P2-06",
+        "caseId": "case:draftTiming",
+        "choice": "A",
+        "side": "right",
+        "month": 28,
+        "planRevision": 0,
+        "branchId": null,
+        "result": "YVA jatkuu ja kaavaluonnoksen kuuleminen siirtyy myöhemmäksi. Luonnokseen voidaan ottaa päätelmän havainnot jo valmiiksi."
+      },
+      {
+        "token": "swipe-v5-1:17:solar-water:case:frogWater",
+        "contentId": "solar-water",
+        "caseId": "case:frogWater",
+        "choice": "B",
+        "side": "left",
+        "month": 31,
+        "planRevision": 0,
+        "branchId": null,
+        "result": "Vesiasiantuntija ja luontokonsultti tutkivat, voidaanko paneeleita säilyttää muuttamalla kuivatusratkaisua."
+      },
+      {
+        "token": "swipe-v5-1:18:golden-known:case:goldenTerritory",
+        "contentId": "golden-known",
+        "caseId": "case:goldenTerritory",
+        "choice": "A",
+        "side": "right",
+        "month": 31,
+        "planRevision": 1,
+        "branchId": null,
+        "result": "Tunnistetut paikat jätetään pois. Maakotkan törmäysriski ja elinympäristövaikutukset arvioidaan pienemmälle sijoittelulle."
+      },
+      {
+        "token": "swipe-v5-1:20:LP1-H01:case:lp1_solar_continuation",
+        "contentId": "LP1-H01",
+        "caseId": "case:lp1_solar_continuation",
+        "choice": "A",
+        "side": "right",
+        "month": 31,
+        "planRevision": 2,
+        "branchId": null,
+        "result": "Tuulivoimaosa jätetään pois ja aurinkohankkeen suunnitelma päivitetään. Tehdyt selvitykset hyödynnetään siltä osin kuin ne vastaavat muuttunutta hanketta."
+      },
+      {
+        "token": "swipe-v5-1:22:UUSI-P3-13:case:naturaBog",
+        "contentId": "UUSI-P3-13",
+        "caseId": "case:naturaBog",
+        "choice": "B",
+        "side": "right",
+        "month": 31,
+        "planRevision": 2,
+        "branchId": null,
+        "result": "Vesiasiantuntija tutkii perustusten, työteiden ja kuivatusjärjestelyjen toteutusta. Ratkaisun vaikutus viedään Natura-arvioon."
+      },
+      {
+        "token": "swipe-v5-1:23:solarWater:case:peatPostcare",
+        "contentId": "solarWater",
+        "caseId": "case:peatPostcare",
+        "choice": "B",
+        "side": "right",
+        "month": 31,
+        "planRevision": 2,
+        "branchId": null,
+        "result": "Vesiasiantuntija tutkii vaihtoehtoisen käsittelyratkaisun. Mahdollinen lupamuutos valmistellaan ennen vanhojen rakenteiden muuttamista."
+      },
+      {
+        "token": "swipe-v5-1:24:solar-drain:case:solarStormwater",
+        "contentId": "solar-drain",
+        "caseId": "case:solarStormwater",
+        "choice": "B",
+        "side": "left",
+        "month": 31,
+        "planRevision": 2,
+        "branchId": null,
+        "result": "Vesiasiantuntija vertaa allas- ja purkuvaihtoehtoja. Niiden vaatimat maa-alueet ja vaikutukset selvitetään."
+      },
+      {
+        "token": "swipe-v5-1:25:solar-nest-water:case:solarBirds",
+        "contentId": "solar-nest-water",
+        "caseId": "case:solarBirds",
+        "choice": "B",
+        "side": "right",
+        "month": 31,
+        "planRevision": 2,
+        "branchId": null,
+        "result": "Paneelilohkoja sovitetaan lintujen käyttämän alueen ympärille. Konsultti arvioi, jääkö levähdys- ja ruokailualue toimivaksi."
+      },
+      {
+        "token": "swipe-v5-1:35:LP1-Y01:case:lp1_municipal",
+        "contentId": "LP1-Y01",
+        "caseId": "case:lp1_municipal",
+        "choice": "B",
+        "side": "right",
+        "month": 45,
+        "planRevision": 7,
+        "branchId": null,
+        "result": "Toisen kunnan puolella oleva tuotantoalue jätetään tästä hankevaiheesta pois. Jäljelle jäävän kokonaisuuden kaava- ja lupatarpeet tarkistetaan."
+      },
+      {
+        "token": "swipe-v5-1:36:UUSI-P4-04:case:closedMeeting",
+        "contentId": "UUSI-P4-04",
+        "caseId": "case:closedMeeting",
+        "choice": "A",
+        "side": "right",
+        "month": 45,
+        "planRevision": 7,
+        "branchId": null,
+        "result": "Poistut kokouksesta ja poistuminen merkitään pöytäkirjaan. Käsittely jatkuu ilman hankkeen edustajaa."
+      },
+      {
+        "token": "swipe-v5-1:37:hearing-condition:case:screeningAgreement",
+        "contentId": "hearing-condition",
+        "caseId": "case:screeningAgreement",
+        "choice": "A",
+        "side": "right",
+        "month": 45,
+        "planRevision": 7,
+        "branchId": null,
+        "result": "Maanomistajalle tehdään tarjous puuston säilyttämisestä. Maisemaratkaisu jää odottamaan hänen vastaustaan."
+      },
+      {
+        "token": "swipe-v5-1:38:evidence-joint:case:changedAssessment",
+        "contentId": "evidence-joint",
+        "caseId": "case:changedAssessment",
+        "choice": "A",
+        "side": "left",
+        "month": 45,
+        "planRevision": 7,
+        "branchId": null,
+        "result": "Konsultti päivittää muutosta koskevat laskelmat ja luontoarviot. Tarvittavat lausunnot pyydetään päivitetystä aineistosta."
+      }
+    ],
+    "stageDecks": {
+      "1": [
+        "land",
+        "UUSI-P1-09",
+        "UUSI-P1-04",
+        "UUSI-P1-07",
+        "land-meetings",
+        "UUSI-P1-03",
+        "UUSI-P1-01",
+        "land-minimum",
+        "BESS-P1-02",
+        "UUSI-P1-06",
+        "BESS-P1-01",
+        "UUSI-P1-08",
+        "BESS-P1-03",
+        "UUSI-P1-05",
+        "land-area-explained",
+        "land-index",
+        "land-map-versions",
+        "road",
+        "land-signing"
+      ],
+      "2": [
+        "defence",
+        "research-seasons",
+        "UUSI-P2-06",
+        "LP1-T02",
+        "programme-birds",
+        "UUSI-P2-05",
+        "surveys",
+        "UUSI-P2-01",
+        "BESS-P2-03",
+        "initiative-council",
+        "programme-range",
+        "BESS-P2-01",
+        "UUSI-P2-04",
+        "UUSI-P2-10",
+        "BESS-P2-05",
+        "LP1-A03",
+        "research-gps",
+        "UUSI-P2-02",
+        "LP1-T03",
+        "research",
+        "surveys-team",
+        "UUSI-P2-11",
+        "BESS-P2-04",
+        "initiative-rumour",
+        "surveys-access",
+        "UUSI-P2-09",
+        "UUSI-P2-03",
+        "research-cumulative",
+        "LP1-A04",
+        "UUSI-P2-08",
+        "herding-programme",
+        "initiative-cottage",
+        "UUSI-P2-07",
+        "surveys-spring",
+        "programme-cumulative",
+        "UUSI-P2-12",
+        "LP1-A02",
+        "BESS-P2-02"
+      ],
+      "3": [
+        "solar-water",
+        "height-ridge",
+        "UUSI-P3-02",
+        "height",
+        "UUSI-P3-13",
+        "solarWater",
+        "solar-drain",
+        "golden-known",
+        "noise-neighbour-model",
+        "solar-frog-basin",
+        "herding-pasture",
+        "noise-neighbour-layout",
+        "nature-squirrel",
+        "solar-nest-water",
+        "noise",
+        "solar-rain",
+        "LP1-A01",
+        "golden-shared",
+        "opinions-club",
+        "nature-reindeer-route",
+        "height-ground",
+        "UUSI-P3-03",
+        "solar-ditch",
+        "UUSI-P3-07",
+        "opinions-photo",
+        "solar-view-winter",
+        "solar-view-road",
+        "BESS-P3-05",
+        "nature-bird-area",
+        "UUSI-P3-12",
+        "UUSI-P3-09",
+        "BESS-P3-03",
+        "opinions-noise",
+        "BESS-P3-06",
+        "solar-snow",
+        "solarNature",
+        "nature-reindeer-calving",
+        "solar-required-wetland",
+        "height-approach",
+        "solarWater::wind",
+        "opinions",
+        "BESS-P3-01",
+        "UUSI-P3-08",
+        "herding-opinions",
+        "nature::solar-base",
+        "golden-unknown",
+        "UUSI-P3-04",
+        "BESS-P3-07",
+        "solar-squirrel",
+        "nature",
+        "height::solar-base",
+        "LP1-T01",
+        "UUSI-P3-11",
+        "solar-view-edge",
+        "solar-bird-area",
+        "solar-postcare",
+        "UUSI-P3-10",
+        "noise-joint",
+        "noise::solar-base",
+        "solar-pond"
+      ],
+      "4": [
+        "UUSI-P4-04",
+        "hearing-condition",
+        "UUSI-P4-03",
+        "proposal-village",
+        "proposal",
+        "evidence-joint",
+        "evidence-natura",
+        "natura-applicable",
+        "natura-review",
+        "UUSI-P4-06",
+        "proposal-photo",
+        "LP1-Y01",
+        "BESS-P4-01",
+        "BESS-P4-05",
+        "UUSI-P4-10",
+        "feedback",
+        "leases",
+        "hearing-mitigation",
+        "natura",
+        "proposal-lake",
+        "natura-season",
+        "proposal::solar-base",
+        "UUSI-P4-08",
+        "hearing"
+      ]
+    },
+    "seenIds": [
+      "start",
+      "land",
+      "UUSI-P1-09",
+      "interludes[0][0]",
+      "UUSI-P1-04",
+      "EV-SELVITYSJARJESTYS",
+      "land-done",
+      "transition-1",
+      "defence",
+      "EV-PV",
+      "EV-VTT-TULOS",
+      "LP1-T02",
+      "interludes[1][0]",
+      "BESS-P2-04",
+      "research-seasons",
+      "interludes[1][1]",
+      "UUSI-P2-06",
+      "LP1-E-T02",
+      "interludes[1][3]",
+      "transition-2",
+      "solar-water",
+      "golden-known",
+      "external-golden-full",
+      "LP1-H01",
+      "LP1-E-H01",
+      "UUSI-P3-13",
+      "solarWater",
+      "interludes[2][1]",
+      "solar-drain",
+      "solar-nest-water",
+      "interludes[2][2]",
+      "LP1-E-H02",
+      "interludes[2][0]",
+      "interludes[2][3]",
+      "progress-12",
+      "EV-VESI",
+      "draft-done",
+      "transition-3",
+      "EV-AURINKOLUONTO",
+      "EV-NATURA",
+      "LP1-Y01",
+      "UUSI-P4-04",
+      "hearing-condition",
+      "evidence-joint",
+      "interludes[3][1]",
+      "LP1-E-Y01",
+      "EV-LIEVENNYS",
+      "EV-AJANTASAISUUS",
+      "interludes[3][0]",
+      "interludes[3][2]",
+      "proposal-review",
+      "EV-HYVAKSYNTA",
+      "EV-VALITUS",
+      "EV-LAINVOIMA",
+      "EV-LUVAT"
+    ],
+    "seenFamilies": [],
+    "scenes": [],
+    "lastOutcome": "",
+    "ending": {
+      "kind": "win",
+      "contentId": "LP1-E-H03",
+      "causeCaseId": null,
+      "originalCause": null,
+      "month": 71,
+      "values": {},
+      "score": {
+        "scope": 355,
+        "time": 165,
+        "quality": 250,
+        "resource": 49,
+        "total": 819,
+        "maximum": 1000,
+        "deductions": [
+          {
+            "category": "scope",
+            "reason": "aurinkoalue 150 → 133 ha; aurinkojatkon laajuutta verrataan alkuperäisen hybridin 150 ha:n ja 78 MWac:n aurinkotavoitteeseen.",
+            "points": 45
+          },
+          {
+            "category": "time",
+            "reason": "Valinnoista aiheutui 7 kuukautta toteutunutta lisäaikaa hankkeen etenemiseen.",
+            "points": 35
+          },
+          {
+            "category": "resource",
+            "reason": "Toteutuneet kehityskulut 252 400 €. Yksi piste vastaa 2 500 euroa; tulevia vuokravastuita ei ole laskutettu.",
+            "points": 101
+          }
+        ]
+      }
+    },
+    "facts": {
+      "wetlandReserveOwned": false,
+      "regionalPlanDependency": false,
+      "layoutTightened": false,
+      "solarYvaBasis": "Laaja vaikutusalue ja yhteisvaikutukset: yksittäistapauksen YVA-ratkaisu.",
+      "stageStarted:1": true,
+      "selected:1:vuokraehdot": true,
+      "baseCount:1": 3,
+      "selected:1:studyOrder": true,
+      "ecologyOrdered": true,
+      "gridOrdered": true,
+      "selected:1:sharedConnection": true,
+      "sharedConnectionChosen": false,
+      "ownRouteStarted": true,
+      "settled:case:sharedConnection:work:ownRoute": true,
+      "settled:case:stage1:work:stagePreparation:1": true,
+      "settled:case:vuokraehdot:work:land:A:contract-callback:1": true,
+      "settled:case:studyOrder:work:UUSI-P1-09:B:EV-SELVITYSJARJESTYS:1": true,
+      "gridResolved": true,
+      "settled:case:studyOrder:work:secondEcology": true,
+      "stageStarted:2": true,
+      "selected:2:defence": true,
+      "baseCount:2": 5,
+      "defenceRequested": true,
+      "programmeReviewOpen": true,
+      "settled:case:stage2:work:municipalPresentation": true,
+      "municipalPresentationHeld": true,
+      "settled:case:defence:work:defence:B:EV-PV:1": true,
+      "settled:case:defence:work:EV-PV:event:EV-VTT-TULOS:1": true,
+      "defenceAccepted": true,
+      "selected:2:lp1_tv": true,
+      "selected:2:batteryAddition": true,
+      "selected:2:publicResearch": true,
+      "researchDecision": true,
+      "selected:2:draftTiming": true,
+      "draftParallel": false,
+      "draftWaitMonths": 3,
+      "settled:case:stage2:work:stagePreparation:2": true,
+      "settled:case:lp1_tv:work:deskModel": true,
+      "settled:case:lp1_tv:work:tvMitigationDesign": true,
+      "settled:case:stage2:work:programmeHearing": true,
+      "programmeHearingHeld": true,
+      "stageStarted:3": true,
+      "selected:3:frogWater": true,
+      "baseCount:3": 6,
+      "selected:3:goldenTerritory": true,
+      "externalPresented": true,
+      "settled:case:lp1_solar_continuation:work:converted": true,
+      "selected:3:naturaBog": true,
+      "naturaRequired": true,
+      "selected:3:peatPostcare": true,
+      "selected:3:solarStormwater": true,
+      "selected:3:solarBirds": true,
+      "settled:case:lp1_solar_continuation:work:solarContinuationReview": true,
+      "settled:case:solarStormwater:work:solar-drain:B:EV-VESI:1": true,
+      "settled:case:frogWater:work:solar-water:B:EV-AURINKOLUONTO:1": true,
+      "settled:case:naturaBog:work:UUSI-P3-13:B:EV-NATURA:1": true,
+      "settled:case:solarBirds:work:solar-nest-water:B:EV-AURINKOLUONTO:1": true,
+      "settled:case:peatPostcare:work:solarWater:B:EV-VESI:1": true,
+      "settled:case:stage3:work:stagePreparation:3": true,
+      "settled:case:stage3:work:draftDocuments:2": true,
+      "draftMaterialChecked": true,
+      "visualisationsPrepared": true,
+      "stageStarted:4": true,
+      "selected:4:lp1_municipal": true,
+      "baseCount:4": 4,
+      "selected:4:closedMeeting": true,
+      "selected:4:screeningAgreement": true,
+      "selected:4:changedAssessment": true,
+      "presentedReducedProposalRevision": 7,
+      "settled:case:lp1_municipal:work:separabilityCheck": true,
+      "settled:case:screeningAgreement:work:hearing-condition:A:EV-LIEVENNYS:1": true,
+      "settled:case:stage4:work:proposalHearing": true,
+      "proposalResponsesReceived": true,
+      "settled:case:changedAssessment:work:evidence-joint:A:EV-AJANTASAISUUS:1": true,
+      "settled:case:stage4:work:stagePreparation:4": true,
+      "settled:case:stage4:work:proposalDocuments:7": true,
+      "proposalDocumentsChecked": 7,
+      "approvalReady": true,
+      "adoptionAnnounced": true,
+      "settled:case:municipalApproval:work:appealWindow:7:0": true,
+      "evidenceAppealFiled": true,
+      "settled:case:evidenceAppeal:work:actualEvidenceAppeal": true,
+      "settled:case:permits:work:permit:construction:7": true,
+      "settled:case:permits:work:permit:waterTreatmentChange:7": true,
+      "settled:case:permits:work:permitAppeal:construction:7": true,
+      "settled:case:permits:work:permitAppeal:waterTreatmentChange:7": true,
+      "permitCompletionAnnounced": true
+    },
+    "nextSequence": 18,
+    "actions": [
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:0:start:"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:1:land:case:vuokraehdot",
+        "side": "right"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:2:UUSI-P1-09:case:studyOrder",
+        "side": "left"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:3:UUSI-P1-04:case:sharedConnection",
+        "side": "right"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:4:@wait:"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:5:EV-SELVITYSJARJESTYS:case:studyOrder"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:6:transition-1:"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:7:defence:case:defence",
+        "side": "right"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:8:@wait:"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:9:EV-PV:case:defence"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:10:EV-VTT-TULOS:case:defence"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:11:LP1-T02:case:lp1_tv",
+        "side": "right"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:12:BESS-P2-04:case:batteryAddition",
+        "side": "left"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:13:research-seasons:case:publicResearch",
+        "side": "right"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:14:UUSI-P2-06:case:draftTiming",
+        "side": "right"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:15:LP1-E-T02:case:lp1_tv"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:16:transition-2:"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:17:solar-water:case:frogWater",
+        "side": "left"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:18:golden-known:case:goldenTerritory",
+        "side": "right"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:19:external-golden-full:"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:20:LP1-H01:case:lp1_solar_continuation",
+        "side": "right"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:21:LP1-E-H01:case:lp1_solar_continuation"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:22:UUSI-P3-13:case:naturaBog",
+        "side": "right"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:23:solarWater:case:peatPostcare",
+        "side": "right"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:24:solar-drain:case:solarStormwater",
+        "side": "left"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:25:solar-nest-water:case:solarBirds",
+        "side": "right"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:26:@wait:"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:27:LP1-E-H02:case:lp1_solar_continuation"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:28:EV-VESI:case:solarStormwater"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:29:EV-VESI:case:peatPostcare"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:30:draft-done:"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:31:transition-3:"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:32:EV-AURINKOLUONTO:case:frogWater"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:33:EV-NATURA:case:naturaBog"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:34:EV-AURINKOLUONTO:case:solarBirds"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:35:LP1-Y01:case:lp1_municipal",
+        "side": "right"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:36:UUSI-P4-04:case:closedMeeting",
+        "side": "right"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:37:hearing-condition:case:screeningAgreement",
+        "side": "right"
+      },
+      {
+        "kind": "choice",
+        "token": "swipe-v5-1:38:evidence-joint:case:changedAssessment",
+        "side": "left"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:39:LP1-E-Y01:case:lp1_municipal"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:40:EV-LIEVENNYS:case:screeningAgreement"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:41:EV-HYVAKSYNTA:case:municipalApproval"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:42:EV-VALITUS:case:evidenceAppeal"
+      },
+      {
+        "kind": "continue",
+        "token": "swipe-v5-1:43:EV-LAINVOIMA:"
+      }
+    ]
+  }
+}

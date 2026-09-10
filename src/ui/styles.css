@@ -1155,8 +1155,8 @@ img {
 .end-screen { justify-content: flex-start; }
 .end-screen > * { flex-shrink: 0; }
 .transition-screen { justify-content: safe center; }
-.swipe-area:not(.narration-swipe) { flex: 1 0 auto; }
-.swipe-area:not(.narration-swipe) .card-stack { min-height: 230px; }
+.swipe-area:not(.narration-swipe) { flex: 1 0 280px; }
+.swipe-area:not(.narration-swipe) .card-stack { min-height: 165px; }
 .battery-strip { flex: none; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 5px; padding: 6px 20px; background: #392652; color: #f7f1df; font-size: 11px; }
 .battery-strip b { color: #c7f36b; }
 .owner-goals { flex: none; padding: 12px 6px; font-size: 13px; color: #665577; }

@@ -1,0 +1,8 @@
+PASS: three JSON Schemas (cards, names, editorial), Draft 2020-12
+PASS: 64 unique cards; 128 choices; 80 unique fictional names
+PASS: speaker, art-key, field, flag, track and queued-card references
+PASS: editorial coverage and protected gate / component-removal constraints
+PASS: demo phase, mode and queued-branch references (not engine execution)
+PASS: empty case-source register and no external URLs in checked runtime data
+Tones: {'positive': 14, 'mixed': 9, 'work': 14, 'challenge': 27}
+NOT TESTED: game execution, campaign reachability, balance, humor, actual artwork, phone UI, worldwide name uniqueness

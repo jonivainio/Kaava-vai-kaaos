@@ -1,0 +1,789 @@
+[
+  {
+    "mode": "hybrid",
+    "policy": "cautious",
+    "n": 1000,
+    "wins": 599,
+    "winPct": 59.9,
+    "win95Pct": "56.83–62.89",
+    "endings": {
+      "hybrid:win": 580,
+      "hybrid:scope": 78,
+      "hybrid:external": 318,
+      "hybrid_solar:scope": 3,
+      "hybrid_solar:win": 19,
+      "hybrid_solar:external": 2
+    },
+    "originalHybridEndings": {
+      "win": 580,
+      "scope": 95,
+      "external": 325
+    },
+    "recovery": {
+      "allHybrids": 1000,
+      "windFailures": 144,
+      "eligibleWindFailures": 25,
+      "offered": 25,
+      "accepted": 24,
+      "declined": 0,
+      "rescuedWins": 19,
+      "withdrawn": 1
+    },
+    "distribution": {
+      "actions": {
+        "p50": 40,
+        "p90": 46,
+        "max": 53
+      },
+      "decisions": {
+        "p50": 20,
+        "p90": 22,
+        "max": 25
+      },
+      "base": {
+        "p50": 18,
+        "p90": 18,
+        "max": 18
+      },
+      "mandatory": {
+        "p50": 2,
+        "p90": 4,
+        "max": 7
+      },
+      "confirmations": {
+        "p50": 0,
+        "p90": 0,
+        "max": 1
+      },
+      "waits": {
+        "p50": 3,
+        "p90": 3,
+        "max": 3
+      },
+      "months": {
+        "p50": 51,
+        "p90": 68,
+        "max": 122
+      },
+      "avoidableMonths": {
+        "p50": 0,
+        "p90": 5,
+        "max": 29
+      },
+      "cost": {
+        "p50": 256400,
+        "p90": 310900,
+        "max": 404900
+      },
+      "windMW": {
+        "p50": 110,
+        "p90": 160,
+        "max": 200
+      },
+      "solarHa": {
+        "p50": 90,
+        "p90": 133,
+        "max": 160
+      }
+    },
+    "sourceCommit": "4eef7799dfbb25f5ed04a670095da134b988a7a2",
+    "bundleSha256": "427d169a3c1cde1bd702e44227f8bd254106150c851e7a05943cbacc466a812d",
+    "errors": 0
+  },
+  {
+    "mode": "hybrid",
+    "policy": "economy",
+    "n": 1000,
+    "wins": 598,
+    "winPct": 59.8,
+    "win95Pct": "56.73–62.80",
+    "endings": {
+      "hybrid:win": 579,
+      "hybrid:scope": 80,
+      "hybrid:external": 318,
+      "hybrid_solar:win": 19,
+      "hybrid_solar:scope": 2,
+      "hybrid_solar:external": 2
+    },
+    "originalHybridEndings": {
+      "win": 579,
+      "scope": 97,
+      "external": 324
+    },
+    "recovery": {
+      "allHybrids": 1000,
+      "windFailures": 146,
+      "eligibleWindFailures": 25,
+      "offered": 25,
+      "accepted": 23,
+      "declined": 0,
+      "rescuedWins": 19,
+      "withdrawn": 2
+    },
+    "distribution": {
+      "actions": {
+        "p50": 38,
+        "p90": 43,
+        "max": 51
+      },
+      "decisions": {
+        "p50": 19,
+        "p90": 20,
+        "max": 23
+      },
+      "base": {
+        "p50": 18,
+        "p90": 18,
+        "max": 18
+      },
+      "mandatory": {
+        "p50": 1,
+        "p90": 3,
+        "max": 5
+      },
+      "confirmations": {
+        "p50": 0,
+        "p90": 0,
+        "max": 1
+      },
+      "waits": {
+        "p50": 3,
+        "p90": 3,
+        "max": 3
+      },
+      "months": {
+        "p50": 54,
+        "p90": 71,
+        "max": 113
+      },
+      "avoidableMonths": {
+        "p50": 8,
+        "p90": 12,
+        "max": 32
+      },
+      "cost": {
+        "p50": 182800,
+        "p90": 226400,
+        "max": 305900
+      },
+      "windMW": {
+        "p50": 110,
+        "p90": 160,
+        "max": 200
+      },
+      "solarHa": {
+        "p50": 86,
+        "p90": 130,
+        "max": 160
+      }
+    },
+    "sourceCommit": "4eef7799dfbb25f5ed04a670095da134b988a7a2",
+    "bundleSha256": "427d169a3c1cde1bd702e44227f8bd254106150c851e7a05943cbacc466a812d",
+    "errors": 0
+  },
+  {
+    "mode": "hybrid",
+    "policy": "reference",
+    "n": 3000,
+    "wins": 1057,
+    "winPct": 35.233333333333334,
+    "win95Pct": "33.54–36.96",
+    "endings": {
+      "hybrid:win": 1044,
+      "hybrid:choices": 540,
+      "hybrid:scope": 199,
+      "hybrid:external": 1019,
+      "hybrid:owner": 166,
+      "hybrid_solar:win": 13,
+      "hybrid_solar:scope": 4,
+      "hybrid_solar:owner": 9,
+      "hybrid_solar:choices": 4,
+      "hybrid_solar:external": 2
+    },
+    "originalHybridEndings": {
+      "win": 1044,
+      "choices": 540,
+      "scope": 219,
+      "external": 1031,
+      "owner": 166
+    },
+    "recovery": {
+      "allHybrids": 3000,
+      "windFailures": 805,
+      "eligibleWindFailures": 70,
+      "offered": 70,
+      "accepted": 32,
+      "declined": 37,
+      "rescuedWins": 13,
+      "withdrawn": 1
+    },
+    "distribution": {
+      "actions": {
+        "p50": 39,
+        "p90": 46,
+        "max": 55
+      },
+      "decisions": {
+        "p50": 19,
+        "p90": 22,
+        "max": 25
+      },
+      "base": {
+        "p50": 18,
+        "p90": 18,
+        "max": 18
+      },
+      "mandatory": {
+        "p50": 2,
+        "p90": 4,
+        "max": 7
+      },
+      "confirmations": {
+        "p50": 0,
+        "p90": 0,
+        "max": 1
+      },
+      "waits": {
+        "p50": 3,
+        "p90": 3,
+        "max": 3
+      },
+      "months": {
+        "p50": 48,
+        "p90": 72,
+        "max": 115
+      },
+      "avoidableMonths": {
+        "p50": 6,
+        "p90": 15,
+        "max": 41
+      },
+      "cost": {
+        "p50": 212900,
+        "p90": 268700,
+        "max": 359900
+      },
+      "windMW": {
+        "p50": 120,
+        "p90": 170,
+        "max": 200
+      },
+      "solarHa": {
+        "p50": 93,
+        "p90": 135,
+        "max": 160
+      }
+    },
+    "sourceCommit": "4eef7799dfbb25f5ed04a670095da134b988a7a2",
+    "bundleSha256": "427d169a3c1cde1bd702e44227f8bd254106150c851e7a05943cbacc466a812d",
+    "errors": 0
+  },
+  {
+    "mode": "solar",
+    "policy": "cautious",
+    "n": 1000,
+    "wins": 615,
+    "winPct": 61.5,
+    "win95Pct": "58.45–64.47",
+    "endings": {
+      "solar:scope": 62,
+      "solar:win": 615,
+      "solar:external": 323
+    },
+    "originalHybridEndings": {},
+    "recovery": {
+      "allHybrids": 0,
+      "windFailures": 0,
+      "eligibleWindFailures": 0,
+      "offered": 0,
+      "accepted": 0,
+      "declined": 0,
+      "rescuedWins": 0,
+      "withdrawn": 0
+    },
+    "distribution": {
+      "actions": {
+        "p50": 35,
+        "p90": 40,
+        "max": 46
+      },
+      "decisions": {
+        "p50": 18,
+        "p90": 20,
+        "max": 23
+      },
+      "base": {
+        "p50": 16,
+        "p90": 18,
+        "max": 18
+      },
+      "mandatory": {
+        "p50": 1,
+        "p90": 3,
+        "max": 6
+      },
+      "confirmations": {
+        "p50": 0,
+        "p90": 1,
+        "max": 2
+      },
+      "waits": {
+        "p50": 3,
+        "p90": 3,
+        "max": 3
+      },
+      "months": {
+        "p50": 46,
+        "p90": 60,
+        "max": 100
+      },
+      "avoidableMonths": {
+        "p50": 0,
+        "p90": 5,
+        "max": 26
+      },
+      "cost": {
+        "p50": 219600,
+        "p90": 273500,
+        "max": 365900
+      },
+      "windMW": {
+        "p50": 0,
+        "p90": 0,
+        "max": 0
+      },
+      "solarHa": {
+        "p50": 109,
+        "p90": 170,
+        "max": 220
+      }
+    },
+    "sourceCommit": "4eef7799dfbb25f5ed04a670095da134b988a7a2",
+    "bundleSha256": "427d169a3c1cde1bd702e44227f8bd254106150c851e7a05943cbacc466a812d",
+    "errors": 0
+  },
+  {
+    "mode": "solar",
+    "policy": "economy",
+    "n": 1000,
+    "wins": 594,
+    "winPct": 59.4,
+    "win95Pct": "56.33–62.40",
+    "endings": {
+      "solar:scope": 91,
+      "solar:win": 594,
+      "solar:external": 315
+    },
+    "originalHybridEndings": {},
+    "recovery": {
+      "allHybrids": 0,
+      "windFailures": 0,
+      "eligibleWindFailures": 0,
+      "offered": 0,
+      "accepted": 0,
+      "declined": 0,
+      "rescuedWins": 0,
+      "withdrawn": 0
+    },
+    "distribution": {
+      "actions": {
+        "p50": 33,
+        "p90": 38,
+        "max": 45
+      },
+      "decisions": {
+        "p50": 17,
+        "p90": 19,
+        "max": 23
+      },
+      "base": {
+        "p50": 16,
+        "p90": 18,
+        "max": 18
+      },
+      "mandatory": {
+        "p50": 1,
+        "p90": 2,
+        "max": 5
+      },
+      "confirmations": {
+        "p50": 0,
+        "p90": 0,
+        "max": 1
+      },
+      "waits": {
+        "p50": 3,
+        "p90": 3,
+        "max": 3
+      },
+      "months": {
+        "p50": 50,
+        "p90": 63,
+        "max": 103
+      },
+      "avoidableMonths": {
+        "p50": 6,
+        "p90": 6,
+        "max": 26
+      },
+      "cost": {
+        "p50": 150000,
+        "p90": 188300,
+        "max": 283900
+      },
+      "windMW": {
+        "p50": 0,
+        "p90": 0,
+        "max": 0
+      },
+      "solarHa": {
+        "p50": 102,
+        "p90": 165,
+        "max": 220
+      }
+    },
+    "sourceCommit": "4eef7799dfbb25f5ed04a670095da134b988a7a2",
+    "bundleSha256": "427d169a3c1cde1bd702e44227f8bd254106150c851e7a05943cbacc466a812d",
+    "errors": 0
+  },
+  {
+    "mode": "solar",
+    "policy": "reference",
+    "n": 3000,
+    "wins": 1204,
+    "winPct": 40.13333333333333,
+    "win95Pct": "38.39–41.90",
+    "endings": {
+      "solar:choices": 163,
+      "solar:win": 1204,
+      "solar:owner": 507,
+      "solar:external": 1018,
+      "solar:scope": 108
+    },
+    "originalHybridEndings": {},
+    "recovery": {
+      "allHybrids": 0,
+      "windFailures": 0,
+      "eligibleWindFailures": 0,
+      "offered": 0,
+      "accepted": 0,
+      "declined": 0,
+      "rescuedWins": 0,
+      "withdrawn": 0
+    },
+    "distribution": {
+      "actions": {
+        "p50": 37,
+        "p90": 43,
+        "max": 52
+      },
+      "decisions": {
+        "p50": 18,
+        "p90": 20,
+        "max": 24
+      },
+      "base": {
+        "p50": 16,
+        "p90": 18,
+        "max": 18
+      },
+      "mandatory": {
+        "p50": 1,
+        "p90": 3,
+        "max": 7
+      },
+      "confirmations": {
+        "p50": 0,
+        "p90": 0,
+        "max": 2
+      },
+      "waits": {
+        "p50": 3,
+        "p90": 3,
+        "max": 3
+      },
+      "months": {
+        "p50": 49,
+        "p90": 77,
+        "max": 106
+      },
+      "avoidableMonths": {
+        "p50": 6,
+        "p90": 26,
+        "max": 39
+      },
+      "cost": {
+        "p50": 189300,
+        "p90": 248400,
+        "max": 338400
+      },
+      "windMW": {
+        "p50": 0,
+        "p90": 0,
+        "max": 0
+      },
+      "solarHa": {
+        "p50": 115,
+        "p90": 178,
+        "max": 220
+      }
+    },
+    "sourceCommit": "4eef7799dfbb25f5ed04a670095da134b988a7a2",
+    "bundleSha256": "427d169a3c1cde1bd702e44227f8bd254106150c851e7a05943cbacc466a812d",
+    "errors": 0
+  },
+  {
+    "mode": "wind",
+    "policy": "cautious",
+    "n": 1000,
+    "wins": 480,
+    "winPct": 48,
+    "win95Pct": "44.92–51.10",
+    "endings": {
+      "wind:scope": 207,
+      "wind:win": 480,
+      "wind:external": 313
+    },
+    "originalHybridEndings": {},
+    "recovery": {
+      "allHybrids": 0,
+      "windFailures": 0,
+      "eligibleWindFailures": 0,
+      "offered": 0,
+      "accepted": 0,
+      "declined": 0,
+      "rescuedWins": 0,
+      "withdrawn": 0
+    },
+    "distribution": {
+      "actions": {
+        "p50": 37,
+        "p90": 44,
+        "max": 53
+      },
+      "decisions": {
+        "p50": 19,
+        "p90": 21,
+        "max": 24
+      },
+      "base": {
+        "p50": 18,
+        "p90": 18,
+        "max": 18
+      },
+      "mandatory": {
+        "p50": 1,
+        "p90": 3,
+        "max": 6
+      },
+      "confirmations": {
+        "p50": 0,
+        "p90": 0,
+        "max": 1
+      },
+      "waits": {
+        "p50": 3,
+        "p90": 3,
+        "max": 3
+      },
+      "months": {
+        "p50": 46,
+        "p90": 64,
+        "max": 113
+      },
+      "avoidableMonths": {
+        "p50": 0,
+        "p90": 4,
+        "max": 27
+      },
+      "cost": {
+        "p50": 243900,
+        "p90": 303500,
+        "max": 379400
+      },
+      "windMW": {
+        "p50": 100,
+        "p90": 180,
+        "max": 240
+      },
+      "solarHa": {
+        "p50": 0,
+        "p90": 0,
+        "max": 0
+      }
+    },
+    "sourceCommit": "4eef7799dfbb25f5ed04a670095da134b988a7a2",
+    "bundleSha256": "427d169a3c1cde1bd702e44227f8bd254106150c851e7a05943cbacc466a812d",
+    "errors": 0
+  },
+  {
+    "mode": "wind",
+    "policy": "economy",
+    "n": 1000,
+    "wins": 502,
+    "winPct": 50.2,
+    "win95Pct": "47.11–53.29",
+    "endings": {
+      "wind:scope": 185,
+      "wind:win": 502,
+      "wind:external": 313
+    },
+    "originalHybridEndings": {},
+    "recovery": {
+      "allHybrids": 0,
+      "windFailures": 0,
+      "eligibleWindFailures": 0,
+      "offered": 0,
+      "accepted": 0,
+      "declined": 0,
+      "rescuedWins": 0,
+      "withdrawn": 0
+    },
+    "distribution": {
+      "actions": {
+        "p50": 37,
+        "p90": 44,
+        "max": 53
+      },
+      "decisions": {
+        "p50": 18,
+        "p90": 20,
+        "max": 24
+      },
+      "base": {
+        "p50": 18,
+        "p90": 18,
+        "max": 18
+      },
+      "mandatory": {
+        "p50": 1,
+        "p90": 2,
+        "max": 6
+      },
+      "confirmations": {
+        "p50": 0,
+        "p90": 0,
+        "max": 1
+      },
+      "waits": {
+        "p50": 3,
+        "p90": 3,
+        "max": 3
+      },
+      "months": {
+        "p50": 53,
+        "p90": 71,
+        "max": 113
+      },
+      "avoidableMonths": {
+        "p50": 8,
+        "p90": 12,
+        "max": 32
+      },
+      "cost": {
+        "p50": 191400,
+        "p90": 237400,
+        "max": 325400
+      },
+      "windMW": {
+        "p50": 100,
+        "p90": 190,
+        "max": 240
+      },
+      "solarHa": {
+        "p50": 0,
+        "p90": 0,
+        "max": 0
+      }
+    },
+    "sourceCommit": "4eef7799dfbb25f5ed04a670095da134b988a7a2",
+    "bundleSha256": "427d169a3c1cde1bd702e44227f8bd254106150c851e7a05943cbacc466a812d",
+    "errors": 0
+  },
+  {
+    "mode": "wind",
+    "policy": "reference",
+    "n": 3000,
+    "wins": 722,
+    "winPct": 24.066666666666666,
+    "win95Pct": "22.57–25.63",
+    "endings": {
+      "wind:scope": 422,
+      "wind:win": 722,
+      "wind:choices": 628,
+      "wind:owner": 224,
+      "wind:external": 1004
+    },
+    "originalHybridEndings": {},
+    "recovery": {
+      "allHybrids": 0,
+      "windFailures": 0,
+      "eligibleWindFailures": 0,
+      "offered": 0,
+      "accepted": 0,
+      "declined": 0,
+      "rescuedWins": 0,
+      "withdrawn": 0
+    },
+    "distribution": {
+      "actions": {
+        "p50": 38,
+        "p90": 46,
+        "max": 56
+      },
+      "decisions": {
+        "p50": 19,
+        "p90": 22,
+        "max": 26
+      },
+      "base": {
+        "p50": 18,
+        "p90": 18,
+        "max": 18
+      },
+      "mandatory": {
+        "p50": 2,
+        "p90": 4,
+        "max": 7
+      },
+      "confirmations": {
+        "p50": 0,
+        "p90": 0,
+        "max": 2
+      },
+      "waits": {
+        "p50": 3,
+        "p90": 3,
+        "max": 3
+      },
+      "months": {
+        "p50": 46,
+        "p90": 72,
+        "max": 121
+      },
+      "avoidableMonths": {
+        "p50": 6,
+        "p90": 19,
+        "max": 46
+      },
+      "cost": {
+        "p50": 220400,
+        "p90": 280100,
+        "max": 427900
+      },
+      "windMW": {
+        "p50": 112,
+        "p90": 190,
+        "max": 240
+      },
+      "solarHa": {
+        "p50": 0,
+        "p90": 0,
+        "max": 0
+      }
+    },
+    "sourceCommit": "4eef7799dfbb25f5ed04a670095da134b988a7a2",
+    "bundleSha256": "427d169a3c1cde1bd702e44227f8bd254106150c851e7a05943cbacc466a812d",
+    "errors": 0
+  }
+]

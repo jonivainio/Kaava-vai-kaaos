@@ -1,0 +1,362 @@
+[
+  {
+    "id": "LP1-QA-001",
+    "title": "Valikkovalinta toimii",
+    "status": "PASS",
+    "evidence": "e2e/lp1.spec.ts; browser-results.json; layout-final.json"
+  },
+  {
+    "id": "LP1-QA-002",
+    "title": "Jatka ei vaihda moodia",
+    "status": "PASS",
+    "evidence": "e2e/lp1.spec.ts; browser-results.json; layout-final.json"
+  },
+  {
+    "id": "LP1-QA-003",
+    "title": "Tuulen fyysiset invarianssit",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-004",
+    "title": "Auringon fyysiset invarianssit",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-005",
+    "title": "Jonotuksen ohitus estetään",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-006",
+    "title": "Shared ei ole kaikille salliva",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-007",
+    "title": "Maanomistajan oikea haara",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-008",
+    "title": "Esityskerroksen oikea tekniikka",
+    "status": "PASS",
+    "evidence": "tests/lp1-audit.test.ts; mode-audit.json; alkuperäisen lähdetuonnin vertailu"
+  },
+  {
+    "id": "LP1-QA-009",
+    "title": "Aurinkopeli ilman YVAa",
+    "status": "PASS",
+    "evidence": "e2e/lp1.spec.ts: kokonaiset YVA/ei-YVA- ja aurinkojatkopelit; browser-results.json"
+  },
+  {
+    "id": "LP1-QA-010",
+    "title": "Aurinkopeli YVAlla",
+    "status": "PASS",
+    "evidence": "e2e/lp1.spec.ts: kokonaiset YVA/ei-YVA- ja aurinkojatkopelit; browser-results.json"
+  },
+  {
+    "id": "LP1-QA-011",
+    "title": "Tuntematon menettelytarve",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-012",
+    "title": "BESSin pakotettu kortti puhtaassa tilassa",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-013",
+    "title": "Poolin kattavuus",
+    "status": "PASS",
+    "evidence": "tests/lp1-run.test.ts; simulation-summary.json; fixtures/index.json"
+  },
+  {
+    "id": "LP1-QA-014",
+    "title": "Hybridin regressio",
+    "status": "PASS",
+    "evidence": "tests/v5-content.test.ts; tests/v5-permits-battery.test.ts; tests/v5-results.test.ts; legacy/"
+  },
+  {
+    "id": "LP1-QA-015",
+    "title": "Puolustuksesta tarjous eikä automaatio",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-016",
+    "title": "VTT:n kielteinen loppukanta",
+    "status": "PASS",
+    "evidence": "tests/v5-content.test.ts; tests/v5-permits-battery.test.ts; tests/v5-results.test.ts; legacy/"
+  },
+  {
+    "id": "LP1-QA-017",
+    "title": "Kieltäytyminen",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-018",
+    "title": "Hyväksyminen atomisena",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-019",
+    "title": "Ei puhtaista moodeista",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-020",
+    "title": "Ei yhteisestä esteestä",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-021",
+    "title": "Ei kaikkialta vetäytyvän omistajan jatkoa",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-022",
+    "title": "Luontohaitta koskee myös paneeleja",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-023",
+    "title": "Aurinkolaajuus ei riitä",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-024",
+    "title": "Akku ei ole erotettavissa",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-025",
+    "title": "Ei onnistumisen jälkeen",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-026",
+    "title": "Yksi tarjous ja oikea token",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-027",
+    "title": "Tulevat wind-tulokset perutaan",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-028",
+    "title": "Jo valmistunut havainto säilyy",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-029",
+    "title": "Esityssiirtymä",
+    "status": "PASS",
+    "evidence": "e2e/lp1.spec.ts; browser-results.json; layout-final.json"
+  },
+  {
+    "id": "LP1-QA-030",
+    "title": "Myöhempi vaihe ei aloita kaikkea alusta",
+    "status": "PASS",
+    "evidence": "e2e/lp1.spec.ts: kokonaiset YVA/ei-YVA- ja aurinkojatkopelit; browser-results.json"
+  },
+  {
+    "id": "LP1-QA-031",
+    "title": "Tarkistus vähentää paneelialaa",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-032",
+    "title": "Avoin itsenäisyyden kysymys jää kielteiseksi",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-033",
+    "title": "Jatkon onnistuminen",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-034",
+    "title": "Tallennus tarjouksen jokaisessa rajapisteessä",
+    "status": "PASS",
+    "evidence": "tests/lp1-replay.test.ts; fixtures/index.json; e2e/lp1.spec.ts"
+  },
+  {
+    "id": "LP1-QA-035",
+    "title": "Teknisen vahvistuksen replay",
+    "status": "PASS",
+    "evidence": "tests/lp1-replay.test.ts; fixtures/index.json; e2e/lp1.spec.ts"
+  },
+  {
+    "id": "LP1-QA-036",
+    "title": "Vanhan sääntöversion turvallinen avaus",
+    "status": "PASS",
+    "evidence": "e2e/offline.spec.ts; offline-results.json; tests/lp1-contract.test.ts"
+  },
+  {
+    "id": "LP1-QA-037",
+    "title": "Keskeytetty pyyhkäisy",
+    "status": "PASS",
+    "evidence": "e2e/lp1.spec.ts; browser-results.json; layout-final.json"
+  },
+  {
+    "id": "LP1-QA-038",
+    "title": "Aurinkojatkon alkuperäinen nimittäjä",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-039",
+    "title": "Koko kustannushistoria mukana",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-040",
+    "title": "Nollanimittäjät",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-041",
+    "title": "Viive ei ole työmäärien summa",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-042",
+    "title": "Varjo ja nimellisteho",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-043",
+    "title": "Television lisämittaus ei toistu",
+    "status": "PASS",
+    "evidence": "tests/lp1-transitions.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-044",
+    "title": "Kuljetusmallia ei vaihdeta tilattaessa",
+    "status": "PASS",
+    "evidence": "tests/lp1-transitions.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-045",
+    "title": "Paneelipinta ei automaattisesti ratkaise häikäisyä",
+    "status": "PASS",
+    "evidence": "tests/lp1-branches.test.ts: surface_no / layout_ok / block_out; branch-results.json"
+  },
+  {
+    "id": "LP1-QA-046",
+    "title": "Sulfaattiepäily ei ole näytetulos",
+    "status": "PASS",
+    "evidence": "tests/lp1-transitions.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-047",
+    "title": "Matalampi kaivu vaatii soveltuvan suunnitelman",
+    "status": "PASS",
+    "evidence": "tests/lp1-transitions.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-048",
+    "title": "Laidunnuksesta kieltäytyminen",
+    "status": "PASS",
+    "evidence": "tests/lp1-transitions.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-049",
+    "title": "DC/AC-vaihtoehto ei lisää verkon tehoa",
+    "status": "PASS",
+    "evidence": "tests/lp1-contract.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-050",
+    "title": "Kaksi kuntaa",
+    "status": "PASS",
+    "evidence": "tests/lp1-transitions.test.ts; regression.json"
+  },
+  {
+    "id": "LP1-QA-051",
+    "title": "Rytmi ei nollaudu jatkossa",
+    "status": "PASS",
+    "evidence": "tests/lp1-run.test.ts; simulation-summary.json; fixtures/index.json"
+  },
+  {
+    "id": "LP1-QA-052",
+    "title": "Tuntematon uusi event ei katoa",
+    "status": "PASS",
+    "evidence": "tests/lp1-audit.test.ts; mode-audit.json; alkuperäisen lähdetuonnin vertailu"
+  },
+  {
+    "id": "LP1-QA-053",
+    "title": "Mobiiliasettelu ja näppäimistö",
+    "status": "PASS",
+    "evidence": "e2e/lp1.spec.ts; browser-results.json; layout-final.json"
+  },
+  {
+    "id": "LP1-QA-054",
+    "title": "Kuvitus vastaa aktiivista tekniikkaa",
+    "status": "PASS",
+    "evidence": "art/gallery-1.png; art/gallery-2.png; browser/decision-LP1-*; mode-audit.json; katsottu kuvat"
+  },
+  {
+    "id": "LP1-QA-055",
+    "title": "Päivityskokonaisuus offline",
+    "status": "PASS",
+    "evidence": "e2e/offline.spec.ts; offline-results.json; tests/lp1-contract.test.ts"
+  },
+  {
+    "id": "LP1-QA-056",
+    "title": "Kohtuullinen lisäpituus",
+    "status": "PASS",
+    "evidence": "simulation-summary.json; simulation/lp1-final-20260911-*.json; tools/simulate-lp1.mjs"
+  },
+  {
+    "id": "LP1-QA-057",
+    "title": "Jatko ei vääristä tilastoa",
+    "status": "PASS",
+    "evidence": "simulation-summary.json; simulation/lp1-final-20260911-*.json; tools/simulate-lp1.mjs"
+  },
+  {
+    "id": "LP1-QA-058",
+    "title": "Uusien sisältöjen kattavuus",
+    "status": "PASS",
+    "evidence": "tests/lp1-audit.test.ts; mode-audit.json; alkuperäisen lähdetuonnin vertailu"
+  },
+  {
+    "id": "LP1-QA-059",
+    "title": "Vanhat poistetut kortit eivät palaudu",
+    "status": "PASS",
+    "evidence": "tests/lp1-audit.test.ts; mode-audit.json; alkuperäisen lähdetuonnin vertailu"
+  },
+  {
+    "id": "LP1-QA-060",
+    "title": "Lähteet eivät muutu tositarinaksi",
+    "status": "PASS",
+    "evidence": "tests/lp1-audit.test.ts; mode-audit.json; alkuperäisen lähdetuonnin vertailu"
+  }
+]

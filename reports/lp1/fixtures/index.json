@@ -1,0 +1,1068 @@
+{
+  "found": {
+    "start-solar": {
+      "seed": "lp1-fixtures-0",
+      "mode": "solar",
+      "revision": 0,
+      "file": "start-solar.json"
+    },
+    "decision-LP1-A01": {
+      "seed": "lp1-fixtures-0",
+      "mode": "solar",
+      "revision": 16,
+      "file": "decision-LP1-A01.json"
+    },
+    "event-LP1-E-A01-surface_ok": {
+      "seed": "lp1-fixtures-0",
+      "mode": "solar",
+      "revision": 23,
+      "file": "event-LP1-E-A01-surface_ok.json"
+    },
+    "decision-LP1-Y01": {
+      "seed": "lp1-fixtures-0",
+      "mode": "solar",
+      "revision": 29,
+      "file": "decision-LP1-Y01.json"
+    },
+    "event-LP1-E-Y01-separated": {
+      "seed": "lp1-fixtures-0",
+      "mode": "solar",
+      "revision": 34,
+      "file": "event-LP1-E-Y01-separated.json"
+    },
+    "end-solar-win": {
+      "seed": "lp1-fixtures-0",
+      "mode": "solar",
+      "revision": 42,
+      "file": "end-solar-win.json"
+    },
+    "solar-win-yva-true": {
+      "seed": "lp1-fixtures-0",
+      "mode": "solar",
+      "revision": 42,
+      "file": "solar-win-yva-true.json"
+    },
+    "decision-LP1-A02": {
+      "seed": "lp1-fixtures-1",
+      "mode": "solar",
+      "revision": 11,
+      "file": "decision-LP1-A02.json"
+    },
+    "decision-LP1-A03": {
+      "seed": "lp1-fixtures-1",
+      "mode": "solar",
+      "revision": 12,
+      "file": "decision-LP1-A03.json"
+    },
+    "event-LP1-E-A03-mowing": {
+      "seed": "lp1-fixtures-1",
+      "mode": "solar",
+      "revision": 14,
+      "file": "event-LP1-E-A03-mowing.json"
+    },
+    "event-LP1-E-A02-no_acid": {
+      "seed": "lp1-fixtures-1",
+      "mode": "solar",
+      "revision": 15,
+      "file": "event-LP1-E-A02-no_acid.json"
+    },
+    "solar-win-yva-false": {
+      "seed": "lp1-fixtures-1",
+      "mode": "solar",
+      "revision": 39,
+      "file": "solar-win-yva-false.json"
+    },
+    "event-LP1-E-Y01-both": {
+      "seed": "lp1-fixtures-2",
+      "mode": "solar",
+      "revision": 31,
+      "file": "event-LP1-E-Y01-both.json"
+    },
+    "event-LP1-E-A01-block_out": {
+      "seed": "lp1-fixtures-3",
+      "mode": "solar",
+      "revision": 21,
+      "file": "event-LP1-E-A01-block_out.json"
+    },
+    "end-solar-external": {
+      "seed": "lp1-fixtures-4",
+      "mode": "solar",
+      "revision": 18,
+      "file": "end-solar-external.json"
+    },
+    "event-LP1-E-A03-grazing": {
+      "seed": "lp1-fixtures-5",
+      "mode": "solar",
+      "revision": 13,
+      "file": "event-LP1-E-A03-grazing.json"
+    },
+    "end-solar-choices": {
+      "seed": "lp1-fixtures-5",
+      "mode": "solar",
+      "revision": 39,
+      "file": "end-solar-choices.json"
+    },
+    "event-LP1-E-A02-excluded": {
+      "seed": "lp1-fixtures-6",
+      "mode": "solar",
+      "revision": 12,
+      "file": "event-LP1-E-A02-excluded.json"
+    },
+    "decision-LP1-A04": {
+      "seed": "lp1-fixtures-8",
+      "mode": "solar",
+      "revision": 8,
+      "file": "decision-LP1-A04.json"
+    },
+    "event-LP1-E-A04-weak": {
+      "seed": "lp1-fixtures-8",
+      "mode": "solar",
+      "revision": 13,
+      "file": "event-LP1-E-A04-weak.json"
+    },
+    "end-solar-scope": {
+      "seed": "lp1-fixtures-8",
+      "mode": "solar",
+      "revision": 32,
+      "file": "end-solar-scope.json"
+    },
+    "event-LP1-E-Y01-exclude_after_wait": {
+      "seed": "lp1-fixtures-9",
+      "mode": "solar",
+      "revision": 38,
+      "file": "event-LP1-E-Y01-exclude_after_wait.json"
+    },
+    "decision-LP1-D-Y01": {
+      "seed": "lp1-fixtures-9",
+      "mode": "solar",
+      "revision": 39,
+      "file": "decision-LP1-D-Y01.json"
+    },
+    "event-LP1-E-A02-risk": {
+      "seed": "lp1-fixtures-10",
+      "mode": "solar",
+      "revision": 13,
+      "file": "event-LP1-E-A02-risk.json"
+    },
+    "decision-LP1-A06": {
+      "seed": "lp1-fixtures-10",
+      "mode": "solar",
+      "revision": 14,
+      "file": "decision-LP1-A06.json"
+    },
+    "event-LP1-E-A03-not_suitable": {
+      "seed": "lp1-fixtures-12",
+      "mode": "solar",
+      "revision": 13,
+      "file": "event-LP1-E-A03-not_suitable.json"
+    },
+    "event-LP1-E-A01-surface_no": {
+      "seed": "lp1-fixtures-13",
+      "mode": "solar",
+      "revision": 22,
+      "file": "event-LP1-E-A01-surface_no.json"
+    },
+    "decision-LP1-A05": {
+      "seed": "lp1-fixtures-13",
+      "mode": "solar",
+      "revision": 23,
+      "file": "decision-LP1-A05.json"
+    },
+    "end-solar-owner": {
+      "seed": "lp1-fixtures-16",
+      "mode": "solar",
+      "revision": 42,
+      "file": "end-solar-owner.json"
+    },
+    "event-LP1-E-A04-small": {
+      "seed": "lp1-fixtures-17",
+      "mode": "solar",
+      "revision": 13,
+      "file": "event-LP1-E-A04-small.json"
+    },
+    "event-LP1-E-A02-shallower": {
+      "seed": "lp1-fixtures-32",
+      "mode": "solar",
+      "revision": 17,
+      "file": "event-LP1-E-A02-shallower.json"
+    },
+    "event-LP1-E-A01-layout_ok": {
+      "seed": "lp1-fixtures-37",
+      "mode": "solar",
+      "revision": 28,
+      "file": "event-LP1-E-A01-layout_ok.json"
+    },
+    "event-LP1-E-A04-useful": {
+      "seed": "lp1-fixtures-53",
+      "mode": "solar",
+      "revision": 14,
+      "file": "event-LP1-E-A04-useful.json"
+    },
+    "decision-LP1-D-A04": {
+      "seed": "lp1-fixtures-53",
+      "mode": "solar",
+      "revision": 15,
+      "file": "decision-LP1-D-A04.json"
+    },
+    "event-LP1-D-Y01-single": {
+      "seed": "lp1-fixtures-68",
+      "mode": "solar",
+      "revision": 39,
+      "file": "event-LP1-D-Y01-single.json"
+    },
+    "start-wind": {
+      "seed": "lp1-fixtures-0",
+      "mode": "wind",
+      "revision": 0,
+      "file": "start-wind.json"
+    },
+    "decision-LP1-T01": {
+      "seed": "lp1-fixtures-0",
+      "mode": "wind",
+      "revision": 17,
+      "file": "decision-LP1-T01.json"
+    },
+    "event-LP1-E-T01-removed": {
+      "seed": "lp1-fixtures-0",
+      "mode": "wind",
+      "revision": 22,
+      "file": "event-LP1-E-T01-removed.json"
+    },
+    "end-wind-win": {
+      "seed": "lp1-fixtures-0",
+      "mode": "wind",
+      "revision": 43,
+      "file": "end-wind-win.json"
+    },
+    "decision-LP1-T02": {
+      "seed": "lp1-fixtures-1",
+      "mode": "wind",
+      "revision": 14,
+      "file": "decision-LP1-T02.json"
+    },
+    "decision-LP1-T03": {
+      "seed": "lp1-fixtures-1",
+      "mode": "wind",
+      "revision": 15,
+      "file": "decision-LP1-T03.json"
+    },
+    "event-LP1-E-T02-mitigation": {
+      "seed": "lp1-fixtures-1",
+      "mode": "wind",
+      "revision": 16,
+      "file": "event-LP1-E-T02-mitigation.json"
+    },
+    "event-LP1-E-T03-bypass_ok": {
+      "seed": "lp1-fixtures-1",
+      "mode": "wind",
+      "revision": 17,
+      "file": "event-LP1-E-T03-bypass_ok.json"
+    },
+    "end-wind-choices": {
+      "seed": "lp1-fixtures-1",
+      "mode": "wind",
+      "revision": 42,
+      "file": "end-wind-choices.json"
+    },
+    "event-LP1-E-T02-measure_later": {
+      "seed": "lp1-fixtures-2",
+      "mode": "wind",
+      "revision": 13,
+      "file": "event-LP1-E-T02-measure_later.json"
+    },
+    "event-LP1-E-T02-baseline_clear": {
+      "seed": "lp1-fixtures-2",
+      "mode": "wind",
+      "revision": 14,
+      "file": "event-LP1-E-T02-baseline_clear.json"
+    },
+    "event-LP1-E-T01-control": {
+      "seed": "lp1-fixtures-3",
+      "mode": "wind",
+      "revision": 21,
+      "file": "event-LP1-E-T01-control.json"
+    },
+    "end-wind-external": {
+      "seed": "lp1-fixtures-4",
+      "mode": "wind",
+      "revision": 18,
+      "file": "end-wind-external.json"
+    },
+    "event-LP1-E-T03-bridge_ok": {
+      "seed": "lp1-fixtures-5",
+      "mode": "wind",
+      "revision": 14,
+      "file": "event-LP1-E-T03-bridge_ok.json"
+    },
+    "end-wind-scope": {
+      "seed": "lp1-fixtures-9",
+      "mode": "wind",
+      "revision": 19,
+      "file": "end-wind-scope.json"
+    },
+    "event-LP1-E-T03-bridge_no": {
+      "seed": "lp1-fixtures-11",
+      "mode": "wind",
+      "revision": 15,
+      "file": "event-LP1-E-T03-bridge_no.json"
+    },
+    "decision-LP1-T04": {
+      "seed": "lp1-fixtures-11",
+      "mode": "wind",
+      "revision": 16,
+      "file": "decision-LP1-T04.json"
+    },
+    "event-LP1-E-T03-model_report": {
+      "seed": "lp1-fixtures-11",
+      "mode": "wind",
+      "revision": 17,
+      "file": "event-LP1-E-T03-model_report.json"
+    },
+    "decision-LP1-D-T04": {
+      "seed": "lp1-fixtures-11",
+      "mode": "wind",
+      "revision": 18,
+      "file": "decision-LP1-D-T04.json"
+    },
+    "end-wind-owner": {
+      "seed": "lp1-fixtures-20",
+      "mode": "wind",
+      "revision": 39,
+      "file": "end-wind-owner.json"
+    },
+    "event-LP1-E-T02-desk_clear": {
+      "seed": "lp1-fixtures-26",
+      "mode": "wind",
+      "revision": 15,
+      "file": "event-LP1-E-T02-desk_clear.json"
+    },
+    "start-hybrid": {
+      "seed": "lp1-fixtures-0",
+      "mode": "hybrid",
+      "revision": 0,
+      "file": "start-hybrid.json"
+    },
+    "end-hybrid-choices": {
+      "seed": "lp1-fixtures-0",
+      "mode": "hybrid",
+      "revision": 38,
+      "file": "end-hybrid-choices.json"
+    },
+    "end-hybrid-win": {
+      "seed": "lp1-fixtures-2",
+      "mode": "hybrid",
+      "revision": 38,
+      "file": "end-hybrid-win.json"
+    },
+    "end-hybrid-external": {
+      "seed": "lp1-fixtures-4",
+      "mode": "hybrid",
+      "revision": 18,
+      "file": "end-hybrid-external.json"
+    },
+    "end-hybrid-scope": {
+      "seed": "lp1-fixtures-9",
+      "mode": "hybrid",
+      "revision": 28,
+      "file": "end-hybrid-scope.json"
+    },
+    "end-hybrid-owner": {
+      "seed": "lp1-fixtures-13",
+      "mode": "hybrid",
+      "revision": 46,
+      "file": "end-hybrid-owner.json"
+    },
+    "decision-LP1-H01": {
+      "seed": "lp1-fixtures-55",
+      "mode": "hybrid",
+      "revision": 44,
+      "file": "decision-LP1-H01.json"
+    },
+    "converted-stage-4": {
+      "seed": "lp1-fixtures-55",
+      "mode": "hybrid",
+      "revision": 45,
+      "file": "converted-stage-4.json"
+    },
+    "event-LP1-E-H01-converted": {
+      "seed": "lp1-fixtures-55",
+      "mode": "hybrid",
+      "revision": 46,
+      "file": "event-LP1-E-H01-converted.json"
+    },
+    "event-LP1-E-H02-reuse": {
+      "seed": "lp1-fixtures-55",
+      "mode": "hybrid",
+      "revision": 47,
+      "file": "event-LP1-E-H02-reuse.json"
+    },
+    "end-hybrid_solar-win": {
+      "seed": "lp1-fixtures-55",
+      "mode": "hybrid",
+      "revision": 51,
+      "file": "end-hybrid_solar-win.json"
+    },
+    "event-LP1-E-H02-supplement": {
+      "seed": "lp1-fixtures-84",
+      "mode": "hybrid",
+      "revision": 39,
+      "file": "event-LP1-E-H02-supplement.json"
+    },
+    "end-hybrid_solar-owner": {
+      "seed": "lp1-fixtures-84",
+      "mode": "hybrid",
+      "revision": 45,
+      "file": "end-hybrid_solar-owner.json"
+    },
+    "converted-stage-3": {
+      "seed": "lp1-fixtures-144",
+      "mode": "hybrid",
+      "revision": 28,
+      "file": "converted-stage-3.json"
+    },
+    "event-LP1-E-H02-reduced": {
+      "seed": "lp1-fixtures-144",
+      "mode": "hybrid",
+      "revision": 29,
+      "file": "event-LP1-E-H02-reduced.json"
+    },
+    "decision-LP1-H02": {
+      "seed": "lp1-fixtures-144",
+      "mode": "hybrid",
+      "revision": 30,
+      "file": "decision-LP1-H02.json"
+    },
+    "event-LP1-H02-single": {
+      "seed": "lp1-fixtures-144",
+      "mode": "hybrid",
+      "revision": 31,
+      "file": "event-LP1-H02-single.json"
+    },
+    "converted-stage-2": {
+      "seed": "lp1-fixtures-152",
+      "mode": "hybrid",
+      "revision": 12,
+      "file": "converted-stage-2.json"
+    },
+    "converted-wait": {
+      "seed": "lp1-fixtures-278",
+      "mode": "hybrid",
+      "revision": 27,
+      "file": "converted-wait.json"
+    },
+    "event-LP1-E-H02-blocked": {
+      "seed": "lp1-fixtures-456",
+      "mode": "hybrid",
+      "revision": 43,
+      "file": "event-LP1-E-H02-blocked.json"
+    },
+    "end-hybrid_solar-external": {
+      "seed": "lp1-fixtures-456",
+      "mode": "hybrid",
+      "revision": 44,
+      "file": "end-hybrid_solar-external.json"
+    },
+    "end-hybrid_solar-scope": {
+      "seed": "lp1-fixtures-460",
+      "mode": "hybrid",
+      "revision": 41,
+      "file": "end-hybrid_solar-scope.json"
+    },
+    "end-hybrid_solar-choices": {
+      "seed": "lp1-fixtures-927",
+      "mode": "hybrid",
+      "revision": 48,
+      "file": "end-hybrid_solar-choices.json"
+    }
+  },
+  "checks": [
+    {
+      "key": "start-solar",
+      "revision": 0,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A01",
+      "revision": 16,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A01",
+      "choice": "A",
+      "revision": 17,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A01",
+      "choice": "B",
+      "revision": 17,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A01-surface_ok",
+      "revision": 23,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-Y01",
+      "revision": 29,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-Y01",
+      "choice": "A",
+      "revision": 30,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-Y01",
+      "choice": "B",
+      "revision": 30,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-Y01-separated",
+      "revision": 34,
+      "restored": true
+    },
+    {
+      "key": "end-solar-win",
+      "revision": 42,
+      "restored": true
+    },
+    {
+      "key": "solar-win-yva-true",
+      "revision": 42,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A02",
+      "revision": 11,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A02",
+      "choice": "A",
+      "revision": 12,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A02",
+      "choice": "B",
+      "revision": 12,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A03",
+      "revision": 12,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A03",
+      "choice": "A",
+      "revision": 13,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A03",
+      "choice": "B",
+      "revision": 13,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A03-mowing",
+      "revision": 14,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A02-no_acid",
+      "revision": 15,
+      "restored": true
+    },
+    {
+      "key": "solar-win-yva-false",
+      "revision": 39,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-Y01-both",
+      "revision": 31,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A01-block_out",
+      "revision": 21,
+      "restored": true
+    },
+    {
+      "key": "end-solar-external",
+      "revision": 18,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A03-grazing",
+      "revision": 13,
+      "restored": true
+    },
+    {
+      "key": "end-solar-choices",
+      "revision": 39,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A02-excluded",
+      "revision": 12,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A04",
+      "revision": 8,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A04",
+      "choice": "A",
+      "revision": 9,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A04",
+      "choice": "B",
+      "revision": 9,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A04-weak",
+      "revision": 13,
+      "restored": true
+    },
+    {
+      "key": "end-solar-scope",
+      "revision": 32,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-Y01-exclude_after_wait",
+      "revision": 38,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-D-Y01",
+      "revision": 39,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-D-Y01",
+      "choice": "A",
+      "revision": 40,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-D-Y01",
+      "choice": "B",
+      "revision": 40,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A02-risk",
+      "revision": 13,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A06",
+      "revision": 14,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A06",
+      "choice": "A",
+      "revision": 15,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A06",
+      "choice": "B",
+      "revision": 15,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A03-not_suitable",
+      "revision": 13,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A01-surface_no",
+      "revision": 22,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A05",
+      "revision": 23,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A05",
+      "choice": "A",
+      "revision": 24,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-A05",
+      "choice": "B",
+      "revision": 24,
+      "restored": true
+    },
+    {
+      "key": "end-solar-owner",
+      "revision": 42,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A04-small",
+      "revision": 13,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A02-shallower",
+      "revision": 17,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A01-layout_ok",
+      "revision": 28,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-A04-useful",
+      "revision": 14,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-D-A04",
+      "revision": 15,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-D-A04",
+      "choice": "A",
+      "revision": 16,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-D-A04",
+      "choice": "B",
+      "revision": 16,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-D-Y01-single",
+      "revision": 39,
+      "restored": true
+    },
+    {
+      "key": "start-wind",
+      "revision": 0,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-T01",
+      "revision": 17,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-T01",
+      "choice": "A",
+      "revision": 18,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-T01",
+      "choice": "B",
+      "revision": 18,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-T01-removed",
+      "revision": 22,
+      "restored": true
+    },
+    {
+      "key": "end-wind-win",
+      "revision": 43,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-T02",
+      "revision": 14,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-T02",
+      "choice": "A",
+      "revision": 15,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-T02",
+      "choice": "B",
+      "revision": 15,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-T03",
+      "revision": 15,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-T03",
+      "choice": "A",
+      "revision": 16,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-T03",
+      "choice": "B",
+      "revision": 16,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-T02-mitigation",
+      "revision": 16,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-T03-bypass_ok",
+      "revision": 17,
+      "restored": true
+    },
+    {
+      "key": "end-wind-choices",
+      "revision": 42,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-T02-measure_later",
+      "revision": 13,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-T02-baseline_clear",
+      "revision": 14,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-T01-control",
+      "revision": 21,
+      "restored": true
+    },
+    {
+      "key": "end-wind-external",
+      "revision": 18,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-T03-bridge_ok",
+      "revision": 14,
+      "restored": true
+    },
+    {
+      "key": "end-wind-scope",
+      "revision": 19,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-T03-bridge_no",
+      "revision": 15,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-T04",
+      "revision": 16,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-T04",
+      "choice": "A",
+      "revision": 17,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-T04",
+      "choice": "B",
+      "revision": 17,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-T03-model_report",
+      "revision": 17,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-D-T04",
+      "revision": 18,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-D-T04",
+      "choice": "A",
+      "revision": 19,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-D-T04",
+      "choice": "B",
+      "revision": 19,
+      "restored": true
+    },
+    {
+      "key": "end-wind-owner",
+      "revision": 39,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-T02-desk_clear",
+      "revision": 15,
+      "restored": true
+    },
+    {
+      "key": "start-hybrid",
+      "revision": 0,
+      "restored": true
+    },
+    {
+      "key": "end-hybrid-choices",
+      "revision": 38,
+      "restored": true
+    },
+    {
+      "key": "end-hybrid-win",
+      "revision": 38,
+      "restored": true
+    },
+    {
+      "key": "end-hybrid-external",
+      "revision": 18,
+      "restored": true
+    },
+    {
+      "key": "end-hybrid-scope",
+      "revision": 28,
+      "restored": true
+    },
+    {
+      "key": "end-hybrid-owner",
+      "revision": 46,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-H01",
+      "revision": 44,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-H01",
+      "choice": "A",
+      "revision": 45,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-H01",
+      "choice": "B",
+      "revision": 45,
+      "restored": true
+    },
+    {
+      "key": "converted-stage-4",
+      "revision": 45,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-H01-converted",
+      "revision": 46,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-H02-reuse",
+      "revision": 47,
+      "restored": true
+    },
+    {
+      "key": "end-hybrid_solar-win",
+      "revision": 51,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-H02-supplement",
+      "revision": 39,
+      "restored": true
+    },
+    {
+      "key": "end-hybrid_solar-owner",
+      "revision": 45,
+      "restored": true
+    },
+    {
+      "key": "converted-stage-3",
+      "revision": 28,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-H02-reduced",
+      "revision": 29,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-H02",
+      "revision": 30,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-H02",
+      "choice": "A",
+      "revision": 31,
+      "restored": true
+    },
+    {
+      "key": "decision-LP1-H02",
+      "choice": "B",
+      "revision": 31,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-H02-single",
+      "revision": 31,
+      "restored": true
+    },
+    {
+      "key": "converted-stage-2",
+      "revision": 12,
+      "restored": true
+    },
+    {
+      "key": "converted-wait",
+      "revision": 27,
+      "restored": true
+    },
+    {
+      "key": "event-LP1-E-H02-blocked",
+      "revision": 43,
+      "restored": true
+    },
+    {
+      "key": "end-hybrid_solar-external",
+      "revision": 44,
+      "restored": true
+    },
+    {
+      "key": "end-hybrid_solar-scope",
+      "revision": 41,
+      "restored": true
+    },
+    {
+      "key": "end-hybrid_solar-choices",
+      "revision": 48,
+      "restored": true
+    }
+  ],
+  "errors": []
+}

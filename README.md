@@ -2,9 +2,9 @@
 
 **[Avaa peli puhelimella](https://kaava-vai-kaaos.joni-vainio.chatgpt.site)** — julkinen testiversio, ei vaadi ChatGPT-kirjautumista. Linkin voi jakaa testaajille. Lähdekoodi: [GitHub](https://github.com/jonivainio/Kaava-vai-kaaos).
 
-Tarinoiden tiivistys ja tilanteisiin valitut reaktiot on julkaistu 10.9.2026 (Sites-versio 6, `v5-rules-3`). Kirjautumaton kokonainen pelikerta on tarkistettu julkisesta osoitteesta. Päivitä mahdollinen vanha selainversio aloitusvalikosta ja aloita uusi peli. Tarkka tila: [NEXT_STEPS](NEXT_STEPS.md).
+Lisäpaketti 01 (`v5-lp1-1`) avaa Tuuli-, Aurinko- ja Hybridi-pelimuodot. Julkaisun tarkka tila: [NEXT_STEPS](NEXT_STEPS.md). Päivitä vanha selainversio aloitusvalikosta ja aloita uusi peli. Edellisen version tallenne säilyy vietäväksi.
 
-Suomalainen hankekehityskorttipeli. Kehitä fiktiivinen hybridihanke maanvuokrauksesta YVA:n ja kaavoituksen kautta luvitetuksi. V5:n sisältöpankissa on 159 päätöstä, 89 tapahtumaa ja 143 tuloshaaraa. Yhteen peliin valikoituu osa sisällöstä: neljä vaihetta, 18 peruspäätöksen tavoite sekä tarvittavat jatkopäätökset. Akulla on enintään kaksi satunnaisesti valittavaa peruspäätöstä; aiempien päätösten tarpeelliset jatkot käsitellään. Tuuliaiheita painotetaan eniten, aurinkoa toiseksi ja akkua vähiten. Hyväksyminen yksin ei ole voitto; tarvittavien lupien ja lainvoiman on oltava kunnossa. Tuuli ja Aurinko ovat valikossa vielä suljettuja. Vanha 64 kortin pilotti ja aiemmat kampanjat säilyvät vertailuaineistona.
+Suomalainen hankekehityskorttipeli: kehitä fiktiivinen hanke maanvuokrauksesta luvitetuksi. V5 ja LP1 sisältävät yhteensä 275 sisältö-ID:tä. Peliin valitaan 18 peruspäätöksen tavoite ja tarpeelliset jatkot. Hybridissä tuuliaiheita on eniten, aurinkoa toiseksi ja akulla enintään kaksi peruspäätöstä. Tuuliosan kaatuessa elinkelpoinen aurinko-osa voi ehdollisesti jatkaa samassa pelikerrassa. Hyväksyminen yksin ei ole voitto: lupien ja lainvoiman pitää olla kunnossa.
 
 Vedä korttia hiirellä tai sormella. Vedon aikana näet valinnan; palauta keskelle peruuttaaksesi. Nuolinäppäimet toimivat myös. Tarinat ovat omia tekstikorttejaan, joissa kumpikin suunta jatkaa samaa tarinaa. Vaiheiden vaihtuminen vahvistetaan erikseen. Lupavoitosta saat enintään 1 000 pistettä ja perustelut vähennyksille. Vapaaehtoinen akku-epilogi ei peru voittoa.
 
@@ -32,8 +32,9 @@ pnpm build
 pnpm exec playwright install chromium
 pnpm test:e2e
 pnpm test:offline
-node tools/simulate-v5.mjs 3000 v5-development random
-node tools/simulate-v5.mjs 10000 v5-validation cautious
+node tools/simulate-lp1.mjs 3000 lp1-development reference hybrid
+node tools/simulate-lp1.mjs 1000 lp1-development cautious solar
+node tools/import-lp1.mjs --check
 python tools/import_v5.py --check
 python tools/validate_swipe.py
 python tools/validate_content.py
@@ -41,11 +42,13 @@ python tools/test_pack.py
 python tools/validate_campaign.py
 ```
 
-Vanhojen sisältöjen Python-validoinnit tarvitsevat requirements-content.txt:n riippuvuudet. V5-tuonti käyttää Pythonin vakiokirjastoa. Build tekee selainpelin dist-kansioon ja moottorien erilliset ES-moduulit, myös `dist/v5/index.js`:n. Simulaatio käyttää viimeisintä buildia; strategiat ovat `random`, `cautious`, `economy`, `scope`, `canonical-a` ja `canonical-b`. Paikallinen `/?review-v5` näyttää kaikki lähde-ID:t ja haarat kirjoittamatta pelitallennukseen. Ei taustapalvelinta tai pelinaikaista tekoälyä.
+Vanhojen sisältöjen Python-validoinnit tarvitsevat requirements-content.txt:n riippuvuudet. V5-tuonti käyttää Pythonin vakiokirjastoa. Build tekee selainpelin dist-kansioon ja moottorien erilliset ES-moduulit, myös `dist/v5/index.js`:n. Simulaatio käyttää viimeisintä buildia; LP1-strategiat ovat `reference`, `cautious` ja `economy`; viimeinen argumentti valitsee `wind`, `solar` tai `hybrid`. Paikallinen `/?review-v5` näyttää kaikki lähde-ID:t ja haarat kirjoittamatta pelitallennukseen. Ei taustapalvelinta tai pelinaikaista tekoälyä.
 
 ## Jatkokehitys
 
-- Aktiivinen sisältö: `content/v5.fi.json`; säännöt `src/game/v5`. V5-käsikirjoitus on ensisijainen, teksteistä ei päätellä efektejä.
+- [LP1:n 60 hyväksymistapausta ja 15 000 simulaation raportti](reports/lp1/QA.md).
+- [LP1-tilasopimus](docs/LP1_TILASOPIMUS.md).
+- Aktiivinen sisältö: `content/v5.fi.json` + `content/lp1.fi.json`; säännöt `src/game/v5`. V5-käsikirjoitus on ensisijainen, teksteistä ei päätellä efektejä.
 - [V5-tilasopimus](docs/v5/TILASOPIMUS.md): determinismi, ajastus, luvat, pisteet ja tallennus.
 - [248 ID:n kohdistus ja kuvakartta](reports/v5/content-coverage.json).
 - [143 tuloshaaran testitulokset](reports/v5/result-branch-tests.json).

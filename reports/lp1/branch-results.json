@@ -1,0 +1,299 @@
+[
+  {
+    "id": "LP1-E-T01",
+    "branch": "control",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-0"
+  },
+  {
+    "id": "LP1-E-T01",
+    "branch": "removed",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-0"
+  },
+  {
+    "id": "LP1-E-T02",
+    "branch": "baseline_clear",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-3"
+  },
+  {
+    "id": "LP1-E-T02",
+    "branch": "mitigation",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-0"
+  },
+  {
+    "id": "LP1-E-T02",
+    "branch": "measure_later",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-3"
+  },
+  {
+    "id": "LP1-E-T02",
+    "branch": "desk_clear",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-4"
+  },
+  {
+    "id": "LP1-E-T03",
+    "branch": "bridge_ok",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-1"
+  },
+  {
+    "id": "LP1-E-T03",
+    "branch": "bridge_no",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-2"
+  },
+  {
+    "id": "LP1-E-T03",
+    "branch": "bypass_ok",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-1"
+  },
+  {
+    "id": "LP1-E-T03",
+    "branch": "model_report",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-2"
+  },
+  {
+    "id": "LP1-E-A01",
+    "branch": "surface_ok",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-5"
+  },
+  {
+    "id": "LP1-E-A01",
+    "branch": "surface_no",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-2"
+  },
+  {
+    "id": "LP1-E-A01",
+    "branch": "layout_ok",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-2"
+  },
+  {
+    "id": "LP1-E-A01",
+    "branch": "block_out",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-2"
+  },
+  {
+    "id": "LP1-E-A02",
+    "branch": "no_acid",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-3"
+  },
+  {
+    "id": "LP1-E-A02",
+    "branch": "risk",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-6"
+  },
+  {
+    "id": "LP1-E-A02",
+    "branch": "shallower",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-6"
+  },
+  {
+    "id": "LP1-E-A02",
+    "branch": "excluded",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-3"
+  },
+  {
+    "id": "LP1-E-A03",
+    "branch": "grazing",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-1"
+  },
+  {
+    "id": "LP1-E-A03",
+    "branch": "not_suitable",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-0"
+  },
+  {
+    "id": "LP1-E-A03",
+    "branch": "mowing",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-0"
+  },
+  {
+    "id": "LP1-E-A04",
+    "branch": "useful",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-0"
+  },
+  {
+    "id": "LP1-E-A04",
+    "branch": "weak",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-8"
+  },
+  {
+    "id": "LP1-E-A04",
+    "branch": "small",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-0"
+  },
+  {
+    "id": "LP1-E-Y01",
+    "branch": "both",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-8"
+  },
+  {
+    "id": "LP1-E-Y01",
+    "branch": "exclude_after_wait",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-22"
+  },
+  {
+    "id": "LP1-E-Y01",
+    "branch": "separated",
+    "negative": [
+      "source",
+      "choice",
+      "revision",
+      "work"
+    ],
+    "seed": "lp1-branch-8"
+  }
+]

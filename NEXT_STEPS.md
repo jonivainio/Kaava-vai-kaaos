@@ -1,3 +1,19 @@
+# Tarinoiden tiivistys ja reaktiot — 10.9.2026
+
+Aktiivinen sääntöversio `v5-rules-3`, lähdesisältö edelleen `v5-fi-03ae27238966`. Käyttäjän uusi pyyntö sallii tarinatiivistelmät ja tilanteisiin valitut reaktiot. Toteutus `src/game/v5/narration.ts` on erillinen ID-/haara-kohtainen esityskerros. Päätöskysymykset ja A/B-valinnat eivät muutu.
+
+Ajankulkukortteja on enintään kolme koko peliin, enintään yksi vaiheessa, ei peräkkäisiä. Muut odotukset kulkevat automaattisesti oikean työkalenterin ja määräaikojen läpi. Tavalliset asiakirjojen valmistumiset yhdistyvät etenemiseen, nimetyt ongelmattomat tuloshaarat seuraavan tilanteen lyhyiksi huomioiksi. Merkittävät tulokset, myös hyvät tutkimusuutiset ja palautettavat paikat, haitat, määräajat, hyväksyminen, lainvoima sekä vaihesiirtymät pysyvät näkyvissä. Viimeinen lupakuittaus yhdistyy voittoruutuun vasta todellisten lupaehtojen täytyttyä. Kuitattua tarinaa ei näytetä uudestaan seuraavan päätöksen yläpuolella.
+
+Reaktiot näkyvät kursivoituina otsikon yläpuolella. Ne valitaan harkitusti täsmälliselle kortille tai toteutuneelle tapahtumahaaralle, eivät kaikille korttityypeille tai otsikon perusteella. `narration.updates` sekä odotusten laskuri/vaiheet kuuluvat toistettavaan tallenteeseen. Vanha rules-2-tallenne säilyy raakamuodossa vientiin; aloita uusi kierros.
+
+Tarkistettu: 363/363 TS-testiä, tyypitys/build, Pythonin sisältötuonti 248/248. Offline/päivitys 2/2. Lopullinen Chromium-ajo 12/12 (myös 360 px:n reaktiot, yhdistetty tulos ja lataus sekä kokonainen pelikerta). Tuhat samaa siementä ja kolme valintapolitiikkaa ennen/jälkeen: 55 063 → 32 988 ruutua, 16 755 päätöstä kummassakin, 327 voittoa kummassakin, ei mekaanisen lopputilan eroja eikä virheitä. Näkyviä ajankulkuruutuja enintään 3; ei peräkkäisiä. Raportit `reports/narration/QA.md`, `comparison.json`, `browser/`. Fyysistä puhelinta tai iOS/Safaria ei testattu.
+
+Julkaisu: viimeistelty versio on paikallisesti testattu; uusi julkaisutila ja tunnisteet kirjataan tähän sekä `reports/narration/release.json`-tiedostoon julkaisun valmistuttua. Aiemmat `reports/pacing`- ja `reports/v5`-raportit ovat historiaa.
+
+Seuraava työ: käyttäjän palaute tarinatiivistelmien ymmärrettävyydestä ja kierroksen kestosta. Säilytä jokaisen piilotetun kuittauksen mekaaninen käsittely; älä luokittele tuntemattomia tuloksia hiljaisiksi tai tee uutena oletuksena jokaisesta hyvästä tuloksesta ohitettavaa.
+
+---
+Aiempi toimitus:
 # Pelikerran tiivistys ja muutosluvut — 9.9.2026
 
 Aktiivinen sääntöversio on nyt `v5-rules-2`, sisältö edelleen muuttamaton `v5-fi-03ae27238966`. Käyttäjän uuden palautteen mukaan peruskiintiö on 18 (3/5/6/4) aiemman 21:n sijaan. Akulle valitaan enintään kaksi peruspäätöstä, tarpeelliset jatkot käsitellään. Hybridin selostus- ja ehdotusvaiheessa varmistetaan aurinkosisältö. Tuuli on keskimäärin selvästi suurin aihe, aurinko toinen, akku pienin.

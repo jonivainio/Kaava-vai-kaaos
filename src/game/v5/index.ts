@@ -3,11 +3,12 @@ import { branchText, countWord, entry, interpolate, CONTENT_VERSION } from "./co
 import { initialiseDecks, direct, beginStage, countBaseChoice } from "./director";
 import { initialState } from "./state";
 import { recordAssetChanges } from "./assetChanges";
+import { inlineResult, PROGRESS_LIMIT, reactionFor, SHORT_STORIES, SILENT_PROGRESS } from "./narration";
 import { ruleFor } from "./rules";
 import { advanceToNextWork, publishDue, settleCompletedWork } from "./timeline";
 import { pick, sample } from "./world";
 import { beginEpilogue, canOpenEpilogue, isEpilogueDecision } from "./epilogue";
-import type { CaseRecord, GameV5, Mode, NamePool, Side, SourceChoice } from "./types";
+import type { CaseRecord, GameV5, Mode, NamePool, Scene, Side, SourceChoice } from "./types";
 export type { GameV5 as Game, Mode, Side } from "./types";
 export { getDerivedStats };
 export { canOpenEpilogue };
@@ -74,6 +75,7 @@ export function currentDecision(game: GameV5) {
   if (item.id === "proposal::solar-base") art = ["solar-window", "winter-screen"];
   const side = (direction: Side) => ({ label: playerText(game, item.choices[sourceChoice(game, direction)]!.label, issue), action: sourceChoice(game, direction), note: "" });
   return { id: item.id, title: playerText(game, item.title, issue), question: playerText(game, item.body, issue),
+    reaction: reactionFor(scene), summary: [game.lastOutcome, ...game.narration.updates].filter(Boolean).join("\n\n"),
     art: pick(game.run.seed, `art:${item.id}`, art), speaker: speaker(issue), options: [side("left"), side("right")] as const };
 }
 function speaker(issue: CaseRecord | null): string {
@@ -89,8 +91,10 @@ export function currentStory(game: GameV5) {
   const scene = game.scenes[0];
   if (!scene || scene.kind === "decision" || scene.kind === "wait") return null;
   const item = entry(scene.id), issue = scene.caseId ? game.cases[scene.caseId]! : null;
-  const text = scene.kind === "epilogue" ? game.decisions.at(-1)!.result : item.branches.length ? `${item.body}\n\n${branchText(item.id, scene.branchId)}` : item.body;
+  // The headline names the assessment; its generic introduction need not repeat it.
+  const text = scene.kind === "epilogue" ? game.decisions.at(-1)!.result : item.branches.length ? branchText(item.id, scene.branchId) : SHORT_STORIES[item.id] ?? item.body;
   return { id: item.id, title: playerText(game, item.title, issue), body: playerText(game, text, issue), kind: scene.kind,
+    reaction: reactionFor(scene), updates: game.narration.updates,
     result: Boolean(scene.outcomeId), stage: scene.nextStage };
 }
 export function previewChoice(game: GameV5, expected: string, side: Side) {
@@ -115,37 +119,66 @@ export function choose(game: GameV5, expected: string, side: Side): GameV5 {
     planRevision: next.planRevision, branchId: branch, result });
   if (!next.seenIds.includes(scene.id)) next.seenIds.push(scene.id);
   next.lastOutcome = result;
+  next.narration.updates = []; next.narration.lastWasProgress = false;
   next.revision++;
   next.actions.push({ kind: "choice", token: expected, side });
   if (next.ending) next.scenes.unshift({ ...scene, kind: "epilogue" });
   settleCompletedWork(next); publishDue(next); direct(next);
+  compactNarration(next);
   recordAssetChanges(game, next);
   return next;
 }
 export function continueStory(game: GameV5, expected: string): GameV5 {
   if (expected !== token(game) || !game.scenes.length || game.scenes[0]?.kind === "decision") return game;
   const next = structuredClone(game), scene = next.scenes.shift()!;
-  if (scene.kind === "wait") advanceToNextWork(next);
+  next.narration.updates = [];
+  if (scene.kind === "wait") {
+    next.narration.progressCount++;
+    if (!next.narration.progressStages.includes(next.stage)) next.narration.progressStages.push(next.stage);
+    next.narration.lastWasProgress = true;
+    next.lastOutcome = "";
+    advanceToNextWork(next);
+  }
   else {
-    const story = currentStory(game)!;
-    next.lastOutcome = story.body;
-    if (!next.seenIds.includes(scene.id)) next.seenIds.push(scene.id);
-    if (scene.outcomeId) next.outcomes.find(outcome => outcome.id === scene.outcomeId)!.status = "revealed";
+    next.lastOutcome = "";
+    next.narration.lastWasProgress = false;
+    acknowledgeScene(next, scene);
     if (scene.kind === "transition") { next.stage = scene.nextStage!; beginStage(next); }
   }
   next.revision++;
   next.actions.push({ kind: "continue", token: expected });
   direct(next);
-  // One player-facing wait may cover several silent completions. Resolve each in
-  // calendar order, stopping immediately at a real event, decision or transition.
-  if (scene.kind === "wait") {
-    for (let steps = 0; next.scenes[0]?.kind === "wait"; steps++) {
-      if (steps >= 400) throw new Error("Consecutive work waits did not settle");
-      next.scenes.shift(); advanceToNextWork(next); direct(next);
-    }
-  }
+  compactNarration(next);
   recordAssetChanges(game, next);
   return next;
+}
+function acknowledgeScene(game: GameV5, scene: Scene): void {
+  if (!game.seenIds.includes(scene.id)) game.seenIds.push(scene.id);
+  if (scene.outcomeId) game.outcomes.find(outcome => outcome.id === scene.outcomeId)!.status = "revealed";
+}
+/** Presentation-only routing. Each hidden wait still advances the actual shared
+ * clock and runs every resolver, deadline and procedure check in its normal order.
+ * Never inspect prose or skip a choice, material result, transition or ending.
+ */
+function compactNarration(game: GameV5): void {
+  for (let steps = 0; steps < 400; steps++) {
+    const scene = game.scenes[0];
+    if (!scene) return;
+    if (scene.kind === "wait") {
+      if (game.narration.progressCount < PROGRESS_LIMIT && !game.narration.progressStages.includes(game.stage) && !game.narration.lastWasProgress) return;
+      game.scenes.shift(); advanceToNextWork(game); direct(game); continue;
+    }
+    if (scene.kind !== "event" || game.ending) return;
+    const summary = inlineResult(scene);
+    if (!SILENT_PROGRESS.has(scene.id) && summary === undefined) return;
+    game.scenes.shift(); acknowledgeScene(game, scene);
+    if (summary) {
+      const issue = scene.caseId ? game.cases[scene.caseId]! : null;
+      game.narration.updates.push(playerText(game, summary, issue));
+    }
+    direct(game);
+  }
+  throw new Error("Narration compaction did not settle");
 }
 export function getScore(game: GameV5) { return game.ending?.kind === "win" ? game.ending.score : null; }
 export function openEpilogue(game: GameV5, expected: string): GameV5 {
@@ -170,7 +203,7 @@ export function restoreGame(raw: string): { ok: true; state: GameV5 } | { ok: fa
   try {
     if (raw.length > 8_000_000) throw new Error("Tallennus on liian suuri.");
     const saved = JSON.parse(raw) as GameV5;
-    if (saved?.version !== "swipe-v5-1" || saved.contentVersion !== CONTENT_VERSION || saved.rulesVersion !== "v5-rules-2") throw new Error("Tallennuksen sisältö- tai sääntöversio ei vastaa tätä peliä.");
+    if (saved?.version !== "swipe-v5-1" || saved.contentVersion !== CONTENT_VERSION || saved.rulesVersion !== "v5-rules-3") throw new Error("Tallennuksen sisältö- tai sääntöversio ei vastaa tätä peliä.");
     if (!Array.isArray(saved.actions) || saved.actions.length > 2000) throw new Error("Virheellinen toimintohistoria.");
     const initial = restoreRun(JSON.stringify(saved.initialRun));
     const physical = restoreRun(JSON.stringify(saved.run));

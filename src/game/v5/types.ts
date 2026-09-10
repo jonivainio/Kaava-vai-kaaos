@@ -119,7 +119,9 @@ export interface ScoreResult {
   deductions: { category: "scope" | "time" | "quality" | "resource"; reason: string; points: number }[];
 }
 export interface GameV5 {
-  version: "swipe-v5-1"; contentVersion: string; rulesVersion: "v5-rules-2";
+  version: "swipe-v5-1"; contentVersion: string; rulesVersion: "v5-rules-3";
+  /** Presentation acknowledgements never replace work or outcome resolution. */
+  narration: { progressCount: number; progressStages: Stage[]; lastWasProgress: boolean; updates: string[] };
   assetChanges: Partial<Record<"count" | "height" | "power" | "solar", { from: string; to: string; revision: number }>>;
   run: RunState; initialRun: RunState; initial: ScopeGoals;
   revision: number; planRevision: number; stage: Stage;

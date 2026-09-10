@@ -1,7 +1,45 @@
 import { test, expect, type Page } from "@playwright/test";
-import { createGame, choose, continueStory, currentDecision, sourceChoice, token, serializeGame } from "../dist/v5/index.js";
+import { createGame, choose, continueStory, currentDecision, currentStory, sourceChoice, token, serializeGame } from "../dist/v5/index.js";
 import { readFileSync } from "node:fs";
 const KEY = "kaava-vai-kaaos:swipe:2";
+test("reactions and merged results are readable on real 360px saved scenes", async ({ page }) => {
+  test.setTimeout(90000);
+  await page.setViewportSize({ width: 360, height: 800 });
+  await page.emulateMedia({ reducedMotion: "reduce" });
+  const fixtures = new Map();
+  for (let i = 0; i < 100 && fixtures.size < 3; i++) {
+    let game = createGame(`narration-ui-${i}`);
+    for (let turn = 0; turn < 160 && (!game.ending || game.scenes.length); turn++) {
+      if (currentDecision(game)?.reaction && !fixtures.has("decision")) fixtures.set("decision", game);
+      if (currentStory(game)?.reaction && !fixtures.has("event")) fixtures.set("event", game);
+      if (game.narration.updates.length && currentDecision(game) && !fixtures.has("merged")) fixtures.set("merged", game);
+      game = currentDecision(game) ? choose(game, token(game), sourceChoice(game, "left") === "A" ? "left" : "right") : continueStory(game, token(game));
+    }
+  }
+  expect(fixtures.size).toBe(3);
+  for (const [kind, game] of fixtures) {
+    await page.goto("/");
+    await page.evaluate(raw => {
+      localStorage.setItem("kaava-vai-kaaos:swipe:2", raw);
+      localStorage.setItem("kaava-vai-kaaos:swipe:tutorial", "done");
+    }, serializeGame(game));
+    await page.reload(); await page.getByRole("button", { name: /Jatka ·/ }).click();
+    if (kind === "merged") await expect(page.getByTestId("previous-result")).toContainText(game.narration.updates[0]);
+    else {
+      const reaction = page.locator(".scene-reaction");
+      await expect(reaction).toHaveText(currentDecision(game)?.reaction ?? currentStory(game).reaction);
+      const rb = await reaction.boundingBox(), hb = await page.locator("main h1").boundingBox();
+      expect(rb.y + rb.height).toBeLessThanOrEqual(hb.y + 1);
+    }
+    expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.screenshot({ path: `reports/narration/browser/narration-${kind}-360.png` });
+    await swipe(page, "right");
+    const next = currentDecision(game) ? choose(game, token(game), "right") : continueStory(game, token(game));
+    await expect.poll(async () => (await saved(page)).revision).toBe(next.revision);
+    expect(serializeGame(await saved(page))).toBe(serializeGame(next));
+  }
+});
 for (const width of [360, 430]) test(`last asset changes remain legible and survive reload at ${width}px`, async ({ page }) => {
   test.setTimeout(60000);
   await page.setViewportSize({ width, height: 844 });
@@ -29,7 +67,7 @@ for (const width of [360, 430]) test(`last asset changes remain legible and surv
     expect(await label.evaluate(node => node.scrollWidth <= node.clientWidth + 1)).toBe(true);
   }
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true);
-  await page.screenshot({ path: `reports/pacing/hud-${width}.png` });
+  await page.screenshot({ path: `reports/narration/hud-${width}.png` });
   await page.reload(); await page.getByRole("button", { name: /Jatka ·/ }).click();
   expect((await saved(page)).assetChanges).toEqual(fixture.assetChanges);
 });
@@ -57,7 +95,7 @@ for (const width of [360, 390, 430, 1163]) test(`v5 story and decision swipes at
   await page.emulateMedia({ reducedMotion: "reduce" });
   await start(page);
   await expect(page.locator(".narration-paper")).toBeVisible();
-  await page.screenshot({ path: `reports/pacing/browser/story-${width}.png` });
+  await page.screenshot({ path: `reports/narration/browser/story-${width}.png` });
   const initial = await saved(page);
   await swipe(page, "left", 20);
   expect(await saved(page)).toEqual(initial);
@@ -68,7 +106,7 @@ for (const width of [360, 390, 430, 1163]) test(`v5 story and decision swipes at
   await expect(page.locator(".question")).toBeVisible();
   const image = page.locator('.swipe-card img');
   expect(await image.evaluate((img: HTMLImageElement) => img.complete && img.naturalWidth > 0)).toBe(true);
-  await page.screenshot({ path: `reports/pacing/browser/decision-${width}.png` });
+  await page.screenshot({ path: `reports/narration/browser/decision-${width}.png` });
   await swipe(page, "left");
   await expect.poll(async () => (await saved(page)).decisions.length).toBe(1);
   await expect(page.locator('[role="alert"]')).toHaveCount(0);
@@ -110,7 +148,7 @@ for (const width of [360, 430]) test(`longest actual source fields remain readab
       const element = page.locator(selector);
       if (await element.count()) expect(await element.evaluate(node => node.scrollWidth <= node.clientWidth + 1)).toBe(true);
     }
-    await page.screenshot({ path: `reports/pacing/browser/long-${width}-${item.id.replace(/[^a-z0-9-]/gi, "-")}.png` });
+    await page.screenshot({ path: `reports/narration/browser/long-${width}-${item.id.replace(/[^a-z0-9-]/gi, "-")}.png` });
   }
   const results = entries.flatMap((item: any) => [...item.branches.map((branch: any) => ({ id: item.id, variant: branch.id, text: `${item.body}\n\n${branch.text}` })),
     ...["A", "B"].flatMap(choice => item.choices[choice] ? [{ id: item.id, variant: choice, text: item.choices[choice].result }] : [])]);
@@ -120,7 +158,7 @@ for (const width of [360, 430]) test(`longest actual source fields remain readab
   await expect(paragraph).toHaveText(result.text);
   expect(await paragraph.evaluate(node => getComputedStyle(node).textOverflow)).not.toBe("ellipsis");
   await paragraph.scrollIntoViewIfNeeded();
-  await page.screenshot({ path: `reports/pacing/browser/long-result-${width}.png` });
+  await page.screenshot({ path: `reports/narration/browser/long-result-${width}.png` });
 });
 
 test("a complete v5 run follows the same decisions, waits and stage transitions in the browser", async ({ page }) => {
@@ -145,7 +183,7 @@ test("a complete v5 run follows the same decisions, waits and stage transitions 
       await page.reload(); await page.getByRole("button", { name: /Jatka ·/ }).click();
       expect(await page.evaluate(key => localStorage.getItem(key), KEY)).toBe(snapshot);
       await expect(page.locator(".transition-screen")).toBeVisible();
-      await page.screenshot({ path: `reports/pacing/browser/transition-${transitions}.png` });
+      await page.screenshot({ path: `reports/narration/browser/transition-${transitions}.png` });
       await page.getByRole("button", { name: "Siirry seuraavaan vaiheeseen" }).click();
       model = continueStory(model, token(model));
     } else {
@@ -161,7 +199,7 @@ test("a complete v5 run follows the same decisions, waits and stage transitions 
   expect(transitions).toBe(3);
   await expect(page.getByRole("heading", { name: "Hanke on luvitettu" })).toBeVisible();
   await expect(page.locator(".score-total")).toContainText(String(model.ending.score.total));
-  await page.screenshot({ path: "reports/pacing/browser/win.png" });
+  await page.screenshot({ path: "reports/narration/browser/win.png" });
 });
 
 test("local review exposes every ID and branch without changing the ordinary save", async ({ page }) => {

@@ -63,7 +63,7 @@ describe("v5 active director", () => {
     expect(currentStory(game)?.id).toBe("start");
     const next = continueStory(game, token(game));
     expect(next.calendar.now).toBe(game.calendar.now);
-    expect(next.lastOutcome).toBe(currentStory(game)?.body);
+    expect(next.lastOutcome).toBe(""); // The acknowledged story is not printed again above the next card.
   });
   it("K15/K35 name-bank changes never alter scenario, choices, observations or continued play", () => {
     let original = createGame("v5-independent-name"), renamed = createGame("v5-independent-name", "hybrid", undefined,

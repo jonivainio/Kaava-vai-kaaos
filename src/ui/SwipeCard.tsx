@@ -9,7 +9,7 @@ interface Props {
   notes?: Record<Side, string>;
   onChoose: (token: string, side: Side) => void;
   tutorial?: boolean;
-  story?: { title: string; body: string; eyebrow: string };
+  story?: { title: string; body: string; eyebrow: string; reaction?: string; updates?: string[] };
 }
 export function SwipeCard({
   token,
@@ -137,6 +137,8 @@ export function SwipeCard({
           {story ? <article className="narration-paper">
             <span className="eyebrow">{story.eyebrow}</span>
             <span className="paper-ornament" aria-hidden="true">✦</span>
+            {!!story.updates?.length && <p className="narration-updates">{story.updates.join("\n\n")}</p>}
+            {story.reaction && <p className="scene-reaction">{story.reaction}</p>}
             <h1>{story.title}</h1>
             <p>{story.body}</p>
             <span className="paper-rule" aria-hidden="true" />

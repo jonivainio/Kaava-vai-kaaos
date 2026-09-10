@@ -15,7 +15,8 @@ export function initialState(seed: string, mode: Mode = "hybrid", previousNameId
   procedure.permits.push(requiredPermit("construction", "shared", 0));
   if (mode !== "solar") procedure.permits.push(requiredPermit("aviation", "wind", 0));
   const game: GameV5 = {
-    version: "swipe-v5-1", contentVersion: CONTENT_VERSION, rulesVersion: "v5-rules-2", assetChanges: {},
+    version: "swipe-v5-1", contentVersion: CONTENT_VERSION, rulesVersion: "v5-rules-3", assetChanges: {},
+    narration: { progressCount: 0, progressStages: [], lastWasProgress: false, updates: [] },
     run, initialRun, initial: { windCount: stats.windCount, windMW: stats.windMWac, windHeightM: 300, windYield: 100,
       solarHa: stats.solarHa, solarMWp: stats.solarMWp, solarMWac: stats.solarMWac,
       bessChargeMW: 100, bessDischargeMW: 100, bessMWh: 200,

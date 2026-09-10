@@ -272,6 +272,7 @@ export default function App() {
                         SEURAAVA VAIHE
                       </span>
                       <h1>{story.title}</h1>
+                      {!!story.updates.length && <p className="narration-updates">{story.updates.join("\n\n")}</p>}
                       <p>{story.body}</p>
                     </section>
                     <button
@@ -284,8 +285,8 @@ export default function App() {
                   </>
                 ) : story || wait ? (
                   <><SwipeCard key={token(game)} token={token(game)} art="" speaker="" left="Jatka tarinaa" right="Jatka tarinaa"
-                    story={story ? { title: story.title, body: story.body, eyebrow: story.result ? "ARVIOINNIN TULOS" : "TARINA JATKUU" }
-                      : { title: "Työt käynnissä", body: "Odota seuraavaan valmistumiseen.", eyebrow: "AIKA ETENEE" }}
+                    story={story ? { title: story.title, body: story.body, reaction: story.reaction, updates: story.updates, eyebrow: story.result ? "ARVIOINNIN TULOS" : "TARINA JATKUU" }
+                      : { title: "Työt etenevät", body: "Selvitykset ja valmistelu jatkuvat. Siirrytään seuraavaan tulokseen.", updates: [game.lastOutcome, ...game.narration.updates].filter(Boolean), eyebrow: "AIKA ETENEE" }}
                     onChoose={expected => next(expected)} />
                     {story?.id === "start" && <details className="owner-goals"><summary>Omistajan lähtötavoite ja jatkoraja</summary>
                       <p>{game.initial.windCount} voimalaa / {game.initial.windMW} MW, {game.initial.solarHa} ha aurinkoaluetta. Valmistelussa harkitaan lisäksi 100 MW lataus- ja purkutehon, 200 MWh:n akkua.</p>
@@ -294,12 +295,13 @@ export default function App() {
                 ) : c ? (
                   <>
                     <section className="narrative" aria-live="polite">
-                      <p
+                      {c.summary && <p
                         className="previous-result"
                         data-testid="previous-result"
                       >
-                        {game.lastOutcome}
-                      </p>
+                        {c.summary}
+                      </p>}
+                      {c.reaction && <p className="scene-reaction">{c.reaction}</p>}
                       <h1>{c.title}</h1>
                       <p className="question">{c.question}</p>
                       {c.id === "BESS-P4-02" && game.battery.connectionApprovalExpires !== null && <p className="deadline-note">Hyväksyntä voimassa vielä {(game.battery.connectionApprovalExpires - game.calendar.now).toLocaleString("fi-FI")} kk.</p>}

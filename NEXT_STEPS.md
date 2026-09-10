@@ -8,7 +8,7 @@ Reaktiot näkyvät kursivoituina otsikon yläpuolella. Ne valitaan harkitusti t�
 
 Tarkistettu: 363/363 TS-testiä, tyypitys/build, Pythonin sisältötuonti 248/248. Offline/päivitys 2/2. Lopullinen Chromium-ajo 12/12 (myös 360 px:n reaktiot, yhdistetty tulos ja lataus sekä kokonainen pelikerta). Tuhat samaa siementä ja kolme valintapolitiikkaa ennen/jälkeen: 55 063 → 32 988 ruutua, 16 755 päätöstä kummassakin, 327 voittoa kummassakin, ei mekaanisen lopputilan eroja eikä virheitä. Näkyviä ajankulkuruutuja enintään 3; ei peräkkäisiä. Raportit `reports/narration/QA.md`, `comparison.json`, `browser/`. Fyysistä puhelinta tai iOS/Safaria ei testattu.
 
-Julkaisu: viimeistelty versio on paikallisesti testattu; uusi julkaisutila ja tunnisteet kirjataan tähän sekä `reports/narration/release.json`-tiedostoon julkaisun valmistuttua. Aiemmat `reports/pacing`- ja `reports/v5`-raportit ovat historiaa.
+Julkaistu julkiseksi 10.9.2026, Sites-versio 6, lähdecommit `f916d82b00d7f39c6260278742c2dc9efbd176ac`. https://kaava-vai-kaaos.joni-vainio.chatgpt.site — kirjautumaton uusi Chromium-konteksti vahvisti HTTP 200:n, oikean rules-3-buildin, koko 22 päätöksen pelikerran, kolme siirtymän latausta ja 743 pisteen voiton ilman selainvirheitä. Jokainen tila vastasi puhdasta moottoria. Tunnisteet `reports/narration/release.json`, koe `public-check.json`. Aiemmat `reports/pacing`- ja `reports/v5`-raportit ovat historiaa.
 
 Seuraava työ: käyttäjän palaute tarinatiivistelmien ymmärrettävyydestä ja kierroksen kestosta. Säilytä jokaisen piilotetun kuittauksen mekaaninen käsittely; älä luokittele tuntemattomia tuloksia hiljaisiksi tai tee uutena oletuksena jokaisesta hyvästä tuloksesta ohitettavaa.
 

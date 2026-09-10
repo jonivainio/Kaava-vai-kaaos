@@ -32,3 +32,9 @@ Ruutumäärään kuuluvat päätökset, tarinat ja vaihesiirtymät ennen lopputu
 - Chromium: 12/12 myös viimeistelyn jälkeen. Mukana kokonainen kierros, lataukset, kosketus/peruutus, 360–1163 px sekä uudet reaktiot ja yhdistetyt tulokset oikeista toistettavista pelitiloista. Uusimmat kohdekuvat `browser/narration-decision-360.png`, `narration-event-360.png`, `narration-merged-360.png`; aiemman kehitysajon kuvat samassa raporttikansiossa säilyvät historiaan.
 - Ei fyysistä puhelin-, iOS- tai Safari-testiä.
 - Offline/päivitys: 2/2 läpi viimeisellä buildilla. Kolme viimeisteltyä reaktio-/yhdistelmätuloskuvaa katsottu. Pitkissä päätöksissä sisältö vierittyy.
+
+## Julkaistu
+
+Sites-versio 6 julkaistiin public-oikeudella 10.9.2026 lähteestä `f916d82b00d7f39c6260278742c2dc9efbd176ac`. Julkinen koko pelin koe läpäisi klo 18:33 UTC: uusi evästeetön Chromium-konteksti, ei auth-/ohitustunnuksia, HTTP 200, JS:n SHA vastaa viimeistä paikallista buildia. Siemen `v5-ui-win-2`: 22 päätöstä, kolme siirtymää/latausta, 743 pisteen voitto, jokainen tila vastaa moottoria, ei selainvirheitä. Todisteet `public-check.json`, `public/` ja `release.json`.
+
+Windows-ympäristössä virallinen `package-site.mjs` ei löytänyt tarvitsemaansa Bash-komentoa. Pakkaus käytti saman työkalun `prepare-site-build.cjs`-validointia ja natiivia tar-komentoa, kuten aiempi julkaisu. Arkisto sisältää vain valmistellun dist-puun; manifesti ja index tarkistettiin ennen tallennusta.

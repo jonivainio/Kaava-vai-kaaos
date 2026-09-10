@@ -1,0 +1,21 @@
+{
+  "projectId": "appgprj_6a9f15554f248191b0170ac9b997e896",
+  "sourceCommit": "f916d82b00d7f39c6260278742c2dc9efbd176ac",
+  "versionId": "appgprj_6a9f15554f248191b0170ac9b997e896~appgver_d491cd2537cc81918eb3ed8a1f041b91",
+  "versionNumber": 6,
+  "deploymentId": "appgdep_6aa2f79f5bbc8191805fe2bf219f810e",
+  "deploymentStatus": "succeeded",
+  "deployedAt": "2026-09-10T18:32:34.111045+00:00",
+  "url": "https://kaava-vai-kaaos.joni-vainio.chatgpt.site",
+  "access": "public",
+  "contentVersion": "v5-fi-03ae27238966",
+  "rulesVersion": "v5-rules-3",
+  "archiveSha256": "20b42edbc4ff07bb5214decdb172a3cec1eb18e7b626ea713d3cd809f056e508",
+  "engineBundleSha256": "30bd2aa00c5ddc6c41d466013a701b2c171c25871e39d8c2c9fa39b4e5effa50",
+  "deployedScriptSha256": "b4c41260e06bf2b6a0f7da8d99c3ec629eb424430c1c95b3ded3a0360b5b64fa",
+  "publicCheck": "reports/narration/public-check.json",
+  "publicCheckedAt": "2026-09-10T18:33:11.331Z",
+  "anonymousFreshBrowserPassed": true,
+  "fullRunPassed": true,
+  "physicalPhoneTested": false
+}

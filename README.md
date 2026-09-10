@@ -2,13 +2,13 @@
 
 **[Avaa peli puhelimella](https://kaava-vai-kaaos.joni-vainio.chatgpt.site)** — julkinen testiversio, ei vaadi ChatGPT-kirjautumista. Linkin voi jakaa testaajille. Lähdekoodi: [GitHub](https://github.com/jonivainio/Kaava-vai-kaaos).
 
-Rytmitys- ja muutoslukupäivitys on julkaistu 9.9.2026 (Sites-versio 5, `v5-rules-2`). Kirjautumaton kokonainen pelikerta on tarkistettu julkisesta osoitteesta. Päivitä mahdollinen vanha selainversio aloitusvalikosta ja aloita uusi peli. Tarkka tila: [NEXT_STEPS](NEXT_STEPS.md).
+Tarinoiden tiivistys ja tilanteisiin valitut reaktiot on julkaistu 10.9.2026 (Sites-versio 6, `v5-rules-3`). Kirjautumaton kokonainen pelikerta on tarkistettu julkisesta osoitteesta. Päivitä mahdollinen vanha selainversio aloitusvalikosta ja aloita uusi peli. Tarkka tila: [NEXT_STEPS](NEXT_STEPS.md).
 
 Suomalainen hankekehityskorttipeli. Kehitä fiktiivinen hybridihanke maanvuokrauksesta YVA:n ja kaavoituksen kautta luvitetuksi. V5:n sisältöpankissa on 159 päätöstä, 89 tapahtumaa ja 143 tuloshaaraa. Yhteen peliin valikoituu osa sisällöstä: neljä vaihetta, 18 peruspäätöksen tavoite sekä tarvittavat jatkopäätökset. Akulla on enintään kaksi satunnaisesti valittavaa peruspäätöstä; aiempien päätösten tarpeelliset jatkot käsitellään. Tuuliaiheita painotetaan eniten, aurinkoa toiseksi ja akkua vähiten. Hyväksyminen yksin ei ole voitto; tarvittavien lupien ja lainvoiman on oltava kunnossa. Tuuli ja Aurinko ovat valikossa vielä suljettuja. Vanha 64 kortin pilotti ja aiemmat kampanjat säilyvät vertailuaineistona.
 
 Vedä korttia hiirellä tai sormella. Vedon aikana näet valinnan; palauta keskelle peruuttaaksesi. Nuolinäppäimet toimivat myös. Tarinat ovat omia tekstikorttejaan, joissa kumpikin suunta jatkaa samaa tarinaa. Vaiheiden vaihtuminen vahvistetaan erikseen. Lupavoitosta saat enintään 1 000 pistettä ja perustelut vähennyksille. Vapaaehtoinen akku-epilogi ei peru voittoa.
 
-Peräkkäiset hiljaiset työn valmistumiset kuitataan yhdellä odotuskortilla. Yläreunan jokaisen muuttuneen hankeluvun alla näkyy sen viimeisin todellinen muutos, esimerkiksi 7 → 6 kpl. Muistissa säilyvä muutosmerkintä ei ole ennuste seuraavasta valinnasta.
+Ajankulkukortteja on enintään kolme koko pelikerrassa, eikä niitä tule peräkkäin. Tavalliset valmistumiskuittaukset yhdistetään etenemiseen, ja ongelmattomia selvitystuloksia näytetään lyhyinä huomioina seuraavan tilanteen yhteydessä. Tärkeät tulokset ja vaihesiirtymät pysyvät näkyvissä. Harkittuihin yllätyksiin on lisätty lyhyt reaktio otsikon yläpuolelle. Yläreunan jokaisen muuttuneen hankeluvun alla näkyy sen viimeisin todellinen muutos, esimerkiksi 7 → 6 kpl.
 
 Mobiiliselaimessa koko näytön tilaa pyydetään **Aloita hanke** / **Jatka** -eleestä, jos selain tukee sitä. iPhonessa käytä **Jaa → Lisää Koti-valikkoon**. Sivusto toimii myös tavallisessa selainikkunassa. Automaattista fullscreeniä ilman käyttäjän elettä ei voida luvata kaikissa selaimissa.
 

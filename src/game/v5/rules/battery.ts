@@ -45,7 +45,7 @@ export const batteryRules: Rule[] = [
       game.facts.batteryAccessBlocked = false; game.facts.batteryWaterSpaceMissing = false; resolveCase(issue); return null;
     } },
   { ids: ["BESS-P3-05"], role: "base", art: ["shared-power", "battery-limits"],
-    spec: () => ({ family: "batteryGrid", component: "bess", mechanism: "grid" }), eligible: game => included(game) && game.run.mode !== "solar",
+    spec: () => ({ family: "batteryGrid", component: "bess", mechanism: "grid" }), eligible: game => included(game) && game.activeMode !== "solar",
     apply(game, issue, id, choice) {
       issue.facts.sharedPowerControl = choice === "A";
       schedule(game, issue, id, choice, "EV-BESS-VERKKO", { duration: choice === "A" ? 3 : 6, milestone: "proposal", euros: choice === "A" ? 9000 : 15000, key: "sharedPower" });

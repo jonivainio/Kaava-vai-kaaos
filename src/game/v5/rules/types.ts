@@ -6,6 +6,7 @@ export interface Rule {
   eligible: (game: GameV5, contentId: string) => boolean;
   role: "base" | "followup" | "epilogue";
   art: string[];
+  prepare?: (game: GameV5, issue: CaseRecord, contentId: string) => void;
   apply: (game: GameV5, issue: CaseRecord, contentId: string, choice: SourceChoice) => string | null;
 }
 export type OutcomeResolver = (game: GameV5, issue: CaseRecord, outcome: PendingOutcome, observation: number) => string | null;

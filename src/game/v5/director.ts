@@ -9,6 +9,7 @@ import { blockingWork, publishDue, settleCompletedWork } from "./timeline";
 import { canWarnLeaseExpiry, hasUnresolvedBlocks, permitGoalReached, requiredPermit } from "./procedure";
 import { finish, finishKnownChoice, checkScope } from "./endings";
 import { sample } from "./world";
+import { modeAllows } from './modes';
 import { batteryPreparationReady, prepareBatteryApplications } from "./batteryPreparation";
 import type { GameV5, Stage } from "./types";
 
@@ -43,43 +44,54 @@ export function beginStage(game: GameV5): void {
 }
 function showDecision(game: GameV5, id: string): void {
   const rule = ruleFor(id);
+  if(!rule.eligible(game,id))throw new Error(`Invalid promoted decision ${id}`);
   const issue = openCase(game, id, rule.spec(game, id));
+  rule.prepare?.(game,issue,id);
   queueScene(game, id, issue);
   game.facts[`selected:${game.stage}:${group(game, id)}`] = true;
 }
 function baseCount(game: GameV5): number { return Number(game.facts[`baseCount:${game.stage}`] ?? 0); }
 export function countBaseChoice(game: GameV5, id: string): void {
-  if (game.stageDecks[game.stage].includes(id) && !game.seenIds.includes(id)) game.facts[`baseCount:${game.stage}`] = baseCount(game) + 1;
+  if (game.stageDecks[game.stage].includes(id) && !game.seenIds.includes(id) && baseCount(game)<PACING.baseDecisions[game.stage]) game.facts[`baseCount:${game.stage}`] = baseCount(game) + 1;
 }
 function candidate(game: GameV5): string | undefined {
   const stage = game.stage;
   const batteryBaseCount = game.decisions.filter(d => ruleFor(d.contentId).role === "base" && ruleFor(d.contentId).spec(game, d.contentId).component === "bess").length;
   const available = game.stageDecks[stage].filter(id => !game.seenIds.includes(id) && !game.facts[`selected:${stage}:${group(game, id)}`] && ruleFor(id).eligible(game, id) &&
     (ruleFor(id).spec(game, id).component !== "bess" || batteryBaseCount < PACING.batteryBaseLimit));
-  if (!available.length) return;
-  if (stage === 2 && game.battery.status === "undecided" && baseCount(game) >= 2) return "BESS-P2-04";
+  if (!available.length) {
+    if(baseCount(game)<PACING.baseDecisions[stage]){
+      const warning=`${game.routeCategory}:stage${stage}:eligiblePoolExhausted:${baseCount(game)}/${PACING.baseDecisions[stage]}`;
+      if(!game.modeAuditWarnings.includes(warning))game.modeAuditWarnings.push(warning);
+    }
+    return;
+  }
+  if (stage === 2 && game.battery.status === "undecided" && baseCount(game) >= 2 && ruleFor('BESS-P2-04').eligible(game,'BESS-P2-04')) return "BESS-P2-04";
   if (stage === 2) {
-    if (game.run.mode !== "solar" && !game.facts.defenceRequested) return "defence";
+    if (game.activeMode !== "solar" && !game.facts.defenceRequested) return "defence";
     if (game.cases["case:defence"]?.status === "working") return;
     if (!game.facts.ecologyOrdered) return available.find(id => id.startsWith("surveys"));
     if (!game.facts.gridOrdered && !game.facts.sharedConnectionChosen) return available.find(id => id === "UUSI-P2-04");
   }
   if (stage === 3) {
     const hasSolar = game.decisions.some(d => entry(d.contentId).stage === 3 && game.cases[d.caseId]?.component === "solar");
-    if (!hasSolar && game.run.mode !== "wind") return available.find(id => ruleFor(id).spec(game, id).component === "solar");
+    if (!hasSolar && game.activeMode !== "wind") return available.find(id => ruleFor(id).spec(game, id).component === "solar");
     const hasWindNature = game.decisions.some(d => entry(d.contentId).stage === 3 && game.cases[d.caseId]?.species !== null && game.cases[d.caseId]?.component === "wind");
-    if (!hasWindNature && game.run.mode !== "solar") {
+    if (!hasWindNature && game.activeMode !== "solar") {
       const match = available.find(id => ruleFor(id).spec(game, id).species === game.world.species && ruleFor(id).spec(game, id).component === "wind");
       if (match) return match;
     }
   }
   if (baseCount(game) >= PACING.baseDecisions[stage]) return;
-  if (stage === 4 && game.run.mode === "hybrid" &&
+  const lpCount=game.decisions.filter(d=>d.contentId.startsWith('LP1-')&&ruleFor(d.contentId).role==='base').length;
+  const extras=available.filter(id=>id.startsWith('LP1-'));
+  if(lpCount<3&&extras.length&&sample(game.run.seed,`lp1:slot:${stage}:${baseCount(game)}`)<0.6)return extras[0];
+  if (stage === 4 && game.activeMode === "hybrid" &&
     !game.decisions.some(d => entry(d.contentId).stage === stage && game.cases[d.caseId]?.component === "solar")) {
     const solar = available.find(id => ruleFor(id).spec(game, id).component === "solar");
     if (solar) return solar;
   }
-  return available[0];
+  return available.find(id=>!id.startsWith('LP1-')||lpCount<3);
 }
 function showWait(game: GameV5): void { game.scenes.push({ id: "@wait", caseId: null, branchId: null, kind: "wait", outcomeId: null, nextStage: null }); }
 function transition(game: GameV5, next: Stage): void {
@@ -121,6 +133,7 @@ function externalEvent(game: GameV5): boolean {
   if (game.world.externalStage !== game.stage || game.facts.externalPresented || baseCount(game) < 2) return false;
   const id = game.world.externalId;
   if (!id) return false;
+  if(!modeAllows(game,id))return false;
   if (["EV-PV", "EV-VTT-TULOS"].includes(id)) return false; // Actual ordered defence procedure owns these results.
   // A grid conclusion must come from its study, never before it exists.
   if (id === "external-2" && game.facts.gridOrdered && game.outcomes.some(outcome => outcome.contentId === "EV-VERKKO" && outcome.status === "pending")) return false;
@@ -135,10 +148,10 @@ function maybeResearchPublication(game: GameV5): boolean {
   const funded = game.cases["case:publicResearch"];
   if (!funded) return false;
   const species = game.world.researchSpecies;
-  let local = Object.values(game.cases).find(issue => issue.id !== funded.id && issue.species === species &&
+  let local = Object.values(game.cases).find(issue => issue.id !== funded.id && !issue.facts.cancelledBySolarContinuation && modeAllows(game,'EV-TUTKIMUS',issue) && issue.species === species &&
     (species !== "forestDeer" || ["calving", "corridor"].includes(issue.mechanism)));
   if (!local && species === "wolf") local = funded;
-  if (!local) return false;
+  if (!local || !modeAllows(game,'EV-TUTKIMUS',local)) return false;
   if (local.facts.researchAssessed || game.outcomes.some(item => item.contentId === "EV-TUTKIMUS" && item.caseId === local!.id)) { game.facts.publicationAssessed = true; return false; }
   game.facts.publicationAssessed = true;
   schedule(game, local, funded.sourceId, funded.choice, "EV-TUTKIMUS", { duration: 3, milestone: "proposal", euros: 7000, key: "publishedLocalAssessment" });
@@ -148,10 +161,14 @@ function maybeResearchPublication(game: GameV5): boolean {
 /** Advances administrative state only when its prerequisites and actual work are complete. */
 export function direct(game: GameV5): void {
   if (game.scenes.length || game.ending) return;
+  if(game.recovery.status==='offered')return;
   settleCompletedWork(game);
   if (game.ending) return;
   publishDue(game);
   if (game.scenes.length || game.ending) return;
+  if(game.recovery.status==='accepted' && game.cases['case:lp1_solar_continuation']?.facts.blocking===true) {
+    if(!readyToLeave(game))return;
+  }
   const batteryGrid = game.cases["case:batteryGrid"];
   if (batteryGrid?.facts.separationDecisionPending && ruleFor("BESS-P4-04").eligible(game, "BESS-P4-04")) {
     followup(game, batteryGrid, "BESS-P4-04"); return;
@@ -278,6 +295,10 @@ export function direct(game: GameV5): void {
   }
   if (game.procedure.appeal !== "closed") { if (!readyToLeave(game)) return; throw new Error("Incomplete appeal without a scheduled result"); }
   if (!game.procedure.planFinal) { game.procedure.planFinal = true; game.procedure.appealDueAt = null; queueScene(game, "EV-LAINVOIMA"); return; }
+  for(const municipality of game.municipalities.filter(m=>m.included)) {
+    if (!municipality.adopted || municipality.planRevision !== game.planRevision || municipality.finalAt === null) throw new Error("Municipal decision is incomplete");
+    municipality.final=municipality.finalAt<=game.calendar.now;
+  }
   if (game.battery.status === "included" && !game.procedure.permits.some(permit => permit.id === "batteryConstruction")) game.procedure.permits.push(requiredPermit("batteryConstruction", "bess", game.planRevision));
   const outstanding = game.procedure.permits.filter(permit => permit.required && (permit.status !== "final" || permit.planRevision !== game.planRevision));
   if (outstanding.length) {

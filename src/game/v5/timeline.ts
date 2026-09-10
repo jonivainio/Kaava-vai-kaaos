@@ -4,7 +4,8 @@ import { entry } from "./content";
 import { finish } from "./endings";
 import { leaseExpiryEndsRun } from "./procedure";
 import { OUTCOMES } from "./rules";
-import { followup, openCase, queueScene } from "./operations";
+import { followup, openCase, queueScene, schedule } from "./operations";
+import { modeAllows } from './modes';
 import { changePlan } from "./assets";
 import { sample } from "./world";
 import type { GameV5, Milestone, PendingOutcome, WorkOrder } from "./types";
@@ -39,6 +40,13 @@ export function publishDue(game: GameV5): number {
     if (work && work.status !== "completed") continue;
     const issue = game.cases[outcome.caseId];
     if (!issue) throw new Error(`Outcome has no case: ${outcome.id}`);
+    if(!modeAllows(game,outcome.contentId,issue)){outcome.status='cancelled';continue;}
+    if(outcome.contentId.startsWith('LP1-') && outcome.planRevision!==game.planRevision){
+      outcome.status='outdated';
+      schedule(game,issue,outcome.sourceId,outcome.sourceChoice,outcome.contentId,{duration:1,euros:2000,
+        key:`${work!.id.split(':work:')[1]}:revision:${game.planRevision}`,observation:work!.observation});
+      continue;
+    }
     if (issue.component === "bess" && game.battery.status !== "included") { outcome.status = "cancelled"; continue; }
     const resolver = OUTCOMES[outcome.contentId];
     if (!resolver) throw new Error(`No explicit outcome resolver: ${outcome.contentId}`);

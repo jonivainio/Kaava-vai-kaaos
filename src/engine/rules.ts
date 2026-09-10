@@ -16,8 +16,9 @@ export function getDerivedStats(s: RunState): DerivedStats {
     return height < m.minHeight || height > m.maxHeight;
   });
   const solarHa = s.assets.solarParcels.filter(a => !a.exclusions.length).reduce((n, a) => n + a.hectares, 0);
-  const solarMWp = solarHa * RULES.solarMWpPerHa;
-  const solarMWac = solarMWp / RULES.dcAcRatio;
+  const parcels = s.assets.solarParcels.filter(a => !a.exclusions.length);
+  const solarMWp = Math.round(parcels.reduce((sum,a) => sum + (a.dcMWp ?? a.hectares * RULES.solarMWpPerHa),0)*1e8)/1e8;
+  const solarMWac = Math.round(parcels.reduce((sum,a) => sum + (a.inverterMWac ?? a.hectares * RULES.solarMWpPerHa / RULES.dcAcRatio),0)*1e8)/1e8;
   const windPlannedMWac = wind.reduce((n, a) => n + MODELS[a.modelId].mw, 0);
   const windMWac = windPlannedMWac - incompatible.reduce((n, a) => n + MODELS[a.modelId].mw, 0);
   const segments = [...new Map(s.grid.segments.filter(g => g.active).map(g => [g.id, g])).values()];

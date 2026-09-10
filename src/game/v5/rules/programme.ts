@@ -12,17 +12,8 @@ const battery = (game: Parameters<Rule["eligible"]>[0]) => game.battery.status =
 function defenceStopsWind(game: GameV5, issue: CaseRecord, event: string, branch: number): string {
   const result = branchId(event, branch);
   game.facts.externalPresented = true;
-  const independentSolar = game.world.observations.independentSolar === 1 && getDerivedStats(game.run).solarHa >= game.initial.minimumSolarHa;
-  if (independentSolar) {
-    issue.placeIds = game.run.assets.windSites.map(site => site.id);
-    excludeAssets(game, issue);
-    game.facts.windExcludedByDefence = true;
-    for (const permit of game.procedure.permits) if (permit.component === "wind") { permit.required = false; permit.status = "excluded"; }
-    resolveCase(issue);
-  } else {
-    issue.fallback = "unavailable";
-    finish(game, "external", "LOPPU-ULKOINEN", issue, { externalReason: branchText(event, result) }, "external");
-  }
+  issue.fallback = "unavailable";
+  finish(game, "external", "LOPPU-ULKOINEN", issue, { externalReason: branchText(event, result) }, "external");
   return result;
 }
 
@@ -102,7 +93,7 @@ export const programmeRules: Rule[] = [
   { ids: ["UUSI-P2-08"], role: "base", art: ["radar", "windscape"], spec: () => ({ family: "higherDefence", component: "wind", mechanism: "aviation" }),
     eligible: game => wind(game) && game.facts.defenceAccepted === true && game.run.assets.windSites.some(site => !site.exclusions.length && site.totalHeightM < 300),
     apply(game, issue, id, choice) { if (choice === "A") schedule(game, issue, id, choice, "EV-PV", { duration: 3, euros: 3500 }); else resolveCase(issue); return null; } },
-  { ids: ["UUSI-P2-09"], role: "base", art: ["frog", "ecologist"], spec: () => ({ family: "coldFrogVisit", component: "solar", species: "frog", mechanism: "water", hectares: 8 }), eligible: game => game.run.mode !== "wind",
+  { ids: ["UUSI-P2-09"], role: "base", art: ["frog", "ecologist"], spec: () => ({ family: "coldFrogVisit", component: "solar", species: "frog", mechanism: "water", hectares: 8 }), eligible: game => game.activeMode !== "wind",
     apply(game, issue, id, choice) { if (choice === "B") {
       excludeAssets(game, issue); issue.fallback = "viable";
       workOnly(game, issue, id, "hydrologyExclusionCheck", 1, 2000);

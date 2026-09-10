@@ -1,6 +1,8 @@
 import { entry } from "./content";
 import { orderWork } from "./calendar";
 import { integer, sample } from "./world";
+import { modeAllows } from './modes';
+import { finish } from './endings';
 import type { CaseRecord, Component, GameV5, Mechanism, Milestone, SourceChoice, Species } from "./types";
 
 export interface CaseSpec { family: string; component: Component; mechanism?: Mechanism; species?: Species | null; count?: number; hectares?: number }
@@ -22,6 +24,10 @@ export function openCase(game: GameV5, contentId: string, spec: CaseSpec): CaseR
     parcelIds: spec.component === "solar" ? offset(solarIds, "parcels", spec.hectares ?? integer(game.run.seed, `${id}:ha`, 6, 14)) : [],
     status: "open", facts: {}, fallback: "unexamined", rounds: 0, revealedBranches: [],
   };
+  issue.affectedComponents=spec.component==='shared'?['shared',...(game.activeMode!=='wind'?['solar' as const]:[]),...(game.activeMode!=='solar'?['wind' as const]:[])]:[spec.component];
+  if(game.activeMode==='hybrid' && spec.component==='wind' && ['corridor','habitat','water'].includes(spec.mechanism??'') && sample(game.run.seed,'lp1:sharedHabitat')<0.25) {
+    issue.affectedComponents=['wind','solar','shared'];issue.facts.sharedObligation=true;
+  }
   game.cases[id] = issue;
   return issue;
 }
@@ -37,6 +43,7 @@ export function qualityLoss(game: GameV5, issue: CaseRecord, sourceId: string, k
   if (!game.quality.some(item => item.id === id)) game.quality.push({ id, caseId: issue.id, sourceId, reason, pointsLost, repaired: false });
 }
 export function queueScene(game: GameV5, contentId: string, issue: CaseRecord | null = null, branchId: string | null = null): void {
+  if (!modeAllows(game,contentId,issue)) throw new Error(`Mode rejects queued scene ${contentId}`);
   const item = entry(contentId);
   game.scenes.push({ id: contentId, caseId: issue?.id ?? null, branchId, kind: item.kind,
     outcomeId: null, nextStage: null });
@@ -46,6 +53,7 @@ export function schedule(game: GameV5, issue: CaseRecord, sourceId: string, choi
     euros?: number; avoidableCost?: boolean; dependencies?: string[]; earliest?: number; baselineEarliest?: number;
     season?: { start: number; end: number; period: number }; observation?: string; branchId?: string | null } = {}): void {
   entry(eventId);
+  if(!modeAllows(game,eventId,issue))throw new Error(`Mode rejects scheduled result ${eventId}`);
   const key = options.key ?? `${sourceId}:${choice ?? "event"}:${eventId}:${issue.rounds}`;
   const workId = `${issue.id}:work:${key}`;
   if (game.outcomes.some(item => item.id === `${workId}:outcome`)) return;
@@ -58,6 +66,7 @@ export function schedule(game: GameV5, issue: CaseRecord, sourceId: string, choi
     costId: invoice, observation: options.observation ?? String(sample(game.run.seed, `${issue.id}:observation:${eventId}`)),
     delayCause: duration > baseline ? "choice" : "normal", earliestStart: options.earliest, baselineEarliestStart: options.baselineEarliest,
   });
+  work.binding={sourceId,choice,eventId};
   game.outcomes.push({ id: `${workId}:outcome`, caseId: issue.id, sourceId, sourceChoice: choice,
     contentId: eventId, branchId: options.branchId ?? null, workId, dueAt: work.dueAt,
     milestone: options.milestone ?? "any", planRevision: game.planRevision,
@@ -65,6 +74,9 @@ export function schedule(game: GameV5, issue: CaseRecord, sourceId: string, choi
   issue.status = "working";
 }
 export function followup(game: GameV5, issue: CaseRecord, contentId: string): void {
+  if(issue.component==='wind' && game.activeMode!=='solar' && !game.run.assets.windSites.some(x=>!x.exclusions.length)) {
+    issue.fallback='unavailable';finish(game,'scope','LOPPU-LAAJUUS',issue,{},'scope');return;
+  }
   if (game.scenes.some(scene => scene.id === contentId && scene.caseId === issue.id)) return;
   issue.status = "awaitingDecision";
   queueScene(game, contentId, issue);

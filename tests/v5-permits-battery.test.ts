@@ -29,6 +29,7 @@ function permitted(): GameV5 {
   game.battery.safetyAssessed = true; game.facts.batteryFullLoadNoiseAssessed = true;
   game.procedure.permits.push(requiredPermit("batteryConstruction", "bess", game.planRevision));
   for (const permit of game.procedure.permits) Object.assign(permit, { status: "final", finalAt: 59, planRevision: game.planRevision });
+  for (const m of game.municipalities) Object.assign(m,{adopted:true,final:true,finalAt:59,planRevision:game.planRevision});
   return game;
 }
 describe("v5 defence responses and real permit goal", () => {
@@ -51,13 +52,13 @@ describe("v5 defence responses and real permit goal", () => {
   it.each([["EV-PV", 3], ["EV-VTT-TULOS", 2]] as const)("K38 %s rejection distinguishes independent solar from no fallback", (event, branch) => {
     for (const solar of [false, true]) {
       const game = initialState(`pv-reject-${solar}`); game.world.externalId = event;
-      game.world.observations.independentSolar = Number(solar); decide(game, "defence", "A");
+      game.world.observations.independentSolar = Number(solar); Object.assign(game.recovery,{independentAccess:solar,independentGrid:solar,ownerFunding:true,sharedBarrier:false}); decide(game, "defence", "A");
       if (event === "EV-VTT-TULOS") reveal(game, "EV-PV", 0);
       const ha = getDerivedStats(game.run).solarHa;
       expect(reveal(game, event, 0.9)).toBe(branchId(event, branch));
       expect(getDerivedStats(game.run).solarHa).toBe(ha);
       expect(game.ending?.kind ?? null).toBe(solar ? null : "external");
-      if (solar) expect(getDerivedStats(game.run).windCount).toBe(0);
+      if (solar) { expect(getDerivedStats(game.run).windCount).toBe(game.initial.windCount); expect(game.recovery.status).toBe("offered"); expect(game.scenes.at(-1)?.id).toBe("LP1-H01"); }
     }
   });
   it("K38 a refused higher model preserves the old compatible equipment", () => {

@@ -64,7 +64,7 @@ export const landRules: Rule[] = [
     } },
   { ids: ["UUSI-P1-05"], role: "base", art: ["contract-pages", "map"], spec: () => ({ family: "priority", component: "wind", mechanism: "land", count: 1 }), eligible: always,
     apply(game, issue, id, choice) { issue.facts.skipSigning = choice === "B"; schedule(game, issue, id, choice, choice === "A" ? "EV-ETUSIJA" : "EV-MAA", { duration: 3, euros: 3500 }); return null; } },
-  { ids: ["UUSI-P1-06"], role: "base", art: ["reserve-wetland"], spec: () => ({ family: "wetlandReserve", component: "shared", mechanism: "water" }), eligible: game => game.run.mode !== "wind",
+  { ids: ["UUSI-P1-06"], role: "base", art: ["reserve-wetland"], spec: () => ({ family: "wetlandReserve", component: "shared", mechanism: "water" }), eligible: game => game.activeMode !== "wind",
     apply(game, issue, id, choice) { game.facts.wetlandReserveOwned = choice === "A"; if (choice === "A") cost(game, issue, id, "purchase", 9000, "landPurchase"); resolveCase(issue); return null; } },
   { ids: ["UUSI-P1-07"], role: "base", art: ["map"], spec: () => ({ family: "accessRoute", component: "shared", mechanism: "land" }), eligible: always,
     apply(game, issue, id, choice) { issue.facts.routeAlternative = choice === "B"; schedule(game, issue, id, choice, "EV-MAA", { duration: choice === "A" ? 2 : 4, euros: choice === "A" ? 3000 : 7000 }); return null; } },

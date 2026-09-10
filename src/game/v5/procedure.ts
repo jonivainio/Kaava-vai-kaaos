@@ -28,7 +28,7 @@ export function hasUnresolvedBlocks(game: GameV5): boolean {
 }
 export function permitGoalReached(game: GameV5): boolean {
   const p = game.procedure;
-  return p.landSecured && p.initiated && (!p.yvaRequired || p.yvaConclusion) && p.draftFeedback &&
+  return p.yvaDetermined && game.municipalities.filter(m=>m.included).every(m=>m.adopted&&m.final&&m.planRevision===game.planRevision) && p.landSecured && p.initiated && (!p.yvaRequired || p.yvaConclusion) && p.draftFeedback &&
     p.proposalHearingComplete && p.adopted && p.planFinal && p.appeal === "closed" &&
     p.documentRevision === game.planRevision && !hasUnresolvedBlocks(game) && batteryPreparationReady(game) &&
     p.permits.some(permit => permit.required) && p.permits.every(permit => !permit.required ||

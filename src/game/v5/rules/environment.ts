@@ -172,7 +172,7 @@ export const environmentOutcomes: Record<string, OutcomeResolver> = {
     let branch: number;
     if (kind === "view") {
       branch = observation < 0.6 ? 0 : 1;
-      if (branch === 1) { issue.facts.landscapeChangeRequired = true; followup(game, issue, "proposal"); }
+      if (branch === 1) { issue.facts.landscapeChangeRequired = true; followup(game, issue, game.activeMode==='solar' ? 'proposal::solar-base' : "proposal"); }
       else resolveCase(issue);
     } else if (kind === "species") {
       branch = observation < 0.5 ? 2 : 3;

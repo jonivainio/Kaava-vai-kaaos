@@ -1,0 +1,3359 @@
+{
+  "sourceSha256": "ab0413638fd3f0d92decad64debdc38b00586306f56cf77ab7a952a863aa8385",
+  "entries": [
+    {
+      "id": "LP1-T01",
+      "kind": "decision",
+      "stage": 3,
+      "title": "Melu alittuu, välke ei",
+      "body": "Yhteismelu on kunnossa. Välkemallinnus osoittaa kuitenkin kahden voimalan lapavarjojen osuvan saman talon ikkunoihin kevätiltaisin. Näihin hetkiin voidaan suunnitella pysäytysohjaus tai voimalapaikat jättää pois.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Suunnitellaan kohdennettu pysäytysohjaus",
+          "result": "Välkeajat ja ohjaus suunnitellaan näille kahdelle voimalalle. Samalla lasketaan, kuinka paljon sähköntuotantoa rajoitus vähentäisi.",
+          "branches": []
+        },
+        "B": {
+          "label": "Jätetään nämä kaksi voimalapaikkaa pois",
+          "result": "Kaksi välkettä aiheuttavaa voimalapaikkaa poistetaan suunnitelmasta. Jäljelle jäävä sijoittelu mallinnetaan uudelleen.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-E-T01",
+      "kind": "event",
+      "stage": 3,
+      "title": "Välkeratkaisu saatiin laskettua",
+      "body": "",
+      "branches": [
+        {
+          "id": "control",
+          "text": "Kohdennettu pysäytysohjaus estää tarkastellun välkkeen. Voimalamäärä säilyy. Arvioitu vuosituotanto pienenee {yieldLossPct} prosenttia."
+        },
+        {
+          "id": "removed",
+          "text": "Uusi välkemallinnus ei osoita samaa haittaa talolle. Kaksi poistettua voimalapaikkaa jäävät pois myös kaavaehdotuksesta."
+        }
+      ],
+      "choices": {}
+    },
+    {
+      "id": "LP1-T02",
+      "kind": "decision",
+      "stage": 2,
+      "title": "Televisiokuva pätkii jo nyt",
+      "body": "Asukas kertoo television pätkivän ja vastustaa hanketta. Yhtään voimalaa ei ole rakennettu. Verkkoasiantuntijan mukaan tuulipuiston mahdollinen lisävaikutus pitää silti erottaa nykyisestä vastaanotto-ongelmasta.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Mitataan vastaanoton nykytila",
+          "result": "Lähialueen antennivastaanoton lähtötilanne mitataan. Mittaustiedot liitetään suunnitellun tuulipuiston häiriöarvioon.",
+          "branches": []
+        },
+        "B": {
+          "label": "Aloitetaan laskennallisesta häiriöarviosta",
+          "result": "Asiantuntija arvioi suunniteltujen voimaloiden vaikutusta lähetysreittiin. Paikan päällä tehtäviä mittauksia ei vielä tilata.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-E-T02",
+      "kind": "event",
+      "stage": 3,
+      "title": "Vastaanottoarviosta saatiin vastaus",
+      "body": "",
+      "branches": [
+        {
+          "id": "baseline_clear",
+          "text": "Mittaukset osoittavat vastaanoton pätkivän jo nykytilanteessa. Tuulipuiston suunnitelma ei arvion mukaan aiheuttaisi olennaista lisähäiriötä."
+        },
+        {
+          "id": "mitigation",
+          "text": "Suunniteltu tuulipuisto voisi heikentää osan taloista vastaanottoa. Asiantuntija esittää antenniratkaisua tai täytelähetintä; vastuut ja kustannusarvio lisätään hankesuunnitelmaan."
+        },
+        {
+          "id": "measure_later",
+          "text": "Laskenta ei erota heikkoa lähtötilannetta hankkeen mahdollisesta lisävaikutuksesta. Tarvitaan vielä vastaanottomittaukset."
+        },
+        {
+          "id": "desk_clear",
+          "text": "Lähetysreitin ja maaston tarkastelu ei osoita tuulipuistolle olennaista lisähäiriötä. Erillisiä maastomittauksia ei tarvita tätä arviota varten."
+        }
+      ],
+      "choices": {}
+    },
+    {
+      "id": "LP1-T03",
+      "kind": "decision",
+      "stage": 2,
+      "title": "Lyhin reitti päättyy painorajaan",
+      "body": "Tuulivoimaloiden alustava kuljetusreitti ylittää painorajoitetun sillan. Toinen reitti on pidempi mutta välttää sillan. Kuljetusasiantuntija pyytää valitsemaan, kumpaa selvitetään ensin.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Selvitetään sillan ylityksen toteutettavuus",
+          "result": "Sillan ja suunniteltujen kuljetusten tiedot toimitetaan tarkasteltaviksi. Lyhyttä reittiä ei vielä vahvisteta käyttökelpoiseksi.",
+          "branches": []
+        },
+        "B": {
+          "label": "Suunnitellaan sillan kiertävä reitti",
+          "result": "Kiertoreitin sopivuus ja sen edellyttämät järjestelyt selvitetään. Hanke varautuu pidempään kuljetusmatkaan.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-T04",
+      "kind": "decision",
+      "stage": 3,
+      "title": "Sillan kautta ei päästä",
+      "body": "Selvitys sulki lyhyen kuljetusreitin pois. Pidempi reitti on edelleen mahdollinen, mutta suunnittelu ja kustannusarvio puuttuvat. Pitäydytkö nykyisessä voimalassa vai tutkitko kevyemmin kuljetettavaa mallia?",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Tehdään nykyiselle mallille kiertoreittisuunnitelma",
+          "result": "Kiertoreitin selvitys tilataan nykyiselle voimalamallille. Siltavaihtoehtoon käytetyt rahat eivät palaudu.",
+          "branches": []
+        },
+        "B": {
+          "label": "Verrataan toista voimalamallia",
+          "result": "Valmistajalta pyydetään kuljetustiedot ja tuotantoarvio toiselle mallille. Nykyistä voimalatyyppiä ei vaihdeta ennen vertailun tulosta.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-E-T03",
+      "kind": "event",
+      "stage": 3,
+      "title": "Kuljetussuunnitelma tarkentui",
+      "body": "",
+      "branches": [
+        {
+          "id": "bridge_ok",
+          "text": "Sillan ylitys on selvityksen perusteella suunniteltavissa määritellyillä järjestelyillä. Lyhyt reitti voidaan pitää hankesuunnitelmassa."
+        },
+        {
+          "id": "bridge_no",
+          "text": "Silta ei sovellu suunnitelluille kuljetuksille. Hanketta voidaan jatkaa, mutta kuljetusratkaisu on valittava uudelleen."
+        },
+        {
+          "id": "bypass_ok",
+          "text": "Kiertoreitti soveltuu suunnitelluille kuljetuksille. Matka ja kustannusarvio kasvavat, mutta voimalamalli voidaan säilyttää."
+        },
+        {
+          "id": "model_report",
+          "text": "Toisen voimalamallin kuljetusratkaisu on arvioitu. Sen hinta- ja tuotantotiedot tuodaan päätettäväksi yhdessä muuttuvien selvitystarpeiden kanssa."
+        }
+      ],
+      "choices": {}
+    },
+    {
+      "id": "LP1-A01",
+      "kind": "decision",
+      "stage": 3,
+      "title": "Paneelit heijastavat lähestymissuuntaan",
+      "body": "Häikäisyselvitys osoittaa paneelikentän yhden lohkon heijastuksen lentopaikan lähestymissuuntaan. Toimittajan mukaan paneelipinta voidaan vaihtaa vähemmän heijastavaksi. Sen riittävyys täytyy vielä osoittaa.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Selvitetään toinen paneelipinta",
+          "result": "Toisesta paneelipinnasta pyydetään tekniset tiedot ja uusi häikäisylaskenta. Lohko säilyy toistaiseksi suunnitelmassa.",
+          "branches": []
+        },
+        "B": {
+          "label": "Jätetään heijastuksen aiheuttava lohko pois",
+          "result": "Heijastuksen aiheuttava paneelilohko jätetään pois. Muu kenttä tarkistetaan samalla laskentatavalla.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-A05",
+      "kind": "decision",
+      "stage": 3,
+      "title": "Uusi paneelipinta ei riitä",
+      "body": "Uusintalaskennan mukaan heijastus osuu edelleen lähestymissuuntaan. Suunnittelija on löytänyt toisen lohkoasettelun, mutta siihen mahtuu vähemmän paneeleja. Toinen vaihtoehto on jättää koko ongelmalohko pois.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Valitaan tutkittu pienempi lohkoasettelu",
+          "result": "Lohkon suuntaus ja paneelimäärä muutetaan tutkitun vaihtoehdon mukaisiksi. Osa kapasiteetista säilyy.",
+          "branches": []
+        },
+        "B": {
+          "label": "Jätetään koko ongelmalohko pois",
+          "result": "Lohko poistetaan kaava- ja lupapiirustuksista. Muu aurinkohanke jatkuu pienempänä.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-E-A01",
+      "kind": "event",
+      "stage": 3,
+      "title": "Häikäisyn tarkistus valmistui",
+      "body": "",
+      "branches": [
+        {
+          "id": "surface_ok",
+          "text": "Uuden paneelipinnan ja sijoittelun laskenta ei osoita aiempaa haitallista heijastusta. Ratkaisu ja käytettävä paneelityyppi kirjataan suunnitelmaan."
+        },
+        {
+          "id": "surface_no",
+          "text": "Paneelipinnan vaihtaminen ei poista haitallista heijastusta tästä suunnasta. Kentän asettelua tai laajuutta on muutettava."
+        },
+        {
+          "id": "layout_ok",
+          "text": "Uusi asettelu välttää todetun heijastuksen. Lohkoon jää aiempaa vähemmän paneeleja, mutta sitä ei tarvitse poistaa kokonaan."
+        },
+        {
+          "id": "block_out",
+          "text": "Ongelmalohkon poisto ratkaisee tarkastellun heijastuksen. Muut paneelialueet jäävät jatkosuunnitteluun."
+        }
+      ],
+      "choices": {}
+    },
+    {
+      "id": "LP1-A02",
+      "kind": "decision",
+      "stage": 2,
+      "title": "Kuiva pelto, syvällä toinen tilanne",
+      "body": "Paneelialueen kaapeli- ja kuivatussuunnitelma ulottuu maakerrokseen, jossa epäillään sulfidipitoista maata. Jos kerros pääsee hapettumaan, valumavedet voivat happamoitua. Epäily koskee vain yhtä kentän osaa.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Tutkitaan maakerros ja muokataan kaivusuunnitelmaa",
+          "result": "Maaperänäytteet ja kaivusyvyyksien tarkistus tilataan. Epäiltyä kentän osaa ei vielä jätetä pois.",
+          "branches": []
+        },
+        "B": {
+          "label": "Jätetään epäilty kentän osa pois",
+          "result": "Suunnittelua jatketaan ilman epäiltyä lohkoa. Sen osalta ei tarvita samaa syvää kaivua tai kuivatusta.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-A06",
+      "kind": "decision",
+      "stage": 3,
+      "title": "Kaivusuunnitelma menee uusiksi",
+      "body": "Näytteet vahvistavat happamoitumisriskin suunnitellulla kaivusyvyydellä. Asiantuntijan vaihtoehto jättää riskikerroksen rauhaan, mutta kaapelointi pitenee ja vedet täytyy johtaa uudelleen. Toinen ratkaisu on poistaa lohko.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Valitaan tutkittu matalampi kaivuratkaisu",
+          "result": "Kaapelointi ja vesienhallinta suunnitellaan asiantuntijan vaihtoehdon mukaisiksi. Paneelilohko voidaan säilyttää.",
+          "branches": []
+        },
+        "B": {
+          "label": "Poistetaan kyseinen paneelilohko",
+          "result": "Lohko jää rakentamisen ulkopuolelle. Kaapeli- ja kuivatuspiirustukset päivitetään pienemmälle kentälle.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-E-A02",
+      "kind": "event",
+      "stage": 3,
+      "title": "Maaperäselvityksen tulos",
+      "body": "",
+      "branches": [
+        {
+          "id": "no_acid",
+          "text": "Näytteet ja kaivusuunnitelma eivät osoita epäiltyä happamoitumisriskiä tässä lohkossa. Paneeliala voidaan säilyttää."
+        },
+        {
+          "id": "risk",
+          "text": "Suunniteltu kaivu voisi altistaa sulfidipitoisen kerroksen hapettumiselle. Kaivusyvyyttä ja vesienhallintaa on muutettava tai lohko jätettävä pois."
+        },
+        {
+          "id": "shallower",
+          "text": "Muuttunut kaivuratkaisu ei ulotu riskikerrokseen eikä muuta sen vesitaloutta haitallisesti. Paneelilohko säilyy, mutta suunnittelu ja kaapelointi maksavat enemmän."
+        },
+        {
+          "id": "excluded",
+          "text": "Riskialttiiksi arvioitu lohko on poistettu kaivu- ja kuivatussuunnitelmasta. Muu kenttä jatkaa ilman tämän lohkon kapasiteettia."
+        }
+      ],
+      "choices": {}
+    },
+    {
+      "id": "LP1-A03",
+      "kind": "decision",
+      "stage": 2,
+      "title": "Lampuri ehdottaa yhteistyötä",
+      "body": "Paikallinen lampuri tarjoaisi laidunnusta aurinkokentän kasvillisuuden hoitoon. Hän tarvitsee toimivan portin ja turvalliset kulkureitit. Paneelien alla ei vielä laidunna kukaan: toteutus pitää suunnitella ja sopia.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Suunnitellaan laidunnus osaksi kenttää",
+          "result": "Lampurin kanssa sovitaan eläinten hoidosta, kulusta ja aitaamisesta. Laite- ja kaapeliturvallisuus tarkistetaan suunnittelussa.",
+          "branches": []
+        },
+        "B": {
+          "label": "Suunnitellaan kasvillisuuden hoito niittämällä",
+          "result": "Kentän kasvillisuuden hoito suunnitellaan koneellisesti. Lampurin ehdotuksesta ei tehdä sopimusta.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-E-A03",
+      "kind": "event",
+      "stage": 3,
+      "title": "Kasvillisuuden hoidosta sovittiin",
+      "body": "",
+      "branches": [
+        {
+          "id": "grazing",
+          "text": "Laidunnus sopii suunnitelmaan. Portit, turvallisuusjärjestelyt ja hoitovastuut on sovittu. Paikallinen yhteistyö tuo tällä kertaa ratkaisun eikä uutta kiistaa."
+        },
+        {
+          "id": "not_suitable",
+          "text": "Laidunnusta ei saada sovitettua tähän kenttään turvallisesti. Kasvillisuuden hoito suunnitellaan niittämällä; paneeliala säilyy."
+        },
+        {
+          "id": "mowing",
+          "text": "Niittokalustolle on toimivat reitit ja kasvillisuuden hoidosta on suunnitelma. Kentän muu suunnittelu jatkuu."
+        }
+      ],
+      "choices": {}
+    },
+    {
+      "id": "LP1-A04",
+      "kind": "decision",
+      "stage": 2,
+      "title": "Kaksi tarjousta, sama liittymäteho",
+      "body": "Liittymän suunnitteluraja on {solarAcMW} MW. Toinen vaihtoehto sisältää {dcLowMWp} MWp paneeleita, toinen {dcHighMWp} MWp. Isompi kenttä voi tuottaa enemmän vuodessa, mutta huippuhetkien tehoa ei saada kokonaan verkkoon.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Mallinnetaan suuremman paneelimäärän hyöty",
+          "result": "Suuremmalle paneelimäärälle lasketaan vuosituotanto, tehorajoituksen menetys ja tarvittava kenttätila. Liittymäteho ei kasva.",
+          "branches": []
+        },
+        "B": {
+          "label": "Pidetään pienempi paneelivaihtoehto",
+          "result": "Jatkosuunnittelu käyttää pienempää paneelimäärää ja sen kustannusarviota. Suurempaa vaihtoehtoa ei oteta mukaan ilman lisävertailua.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-E-A04",
+      "kind": "event",
+      "stage": 3,
+      "title": "Paneelimäärän vertailu valmistui",
+      "body": "",
+      "branches": [
+        {
+          "id": "useful",
+          "text": "Suurempi paneelivaihtoehto tuottaisi tässä laskelmassa enemmän käyttökelpoista vuosienergiaa myös tehorajoituksen jälkeen. Lisähinta ja kenttätila esitetään omistajalle päätettäväksi."
+        },
+        {
+          "id": "weak",
+          "text": "Lisäpaneelien laskettu hyöty jää pieneksi suhteessa lisähintaan ja tehorajoitukseen. Suunnittelua jatketaan pienemmällä vaihtoehdolla."
+        },
+        {
+          "id": "small",
+          "text": "Pienempi paneelivaihtoehto on jatkosuunnittelun lähtökohta. Sen vuosituotanto ja liittymän vientiraja ovat mukana kustannusarviossa."
+        }
+      ],
+      "choices": {}
+    },
+    {
+      "id": "LP1-Y01",
+      "kind": "decision",
+      "stage": 4,
+      "title": "Yksi hanke, kaksi valtuustoa",
+      "body": "Tuotantoalue ulottuu kahteen kuntaan, joissa laaditaan omat osayleiskaavat. Ensimmäinen kunta hyväksyy ratkaisunsa. Toinen palauttaa pienen reuna-alueen uudelleen valmisteltavaksi. Muu kokonaisuus voisi toimia ilman sitä.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Odotetaan toisen kunnan tarkistettua ratkaisua",
+          "result": "Toisen kunnan esiin nostamat vaikutukset täydennetään. Hankkeen nykyinen kokonaisuus pysyy toistaiseksi suunnitelmassa.",
+          "branches": []
+        },
+        "B": {
+          "label": "Jatketaan ilman palautettua reuna-aluetta",
+          "result": "Toisen kunnan puolella oleva tuotantoalue jätetään tästä hankevaiheesta pois. Jäljelle jäävän kokonaisuuden kaava- ja lupatarpeet tarkistetaan.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-E-Y01",
+      "kind": "event",
+      "stage": 4,
+      "title": "Toisen kunnan asian käsittely eteni",
+      "body": "",
+      "branches": [
+        {
+          "id": "both",
+          "text": "Myös toinen kunta hyväksyy kaavaratkaisunsa. Koko suunniteltu tuotantoalue säilyy. Molempien päätösten muutoksenhaku ja lainvoima tarkistetaan erikseen."
+        },
+        {
+          "id": "exclude_after_wait",
+          "text": "Toinen kunta ei hyväksy tuotantoalueensa kaavaa. Muu hanke voisi jatkaa ilman tätä osaa, mutta rajaus on päätettävä uudelleen."
+        },
+        {
+          "id": "separated",
+          "text": "Jäljelle jäävä hanke on erotettu palautetusta alueesta. Sen kaava- ja lupa-asiakirjat vastaavat nyt pienempää kokonaisuutta."
+        }
+      ],
+      "choices": {}
+    },
+    {
+      "id": "LP1-H01",
+      "kind": "decision",
+      "stage": 3,
+      "title": "Jatketaanko aurinkovoimahankkeena?",
+      "body": "Tuulivoimaosalle ei löydy toteuttamiskelpoista jatkoa. Hankkeessa on kuitenkin edelleen {solarHa} hehtaaria käyttökelpoista aurinkoaluetta. Omistaja on valmis jatkamaan sen selvittämistä. Pelkästä aurinkohankkeesta tarvitaan päivitetty suunnitelma.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Jatketaan aurinkovoimahankkeena",
+          "result": "Tuulivoimaosa jätetään pois ja aurinkohankkeen suunnitelma päivitetään. Tehdyt selvitykset hyödynnetään siltä osin kuin ne vastaavat muuttunutta hanketta.",
+          "branches": []
+        },
+        "B": {
+          "label": "Lopetetaan tämän hankkeen kehitys",
+          "result": "Hankkeen kehitys päättyy. Aurinkovoiman jatkosuunnitelmaa ei tilata.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-E-H01",
+      "kind": "event",
+      "stage": 3,
+      "title": "Aurinkohankkeen valmistelu jatkuu",
+      "body": "",
+      "branches": [
+        {
+          "id": "converted",
+          "text": "Tuulivoimalat eivät enää kuulu hankkeeseen. Aurinkokenttää on jäljellä {solarHa} ha. Aiempiin selvityksiin kuluneet rahat ja aika jäävät hankkeelle; nyt selvitetään, mitä muuttunut suunnitelma vielä tarvitsee."
+        }
+      ],
+      "choices": {}
+    },
+    {
+      "id": "LP1-E-H02",
+      "kind": "event",
+      "stage": 3,
+      "title": "Aurinkohankkeen täydennystarpeet selvisivät",
+      "body": "",
+      "branches": [
+        {
+          "id": "reuse",
+          "text": "Aiemmat aurinkoalueen selvitykset voidaan käyttää päivitetyn suunnitelman pohjana. Tuuliosaa koskevat kohdat poistetaan asiakirjoista. Aurinkohankkeen oma kaava- ja lupakäsittely jatkuu."
+        },
+        {
+          "id": "supplement",
+          "text": "Nykyisen johtoreitin mitoitus ja vaikutusarvio pitää päivittää aurinkohankkeelle. Rajattu täydennys tilataan; muut käyttökelpoiset selvitykset säilyvät."
+        },
+        {
+          "id": "reduced",
+          "text": "Aurinkohankkeen oma sähköasema ja kulkuyhteys vievät tilaa paneelikentältä. Suunnittelija esittää pienempää kenttää, jolla itsenäinen ratkaisu olisi mahdollinen."
+        },
+        {
+          "id": "blocked",
+          "text": "Aurinko-osalle ei löydy toimivaa itsenäistä ratkaisua tutkituilla vaihtoehdoilla. Myös tämän jatkohankkeen kehitys päättyy."
+        }
+      ],
+      "choices": {}
+    },
+    {
+      "id": "LP1-H02",
+      "kind": "decision",
+      "stage": 3,
+      "title": "Oma sähköasema tarvitsee tilaa",
+      "body": "Itsenäisen aurinkohankkeen sähköasema ja kulku voidaan sijoittaa omille maille, mutta paneelialasta jäisi pois {lostSolarHa} ha. Jäljelle jäävä {remainingSolarHa} ha ylittää omistajan jatkorajan. Alueen kasvattamiseen ei ole sovittua lisämaata.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Jatketaan pienemmällä aurinkokentällä",
+          "result": "Sähköasemalle ja kululle varataan tila. Paneeliala pienenee, ja päivitetty kokonaisuus viedään tarvittavaan kaava- ja lupakäsittelyyn.",
+          "branches": []
+        },
+        "B": {
+          "label": "Ei jatketa pienemmän vaihtoehdon kanssa",
+          "result": "Omistaja päättää lopettaa kehityksen. Pienempi aurinkohanke jää toteuttamatta.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-E-H03",
+      "kind": "event",
+      "stage": 4,
+      "title": "Aurinkohanke on luvitettu",
+      "body": "",
+      "branches": [
+        {
+          "id": "rescued_win",
+          "text": "Tuulivoimaosa jäi pois, mutta aurinkohankkeen tarvittavat luvat on saatu. Jäljellä on {solarHa} hehtaarin aurinkokenttä. Hankkeeseen käytetty aika ja raha ovat mukana loppupisteissä."
+        }
+      ],
+      "choices": {}
+    },
+    {
+      "id": "LP1-D-T04",
+      "kind": "decision",
+      "stage": 3,
+      "title": "Valitaanko toinen voimalamalli?",
+      "body": "Tutkittu vaihtoehto muuttaa hankkeen yhteistehoa {oldWindMW} → {newWindMW} MW ja kokonaiskorkeutta {oldHeightM} → {newHeightM} m. Uuden mallin vaikutusarviot on päivitettävä.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Valitaan tutkittu voimalamalli",
+          "result": "Hankkeen voimalamalli vaihdetaan. Muuttuvat vaikutusarviot ja lausunnot päivitetään.",
+          "branches": []
+        },
+        "B": {
+          "label": "Pidetään nykyinen malli ja kiertoreitti",
+          "result": "Nykyinen voimalamalli säilyy. Kiertoreitin suunnittelu käynnistyy.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-D-A04",
+      "kind": "decision",
+      "stage": 3,
+      "title": "Valitaanko suurempi paneelivaihtoehto?",
+      "body": "Paneeliteho olisi {dcHighMWp} MWp, mutta liittymän vientiraja pysyy {solarAcMW} MW:ssa. Vertailu osoittaa lisää käyttökelpoista vuosienergiaa. Lisäpaneelien kustannusarvio kuuluu vaihtoehtoon.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Valitaan suurempi paneelivaihtoehto",
+          "result": "Suurempi paneelivaihtoehto valitaan jatkosuunnitteluun. Liittymän vientiraja ei muutu.",
+          "branches": []
+        },
+        "B": {
+          "label": "Pidetään pienempi paneelivaihtoehto",
+          "result": "Jatketaan pienemmällä paneelivaihtoehdolla.",
+          "branches": []
+        }
+      }
+    },
+    {
+      "id": "LP1-D-Y01",
+      "kind": "decision",
+      "stage": 4,
+      "title": "Jatketaanko ilman toisen kunnan aluetta?",
+      "body": "Toisen kunnan tuotantoaluetta ei saada mukaan. Jäljelle jäävä hanke voidaan käsitellä omana pienempänä kokonaisuutenaan.",
+      "branches": [],
+      "choices": {
+        "A": {
+          "label": "Jatketaan pienemmällä alueella",
+          "result": "Toisen kunnan alue jätetään pois. Jäljelle jäävän suunnitelman asiakirjat päivitetään.",
+          "branches": []
+        },
+        "B": {
+          "label": "Lopetetaan hankkeen kehitys",
+          "result": "Omistaja päättää lopettaa hankkeen kehityksen.",
+          "branches": []
+        }
+      }
+    }
+  ],
+  "overlays": [
+    {
+      "sourceId": "land",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Vuokraneuvottelun kohteena tämän aurinkohankkeen paneelimaa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_solar; älä näytä refuse_wind-haaraa"
+      },
+      "implementation": "Säilytä A/B:n merkitys ja omistajien alkuperäinen vastaus. Kielteinen B vähentää vain sidottua solarBlock-alaa; ei tuulitiivistystä. Luonnollisen kielen lähdehaarat sidotaan nykyisiin haara-ID:ihin vertailuraportissa, ei indeksiin arvaamalla."
+    },
+    {
+      "sourceId": "land",
+      "contexts": [
+        "wind"
+      ],
+      "when": "Vuokraneuvottelun kohteena oman tuulihankkeen maa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_wind; älä näytä refuse_solar-haaraa"
+      },
+      "implementation": "Puhdas Tuuli ei saa ottaa aurinkohaaraa edes satunnaisen world.landComponent-arvon vuoksi."
+    },
+    {
+      "sourceId": "land-signing",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Vuokraneuvottelun kohteena tämän aurinkohankkeen paneelimaa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_solar; älä näytä refuse_wind-haaraa"
+      },
+      "implementation": "Säilytä A/B:n merkitys ja omistajien alkuperäinen vastaus. Kielteinen B vähentää vain sidottua solarBlock-alaa; ei tuulitiivistystä. Luonnollisen kielen lähdehaarat sidotaan nykyisiin haara-ID:ihin vertailuraportissa, ei indeksiin arvaamalla."
+    },
+    {
+      "sourceId": "land-signing",
+      "contexts": [
+        "wind"
+      ],
+      "when": "Vuokraneuvottelun kohteena oman tuulihankkeen maa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_wind; älä näytä refuse_solar-haaraa"
+      },
+      "implementation": "Puhdas Tuuli ei saa ottaa aurinkohaaraa edes satunnaisen world.landComponent-arvon vuoksi."
+    },
+    {
+      "sourceId": "land-index",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Vuokraneuvottelun kohteena tämän aurinkohankkeen paneelimaa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_solar; älä näytä refuse_wind-haaraa"
+      },
+      "implementation": "Säilytä A/B:n merkitys ja omistajien alkuperäinen vastaus. Kielteinen B vähentää vain sidottua solarBlock-alaa; ei tuulitiivistystä. Luonnollisen kielen lähdehaarat sidotaan nykyisiin haara-ID:ihin vertailuraportissa, ei indeksiin arvaamalla."
+    },
+    {
+      "sourceId": "land-index",
+      "contexts": [
+        "wind"
+      ],
+      "when": "Vuokraneuvottelun kohteena oman tuulihankkeen maa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_wind; älä näytä refuse_solar-haaraa"
+      },
+      "implementation": "Puhdas Tuuli ei saa ottaa aurinkohaaraa edes satunnaisen world.landComponent-arvon vuoksi."
+    },
+    {
+      "sourceId": "land-minimum",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Vuokraneuvottelun kohteena tämän aurinkohankkeen paneelimaa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_solar; älä näytä refuse_wind-haaraa"
+      },
+      "implementation": "Säilytä A/B:n merkitys ja omistajien alkuperäinen vastaus. Kielteinen B vähentää vain sidottua solarBlock-alaa; ei tuulitiivistystä. Luonnollisen kielen lähdehaarat sidotaan nykyisiin haara-ID:ihin vertailuraportissa, ei indeksiin arvaamalla."
+    },
+    {
+      "sourceId": "land-minimum",
+      "contexts": [
+        "wind"
+      ],
+      "when": "Vuokraneuvottelun kohteena oman tuulihankkeen maa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_wind; älä näytä refuse_solar-haaraa"
+      },
+      "implementation": "Puhdas Tuuli ei saa ottaa aurinkohaaraa edes satunnaisen world.landComponent-arvon vuoksi."
+    },
+    {
+      "sourceId": "land-minimum",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Oma aurinkohanke ja vähimmäisvuokraneuvottelu",
+      "fields": {
+        "title": "Vähimmäisvuokrasta uusi vaatimus",
+        "body": "Viimeiset maanomistajat pyytävät muita korkeampaa vähimmäisvuokraa myös vähäisen tuotannon vuosille. Sopimukset tarvitaan näille suunnitelluille paneelilohkoille."
+      },
+      "implementation": "Sama toiminto kuin lähdekortissa; poista myös mahdollisen narration-overlayn tuuliviittaus tässä kontekstissa."
+    },
+    {
+      "sourceId": "road",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Sopimuskartan virhe, paneelit mahtuvat oikealle alueelle",
+      "fields": {
+        "title": "Väärä karttaliite",
+        "body": "Maanomistaja huomaa vuokrasopimuksen kartassa vanhan kiinteistörajan. Suunniteltu paneelilohko mahtuu oikeallekin alueelle. Sama karttapohja on ollut käytössä muissakin sopimuksissa.",
+        "A.result": "Osapuolet hyväksyvät korjatun kartan. Paneelilohko säilyy."
+      },
+      "implementation": "Ei kapasiteettimuutosta yhden karttavirheen korjaamisesta; säilytä B:n koko tarkistuksen vaikutus."
+    },
+    {
+      "sourceId": "initiative-rumour",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Kylällä kiertää vanha aurinkohankkeen kartta",
+      "fields": {
+        "title": "Kylällä kiertää väärä kartta",
+        "body": "Kylällä jaetaan alustavaa karttaa, jossa paneelialue ulottuu nykyistä suunnitelmaa lähemmäs taloja. Nykyinen kartta pitäisi saada samoille vastaanottajille.",
+        "A.label": "Julkaistaan oikea kartta nyt",
+        "A.result": "Nykyinen rajaus julkaistaan ja ero vanhaan karttaan selitetään.",
+        "B.label": "Käydään muutos läpi yhteisessä tilaisuudessa",
+        "B.result": "Tilaisuuteen tuodaan nykyinen kartta ja tieto poistuneista paneelialueista."
+      },
+      "implementation": "Pidä nykyisen wrongPublicMap-ketjun viestintätyö ja A/B:n toiminnallinen ero; ei muuteta todellista paneelirajausta vain huhuvirheen vuoksi."
+    },
+    {
+      "sourceId": "opinions",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Havainnekuvan puute oman paneelikentän näkymästä",
+      "fields": {
+        "title": "Paneelikentän havainnekuva puuttuu",
+        "body": "Asukas pyytää havainnekuvaa kylätieltä, jonka varressa lähimmät talot ovat. Nykyinen kuvasarja ei näytä paneelikenttää tästä suunnasta.",
+        "A.label": "Tehdään puuttuva kuva ja esitellään se",
+        "A.result": "Kylätien havainnekuva tehdään nykyisellä paneelisijoittelulla. Tulos käsitellään asukkaiden kanssa.",
+        "B.label": "Kootaan kuvat ja vastaukset kirjallisesti",
+        "B.result": "Puuttuva näkymä täydennetään kirjalliseen vastineaineistoon."
+      },
+      "implementation": "Säilytä publicFeedback-tapauksen tiedontarve; ei wind-count-riskiryhmää eikä tuulivoimalan melulaskentaa. Molemmat selvittävät puuttuvan näkymän, eri työnkululla."
+    },
+    {
+      "sourceId": "opinions-photo",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Havainnekuvan puute oman paneelikentän näkymästä",
+      "fields": {
+        "title": "Paneelikentän havainnekuva puuttuu",
+        "body": "Asukas pyytää havainnekuvaa kylätieltä, jonka varressa lähimmät talot ovat. Nykyinen kuvasarja ei näytä paneelikenttää tästä suunnasta.",
+        "A.label": "Tehdään puuttuva kuva ja esitellään se",
+        "A.result": "Kylätien havainnekuva tehdään nykyisellä paneelisijoittelulla. Tulos käsitellään asukkaiden kanssa.",
+        "B.label": "Kootaan kuvat ja vastaukset kirjallisesti",
+        "B.result": "Puuttuva näkymä täydennetään kirjalliseen vastineaineistoon."
+      },
+      "implementation": "Säilytä publicFeedback-tapauksen tiedontarve; ei wind-count-riskiryhmää eikä tuulivoimalan melulaskentaa. Molemmat selvittävät puuttuvan näkymän, eri työnkululla."
+    },
+    {
+      "sourceId": "surveys",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Luontoselvitysten tekijä on valittava",
+        "A.result": "Tämän maastokauden työ tilataan sovitulla hinnalla. Havainnot saadaan kaavan vaikutusarviointiin.",
+        "B.result": "Edullisempi tarjous hyväksytään ja maastotyöt varataan seuraavalle kaudelle. Muut sovitut työt jatkuvat."
+      },
+      "implementation": "Korvaa vain näkyvä konsultin/YVA-ohjelman rooli luontoselvityskokonaisuudeksi. bodyssa säilytä lähteen täsmälliset tarjoushinnat ja nyt/ensi kausi -ero; renderöi no-YVA-versio ilman lausetta koko YVA-menettelyn tilaamisesta. Hintaa ei veloiteta uudelleen jo tilatusta samasta työstä."
+    },
+    {
+      "sourceId": "surveys-spring",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Luontoselvitysten tekijä on valittava",
+        "A.result": "Tämän maastokauden työ tilataan sovitulla hinnalla. Havainnot saadaan kaavan vaikutusarviointiin.",
+        "B.result": "Edullisempi tarjous hyväksytään ja maastotyöt varataan seuraavalle kaudelle. Muut sovitut työt jatkuvat."
+      },
+      "implementation": "Korvaa vain näkyvä konsultin/YVA-ohjelman rooli luontoselvityskokonaisuudeksi. bodyssa säilytä lähteen täsmälliset tarjoushinnat ja nyt/ensi kausi -ero; renderöi no-YVA-versio ilman lausetta koko YVA-menettelyn tilaamisesta. Hintaa ei veloiteta uudelleen jo tilatusta samasta työstä."
+    },
+    {
+      "sourceId": "surveys-access",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Luontoselvitysten tekijä on valittava",
+        "A.result": "Tämän maastokauden työ tilataan sovitulla hinnalla. Havainnot saadaan kaavan vaikutusarviointiin.",
+        "B.result": "Edullisempi tarjous hyväksytään ja maastotyöt varataan seuraavalle kaudelle. Muut sovitut työt jatkuvat."
+      },
+      "implementation": "Korvaa vain näkyvä konsultin/YVA-ohjelman rooli luontoselvityskokonaisuudeksi. bodyssa säilytä lähteen täsmälliset tarjoushinnat ja nyt/ensi kausi -ero; renderöi no-YVA-versio ilman lausetta koko YVA-menettelyn tilaamisesta. Hintaa ei veloiteta uudelleen jo tilatusta samasta työstä."
+    },
+    {
+      "sourceId": "surveys-team",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Luontoselvitysten tekijä on valittava",
+        "A.result": "Tämän maastokauden työ tilataan sovitulla hinnalla. Havainnot saadaan kaavan vaikutusarviointiin.",
+        "B.result": "Edullisempi tarjous hyväksytään ja maastotyöt varataan seuraavalle kaudelle. Muut sovitut työt jatkuvat."
+      },
+      "implementation": "Korvaa vain näkyvä konsultin/YVA-ohjelman rooli luontoselvityskokonaisuudeksi. bodyssa säilytä lähteen täsmälliset tarjoushinnat ja nyt/ensi kausi -ero; renderöi no-YVA-versio ilman lausetta koko YVA-menettelyn tilaamisesta. Hintaa ei veloiteta uudelleen jo tilatusta samasta työstä."
+    },
+    {
+      "sourceId": "transition-1",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Kaava-aloite ja selvityssuunnitelma",
+        "body": "Maa-alueet riittävät nykyiseen aurinkosuunnitelmaan. Kunta käsittelee kaava-aloitteen ja sovitaan tarvittavat vaikutusselvitykset. Tässä hankkeessa ei tarvita erillistä YVA-menettelyä."
+      },
+      "implementation": "Viimeinen lause vain todetulle notRequired-ratkaisulle; tuntemattomalle käytä ensin menettelytarpeen tarkistusta."
+    },
+    {
+      "sourceId": "transition-2",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Vaikutusselvitykset ja kaavaluonnos",
+        "body": "Maastotiedot ja muut selvitykset kootaan aurinkohankkeen vaikutusarvioksi. Kunta valmistelee niiden pohjalta kaavaluonnosta."
+      },
+      "implementation": "Ei yvaConclusion-lipun kirjoitusta tai päätelmä-nimistä tapahtumaa."
+    },
+    {
+      "sourceId": "transition-3",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Kaavaehdotus ja luvitus",
+        "body": "Kaavaluonnoksen palaute on koottu. Suunnitelmaa ja vaikutusarvioita täydennetään ennen kaavaehdotuksen käsittelyä. Hyväksyminen ja tarvittavat luvat ratkaistaan erikseen."
+      },
+      "implementation": "Ehdotuksen ja rakentamislupien normaali portti säilyy."
+    },
+    {
+      "sourceId": "progress-12",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Kaavaluonnoksen yleisötilaisuus pidettiin",
+        "body": "Aurinkohankkeen kaavaluonnosta esiteltiin asukkaille. Kysymykset ja paikalliset havainnot kootaan vastineita ja mahdollisia täydennyksiä varten."
+      },
+      "implementation": "Ei väitettä selostuksen nähtävilläolosta, ellei oikea YVA-selostus kuulu tähän profiiliin."
+    },
+    {
+      "sourceId": "EV-PV",
+      "contexts": [
+        "hybrid"
+      ],
+      "when": "recovery.status=offered AND wind-only defence failure",
+      "fields": {
+        "fatalWindLead": "Puolustusvoimat vastustaa selvitettyjä tuulivoimavaihtoehtoja. Tuulivoimaosalle ei löydy hyväksyttävää sijoittelua."
+      },
+      "implementation": "Tämä on täsmällinen kielteisen tuulihaaran esitysteksti LP1-H01:n edelle, ei muiden EV-PV-tulosten korvaus tai koko yrityksen lopettamislause."
+    },
+    {
+      "sourceId": "EV-VTT-TULOS",
+      "contexts": [
+        "hybrid"
+      ],
+      "when": "recovery.status=offered AND wind-only defence failure",
+      "fields": {
+        "fatalWindLead": "Tutkavaikutusselvityksen perusteella Puolustusvoimat vastustaa myös suppeaa tuulivoimavaihtoehtoa. Tuulivoimaosaa ei voida jatkaa."
+      },
+      "implementation": "Sama offer-portti kuin EV-PV:llä, ei automaattista poistoa eikä lopetettujen jonojen palautusta."
+    }
+  ],
+  "policy": [
+    {
+      "id": "start",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "land",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "road",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "land-signing",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "land-index",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "land-minimum",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "land-map-versions",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "land-area-explained",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P1-MAARIITA",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "land-meetings",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P1-01",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P1-03",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P1-04",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P1-05",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P1-06",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P1-07",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P1-08",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P1-09",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "BESS-P1-01",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P1-02",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P1-03",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "interludes[0][0]",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "land-done",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-MAA",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-SOPIMUSSIVUT",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-VOIMALALUPAUS",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "external-0",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "ext-land-owner",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "ext-land-use",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "transition-1",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "defence",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "surveys",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "research",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "initiative-rumour",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "initiative-council",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "initiative-cottage",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "surveys-spring",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "surveys-access",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "surveys-team",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "research-gps",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "research-cumulative",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "research-seasons",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "programme-birds",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "programme-range",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "herding-programme",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "programme-cumulative",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P2-01",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P2-02",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P2-03",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P2-04",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P2-05",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P2-06",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P2-07",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P2-08",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P2-09",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P2-10",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P2-11",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P2-12",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "BESS-P2-01",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P2-02",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P2-03",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P2-04",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P2-05",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "interludes[1][0]",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "interludes[1][1]",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "interludes[1][2]",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "interludes[1][3]",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "surveys-wait",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "surveys-wait::no-yva",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-MAARIITA",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "EV-ETUSIJA",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-SELVITYSJARJESTYS",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-MAASTOKAUSI",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-PV",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "EV-VTT-TULOS",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "external-1",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "ext-initiative-priority",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "ext-initiative-owner",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "transition-2",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "nature",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "solarNature",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P3-KOSTEIKKO",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "noise",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "height",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "solarWater",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "opinions",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "golden-known",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "golden-unknown",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "golden-shared",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "nature-reindeer-calving",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "nature-reindeer-route",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "nature-squirrel",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "nature-bird-area",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "herding-pasture",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "noise-neighbour-model",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "noise-neighbour-layout",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "noise-joint",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "height-ground",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "height-approach",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "height-ridge",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "solar-nest-water",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-frog-basin",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-required-wetland",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-postcare",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "opinions-photo",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "opinions-club",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "opinions-noise",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "herding-opinions",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-pond",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-ditch",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-water",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-squirrel",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-bird-area",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-view-road",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-view-winter",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-view-edge",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-rain",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-drain",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solar-snow",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "nature::solar-base",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "noise::solar-base",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "height::solar-base",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "solarNature::wind",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "solarWater::wind",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P3-01",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P3-02",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P3-03",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P3-04",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P3-05",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P3-06",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P3-07",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P3-08",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P3-09",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P3-10",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P3-11",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P3-12",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P3-13",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P3-14",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "P3-SOPIMUS",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "BESS-P3-01",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P3-02",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P3-03",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P3-04",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P3-05",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P3-06",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P3-07",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "interludes[2][0]",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "interludes[2][1]",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "interludes[2][2]",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "interludes[2][3]",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "progress-12",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "contract-callback",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "draft-done",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "draft-done::no-yva",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "noise-statement",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "EV-YHTEISASEMA",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-VERKKO",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-NAAPURITIETO",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "EV-VAIHTOEHDOT",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "EV-ILMAILU",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "EV-LUONTO",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-KOTKA",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "EV-PORO",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-VESI",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-KOSTEIKKO",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-PALAUTE",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-BESS-VERKKO",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "EV-BESS-TEKNIIKKA",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "external-2",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "ext-grid-station",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "ext-nature-network",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "external-golden-full",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "external-herding",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "transition-3",
+      "classification": "mode_presentation",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "feedback",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "natura",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "leases",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "hearing",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "proposal",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "natura-review",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P4-KOTKAPAIKAT",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "natura-season",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "natura-applicable",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "evidence-joint",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "evidence-natura",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "proposal-lake",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "proposal-village",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "proposal-photo",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "hearing-mitigation",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "hearing-condition",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "proposal::solar-base",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "feedback::noise",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "feedback::herding",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P4-01",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P4-02",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P4-03",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P4-04",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P4-05",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P4-06",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P4-07",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P4-08",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P4-09",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P4-10",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P4-VUOKRAJATKO",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "UUSI-P4-11",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "UUSI-P4-12",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "BESS-P4-01",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P4-02",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P4-03",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P4-04",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P4-RAJAUS",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P4-05",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "BESS-P4-06",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "EV-OPTIO",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "EV-MAAKUNTAODOTUS",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "interludes[3][0]",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "interludes[3][1]",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "interludes[3][2]",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "interludes[3][3]",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "proposal-review",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "adoption",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "ready",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-AURINKOLUONTO",
+      "classification": "requires_own_solar",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-MELU",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-MAISEMA",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-TUTKIMUS",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-NATURA",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-AJANTASAISUUS",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-LIEVENNYS",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-KORJAUS",
+      "classification": "case_scoped",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-MENETTELY",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-KUULEMINEN",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-KUNTA",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-HYVAKSYNTA",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-VALITUS",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-LAINVOIMA",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-LUVAT",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "EV-BESS-TURVA",
+      "classification": "hybrid_bess",
+      "contexts": [
+        "hybrid"
+      ]
+    },
+    {
+      "id": "external-3",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "ext-buyer",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "ext-grid-delivery",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "LOPPU-VUOKRA-AIKA",
+      "classification": "requires_own_wind",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ]
+    },
+    {
+      "id": "LOPPU-VOITTO",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "LOPPU-VALINTA",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "LOPPU-LAAJUUS",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "LOPPU-ULKOINEN",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "LOPPU-OMISTAJA",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    },
+    {
+      "id": "PISTEET",
+      "classification": "shared_requires_rule_audit",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ]
+    }
+  ],
+  "newPolicy": [
+    {
+      "id": "LP1-T01",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ],
+      "family": "lp1_shadow",
+      "role": "base"
+    },
+    {
+      "id": "LP1-E-T01",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ],
+      "family": "lp1_shadow",
+      "role": "result"
+    },
+    {
+      "id": "LP1-T02",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ],
+      "family": "lp1_tv",
+      "role": "base"
+    },
+    {
+      "id": "LP1-E-T02",
+      "contexts": [
+        "wind",
+        "hybrid"
+      ],
+      "family": "lp1_tv",
+      "role": "result"
+    },
+    {
+      "id": "LP1-T03",
+      "contexts": [
+        "wind"
+      ],
+      "family": "lp1_transport",
+      "role": "base"
+    },
+    {
+      "id": "LP1-T04",
+      "contexts": [
+        "wind"
+      ],
+      "family": "lp1_transport",
+      "role": "followup"
+    },
+    {
+      "id": "LP1-E-T03",
+      "contexts": [
+        "wind"
+      ],
+      "family": "lp1_transport",
+      "role": "result"
+    },
+    {
+      "id": "LP1-A01",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_glare",
+      "role": "base"
+    },
+    {
+      "id": "LP1-A05",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_glare",
+      "role": "followup"
+    },
+    {
+      "id": "LP1-E-A01",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_glare",
+      "role": "result"
+    },
+    {
+      "id": "LP1-A02",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_sulfate",
+      "role": "base"
+    },
+    {
+      "id": "LP1-A06",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_sulfate",
+      "role": "followup"
+    },
+    {
+      "id": "LP1-E-A02",
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_sulfate",
+      "role": "result"
+    },
+    {
+      "id": "LP1-A03",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "family": "lp1_grazing",
+      "role": "base"
+    },
+    {
+      "id": "LP1-E-A03",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "family": "lp1_grazing",
+      "role": "result"
+    },
+    {
+      "id": "LP1-A04",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "family": "lp1_dcac",
+      "role": "base"
+    },
+    {
+      "id": "LP1-E-A04",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "family": "lp1_dcac",
+      "role": "result"
+    },
+    {
+      "id": "LP1-Y01",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_municipal",
+      "role": "base"
+    },
+    {
+      "id": "LP1-E-Y01",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_municipal",
+      "role": "result"
+    },
+    {
+      "id": "LP1-H01",
+      "contexts": [
+        "hybrid"
+      ],
+      "family": "lp1_solar_continuation",
+      "role": "recovery"
+    },
+    {
+      "id": "LP1-E-H01",
+      "contexts": [
+        "hybrid_solar"
+      ],
+      "family": "lp1_solar_continuation",
+      "role": "result"
+    },
+    {
+      "id": "LP1-E-H02",
+      "contexts": [
+        "hybrid_solar"
+      ],
+      "family": "lp1_solar_continuation",
+      "role": "result"
+    },
+    {
+      "id": "LP1-H02",
+      "contexts": [
+        "hybrid_solar"
+      ],
+      "family": "lp1_solar_continuation",
+      "role": "followup"
+    },
+    {
+      "id": "LP1-E-H03",
+      "contexts": [
+        "hybrid_solar"
+      ],
+      "family": "lp1_solar_continuation",
+      "role": "result"
+    },
+    {
+      "id": "LP1-D-T04",
+      "contexts": [
+        "wind"
+      ],
+      "family": "lp1_transport",
+      "role": "followup"
+    },
+    {
+      "id": "LP1-D-A04",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "family": "lp1_dcac",
+      "role": "followup"
+    },
+    {
+      "id": "LP1-D-Y01",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_municipal",
+      "role": "followup"
+    }
+  ]
+}

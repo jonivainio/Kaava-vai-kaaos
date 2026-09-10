@@ -1,8 +1,9 @@
 import raw from "../../../content/v5.fi.json";
+import lp1 from "../../../content/lp1.fi.json";
 import type { ContentEntry, SourceChoice } from "./types";
 
-export const CONTENT_VERSION = `v5-fi-${raw.sourceSha256.substring(0, 12)}`;
-export const content = raw.entries as ContentEntry[];
+export const CONTENT_VERSION = `v5-fi-${raw.sourceSha256.substring(0, 12)}-lp1-${lp1.sourceSha256.substring(0,12)}`;
+export const content = [...raw.entries, ...lp1.entries] as ContentEntry[];
 const byId = new Map(content.map(entry => [entry.id, entry]));
 if (byId.size !== content.length) throw new Error("Duplicate v5 content ID");
 export function entry(id: string): ContentEntry {

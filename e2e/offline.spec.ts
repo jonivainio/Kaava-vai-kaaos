@@ -1,5 +1,17 @@
 import { test, expect } from "@playwright/test";
 import { readFileSync, writeFileSync } from "node:fs";
+
+test('LP1 vanha sääntöversio säilyy vietävänä myös offline-tilassa',async({page,context})=>{
+  await page.goto('./');await page.evaluate(()=>navigator.serviceWorker.ready);
+  await expect.poll(()=>page.evaluate(()=>!!navigator.serviceWorker.controller)).toBe(true);
+  const raw=JSON.stringify({version:'swipe-v5-1',rulesVersion:'v5-rules-3',actions:[],note:'Säilytä alkuperäinen tiedosto.'});
+  await page.evaluate(raw=>localStorage.setItem('kaava-vai-kaaos:swipe:2',raw),raw);
+  await context.setOffline(true);await page.reload();
+  await expect(page.getByRole('alert')).toContainText('tallennus on turvassa');
+  const download=page.waitForEvent('download');await page.getByRole('button',{name:'Vie tallennus',exact:true}).click();
+  expect(readFileSync((await (await download).path())!,'utf8')).toBe(raw);
+  expect(await page.evaluate(()=>localStorage.getItem('kaava-vai-kaaos:swipe:2'))).toBe(raw);
+});
 test("tuotantopeli toimii repoalihakemistossa ja jatkuu offline-tilassa", async ({
   page,
   context,

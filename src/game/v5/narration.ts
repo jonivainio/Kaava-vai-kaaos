@@ -73,7 +73,8 @@ export const SHORT_STORIES: Record<string, string> = {
   "EV-LAINVOIMA": "Kaava on lainvoimainen. Hankkeen muut tarvittavat luvat tarkistetaan vielä.",
 };
 
-// Deliberately sparse and hand-selected. No jokes on routine approvals or endings.
+// Deliberately sparse and hand-selected. Terminal reactions describe the specific
+// setback without blaming the player for an external event (user 10 September).
 export const DECISION_REACTIONS: Record<string, string> = {
   "road": "Hups!", "land-map-versions": "Jaa että sellaista.", "UUSI-P1-05": "Oho.",
   "initiative-rumour": "Mitä nyt taas?", "programme-cumulative": "No huhhuh…",
@@ -89,6 +90,27 @@ export const DECISION_REACTIONS: Record<string, string> = {
   "BESS-P3-07": "Jaaha…", "BESS-P4-01": "Jaa että sellaista.",
 };
 export const EVENT_REACTIONS: Record<string, Record<string, string>> = {
+  'external-0': {'':'Jaaha. Suunta vaihtui.'},
+  'ext-land-owner': {'':'Meidän hanke osui listalle.'},
+  'ext-land-use': {'':'Tälle kartalle oli toinen suunnitelma.'},
+  'external-1': {'':'Se oli sitten siinä.'},
+  'ext-initiative-priority': {'':'Ovi jäi kiinni.'},
+  'ext-initiative-owner': {'':'Strategia ehti ensin.'},
+  'external-2': {'':'Sähköä olisi. Reittiä ei.'},
+  'ext-grid-station': {'':'Kalenteri loppui kesken.'},
+  'ext-nature-network': {'':'Tämä reitti oli jo käytössä.'},
+  'external-golden-full': {'':'Reviirillä tuli raja vastaan.'},
+  'external-herding': {'':'Tästä ei löytynyt kiertotietä.'},
+  'external-3': {'':'No niin. Se siitä rahoituksesta.'},
+  'ext-buyer': {'':'Kaupat jäivät tekemättä.'},
+  'ext-grid-delivery': {'':'Liian kauas tulevaisuuteen.'},
+  'LOPPU-LAAJUUS': {'':'Vähän kerrallaan. Lopulta liian vähän.'},
+  'LOPPU-VUOKRA-AIKA': {'':'Aika ajoi ohi.'},
+  'LP1-E-T03': {bridge_no:'Ei tämän sillan yli.'},
+  'LP1-E-A01': {surface_no:'Vieläkin häikäisee.'},
+  'LP1-E-A02': {risk:'Pinnan alta löytyi lisää mietittävää.'},
+  'LP1-E-Y01': {exclude_after_wait:'Toinen kyllä ei riittänyt.'},
+  'LP1-E-H02': {blocked:'Tämäkin vaihtoehto käytiin loppuun.'},
   "EV-YHTEISASEMA": { "": "Voi ei!" }, "EV-MAAKUNTAODOTUS": { "": "Mitä nyt taas?" },
   "EV-SOPIMUSSIVUT": { "b-85eec8a52400": "Jaa että sellaista." },
   "EV-VOIMALALUPAUS": { "b-dd5b71df865f": "Jaaha…" },

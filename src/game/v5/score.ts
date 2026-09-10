@@ -15,16 +15,17 @@ export function calculateScore(game: GameV5): ScoreResult {
   if (scope < 400) {
     const stats = getDerivedStats(game.run), notes: string[] = [];
     const f = (number: number) => number.toLocaleString("fi-FI", { maximumFractionDigits: 1 });
-    if (stats.windMWac < game.initial.windMW) notes.push(`Tuuliteho ${f(game.initial.windMW)} → ${f(stats.windMWac)} MW (${stats.windCount} voimalaa)`);
+    if (game.routeCategory!=='hybrid_solar' && stats.windMWac < game.initial.windMW) notes.push(`Tuuliteho ${f(game.initial.windMW)} → ${f(stats.windMWac)} MW (${stats.windCount} voimalaa)`);
     const heights = game.run.assets.windSites.filter(site => !site.exclusions.length).map(site => site.totalHeightM);
     if (heights.some(height => height < game.initial.windHeightM)) notes.push(`osa voimaloista madaltui, matalin ${Math.min(...heights)} m`);
     if (stats.windYieldIndex < game.initial.windYield) notes.push(`tuulivoiman tuotantoarvio pieneni ${f(game.initial.windYield - stats.windYieldIndex)} % käyttörajoituksista`);
     if (stats.solarHa < game.initial.solarHa) notes.push(`aurinkoalue ${f(game.initial.solarHa)} → ${f(stats.solarHa)} ha`);
-    if (game.initial.weights.bess > 0) {
+    if (game.routeCategory!=='hybrid_solar' && game.initial.weights.bess > 0) {
       if (game.battery.status !== "included") notes.push("akku jäi pois tämän vaiheen tavoitteesta");
       else if (game.battery.chargeMW < game.initial.bessChargeMW || game.battery.dischargeMW < game.initial.bessDischargeMW || game.battery.energyMWh < game.initial.bessMWh)
         notes.push(`akku: lataus ${f(game.battery.chargeMW)} MW, purku ${f(game.battery.dischargeMW)} MW, energia ${f(game.battery.energyMWh)} MWh`);
     }
+    if(game.routeCategory==='hybrid_solar')notes.push(`aurinkojatkon laajuutta verrataan alkuperäisen hybridin ${f(game.initial.solarHa)} ha:n ja ${f(game.initial.solarMWac)} MWac:n aurinkotavoitteeseen`);
     deductions.push({ category: "scope", reason: `${notes.join("; ")}.`, points: 400 - scope });
   }
   if (time < 200) deductions.push({ category: "time", reason: `Valinnoista aiheutui ${game.calendar.avoidableCriticalDelayMonths.toLocaleString("fi-FI")} kuukautta toteutunutta lisäaikaa hankkeen etenemiseen.`, points: 200 - time });

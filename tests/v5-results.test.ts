@@ -13,14 +13,14 @@ import type { GameV5, CaseRecord, SourceChoice } from "../src/game/v5/types";
 const assertions: { event: string; branch: string; source: string; choice: SourceChoice | null; caseId: string; dueAt: number }[] = [];
 afterAll(() => {
   let total = 0;
-  for (const entry of content) {
+  for (const entry of content.filter(item => !item.id.startsWith("LP1-"))) {
     for (const branch of entry.branches) { total++; expect(assertions.some(result => result.event === entry.id && result.branch === branch.id), `${entry.id}/${branch.id}`).toBe(true); }
     for (const choice of ["A", "B"] as const) for (const branch of entry.choices[choice]?.branches ?? []) {
       total++; expect(assertions.some(result => result.event === entry.id && result.choice === choice && result.branch === branch.id), `${entry.id}/${choice}/${branch.id}`).toBe(true);
     }
   }
   expect(total).toBe(143);
-  mkdirSync("reports/v5", { recursive: true }); writeFileSync("reports/v5/result-branch-tests.json", JSON.stringify(assertions, null, 2) + "\n");
+  mkdirSync("reports/lp1/legacy", { recursive: true }); writeFileSync("reports/lp1/legacy/result-branch-tests.json", JSON.stringify(assertions, null, 2) + "\n");
 });
 function decide(game: GameV5, source: string, choice: SourceChoice) {
   const rule = ruleFor(source), issue = openCase(game, source, rule.spec(game, source));

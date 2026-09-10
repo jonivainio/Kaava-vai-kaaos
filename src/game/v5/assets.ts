@@ -110,6 +110,7 @@ export function scopeRatio(game: GameV5): number {
   const height = live.length ? live.reduce((sum, site) => sum + site.totalHeightM, 0) / live.length : 0;
   const wind = ratio(d.windMWac, initial.windMW) * (0.8 + 0.1 * ratio(height, initial.windHeightM) + 0.1 * ratio(d.windYieldIndex, initial.windYield));
   const solar = (ratio(d.solarHa, initial.solarHa) + ratio(d.solarMWac, initial.solarMWac)) / 2;
+  if(game.routeCategory==='hybrid_solar')return solar;
   const battery = game.battery.status === "included" ? (ratio(game.battery.chargeMW, initial.bessChargeMW) + ratio(game.battery.dischargeMW, initial.bessDischargeMW) + ratio(game.battery.energyMWh, initial.bessMWh)) / 3 : 0;
   return wind * initial.weights.wind + solar * initial.weights.solar + battery * initial.weights.bess;
 }

@@ -450,7 +450,7 @@ img {
 }
 .choice-hints {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 18px;
   font-size: 14px;
   font-weight: 900;
@@ -459,6 +459,9 @@ img {
   padding: 7px 0 0;
 }
 .choice-hints > span {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  hyphens: auto;
   display: flex;
   align-items: center;
   gap: 8px;
@@ -1165,3 +1168,19 @@ img {
 @keyframes cloud-in { from { translate: 100px 0; opacity: 0; } to { translate: 0 0; opacity: 1; } }
 @keyframes confetti-fall { 0% { opacity: 0; transform: translateY(-20px) rotate(0deg); } 12% { opacity: 1; } 85% { opacity: 1; } 100% { opacity: 0; transform: translateY(var(--fall)) rotate(var(--turn)); } }
 @media (prefers-reduced-motion: reduce) { .celebration { display: none; } }
+
+/* LP1: solar ratings stay separate and readable in a narrow handset. */
+.solar-power-stats { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 7px; flex: 1; width: 100%; }
+.solar-power-stats div { display:flex; flex-direction:column; align-items:center; text-align:center; }
+.solar-power-stats strong { font-size:17px; white-space:nowrap; }
+.solar-power-stats small { font-size:10px; }
+.solar-power-stats span { font-size:10px; line-height:1.25; color:#d7c7ed; }
+.solar.asset-hud { display:flex; flex-wrap:wrap; gap:12px; padding-right:22px; }
+.solar .solar-stats { flex:0 0 64px; min-width:0; flex-direction:column; gap:2px; }
+.solar .solar-stats strong { font-size:22px; }
+.solar .solar-stats > span:not(.asset-change) { font-size:10px; }
+.solar-power-stats { min-width:0; }
+.solar-power-stats strong { font-size:17px; }
+.solar-power-stats strong small { display:block; font-size:11px; }
+.solar-power-stats div { min-width:0; gap:3px; }
+.recovery-summary { font-style:italic; }

@@ -36,7 +36,7 @@ export const runSchema = z.strictObject({
   site, revealedSite: z.record(z.string(), scalar),
   assets: z.strictObject({
     windSites: z.array(z.strictObject({ id, modelId: model, totalHeightM: n.min(100).max(300), exclusions: z.array(id) })),
-    solarParcels: z.array(z.strictObject({ id, hectares: n.positive(), exclusions: z.array(id) })),
+    solarParcels: z.array(z.strictObject({ id, hectares: n.positive(), exclusions: z.array(id), dcMWp: n.optional(), inverterMWac: n.optional() })),
     exclusionGroups: z.record(z.string(), z.strictObject({ windIds: z.array(id), solarIds: z.array(id) })),
   }),
   windHeightCapM: n.min(100).max(300), selectedModelId: model,

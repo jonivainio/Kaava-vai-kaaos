@@ -1,0 +1,18 @@
+{
+  "packageId": "kaava-lisapaketti-01",
+  "version": "1.0",
+  "preparedDate": "2026-09-10",
+  "targetRepository": "jonivainio/Kaava-vai-kaaos",
+  "observedCommit": "e123ec68de0c94a40f05230a3d50a49752ff9bec",
+  "observedRulesVersion": "v5-rules-3",
+  "baseSourceSha256": "03ae272389667c41412e8fef7a86f091db147aa72fbe6907a54b79661d3003f2",
+  "purpose": [
+    "new-content",
+    "standalone-wind-and-solar",
+    "optional-hybrid-to-solar-continuation"
+  ],
+  "startWith": "00_ALOITA_TASTA.txt",
+  "primaryInstructions": "01_TOTEUTUSOHJE.md",
+  "playerSource": "02_UUDET_KORTIT_JA_EVENTIT.md",
+  "notRuntimeExecutable": true
+}

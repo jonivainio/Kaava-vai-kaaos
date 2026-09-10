@@ -1,0 +1,18 @@
+TOTEUTA KAAVA VAI KAAOS -LISÄPAKETTI 01 OLEMASSA OLEVAAN PELIIN
+
+Tämä on lisäys nykyiseen peliin, ei vanhan v5-toimituksen uudelleenintegrointi. Aloita 01_TOTEUTUSOHJE.md:stä. Lue 02:n uudet sisällöt ja 03:n pelimuoto-/jatkologiikka kokonaan. 04 määrittää hyväksymistestit, 05 lähteet ja 06 nykyisen sisältöpankin pelimuototarkistuksen.
+
+Toteuta kolme kokonaisuutta:
+1) uusi harkittu kortti- ja tapahtumasisältö,
+2) päävalikossa jo olevien Tuuli- ja Aurinko-pelimuotojen avaaminen aidosti erillisinä,
+3) hybridin tuuliosan estyessä joissakin soveltuvissa tilanteissa pelaajan valinta jatkaa samalla hankkeella aurinkovoimana.
+
+Älä vain poista disabled-ominaisuutta tai lisää kysymystä valmiin tappion päälle. Korjaa myös sisältöjen kelpoisuus, alkuarvot, pakolliset työt, lopputilat, pisteet, tallennuksen toisto ja nykyinen automaattinen defenceStopsWind-aurinkojatko. Tuuli-pelimuotoon ei saa lisätä aurinkoa; Aurinko-pelimuotoon ei saa lisätä tuulta. Tässä lisäpaketissa puhtaat tilat eivät avaa BESSiä. Nykyisen hybridin valinnainen BESS säilyy.
+
+Säilytä uusin v5-rules-3:n tai sitä uudemman paikallisen version toimiva kerronta: 18 peruspäätöksen tavoite, lyhyet yhdistetyt kuittaukset, enintään kolme ajankulkukorttia, valikoidut reaktiot sekä lukujen viimeisimmät muutokset. Älä palauta vanhaa jatkuvaa välitarinapinoa.
+
+Tutki ensin paikallinen Git-tila ja erot tämän paketin tarkastettuun commitiin e123ec68de0c94a40f05230a3d50a49752ff9bec. Säilytä kaikki uudemmat muutokset. Paketin lähde-JSON on kirjoitettua sisältöä ja suunnittelumetadataa, ei suoraan pelimoottorin suorittamaa sääntökoodia. Tee oikeat tyypitetyt säännöt ja testaa ne.
+
+Tee työ osissa mutta jatka inventoinnista toteutukseen, kuvitukseen ja testaukseen. Käytä tarkistuslistoja ja päivitä NEXT_STEPS.md jokaisen kokonaisuuden jälkeen. Älä muuta malliasetuksia, ota maksullisia palveluja käyttöön tai muokkaa muita projekteja. Noudata voimassa olevaa Git-/julkaisuvaltuutusta; älä julkaise keskeneräistä versiota.
+
+Lopuksi raportoi erikseen toteutettu, testattu ja todentamatta jäänyt. Onnistunut build ei ole todiste oikeasta pelimuotoerottelusta tai tasapainosta. Aja 04:n negatiiviset testit ja toistettavat simulaatiot, ja toimita näyttö siitä, että puhtaisiin pelimuotoihin ei vuoda väärän hankeosan sisältöä.

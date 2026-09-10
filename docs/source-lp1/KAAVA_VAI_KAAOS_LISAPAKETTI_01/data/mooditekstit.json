@@ -1,0 +1,306 @@
+{
+  "schemaVersion": "lp1-mode-texts-1",
+  "status": "authored-overlay-spec-not-runtime-code",
+  "overrides": [
+    {
+      "sourceId": "land",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Vuokraneuvottelun kohteena tämän aurinkohankkeen paneelimaa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_solar; älä näytä refuse_wind-haaraa"
+      },
+      "implementation": "Säilytä A/B:n merkitys ja omistajien alkuperäinen vastaus. Kielteinen B vähentää vain sidottua solarBlock-alaa; ei tuulitiivistystä. Luonnollisen kielen lähdehaarat sidotaan nykyisiin haara-ID:ihin vertailuraportissa, ei indeksiin arvaamalla."
+    },
+    {
+      "sourceId": "land",
+      "contexts": [
+        "wind"
+      ],
+      "when": "Vuokraneuvottelun kohteena oman tuulihankkeen maa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_wind; älä näytä refuse_solar-haaraa"
+      },
+      "implementation": "Puhdas Tuuli ei saa ottaa aurinkohaaraa edes satunnaisen world.landComponent-arvon vuoksi."
+    },
+    {
+      "sourceId": "land-signing",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Vuokraneuvottelun kohteena tämän aurinkohankkeen paneelimaa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_solar; älä näytä refuse_wind-haaraa"
+      },
+      "implementation": "Säilytä A/B:n merkitys ja omistajien alkuperäinen vastaus. Kielteinen B vähentää vain sidottua solarBlock-alaa; ei tuulitiivistystä. Luonnollisen kielen lähdehaarat sidotaan nykyisiin haara-ID:ihin vertailuraportissa, ei indeksiin arvaamalla."
+    },
+    {
+      "sourceId": "land-signing",
+      "contexts": [
+        "wind"
+      ],
+      "when": "Vuokraneuvottelun kohteena oman tuulihankkeen maa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_wind; älä näytä refuse_solar-haaraa"
+      },
+      "implementation": "Puhdas Tuuli ei saa ottaa aurinkohaaraa edes satunnaisen world.landComponent-arvon vuoksi."
+    },
+    {
+      "sourceId": "land-index",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Vuokraneuvottelun kohteena tämän aurinkohankkeen paneelimaa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_solar; älä näytä refuse_wind-haaraa"
+      },
+      "implementation": "Säilytä A/B:n merkitys ja omistajien alkuperäinen vastaus. Kielteinen B vähentää vain sidottua solarBlock-alaa; ei tuulitiivistystä. Luonnollisen kielen lähdehaarat sidotaan nykyisiin haara-ID:ihin vertailuraportissa, ei indeksiin arvaamalla."
+    },
+    {
+      "sourceId": "land-index",
+      "contexts": [
+        "wind"
+      ],
+      "when": "Vuokraneuvottelun kohteena oman tuulihankkeen maa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_wind; älä näytä refuse_solar-haaraa"
+      },
+      "implementation": "Puhdas Tuuli ei saa ottaa aurinkohaaraa edes satunnaisen world.landComponent-arvon vuoksi."
+    },
+    {
+      "sourceId": "land-minimum",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Vuokraneuvottelun kohteena tämän aurinkohankkeen paneelimaa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_solar; älä näytä refuse_wind-haaraa"
+      },
+      "implementation": "Säilytä A/B:n merkitys ja omistajien alkuperäinen vastaus. Kielteinen B vähentää vain sidottua solarBlock-alaa; ei tuulitiivistystä. Luonnollisen kielen lähdehaarat sidotaan nykyisiin haara-ID:ihin vertailuraportissa, ei indeksiin arvaamalla."
+    },
+    {
+      "sourceId": "land-minimum",
+      "contexts": [
+        "wind"
+      ],
+      "when": "Vuokraneuvottelun kohteena oman tuulihankkeen maa",
+      "fields": {
+        "branchPresentationPolicy": "accept + refuse_wind; älä näytä refuse_solar-haaraa"
+      },
+      "implementation": "Puhdas Tuuli ei saa ottaa aurinkohaaraa edes satunnaisen world.landComponent-arvon vuoksi."
+    },
+    {
+      "sourceId": "land-minimum",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Oma aurinkohanke ja vähimmäisvuokraneuvottelu",
+      "fields": {
+        "title": "Vähimmäisvuokrasta uusi vaatimus",
+        "body": "Viimeiset maanomistajat pyytävät muita korkeampaa vähimmäisvuokraa myös vähäisen tuotannon vuosille. Sopimukset tarvitaan näille suunnitelluille paneelilohkoille."
+      },
+      "implementation": "Sama toiminto kuin lähdekortissa; poista myös mahdollisen narration-overlayn tuuliviittaus tässä kontekstissa."
+    },
+    {
+      "sourceId": "road",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Sopimuskartan virhe, paneelit mahtuvat oikealle alueelle",
+      "fields": {
+        "title": "Väärä karttaliite",
+        "body": "Maanomistaja huomaa vuokrasopimuksen kartassa vanhan kiinteistörajan. Suunniteltu paneelilohko mahtuu oikeallekin alueelle. Sama karttapohja on ollut käytössä muissakin sopimuksissa.",
+        "A.result": "Osapuolet hyväksyvät korjatun kartan. Paneelilohko säilyy."
+      },
+      "implementation": "Ei kapasiteettimuutosta yhden karttavirheen korjaamisesta; säilytä B:n koko tarkistuksen vaikutus."
+    },
+    {
+      "sourceId": "initiative-rumour",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Kylällä kiertää vanha aurinkohankkeen kartta",
+      "fields": {
+        "title": "Kylällä kiertää väärä kartta",
+        "body": "Kylällä jaetaan alustavaa karttaa, jossa paneelialue ulottuu nykyistä suunnitelmaa lähemmäs taloja. Nykyinen kartta pitäisi saada samoille vastaanottajille.",
+        "A.label": "Julkaistaan oikea kartta nyt",
+        "A.result": "Nykyinen rajaus julkaistaan ja ero vanhaan karttaan selitetään.",
+        "B.label": "Käydään muutos läpi yhteisessä tilaisuudessa",
+        "B.result": "Tilaisuuteen tuodaan nykyinen kartta ja tieto poistuneista paneelialueista."
+      },
+      "implementation": "Pidä nykyisen wrongPublicMap-ketjun viestintätyö ja A/B:n toiminnallinen ero; ei muuteta todellista paneelirajausta vain huhuvirheen vuoksi."
+    },
+    {
+      "sourceId": "opinions",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Havainnekuvan puute oman paneelikentän näkymästä",
+      "fields": {
+        "title": "Paneelikentän havainnekuva puuttuu",
+        "body": "Asukas pyytää havainnekuvaa kylätieltä, jonka varressa lähimmät talot ovat. Nykyinen kuvasarja ei näytä paneelikenttää tästä suunnasta.",
+        "A.label": "Tehdään puuttuva kuva ja esitellään se",
+        "A.result": "Kylätien havainnekuva tehdään nykyisellä paneelisijoittelulla. Tulos käsitellään asukkaiden kanssa.",
+        "B.label": "Kootaan kuvat ja vastaukset kirjallisesti",
+        "B.result": "Puuttuva näkymä täydennetään kirjalliseen vastineaineistoon."
+      },
+      "implementation": "Säilytä publicFeedback-tapauksen tiedontarve; ei wind-count-riskiryhmää eikä tuulivoimalan melulaskentaa. Molemmat selvittävät puuttuvan näkymän, eri työnkululla."
+    },
+    {
+      "sourceId": "opinions-photo",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "Havainnekuvan puute oman paneelikentän näkymästä",
+      "fields": {
+        "title": "Paneelikentän havainnekuva puuttuu",
+        "body": "Asukas pyytää havainnekuvaa kylätieltä, jonka varressa lähimmät talot ovat. Nykyinen kuvasarja ei näytä paneelikenttää tästä suunnasta.",
+        "A.label": "Tehdään puuttuva kuva ja esitellään se",
+        "A.result": "Kylätien havainnekuva tehdään nykyisellä paneelisijoittelulla. Tulos käsitellään asukkaiden kanssa.",
+        "B.label": "Kootaan kuvat ja vastaukset kirjallisesti",
+        "B.result": "Puuttuva näkymä täydennetään kirjalliseen vastineaineistoon."
+      },
+      "implementation": "Säilytä publicFeedback-tapauksen tiedontarve; ei wind-count-riskiryhmää eikä tuulivoimalan melulaskentaa. Molemmat selvittävät puuttuvan näkymän, eri työnkululla."
+    },
+    {
+      "sourceId": "surveys",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Luontoselvitysten tekijä on valittava",
+        "A.result": "Tämän maastokauden työ tilataan sovitulla hinnalla. Havainnot saadaan kaavan vaikutusarviointiin.",
+        "B.result": "Edullisempi tarjous hyväksytään ja maastotyöt varataan seuraavalle kaudelle. Muut sovitut työt jatkuvat."
+      },
+      "implementation": "Korvaa vain näkyvä konsultin/YVA-ohjelman rooli luontoselvityskokonaisuudeksi. bodyssa säilytä lähteen täsmälliset tarjoushinnat ja nyt/ensi kausi -ero; renderöi no-YVA-versio ilman lausetta koko YVA-menettelyn tilaamisesta. Hintaa ei veloiteta uudelleen jo tilatusta samasta työstä."
+    },
+    {
+      "sourceId": "surveys-spring",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Luontoselvitysten tekijä on valittava",
+        "A.result": "Tämän maastokauden työ tilataan sovitulla hinnalla. Havainnot saadaan kaavan vaikutusarviointiin.",
+        "B.result": "Edullisempi tarjous hyväksytään ja maastotyöt varataan seuraavalle kaudelle. Muut sovitut työt jatkuvat."
+      },
+      "implementation": "Korvaa vain näkyvä konsultin/YVA-ohjelman rooli luontoselvityskokonaisuudeksi. bodyssa säilytä lähteen täsmälliset tarjoushinnat ja nyt/ensi kausi -ero; renderöi no-YVA-versio ilman lausetta koko YVA-menettelyn tilaamisesta. Hintaa ei veloiteta uudelleen jo tilatusta samasta työstä."
+    },
+    {
+      "sourceId": "surveys-access",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Luontoselvitysten tekijä on valittava",
+        "A.result": "Tämän maastokauden työ tilataan sovitulla hinnalla. Havainnot saadaan kaavan vaikutusarviointiin.",
+        "B.result": "Edullisempi tarjous hyväksytään ja maastotyöt varataan seuraavalle kaudelle. Muut sovitut työt jatkuvat."
+      },
+      "implementation": "Korvaa vain näkyvä konsultin/YVA-ohjelman rooli luontoselvityskokonaisuudeksi. bodyssa säilytä lähteen täsmälliset tarjoushinnat ja nyt/ensi kausi -ero; renderöi no-YVA-versio ilman lausetta koko YVA-menettelyn tilaamisesta. Hintaa ei veloiteta uudelleen jo tilatusta samasta työstä."
+    },
+    {
+      "sourceId": "surveys-team",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Luontoselvitysten tekijä on valittava",
+        "A.result": "Tämän maastokauden työ tilataan sovitulla hinnalla. Havainnot saadaan kaavan vaikutusarviointiin.",
+        "B.result": "Edullisempi tarjous hyväksytään ja maastotyöt varataan seuraavalle kaudelle. Muut sovitut työt jatkuvat."
+      },
+      "implementation": "Korvaa vain näkyvä konsultin/YVA-ohjelman rooli luontoselvityskokonaisuudeksi. bodyssa säilytä lähteen täsmälliset tarjoushinnat ja nyt/ensi kausi -ero; renderöi no-YVA-versio ilman lausetta koko YVA-menettelyn tilaamisesta. Hintaa ei veloiteta uudelleen jo tilatusta samasta työstä."
+    },
+    {
+      "sourceId": "transition-1",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Kaava-aloite ja selvityssuunnitelma",
+        "body": "Maa-alueet riittävät nykyiseen aurinkosuunnitelmaan. Kunta käsittelee kaava-aloitteen ja sovitaan tarvittavat vaikutusselvitykset. Tässä hankkeessa ei tarvita erillistä YVA-menettelyä."
+      },
+      "implementation": "Viimeinen lause vain todetulle notRequired-ratkaisulle; tuntemattomalle käytä ensin menettelytarpeen tarkistusta."
+    },
+    {
+      "sourceId": "transition-2",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Vaikutusselvitykset ja kaavaluonnos",
+        "body": "Maastotiedot ja muut selvitykset kootaan aurinkohankkeen vaikutusarvioksi. Kunta valmistelee niiden pohjalta kaavaluonnosta."
+      },
+      "implementation": "Ei yvaConclusion-lipun kirjoitusta tai päätelmä-nimistä tapahtumaa."
+    },
+    {
+      "sourceId": "transition-3",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Kaavaehdotus ja luvitus",
+        "body": "Kaavaluonnoksen palaute on koottu. Suunnitelmaa ja vaikutusarvioita täydennetään ennen kaavaehdotuksen käsittelyä. Hyväksyminen ja tarvittavat luvat ratkaistaan erikseen."
+      },
+      "implementation": "Ehdotuksen ja rakentamislupien normaali portti säilyy."
+    },
+    {
+      "sourceId": "progress-12",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "when": "procedureProfile.yvaRequired=false",
+      "fields": {
+        "title": "Kaavaluonnoksen yleisötilaisuus pidettiin",
+        "body": "Aurinkohankkeen kaavaluonnosta esiteltiin asukkaille. Kysymykset ja paikalliset havainnot kootaan vastineita ja mahdollisia täydennyksiä varten."
+      },
+      "implementation": "Ei väitettä selostuksen nähtävilläolosta, ellei oikea YVA-selostus kuulu tähän profiiliin."
+    },
+    {
+      "sourceId": "EV-PV",
+      "contexts": [
+        "hybrid"
+      ],
+      "when": "recovery.status=offered AND wind-only defence failure",
+      "fields": {
+        "fatalWindLead": "Puolustusvoimat vastustaa selvitettyjä tuulivoimavaihtoehtoja. Tuulivoimaosalle ei löydy hyväksyttävää sijoittelua."
+      },
+      "implementation": "Tämä on täsmällinen kielteisen tuulihaaran esitysteksti LP1-H01:n edelle, ei muiden EV-PV-tulosten korvaus tai koko yrityksen lopettamislause."
+    },
+    {
+      "sourceId": "EV-VTT-TULOS",
+      "contexts": [
+        "hybrid"
+      ],
+      "when": "recovery.status=offered AND wind-only defence failure",
+      "fields": {
+        "fatalWindLead": "Tutkavaikutusselvityksen perusteella Puolustusvoimat vastustaa myös suppeaa tuulivoimavaihtoehtoa. Tuulivoimaosaa ei voida jatkaa."
+      },
+      "implementation": "Sama offer-portti kuin EV-PV:llä, ei automaattista poistoa eikä lopetettujen jonojen palautusta."
+    }
+  ]
+}

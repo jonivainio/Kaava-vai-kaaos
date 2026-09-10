@@ -9,6 +9,12 @@ import type { OutcomeResolver } from "./types";
 
 export function beginAppealWindow(game: GameV5, issue: CaseRecord, sourceId: string): void {
   if (game.procedure.adopted) throw new Error("Plan is already adopted");
+  for (const municipality of game.municipalities.filter(m => m.included)) {
+    if (!municipality.adopted || municipality.planRevision !== game.planRevision) {
+      municipality.adopted = true; municipality.final = false;
+      municipality.finalAt = game.calendar.now + 1; municipality.planRevision = game.planRevision;
+    }
+  }
   game.procedure.adopted = true;
   game.procedure.documentRevision = game.planRevision;
   game.procedure.appeal = "window";

@@ -1,0 +1,18 @@
+{
+  "package": "kaava-lisapaketti-01",
+  "bundleValidation": "PASS",
+  "checksPassed": 382,
+  "errors": [],
+  "counts": {
+    "decisions": 13,
+    "events": 11,
+    "confirmations": 3,
+    "sources": 18,
+    "acceptanceCases": 60,
+    "eventBranches": 33,
+    "baselineIDs": 248
+  },
+  "gameTestsExecuted": false,
+  "gameRepositoryModified": false,
+  "scope": "Only source bundle structure, references, text correspondence and optional checksums; not implemented gameplay."
+}

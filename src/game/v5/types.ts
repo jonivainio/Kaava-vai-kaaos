@@ -3,6 +3,38 @@ export type { Mode, Side, ModelId, NamePool };
 export type Stage = 1 | 2 | 3 | 4;
 export type SourceChoice = "A" | "B";
 export type Component = "wind" | "solar" | "bess" | "shared";
+export type RouteCategory = Mode | "hybrid_solar";
+export interface FailureAssessment {
+  contentId: string; caseId: string | null; kind: Exclude<Ending["kind"], "win">;
+  originalCause: Ending["originalCause"]; values: Record<string, string>;
+  sourceId: string; revealedBasis: string; blockedComponents: Component[];
+  otherBlocks: string[]; alternativesExhausted: boolean;
+}
+export interface EvidenceCoverage {
+  workId: string; affectedComponents: Component[]; placeIds: string[]; parcelIds: string[];
+  planRevision: number; status: "covered" | "deltaRequired" | "historical"; reason: string;
+}
+export interface SolarContinuation {
+  status: "unavailable" | "available" | "offered" | "accepted" | "declined";
+  failure: FailureAssessment | null; additionalFailures: FailureAssessment[];
+  offeredAt: number | null; acceptedAt: number | null; revision: number | null;
+  review: "reuse" | "supplement" | "reduced" | "blocked";
+  minimumHa: number; minimumMWac: number; controlledLand: boolean; independentAccess: boolean;
+  independentGrid: boolean; ownerFunding: boolean; sharedBarrier: boolean;
+  unresolvedGridDesign: boolean; excludedParcelIds: string[]; evidence: EvidenceCoverage[];
+  cancellations: { id: string; reason: string }[];
+  assessments: { failure: FailureAssessment; eligible: boolean; month: number }[];
+  previousPermits: Permit[];
+}
+export interface SolarDesign {
+  exportLimitMW: number; dcLowMWp: number; dcHighMWp: number; inverterMWac: number;
+  profile: "openField" | "constrained"; annualLowMWh: number; annualHighMWh: number;
+  investmentEstimateEuros: number; logisticsKm: number; intraSiteCableKm: number;
+}
+export interface Municipality {
+  id: string; placeIds: string[]; parcelIds: string[]; included: boolean;
+  adopted: boolean; final: boolean; finalAt: number | null; planRevision: number;
+}
 export type Region = "west" | "central" | "lapland" | "east";
 export type Species = "osprey" | "golden" | "forestDeer" | "reindeer" | "squirrel" | "birds" | "frog" | "bat" | "wolf";
 export type Mechanism = "flight" | "calving" | "corridor" | "habitat" | "water" | "noise" | "land" | "aviation" | "landscape" | "procedure" | "grid" | "equipment";
@@ -16,6 +48,7 @@ export interface ContentEntry {
   choices: Partial<Record<SourceChoice, ChoiceText>>;
 }
 export interface CaseRecord {
+  affectedComponents?: Component[];
   id: string; sourceId: string; family: string; component: Component;
   species: Species | null; mechanism: Mechanism; planRevision: number;
   choice: SourceChoice | null; placeIds: string[]; parcelIds: string[];
@@ -27,6 +60,7 @@ export interface CaseRecord {
 }
 export interface SeasonWindow { start: number; end: number; period: number }
 export interface WorkOrder {
+  binding?: { sourceId: string; choice: SourceChoice | null; eventId: string };
   id: string; caseId: string; sourceId: string; planRevision: number;
   component: Component; orderedAt: number; startedAt: number; dueAt: number;
   duration: number; baselineDuration: number; baselineStart: number; baselineDue: number;
@@ -119,7 +153,10 @@ export interface ScoreResult {
   deductions: { category: "scope" | "time" | "quality" | "resource"; reason: string; points: number }[];
 }
 export interface GameV5 {
-  version: "swipe-v5-1"; contentVersion: string; rulesVersion: "v5-rules-3";
+  version: "swipe-v5-1"; contentVersion: string; rulesVersion: "v5-lp1-1";
+  originMode: Mode; activeMode: Mode; routeCategory: RouteCategory;
+  recovery: SolarContinuation; solarDesign: SolarDesign; municipalities: Municipality[];
+  modeAuditWarnings: string[];
   /** Presentation acknowledgements never replace work or outcome resolution. */
   narration: { progressCount: number; progressStages: Stage[]; lastWasProgress: boolean; updates: string[] };
   assetChanges: Partial<Record<"count" | "height" | "power" | "solar", { from: string; to: string; revision: number }>>;

@@ -1,21 +1,21 @@
 import type { CSSProperties } from "react";
 
 /** Decorative, finite motion. No random values, timers, or game-state effects. */
-export function MomentArt({ kind, stage = 4 }: { kind: "transition" | "win" | "loss"; stage?: number }) {
+export function MomentArt({ kind, stage = 4, mode='hybrid' }: { kind: "transition" | "win" | "loss"; stage?: number; mode?: 'wind'|'solar'|'hybrid' }) {
   return <div className={`moment-art moment-${kind}`} aria-hidden="true">
     <svg viewBox="0 0 320 210">
       <circle className="moment-sun" cx="246" cy="52" r="30" fill="#ffce66" />
       <path d="M0 161 79 92 159 154 231 101 320 164V210H0Z" fill="#afa2c8" />
       <path d="M0 188 91 158 192 182 320 140V210H0Z" fill="#557564" />
-      <g className="moment-turbine">
+      {mode!=='solar' && <g className="moment-turbine">
         <path d="M87 84h6l5 108H82Z" fill="#f7f1df" />
         <g className="moment-blades">
           <path d="M87 81 84 26 92 21 94 81 144 105 143 112 91 90 49 129 43 125 85 85Z" fill="#f7f1df" />
           <circle cx="90" cy="86" r="6" fill="#d2b38b" />
         </g>
-      </g>
-      <path d="M179 145h88l12 41H167Z" fill="#35264e" />
-      <path d="m198 145-4 41m24-41v41m20-41 5 41m-68-20h97" stroke="#ffce66" strokeWidth="2" />
+      </g>}
+      {mode!=='wind' && <g><path d="M179 145h88l12 41H167Z" fill="#35264e" />
+      <path d="m198 145-4 41m24-41v41m20-41 5 41m-68-20h97" stroke="#ffce66" strokeWidth="2" /></g>}
       {kind === "transition" && <g className="moment-pages" transform="rotate(9 187 112)">
         <path d="M160 42h68v100h-68z" fill="#eadfc4" /><path d="M148 48h67v99h-67z" fill="#f7f1df" />
         <path d="M160 69h39m-39 14h32m-32 14h39m-39 14h28" stroke="#557564" strokeWidth="4" />

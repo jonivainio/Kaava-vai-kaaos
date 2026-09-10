@@ -5,6 +5,10 @@ import { initialState } from "./state";
 import { recordAssetChanges } from "./assetChanges";
 import { inlineResult, PROGRESS_LIMIT, reactionFor, SHORT_STORIES, SILENT_PROGRESS } from "./narration";
 import { ruleFor } from "./rules";
+import { lp1ChoiceNote } from './rules/lp1';
+import { presentedEntry, modeArt } from './presentation';
+import { modeAllows } from './modes';
+export { stageLabels, modeLabel, activeComponents } from './modes';
 import { advanceToNextWork, publishDue, settleCompletedWork } from "./timeline";
 import { pick, sample } from "./world";
 import { beginEpilogue, canOpenEpilogue, isEpilogueDecision } from "./epilogue";
@@ -13,6 +17,9 @@ export type { GameV5 as Game, Mode, Side } from "./types";
 export { getDerivedStats };
 export { canOpenEpilogue };
 export const STAGES = ["Maanvuokraus", "Kaava-aloite ja YVA-ohjelma", "YVA-selostus ja kaavaluonnos", "Kaavaehdotus ja luvitus"];
+function lp1FatalLead(id:string):string|undefined {
+ return id==='EV-PV'?'Puolustusvoimat vastustaa selvitettyjä tuulivoimavaihtoehtoja. Tuulivoimaosalle ei löydy hyväksyttävää sijoittelua.':id==='EV-VTT-TULOS'?'Tutkavaikutusselvityksen perusteella Puolustusvoimat vastustaa myös suppeaa tuulivoimavaihtoehtoa. Tuulivoimaosaa ei voida jatkaa.':undefined;
+}
 
 export function createGame(seed: string, mode: Mode = "hybrid", previousNameId?: string, namePool?: NamePool): GameV5 {
   const game = initialState(seed, mode, previousNameId, namePool);
@@ -33,8 +40,12 @@ export function values(game: GameV5, issue: CaseRecord | null = null): Record<st
   const count = Math.max(1, issue?.placeIds.length ?? 1);
   const species = { forestDeer: "metsäpeuran", golden: "maakotkan", reindeer: "poronhoidon", wolf: "suden" }[game.world.researchSpecies];
   const score = game.ending?.score;
+  const stats=getDerivedStats(game.run);
   return { count: countWord(count), countCap: countWord(count, true), species, cost: game.world.researchCost.toLocaleString("fi-FI"),
     scopeScore: score?.scope ?? 0, timeScore: score?.time ?? 0, qualityScore: score?.quality ?? 0, resourceScore: score?.resource ?? 0, totalScore: score?.total ?? 0,
+    solarHa:stats.solarHa, lostSolarHa:game.recovery.excludedParcelIds.length, remainingSolarHa:stats.solarHa-game.recovery.excludedParcelIds.length,
+    yieldLossPct:Number(issue?.facts.yieldLossPct??0.4), oldWindMW:stats.windMWac,newWindMW:stats.windCount*8,oldHeightM:Math.max(0,...game.run.assets.windSites.filter(x=>!x.exclusions.length).map(x=>x.totalHeightM)),newHeightM:270,
+    dcHighMWp:game.solarDesign.dcHighMWp,dcLowMWp:game.solarDesign.dcLowMWp,solarAcMW:game.solarDesign.exportLimitMW,
     ...game.ending?.values };
 }
 export function playerText(game: GameV5, text: string, issue: CaseRecord | null = null, displayValues: Record<string, string | number> = {}): string {
@@ -60,7 +71,8 @@ export function playerText(game: GameV5, text: string, issue: CaseRecord | null 
 export function currentDecision(game: GameV5) {
   const scene = game.scenes[0];
   if (!scene || scene.kind !== "decision" || game.ending && !isEpilogueDecision(game, scene.id)) return null;
-  const item = entry(scene.id), issue = scene.caseId ? game.cases[scene.caseId]! : null;
+  const item = presentedEntry(game,scene.id), issue = scene.caseId ? game.cases[scene.caseId]! : null;
+  if(!modeAllows(game,scene.id,issue))return null;
   const rule = ruleFor(item.id);
   let art = rule.art;
   const batteryArt: Record<string, string[]> = {
@@ -73,7 +85,8 @@ export function currentDecision(game: GameV5) {
   if (issue?.family === "publicResearch") art = game.world.researchSpecies === "golden" ? ["eagle-tracking", "ecologist"] : game.world.researchSpecies === "wolf" ? ["wolf-tracking", "ecologist"] : ["research-tracking", "ecologist"];
   else if (issue?.species === "golden") art = art.map(key => key === "research-tracking" ? "eagle-tracking" : key);
   if (item.id === "proposal::solar-base") art = ["solar-window", "winter-screen"];
-  const side = (direction: Side) => ({ label: playerText(game, item.choices[sourceChoice(game, direction)]!.label, issue), action: sourceChoice(game, direction), note: "" });
+  art=modeArt(game,item.id,art);
+  const side = (direction: Side) => ({ label: playerText(game, item.choices[sourceChoice(game, direction)]!.label, issue), action: sourceChoice(game, direction), note: issue?lp1ChoiceNote(game,issue,item.id,sourceChoice(game,direction)):'' });
   return { id: item.id, title: playerText(game, item.title, issue), question: playerText(game, item.body, issue),
     reaction: reactionFor(scene), summary: [game.lastOutcome, ...game.narration.updates].filter(Boolean).join("\n\n"),
     art: pick(game.run.seed, `art:${item.id}`, art), speaker: speaker(issue), options: [side("left"), side("right")] as const };
@@ -90,19 +103,25 @@ function speaker(issue: CaseRecord | null): string {
 export function currentStory(game: GameV5) {
   const scene = game.scenes[0];
   if (!scene || scene.kind === "decision" || scene.kind === "wait") return null;
-  const item = entry(scene.id), issue = scene.caseId ? game.cases[scene.caseId]! : null;
+  const item = presentedEntry(game,scene.id), issue = scene.caseId ? game.cases[scene.caseId]! : null;
   // The headline names the assessment; its generic introduction need not repeat it.
-  const text = scene.kind === "epilogue" ? game.decisions.at(-1)!.result : item.branches.length ? branchText(item.id, scene.branchId) : SHORT_STORIES[item.id] ?? item.body;
+  let text = scene.kind === "epilogue" ? game.decisions.at(-1)!.result : item.branches.length ? branchText(item.id, scene.branchId) : SHORT_STORIES[item.id] ?? item.body;
+  if(item.body!==entry(item.id).body)text=item.body;
+  if(item.id==='start' && game.activeMode!=='hybrid')text=`Kehitä ${game.activeMode==='wind'?'tuulihanke':'aurinkohanke'} luvitetuksi. Ensin tarvitaan maa, sitten selvitykset, kaava ja luvat.`;
+  if(game.recovery.status==='offered' && ['EV-PV','EV-VTT-TULOS'].includes(item.id)){
+    const override=lp1FatalLead(item.id);if(override)text=override;
+  }
+  if(game.recovery.status==='offered'&&item.id==='external-golden-full')text='Maakotkan reviirin yhteisvaikutusarvio ei jätä hyväksyttävää tuulivoimasijoittelua. Tuulivoimaosaa ei voida jatkaa.';
   return { id: item.id, title: playerText(game, item.title, issue), body: playerText(game, text, issue), kind: scene.kind,
     reaction: reactionFor(scene), updates: game.narration.updates,
     result: Boolean(scene.outcomeId), stage: scene.nextStage };
 }
 export function previewChoice(game: GameV5, expected: string, side: Side) {
-  if (token(game) !== expected || !currentDecision(game)) return null;
+  const decision=currentDecision(game);
+  if (token(game) !== expected || !decision) return null;
   // No reducer, cost, world sampling or time advancement is run by a gesture preview.
-  const item = entry(game.scenes[0]!.id);
-  const choice = sourceChoice(game, side);
-  return { token: expected, side, label: playerText(game, item.choices[choice]!.label, game.cases[game.scenes[0]!.caseId!]!) };
+  const option=decision.options[side==='left'?0:1];
+  return { token: expected, side, label:option.label,note:option.note };
 }
 export function choose(game: GameV5, expected: string, side: Side): GameV5 {
   if (expected !== token(game) || game.scenes[0]?.kind !== "decision" || game.ending && !isEpilogueDecision(game, game.scenes[0].id)) return game;
@@ -114,7 +133,8 @@ export function choose(game: GameV5, expected: string, side: Side): GameV5 {
   countBaseChoice(next, scene.id);
   issue.choice = choice; issue.rounds++; issue.status = "open";
   const branch = rule.apply(next, issue, scene.id, choice);
-  const result = playerText(next, branchText(scene.id, branch, choice), issue);
+  const display=presentedEntry(next,scene.id);
+  const result = playerText(next, branch===null?display.choices[choice]!.result:branchText(scene.id, branch, choice), issue);
   next.decisions.push({ token: expected, contentId: scene.id, caseId: issue.id, choice, side, month: next.calendar.now,
     planRevision: next.planRevision, branchId: branch, result });
   if (!next.seenIds.includes(scene.id)) next.seenIds.push(scene.id);
@@ -192,7 +212,8 @@ export function endingView(game: GameV5) {
   if (!game.ending) return null;
   const item = entry(game.ending.contentId);
   const issue = game.ending.causeCaseId ? game.cases[game.ending.causeCaseId]! : null;
-  return { title: playerText(game, item.title, issue), body: playerText(game, item.body, issue) };
+  return { title: playerText(game, item.title, issue), body: playerText(game, game.ending.contentId==='LP1-E-H03'?branchText('LP1-E-H03','rescued_win'):item.body, issue),
+    reaction: reactionFor({id:item.id,caseId:issue?.id??null,branchId:null,kind:'event',outcomeId:null,nextStage:null}) };
 }
 export function scoreView(game: GameV5) {
   const item = entry("PISTEET");
@@ -203,7 +224,7 @@ export function restoreGame(raw: string): { ok: true; state: GameV5 } | { ok: fa
   try {
     if (raw.length > 8_000_000) throw new Error("Tallennus on liian suuri.");
     const saved = JSON.parse(raw) as GameV5;
-    if (saved?.version !== "swipe-v5-1" || saved.contentVersion !== CONTENT_VERSION || saved.rulesVersion !== "v5-rules-3") throw new Error("Tallennuksen sisältö- tai sääntöversio ei vastaa tätä peliä.");
+    if (saved?.version !== "swipe-v5-1" || saved.contentVersion !== CONTENT_VERSION || saved.rulesVersion !== "v5-lp1-1") throw new Error("Tallennuksen sisältö- tai sääntöversio ei vastaa tätä peliä.");
     if (!Array.isArray(saved.actions) || saved.actions.length > 2000) throw new Error("Virheellinen toimintohistoria.");
     const initial = restoreRun(JSON.stringify(saved.initialRun));
     const physical = restoreRun(JSON.stringify(saved.run));

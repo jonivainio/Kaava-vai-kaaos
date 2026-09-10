@@ -87,10 +87,10 @@ export function AssetHud({ game, onInfo }: { game: Game; onInfo: () => void }) {
   };
   return (
     <section
-      className={`asset-hud ${game.run.mode}`}
+      className={`asset-hud ${game.activeMode}`}
       aria-label="Hankkeen koko"
     >
-      {game.run.mode !== "solar" && (
+      {game.activeMode !== "solar" && (
         <div className="wind-stats">
           <div
             className="count-stat"
@@ -125,7 +125,7 @@ export function AssetHud({ game, onInfo }: { game: Game; onInfo: () => void }) {
           </div>
         </div>
       )}
-      {game.run.mode !== "wind" && (
+      {game.activeMode !== "wind" && (
         <div
           className="solar-stats"
           role="meter"
@@ -140,9 +140,14 @@ export function AssetHud({ game, onInfo }: { game: Game; onInfo: () => void }) {
             <small> ha</small>
           </strong>
           {change("solar", "ha")}
-          {game.run.mode === "solar" && <span>Aurinkoalue</span>}
+          {game.activeMode === "solar" && <span>Aurinkoalue</span>}
         </div>
       )}
+      {game.activeMode==='solar' && <div className="solar-power-stats">
+        <div><strong>{f(d.solarMWp)}<small> MWp</small></strong><span>Paneeliteho · DC</span></div>
+        <div><strong>{f(d.solarMWac)}<small> MWac</small></strong><span>Invertteriteho</span></div>
+        <div><strong>{f(game.solarDesign.exportLimitMW)}<small> MW</small></strong><span>Liittymän vientiraja</span></div>
+      </div>}
       <button
         className="info-button"
         onClick={onInfo}

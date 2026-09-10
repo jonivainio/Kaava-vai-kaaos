@@ -1,0 +1,3486 @@
+{
+  "schemaVersion": "lp1-mode-audit-1",
+  "notice": "248 lähde-ID:n toimituksellinen käyttöpolitiikka; kandidaattilistat eivät yksin ole runtime-allowlist. Jokainen sääntö ja tapahtuman haara on tarkistettava toteutuksessa.",
+  "entries": [
+    {
+      "id": "start",
+      "kind": "event",
+      "title": "Uusi hanke",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tehtäväsi on kehittää energiantuotantohanke luvitetuksi. Ensin tarvitset riittävät maa-alueet. Sen jälkeen edessä ovat kaavoitus, ympäristöselvitykset ja tarvittavat luvat."
+    },
+    {
+      "id": "land",
+      "kind": "decision",
+      "title": "Kovia vaatimuksia",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaksi viimeistä maanomistajaa pyytää muita parempia vuokraehtoja. Kiinteistöille suunnitellaan rakentamista. Naapurin sopimus ei ole julkinen, mutta ovatko maanomistajat tietoisia toistensa sopimuksista?"
+    },
+    {
+      "id": "road",
+      "kind": "decision",
+      "title": "Väärä karttaliite",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maanomistaja huomaa allekirjoitetun sopimuksen kartassa vanhan kiinteistörajan. Suunniteltu voimala mahtuu oikeallekin alueelle. Sama karttapohja on ollut käytössä muissakin sopimuksissa."
+    },
+    {
+      "id": "land-signing",
+      "kind": "decision",
+      "title": "Allekirjoituksesta lisähinta",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaksi viimeistä maanomistajaa pyytää vuokran lisäksi allekirjoituskorvausta. Muut ovat jo allekirjoittaneet ilman sitä. Näille kahdelle kiinteistölle on suunniteltu rakentamista."
+    },
+    {
+      "id": "land-index",
+      "kind": "decision",
+      "title": "Inflaatio on kaikille sama. Indeksi ei olisi.",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaksi omistajaa vaatii muita parempaa vuokran vuosikorotusta. Kiinteistöille suunnitellaan rakentamista. Tarjotaanko perusteltu poikkeus vai pidetäänkö yhteinen indeksi?"
+    },
+    {
+      "id": "land-minimum",
+      "kind": "decision",
+      "title": "Heikollakin tuulella on kuukausimaksu.",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Viimeiset omistajat pyytävät muita korkeampaa vähimmäisvuokraa. Yhtiö maksaisi sen myös heikkona tuotantovuonna. Allekirjoitus auttaisi maanhallintaa."
+    },
+    {
+      "id": "land-map-versions",
+      "kind": "decision",
+      "title": "Allekirjoitus tuli. Sopimus ei.",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maanomistaja palauttaa vuokrasopimuksesta vain allekirjoitetun etusivun. Sopimusehdot ja karttaliite puuttuvat. Puhelimeen hän ei enää vastaa."
+    },
+    {
+      "id": "land-area-explained",
+      "kind": "decision",
+      "title": "Missä minun voimalani on?",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maanomistaja näkee uuden sijoittelukartan. Hänen kiinteistölleen ei tulekaan voimalaa. Hän kertoo allekirjoittaneensa, koska luuli sopimuksen takaavan oman voimalan, ja vaatii sopimuksen purkamista."
+    },
+    {
+      "id": "UUSI-P1-MAARIITA",
+      "kind": "decision",
+      "title": "Sopimuksesta ei päästä sopuun",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maanomistajan vaatimus sopimuksen päättämisestä on yhä ratkaisematta. Juristi suosittelee neuvottelemaan sovinnon ennen rakentamista. Sijoittelua voisi muuttaa myös ilman tätä kiinteistöä."
+    },
+    {
+      "id": "land-meetings",
+      "kind": "decision",
+      "title": "Kaikkia ei saa samaan iltaan",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maanomistajat haluavat kuulla hankkeen seuraavista vaiheista. Yhteiseen iltaan sopiva aika löytyy vasta kuukauden päähän. Puhelimella heidät saisi tavoitettua jo tällä viikolla."
+    },
+    {
+      "id": "UUSI-P1-01",
+      "kind": "decision",
+      "title": "Yksi vastaus kuudelta omistajalta",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Yhteisomistetun tilan yhteyshenkilö ilmoittaa, että kaikki kuusi omistajaa ovat mukana. Vuokrasopimukseen hän tarjoaa vain omaa allekirjoitustaan. Valtakirjoja ei ole."
+    },
+    {
+      "id": "UUSI-P1-03",
+      "kind": "decision",
+      "title": "Kuinka kauan odotetaan?",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maanomistajat hyväksyvät hankekehitykselle viiden vuoden määräajan. Sen jälkeen sopimuksia pitää jatkaa erikseen, ellei rakentaminen ole alkanut. Seitsemän vuoden määräajan saisi korkeammalla korvauksella."
+    },
+    {
+      "id": "UUSI-P1-04",
+      "kind": "decision",
+      "title": "Yhteinen johto, pienempi lasku",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Naapurihanke ehdottaa yhteistä johtoliityntää. Sama voimajohto voisi palvella molempia ja säästää huomattavasti rahaa. Kustannusten jako näyttää jo hyvältä; verkkoyhtiön kantaa ei ole vielä kysytty."
+    },
+    {
+      "id": "UUSI-P1-05",
+      "kind": "decision",
+      "title": "Tämä maa onkin jo vuokrattu",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Keskeisen kiinteistön vuokraoikeutta kirjattaessa selviää, että samalle alueelle on aiemmin kirjattu toisen hankkeen vuokraoikeus. Oman hankkeen sopimukselle ei saada tavoiteltua etusijaa. Maanomistaja piti hankkeita eri asioina."
+    },
+    {
+      "id": "UUSI-P1-06",
+      "kind": "decision",
+      "title": "Märkä palsta kaupan",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankealueen alapuolelta tarjotaan edullista, vettynyttä palstaa ostettavaksi. Sille ei ole suunniteltu voimalaa eikä paneeleita. Maanomistajalle palsta on tarpeeton."
+    },
+    {
+      "id": "UUSI-P1-07",
+      "kind": "decision",
+      "title": "Tie ei ole vielä sovittu",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Suunnitellulle rakennusalueelle johtaa yksityistie. Tien käyttö hankkeen kuljetuksiin ja mahdollinen leventäminen ovat vielä sopimatta. Vaihtoehtoinen sisääntulo kiertäisi kauempaa."
+    },
+    {
+      "id": "UUSI-P1-08",
+      "kind": "decision",
+      "title": "Maata saa vuokrata. Voimalaa ei saa rakentaa.",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaksi maanomistajaa tarjoaa kiinteistöjään hankkeelle, mutta kieltää voimaloiden rakentamisen. Tie ja kaapeli sopisivat erikseen sovittaville kohdille. Se voisi helpottaa muiden voimalapaikkojen suunnittelua."
+    },
+    {
+      "id": "UUSI-P1-09",
+      "kind": "decision",
+      "title": "Mihin ensimmäiset selvitysrahat käytetään?",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankkeen verkkoon pääsy ja luontovaikutukset ovat vielä epäselviä. Omistaja ei halua tilata kaikkea heti. Tämän kevään maastotiimin voi varata nyt; myös verkkokonsultilla on vapaa työjakso."
+    },
+    {
+      "id": "BESS-P1-01",
+      "kind": "decision",
+      "title": "Tuulisopimus ei mainitse akkua.",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Sähköaseman viereen suunnitellaan akkuvarastoa. Vuokrasopimus puhuu tuulivoimasta ja siihen liittyvistä rakenteista. Kukaan ei ole tarkistanut, mitä uusi käyttötarkoitus kattaa."
+    },
+    {
+      "id": "BESS-P1-02",
+      "kind": "decision",
+      "title": "Akku mahtuu. Huoltotie ei.",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akustokontit sopivat varatulle tontille. Toimittajan asemapiirrokseen lisätään muuntajat, jäähdytys ja kulkuväylät, ja alue loppuu kesken."
+    },
+    {
+      "id": "BESS-P1-03",
+      "kind": "decision",
+      "title": "Halpa akkutontti tulvii",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akun paikka olisi aivan sähköaseman vieressä, joten kaapeli jäisi lyhyeksi. Hulevesitarkastelu osoittaa kuitenkin sadevesien kertyvän juuri samalle alueelle."
+    },
+    {
+      "id": "interludes[0][0]",
+      "kind": "event",
+      "title": "Sopimuksia saatiin lisää",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Muutama puuttuva vuokrasopimus palautui allekirjoitettuna. Karttaliitteet tarkistetaan ja suunnitellut rakentamisalueet päivitetään."
+    },
+    {
+      "id": "land-done",
+      "kind": "event",
+      "title": "Maat vuokrattu",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankkeen tämänhetkiseen suunnitelmaan tarvittavat maa-alueet on saatu vuokrattua. Voit jättää kunnalle kaava-aloitteen ja aloittaa YVA-ohjelman valmistelun."
+    },
+    {
+      "id": "EV-MAA",
+      "kind": "event",
+      "title": "Vuokraneuvottelun tulos",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maanomistajien vastaus suunnitellun rakennusalueen vuokraamiseen on saatu."
+    },
+    {
+      "id": "EV-SOPIMUSSIVUT",
+      "kind": "event",
+      "title": "Puuttuvat sopimussivut",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maanomistajalle lähetettyä uutta sopimuspakettia on yritetty selvittää."
+    },
+    {
+      "id": "EV-VOIMALALUPAUS",
+      "kind": "event",
+      "title": "Maanomistajan vaatimus käsiteltiin",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Vuokrasopimus ja voimalan sijoittelusta käyty keskustelu on selvitetty."
+    },
+    {
+      "id": "external-0",
+      "kind": "event",
+      "title": "Yhtiö lopettaa hankekehityksen.",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankeyhtiön omistaja vetäytyy uusien hankkeiden kehittämisestä. Yhtiö aikoo keskittyä muihin liiketoimintoihin tulevaisuudessa."
+    },
+    {
+      "id": "ext-land-owner",
+      "kind": "event",
+      "title": "Portfolio supistuu",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankkeen omistaja keskeyttää uusien hankkeiden kehityksen ja karsii portfoliotaan. Tämä hanke on yksi lopetettavista."
+    },
+    {
+      "id": "ext-land-use",
+      "kind": "event",
+      "title": "Kaavoitusmonopolia",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kunta ratkaisee alueen maankäytön muun toiminnan hyväksi. Tässä paikassa hanketta ei voida enää jatkaa, vaikka alueen omistajat olisivat mukana."
+    },
+    {
+      "id": "transition-1",
+      "kind": "event",
+      "title": "Kaava-aloite ja YVA-ohjelma",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Riittävät maa-alueet on saatu vuokrattua. Nyt jätetään kaava-aloite kunnalle ja valmistellaan YVA-ohjelma: mitä vaihtoehtoja tutkitaan ja mitä vaikutuksia selvitetään."
+    },
+    {
+      "id": "defence",
+      "kind": "decision",
+      "title": "Puolustusvoimien lausunto",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Puolustusvoimien lausuntoa varten tarvitaan paikat ja enimmäiskorkeus. Kaikki kannattavat puhdasta energiaa; se ei vielä ratkaise tutkavaikutusta."
+    },
+    {
+      "id": "surveys",
+      "kind": "decision",
+      "title": "Halvempi tarjous sisältää uuden kevään.",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Sama sovittu selvityskokonaisuus maksaa 55 000 € tänä maastokautena tai 38 000 € ensi kaudella. Eiköhän työn laatu molemmilla konsulteilla ole sama."
+    },
+    {
+      "id": "research",
+      "kind": "decision",
+      "title": "Rahoitetaanko seurantaa?",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tutkimusryhmä pyytää {cost} € osuutta julkiseen {species} seurantaan. Tuloksista voisi olla hyötyä hankkeen arvioinnissa. Ne julkaistaan myös niille, jotka eivät osallistu rahoitukseen."
+    },
+    {
+      "id": "initiative-rumour",
+      "kind": "decision",
+      "title": "Kylällä kiertää väärä kartta",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Asukkaiden jakamassa kartassa on kaksinkertainen määrä voimaloita nykyiseen suunnitelmaan verrattuna. Kartta on peräisin hankkeen alustavasta tarkastelusta. Kunta käsittelee aloitetta ensi viikolla."
+    },
+    {
+      "id": "initiative-council",
+      "kind": "decision",
+      "title": "Uusi valtuusto haluaa uuden esittelyn",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankkeesta keskusteltiin myönteisesti edellisen valtuuston aikana. Uudet luottamushenkilöt haluavat nähdä suunnitelman ennen aloitteen käsittelyä. Ensimmäinen yhteinen aika löytyisi kuukauden päästä."
+    },
+    {
+      "id": "initiative-cottage",
+      "kind": "decision",
+      "title": "Mökkiläiset tulevat vasta kesällä",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Mökkiläisyhdistys haluaa osallistua hankkeen esittelyyn, mutta yhteinen tapaaminen onnistuisi vasta kesällä. Kaava-aloite on valmis nyt."
+    },
+    {
+      "id": "surveys-spring",
+      "kind": "decision",
+      "title": "YVA-konsultti on valittava.",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "YVA-konsulttien tarjoukset samasta selvitystyöstä: 55 000 € ja maastokäynnit tällä kaudella, tai 38 000 € ja käynnit ensi kaudella. Halvemman tarjouksen maastotulokset saadaan noin vuotta myöhemmin."
+    },
+    {
+      "id": "surveys-access",
+      "kind": "decision",
+      "title": "Kilpailutus toi kaksi aikataulua.",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Konsultti A aloittaa sovitut selvitykset tällä maastokaudella 72 000 eurolla. Konsultti B tekee saman työn ensi kaudella 49 000 eurolla. Varataanko tämän kauden työ vai säästetäänkö ja odotetaan seuraavaa?"
+    },
+    {
+      "id": "surveys-team",
+      "kind": "decision",
+      "title": "Vapaa tiimi maksaa enemmän.",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "YVA-konsultti tarjoaa lisätiimin tälle kaudelle 64 000 eurolla. Kilpailijan 43 000 € tarjous alkaa ensi kaudella. Työn sisältö ja laatuvaatimus ovat samat, valmistumisvuosi eri."
+    },
+    {
+      "id": "research-gps",
+      "kind": "decision",
+      "title": "Lisää paikannusaineistoa",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tutkimusryhmä kerää GPS-paikannuksia {species} alueenkäytöstä. Hanke voi osallistua {cost} € osuudella. Julkiset tulokset ovat luvassa vasta kaavaehdotuksen valmistelun aikaan."
+    },
+    {
+      "id": "research-cumulative",
+      "kind": "decision",
+      "title": "Yhteistutkimus hankkeiden vaikutuksista",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tutkimuksessa selvitetään, miten useat maankäyttöhankkeet vaikuttavat {species} liikkumiseen. Omistajilta kerätään rahoitusta; tämän hankkeen osuudeksi pyydetään {cost} €."
+    },
+    {
+      "id": "research-seasons",
+      "kind": "decision",
+      "title": "Seuranta tarvitsee yhden kauden lisää",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tutkimusryhmä jatkaa {species} seurantaa vielä yhden havaintokauden. Hanke voi osallistua {cost} € osuudella. Julkaisu valmistuu myöhemmin kuin aiemmin arvioitiin."
+    },
+    {
+      "id": "programme-birds",
+      "kind": "decision",
+      "title": "Lintuyhdistyksellä on lisähavaintoja",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paikallinen lintuyhdistys kertoo sääksen lentävän säännöllisesti hankealueen läpi. Tätä reittiä ei ole maastotöiden suunnitelmassa. Kartoitukset on tarkoitus aloittaa ensi kuussa."
+    },
+    {
+      "id": "programme-range",
+      "kind": "decision",
+      "title": "Seurantaa pyydetään hankealueen ulkopuolelta",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Ohjelmalausunnossa pyydetään selvittämään myös metsäpeurojen kulkuyhteys hankealueen pohjoispuolella. Nykyinen tarjous kattaa vain voimalapaikkojen ympäristön."
+    },
+    {
+      "id": "herding-programme",
+      "kind": "decision",
+      "title": "Paliskunnan aineisto puuttuu",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Poronhoitoselvityksen lähtöaineistossa on laidunalueet, mutta ei porojen kokoamispaikkoja eikä kulkua niiden välillä. Paliskunta tarjoaa tietoja ja yhteistä maastokäyntiä."
+    },
+    {
+      "id": "programme-cumulative",
+      "kind": "decision",
+      "title": "Yhteisvaikutuksiin tuli kolme hanketta lisää",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "YVA-ohjelman jälkeen lähialueella julkaistaan kolme uutta tuulihanketta. Niiden voimalapaikat ovat vielä alustavia, mutta yhteismelu ja linnustovaikutukset pitää ottaa mukaan arviointiin."
+    },
+    {
+      "id": "UUSI-P2-01",
+      "kind": "decision",
+      "title": "Yhdeksän voimalaa ei riitä kevennykseksi",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tiimi pienentää suunnitelman yhdeksään voimalaan ja toivoo välttyvänsä YVA-menettelyltä. Kokonaisteho ylittää kuitenkin hankeluettelon tehorajan."
+    },
+    {
+      "id": "UUSI-P2-02",
+      "kind": "decision",
+      "title": "Kolme vaihtoehtoa, samat ongelmapaikat",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "YVA-ohjelmassa on 20, 19 ja 18 voimalan vaihtoehdot. Kaikissa säilyvät samat kolme paikkaa sääksen pesän ja kalavesien välisellä reitillä. Lausunnossa pyydetään vaihtoehtoa, jossa tätä haittaa vältetään."
+    },
+    {
+      "id": "UUSI-P2-03",
+      "kind": "decision",
+      "title": "Hanke odottaa maakuntakaavaa",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hanke ulottuu maakuntakaavan tuulivoima-alueen ulkopuolelle. Maakuntaliiton ja kunnan kanssa käydyssä tarkastelussa laajan vaihtoehdon eteneminen edellyttäisi maakuntakaavan muutosta."
+    },
+    {
+      "id": "UUSI-P2-04",
+      "kind": "decision",
+      "title": "Mihin hanke liitetään?",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Lähin sähköasema näyttää alustavasti sopivalta. Verkkoyhtiö tarvitsee tarkemmat tiedot tehosta ja aikataulusta. Toinen mahdollinen asema olisi kauempana, ja sen johtoreitin selvittäminen maksaisi lisää."
+    },
+    {
+      "id": "UUSI-P2-05",
+      "kind": "decision",
+      "title": "Puolustusvoimien huomio koskeekin johtoa",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Voimalapaikoille on saatu alustavasti myönteinen kanta. Suunniteltu voimajohto kulkee kuitenkin puolustuksen käyttämän alueen kautta. Johdon reitti pitää selvittää erikseen."
+    },
+    {
+      "id": "UUSI-P2-06",
+      "kind": "decision",
+      "title": "Kaavaluonnos valmistellaan vasta päätelmän jälkeen",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kunta haluaa odottaa YVA:n perusteltua päätelmää ennen kaavaluonnoksen nähtäville asettamista. Suunniteltu yhtäaikainen kuuleminen ei toteudu."
+    },
+    {
+      "id": "UUSI-P2-07",
+      "kind": "decision",
+      "title": "Metsäpeurat liikkuvat Natura-alueiden välillä",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankealueen ulkopuolisilla Natura-alueilla metsäpeura on suojeluperuste. Paikannusaineisto osoittaa eläinten liikkuvan hankealueen kautta alueelta toiselle."
+    },
+    {
+      "id": "UUSI-P2-08",
+      "kind": "decision",
+      "title": "Korkeampi voimala tarvitsee uuden tarkistuksen",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tekninen tiimi ehdottaa korkeampaa voimalamallia. Puolustusvoimien aiempi lausunto koskee nykyistä matalampaa suunnitelmaa, eikä muutoksen soveltuvuutta ole tarkistettu."
+    },
+    {
+      "id": "UUSI-P2-09",
+      "kind": "decision",
+      "title": "Sammakkokäynti osui liian kylmään iltaan",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Viitasammakkoselvityksessä käytiin epäillyllä lisääntymislammikolla kylmän sään aikana. Lajia ei havaittu, mutta konsultti ei pidä käyntiä riittävänä. Sopivia havaintoiltoja voi olla vielä tällä keväällä."
+    },
+    {
+      "id": "UUSI-P2-10",
+      "kind": "decision",
+      "title": "Pesäkarttaa ei voi laittaa yleisön nähtäville",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Konsultti saa salassa pidettäviä petolintujen pesäpaikkatietoja. Niitä tarvitaan arviointiin, mutta sama kartta ei sovi julkisen YVA-selostuksen liitteeksi."
+    },
+    {
+      "id": "UUSI-P2-11",
+      "kind": "decision",
+      "title": "Naapurihanke julkistettiin viikkoa myöhemmin",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "YVA-ohjelma on juuri toimitettu, kun lähialueelta julkistetaan uusi tuulihanke. Sen paikat ovat vielä alustavia. Konsultti kysyy, otetaanko naapurin tarkentuvia tietoja odottava työ mukaan nyt."
+    },
+    {
+      "id": "UUSI-P2-12",
+      "kind": "decision",
+      "title": "Työohjelmasta päästiin sopuun",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Ennakkoneuvottelussa sovittiin tarvittavat selvitykset ja niiden vastuut. Tarjoukset voidaan nyt pyytää samalla sisällöllä."
+    },
+    {
+      "id": "BESS-P2-01",
+      "kind": "decision",
+      "title": "Akku tarvitsee sähköä myös sisäänpäin",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akun verkkotarkasteluun on ilmoitettu vain purkuteho. Verkkoyhtiö kysyy nyt, paljonko akku ottaisi verkosta ladatessaan. Tuulipuiston tuotantoliittymä ei vielä vastaa tähän."
+    },
+    {
+      "id": "BESS-P2-02",
+      "kind": "decision",
+      "title": "Sama megawatti, eri määrä energiaa",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kahdessa akkutarjouksessa teho on 100 MW. Toisessa energiakapasiteetti on 100 MWh ja toisessa 200 MWh. Halvempi tarjous ei siis kata samaa käyttöaikaa."
+    },
+    {
+      "id": "BESS-P2-03",
+      "kind": "decision",
+      "title": "Toimittajan mukaan kyse on vain kontista",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akkuvarastoa tarjotaan siirrettävänä konttiratkaisuna. Rakennusvalvonta pyytää kuitenkin asemapiirroksen ja tiedot pysyvästä käytöstä sekä laitteista."
+    },
+    {
+      "id": "BESS-P2-04",
+      "kind": "decision",
+      "title": "Lisätään tähän vielä akku",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tuuli- ja aurinkohankkeen YVA-ohjelma on viimeisteltävänä. Omistaja haluaa lisätä sähköaseman yhteyteen akkuvaraston. Konsultti tarvitsee sen tiedot ennen aineiston valmistumista."
+    },
+    {
+      "id": "BESS-P2-05",
+      "kind": "decision",
+      "title": "Verkkovaatimusten aineisto puuttuu tarjouksesta",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akkutoimittajan tarjouksessa on laitteet ja asennus. Verkkoyhtiön tarvitsemia simulointimalleja ja järjestelmäteknisten vaatimusten osoittamista ei ole nimetty kenenkään vastuulle."
+    },
+    {
+      "id": "interludes[1][0]",
+      "kind": "event",
+      "title": "Hanke esiteltiin kunnalle",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Esittelit hankkeen kunnan luottamushenkilöille. Kysymykset koskivat etäisyyksiä, maisemaa ja kunnan hyötyjä. Kaava-aloitteen käsittely jatkuu erikseen."
+    },
+    {
+      "id": "interludes[1][1]",
+      "kind": "event",
+      "title": "YVA-ohjelmaa viimeistellään",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Konsultti kokoaa hankevaihtoehdot ja selvityssuunnitelmat YVA-ohjelmaan. Sähkönsiirron reittivaihtoehdot lisätään samaan arviointikokonaisuuteen."
+    },
+    {
+      "id": "interludes[1][2]",
+      "kind": "event",
+      "title": "Selvityksiä on käynnissä",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maastotöitä, verkkotarkastelua ja kaava-aineistoa valmistellaan rinnakkain. Hankeryhmä käy läpi, mikä tulos tarvitaan seuraavaksi."
+    },
+    {
+      "id": "interludes[1][3]",
+      "kind": "event",
+      "title": "Ohjelmavaiheen yleisötilaisuus pidettiin",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Yleisötilaisuudessa kysyttiin muun muassa melun, lajien ja sähkönsiirron selvittämisestä. Kysymykset toimitetaan konsultille ja yhteysviranomaiselle."
+    },
+    {
+      "id": "surveys-wait",
+      "kind": "event",
+      "title": "Maastoselvitykset käynnistyvät",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tilatut maastoselvitykset aloitetaan. Havainnot kootaan YVA-selostusta ja kaavan valmistelua varten. Verkkoratkaisua ja sijoittelua tarkennetaan samalla."
+    },
+    {
+      "id": "surveys-wait::no-yva",
+      "kind": "event",
+      "title": "Vaikutukset selvitetään silti.",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Viranomainen on ratkaissut, ettei tämä hanke tarvitse erillistä YVA-menettelyä. Kaavoitusta ja lupia varten tilatut luonto- ja muut vaikutusselvitykset tehdään silti."
+    },
+    {
+      "id": "EV-MAARIITA",
+      "kind": "event",
+      "title": "Vuokrasopimuksen riitaan ratkaisu",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Juristin jatkoneuvottelun tulos on saatu."
+    },
+    {
+      "id": "EV-ETUSIJA",
+      "kind": "event",
+      "title": "Etusijasta saatiin vastaus",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Aiemman vuokraoikeuden haltija on vastannut ehdotukseen alueiden ja etusijan järjestämisestä."
+    },
+    {
+      "id": "EV-SELVITYSJARJESTYS",
+      "kind": "event",
+      "title": "Ensimmäinen selvityserä valmistui",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Ensimmäisenä tilatun työn tulos on saatu. Seuraavan työerän aikataulu tarkentuu."
+    },
+    {
+      "id": "EV-MAASTOKAUSI",
+      "kind": "event",
+      "title": "Uuden maastokäynnin tulos",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Konsultti on tarkistanut, riittävätkö havainnot vaikutusten arviointiin."
+    },
+    {
+      "id": "EV-PV",
+      "kind": "event",
+      "title": "Puolustusvoimilta tuli vastaus",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Puolustusvoimat on käsitellyt toimitetun sijoittelun ja enimmäiskorkeuden."
+    },
+    {
+      "id": "EV-VTT-TULOS",
+      "kind": "event",
+      "title": "Tutkavaikutusselvityksestä lopullinen kanta",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "VTT:n tutkavaikutusselvitys valmistui. Puolustusvoimat on antanut sen perusteella uuden lausunnon."
+    },
+    {
+      "id": "external-1",
+      "kind": "event",
+      "title": "Kunta sanoi ei.",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kunta päättää olla aloittamatta alueen kaavoitusta. Myöskään esitetty pienempi vaihtoehto ei saa tukea. Hankkeen kehitys päättyy tähän."
+    },
+    {
+      "id": "ext-initiative-priority",
+      "kind": "event",
+      "title": "Kaavoitus ei käynnisty.",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kunta haluaa varata alueen muuhun maankäyttöön eikä käynnistä hankkeen kaavoitusta. Rajauksen muuttamista on selvitetty, mutta se ei muuta kunnan kantaa."
+    },
+    {
+      "id": "ext-initiative-owner",
+      "kind": "event",
+      "title": "Omistajan strategia vaihtui.",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Omistaja lopettaa tämän alueen hankekehityksen. Hankkeelle etsitään ostajaa, mutta siirto ei onnistu. Työ keskeytetään lopullisesti."
+    },
+    {
+      "id": "transition-2",
+      "kind": "event",
+      "title": "YVA-selostus ja kaavaluonnos",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maastoselvitysten ja lähtötietojen perusteella laaditaan YVA-selostus ja kaavaluonnos. Nyt vertaillaan vaihtoehtojen vaikutuksia. Aineistot asetetaan kuultaviksi sovitun aikataulun mukaisesti."
+    },
+    {
+      "id": "nature",
+      "kind": "decision",
+      "title": "Sääksi lentää voimalapaikkojen kautta",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Sääksi lentää pesältä kalavesille suoraan {count} suunnitellun voimalapaikan läpi. Lentoreitti toistuu maastoseurannassa. Pelkkä etäisyys pesään ei riitä ratkaisemaan sijoittelua."
+    },
+    {
+      "id": "solarNature",
+      "kind": "decision",
+      "title": "Viitasammakot löytyivät vanhasta altaasta",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Entisen turvetuotantoalueen laskeutusaltaassa lisääntyy viitasammakko. Paneelisuunnitelmassa allas olisi kuivattu ja otettu rakennusalueeksi."
+    },
+    {
+      "id": "UUSI-P3-KOSTEIKKO",
+      "kind": "decision",
+      "title": "Märälle palstalle löytyi käyttöä",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Aiemmin ostamallesi vettyneelle palstalle voisi tehdä kosteikon, joka tasaisi paneelikentän vesivirtaamia ja turvaisi nykyisen viitasammakon lisääntymispaikan vedensaannin. Suunnittelija esittää tätä kentän pienennyksen vaihtoehdoksi."
+    },
+    {
+      "id": "noise",
+      "kind": "decision",
+      "title": "Yhteismelu ylittää ohjearvon",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Oman ja naapurihankkeen yhteismelulaskenta ylittää yöajan 40 dB:n ohjearvon asuin- ja lomarakennusten kohdalla. {countCap} omaa voimalaa vaikuttaa tulokseen eniten."
+    },
+    {
+      "id": "height",
+      "kind": "decision",
+      "title": "Maanpinnan korkeus unohtui",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Voimaloiden kokonaiskorkeuteen lisätään paikkojen maanpinnan korkeus. {countCap} voimalan lavankärki ylittää tämän jälkeen lentoaseman lentoesterajapinnan."
+    },
+    {
+      "id": "solarWater",
+      "kind": "decision",
+      "title": "Vesienkäsittely ei päättynyt turvetuotannon mukana",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Turvetuotanto on päättynyt, mutta alueen vesienkäsittely ja tarkkailu jatkuvat lupaehtojen mukaan. Aurinkosuunnitelman paneelit peittäisivät vielä tarvittavat käsittelyrakenteet."
+    },
+    {
+      "id": "opinions",
+      "kind": "decision",
+      "title": "Havainnekuva puuttuu kylätieltä",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Luonnospalautteessa pyydetään havainnekuvaa kylätieltä, jota asukkaat käyttävät päivittäin. Konsultin kuvasarjassa näkymää ei ole."
+    },
+    {
+      "id": "golden-known",
+      "kind": "decision",
+      "title": "Maakotkan säännöllinen lentoreitti",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maakotkan lentoseurannassa {count} voimalapaikkaa erottuu törmäysriskiltään muista. Tunnetulla reviirillä on myös naapurihankkeita, joten oman sijoittelun muutos pitää tarkastella niiden kanssa."
+    },
+    {
+      "id": "golden-unknown",
+      "kind": "decision",
+      "title": "Kotka näkyy, pesää ei löydy",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maakotka havaitaan hankealueella toistuvasti. Pesää ei tunneta ja lentoaineisto on vielä vajaa. Alustava arvio nostaa {count} voimalapaikkaa jatkoselvitykseen."
+    },
+    {
+      "id": "golden-shared",
+      "kind": "decision",
+      "title": "Naapurin kotka olikin sama kotka",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Naapurin selvityksen ja oman seurannan maakotka käyttää samaa reviiriä. Hankkeet ovat arvioineet vaikutuksia erikseen. Yhteistarkastelu nostaa {count} omaa paikkaa ongelmallisiksi."
+    },
+    {
+      "id": "nature-reindeer-calving",
+      "kind": "decision",
+      "title": "Metsäpeuran vasomisalue löytyi sijoittelusta",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Metsäpeurojen vasomisajan havainnot keskittyvät {count} voimalapaikan ja niiden teiden ympäristöön. Rakentamisen ajoittaminen eri vuodenaikaan auttaisi työmaahäiriöön, mutta ei poistaisi pysyvän sijoittelun vaikutuksia."
+    },
+    {
+      "id": "nature-reindeer-route",
+      "kind": "decision",
+      "title": "Voimalat katkaisisivat metsäpeuran kulkuyhteyden",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paikannukset osoittavat metsäpeurojen kulkevan Natura-alueiden ja kesälaidunten välillä hankealueen läpi. {countCap} voimalapaikkaa tiehaaroineen kaventaisi juuri tätä yhteyttä."
+    },
+    {
+      "id": "nature-squirrel",
+      "kind": "decision",
+      "title": "Pesäpuu säästyy. Kulkuyhteys ei.",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Liito-oravan pesäpuu on jätetty rakentamisen ulkopuolelle. {countCap} voimalapaikan huoltotiet kuitenkin katkaisisivat puustoisen yhteyden pesäpuulta ruokailumetsään."
+    },
+    {
+      "id": "nature-bird-area",
+      "kind": "decision",
+      "title": "Pelto osoittautui tärkeäksi levähdysalueeksi",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Muutonseuranta osoittaa peltoalueen keräävän säännöllisesti suuria lintumääriä. {countCap} voimalaa sijoittuisi niiden tärkeimmän levähdys- ja ruokailualueen kohdalle."
+    },
+    {
+      "id": "herding-pasture",
+      "kind": "decision",
+      "title": "Laidunten välinen kulku kapenee",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paliskunnan mukaan {count} voimalapaikkaa ja niiden tiet osuvat porojen käyttämälle laidunten väliselle reitille. Naapurihanke kaventaa samaa yhteyttä toiselta puolelta."
+    },
+    {
+      "id": "noise-neighbour-model",
+      "kind": "decision",
+      "title": "Naapuri vaihtoi voimalamallia",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Naapurihanke ottaa suunnitteluun uuden voimalamallin. Päivitetty yhteismelulaskenta ylittää yöajan 40 dB:n ohjearvon lähimmillä asuin- ja lomarakennuksilla. {countCap} omaa voimalaa vaikuttaa eniten."
+    },
+    {
+      "id": "noise-neighbour-layout",
+      "kind": "decision",
+      "title": "Naapuri siirsi voimalansa lähemmäs",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Naapurihankkeen voimaloita siirretään lähemmäs yhteistä lähintä loma-asuntoa. Uusi yhteismelulaskenta ylittää siellä yöajan 40 dB:n ohjearvon. Omasta hankkeesta {count} paikkaa on tarkasteltava uudelleen."
+    },
+    {
+      "id": "noise-joint",
+      "kind": "decision",
+      "title": "Erilliset melukartat eivät riittäneet",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Oman ja naapurihankkeen erilliset melukartat alittavat ohjearvot. Yhteislaskennassa yöajan 40 dB:n ohjearvo kuitenkin ylittyy lähimmillä asuin- ja lomarakennuksilla. Tarkasteluun nousee {count} omaa voimalaa."
+    },
+    {
+      "id": "height-ground",
+      "kind": "decision",
+      "title": "Korkeusmalli muutti tulosta",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tarkempi maanpinnan korkeusmalli nostaa {count} voimalapaikan lavankärjen lentoesterajapinnan yläpuolelle. Alustava tarkastelu oli tehty karkeammalla maastotiedolla."
+    },
+    {
+      "id": "height-approach",
+      "kind": "decision",
+      "title": "Voimalapaikat osuvat lähestymissuuntaan",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Lentoaseman tarkastelussa {count} voimalaa sijoittuu lähestymisen kannalta hankalaan kohtaan. Nykyisten paikkojen kelpoisuus tarvitsee tarkemman selvityksen."
+    },
+    {
+      "id": "height-ridge",
+      "kind": "decision",
+      "title": "Tuulisin harjanne on ilmailulle hankalin",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tuotantoarvion parhaat {count} voimalapaikkaa ovat harjanteella, jolla lentoesterajapinta ylittyy. Alempana olisi vaihtoehtoisia paikkoja, mutta tuuliolosuhteet ovat heikommat."
+    },
+    {
+      "id": "solar-nest-water",
+      "kind": "decision",
+      "title": "Turvetuotanto loppui, linnut tulivat",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Entisen turvetuotantoalueen vettynyt osa on kehittynyt tärkeäksi lintujen levähdysalueeksi. Aurinkosuunnitelmassa samalle kohdalle on piirretty paneelikenttä."
+    },
+    {
+      "id": "solar-frog-basin",
+      "kind": "decision",
+      "title": "Allas piti kuivata. Siellä lisääntyy viitasammakko.",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kuivatettavaksi suunniteltu vanha laskeutusallas osoittautuu viitasammakon lisääntymispaikaksi. Kentän kuivatus vaikuttaisi myös veden säilymiseen altaassa."
+    },
+    {
+      "id": "solar-required-wetland",
+      "kind": "decision",
+      "title": "Vesienhallinta vie paneelialaa",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Vesienhallintasuunnitelma tarvitsee suuren viivytysalueen keskeltä paneelikenttää. Tiiviimpi allasratkaisu voisi jättää enemmän tilaa paneeleille, mutta se vaatisi tarkempaa suunnittelua."
+    },
+    {
+      "id": "solar-postcare",
+      "kind": "decision",
+      "title": "Jälkihoito tarvitsee edelleen altaat",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Entisen turvealueen paneelikenttää pitäisi laajentaa laskeutusaltaiden kohdalle. Altaiden ja tarkkailun poistamiseen ei ole vielä viranomaisen ratkaisua."
+    },
+    {
+      "id": "opinions-photo",
+      "kind": "decision",
+      "title": "Asukkaan piha ei näy havainnekuvissa",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Asukas toimittaa kuvan omalta pihaltaan. Hänen mukaansa juuri tähän suuntaan sijoittuisi näkyvin voimalaryhmä. Aiemmat kuvat on otettu toisilta teiltä."
+    },
+    {
+      "id": "opinions-club",
+      "kind": "decision",
+      "title": "Yhdistyksen kartassa on uusi lajipiste",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paikallinen yhdistys toimittaa luontohavaintokartan. Yksi havainto on lähellä suunniteltua tietä eikä näy hankkeen selvityksissä. Havaintoaika ja laji pitää varmistaa."
+    },
+    {
+      "id": "opinions-noise",
+      "kind": "decision",
+      "title": "Sama melukysymys sadassa viestissä",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Asukkaat kysyvät, onko naapurin tuulihanke mukana melulaskennassa. Viesteissä toistuu sama huoli. Raportin yhteismelukartta löytyy liitteestä, jota ei ollut hankesivulla."
+    },
+    {
+      "id": "herding-opinions",
+      "kind": "decision",
+      "title": "Paneeliaita osuu laidunreitille",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paliskunta osoittaa kaavaluonnoksesta kohdan, jossa paneeliaita kaventaisi porojen siirtymistä laitumelta toiselle. Tätä reittiä ei käsitelty nykyisessä poronhoitoarviossa."
+    },
+    {
+      "id": "solar-pond",
+      "kind": "decision",
+      "title": "Kevät paljasti viitasammakon lisääntymispaikan",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Keväällä täyttyvä painanne osoittautuu viitasammakon lisääntymispaikaksi. Paneelikentän salaojitus laskisi sen vedenpintaa."
+    },
+    {
+      "id": "solar-ditch",
+      "kind": "decision",
+      "title": "Oja tuo veden lisääntymislammikkoon",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankealueen oja tuo vettä viitasammakon lisääntymispaikalle. Paneelikentän kuivatussuunnitelma siirtäisi tämän veden toiseen purkusuuntaan."
+    },
+    {
+      "id": "solar-water",
+      "kind": "decision",
+      "title": "Kuivatus ulottuu lisääntymispaikalle",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paneelikentän kuivatus voisi laskea läheisen viitasammakkolammikon vedenpintaa, vaikka itse lammikko on rakentamisalueen ulkopuolella."
+    },
+    {
+      "id": "solar-squirrel",
+      "kind": "decision",
+      "title": "Paneelialue katkaisisi liito-oravan yhteyden",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paneelikentän raivaus katkaisisi puustoisen yhteyden liito-oravan lisääntymispaikalta ruokailumetsään. Nykyisessä kuvassa koko metsäkaistale on paneelialuetta."
+    },
+    {
+      "id": "solar-bird-area",
+      "kind": "decision",
+      "title": "Paneelit osuvat muuttolintujen levähdysalueelle",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Muuttolintuselvitys osoittaa pellon keskiosan säännöllisesti käytetyksi levähdys- ja ruokailualueeksi. Paneelikenttä peittäisi tämän alueen."
+    },
+    {
+      "id": "solar-view-road",
+      "kind": "decision",
+      "title": "Paneelit näkyisivät suoraan naapurin olohuoneeseen",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Naapurin olohuoneesta näkyisi paneelikenttä puuston poiston jälkeen. Jätätkö riittävän alueen puustolle vai siirrätkö paneelit maaston alempaan kohtaan?"
+    },
+    {
+      "id": "solar-view-winter",
+      "kind": "decision",
+      "title": "Talvikuva näytti enemmän.",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Lehdettömän ajan havainnekuva paljastaa paneelit naapurin ikkunasta. Reunaan voi jättää puustoa tai kentän siirtää alemmas maastoon."
+    },
+    {
+      "id": "solar-view-edge",
+      "kind": "decision",
+      "title": "Puusto oli luvattu kuvassa.",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Naapuri huomaa, että havainnekuvan suojapuusto olisikin raivattavalla alueella. Varataanko sille riittävä alue vai sijoitetaanko paneelit alemmas?"
+    },
+    {
+      "id": "solar-rain",
+      "kind": "decision",
+      "title": "Sadevesi valuu naapurin pellolle",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paneelikentän vesilaskelma osoittaa, että rankkasade kasvattaisi virtaamahuippua naapurin pellolla. Vesi pitää viivyttää ennen purkua."
+    },
+    {
+      "id": "solar-drain",
+      "kind": "decision",
+      "title": "Alapuolinen oja on jo täynnä",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paneelikentän vedet olisi tarkoitus johtaa ojaan, jonka välityskyky ei riitä uusille virtaamille. Suunnitelmaan tarvitaan viivytystä tai toinen purkuratkaisu."
+    },
+    {
+      "id": "solar-snow",
+      "kind": "decision",
+      "title": "Sulamisvesi kerääntyy paneelikentälle",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kevään sulamisvesien laskelma osoittaa suuren vesimäärän kertyvän paneelikentän alareunaan. Paneeleille varattu alue tarvitsee osittain toisen käyttötarkoituksen."
+    },
+    {
+      "id": "nature::solar-base",
+      "kind": "decision",
+      "title": "Kevät paljasti viitasammakon lisääntymispaikan",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Keväällä täyttyvä painanne osoittautuu viitasammakon lisääntymispaikaksi. Paneelikentän salaojitus laskisi sen vedenpintaa."
+    },
+    {
+      "id": "noise::solar-base",
+      "kind": "decision",
+      "title": "Paneelit näkyisivät suoraan naapurin olohuoneeseen",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Naapurin olohuoneesta näkyisi paneelikenttä puuston poiston jälkeen. Jätätkö riittävän alueen puustolle vai siirrätkö paneelit maaston alempaan kohtaan?"
+    },
+    {
+      "id": "height::solar-base",
+      "kind": "decision",
+      "title": "Sadevesi valuu naapurin pellolle",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paneelikentän vesilaskelma osoittaa, että rankkasade kasvattaisi virtaamahuippua naapurin pellolla. Vesi pitää viivyttää ennen purkua."
+    },
+    {
+      "id": "solarNature::wind",
+      "kind": "decision",
+      "title": "Voimalan siirto ei siirtänyt huoltotietä",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Voimala siirrettiin liito-oravan puustoisen yhteyden ulkopuolelle. Vanha huoltotie ja kaapelilinja kulkisivat silti sen läpi. Ne jäivät muutoksessa päivittämättä."
+    },
+    {
+      "id": "solarWater::wind",
+      "kind": "decision",
+      "title": "Voimajohdon rakentaminen voi kuivattaa Natura-suota",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Voimajohto kiertää Natura-alueen, mutta sen rakentaminen muuttaisi suolle tulevien vesien reittiä. Suon vesitalous pitää turvata myös rajauksen ulkopuolella tehtävissä töissä."
+    },
+    {
+      "id": "UUSI-P3-01",
+      "kind": "decision",
+      "title": "Selostus sai kiitosta. Hanke ei.",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Perustellussa päätelmässä YVA-selostusta pidetään hyvin laadittuna. Samassa päätelmässä nykyisen sijoittelun metsäpeura- ja maisemavaikutukset arvioidaan liian suuriksi. Hanke tarvitsee muutoksia."
+    },
+    {
+      "id": "UUSI-P3-02",
+      "kind": "decision",
+      "title": "Kesähavainnot muuttivat metsäpeurakuvaa",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kevään käynneillä havaintoja oli vähän. Kesällä alueelta löytyy useita vasallisia metsäpeuroja, eikä nykyinen aineisto vielä rajaa vasomisalueen käyttöä riittävästi."
+    },
+    {
+      "id": "UUSI-P3-03",
+      "kind": "decision",
+      "title": "Vanha turvekenttä on muuttunut kosteikoksi",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Ilmakuvassa alue on vielä kuiva turvetuotantokenttä. Maastossa samassa kohdassa on vettä ja suuri lintujen levähdysalue. Aurinkosuunnitelma perustui vanhaan kuvaan."
+    },
+    {
+      "id": "UUSI-P3-04",
+      "kind": "decision",
+      "title": "Maakotkan reviirillä on jo kolme hanketta",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maakotkaselvitys yhdistää oman ja kahden naapurihankkeen törmäys- ja elinympäristövaikutukset. Oma hanke näyttää yksin pieneltä, mutta reviirin kokonaisvaikutus jää ongelmalliseksi."
+    },
+    {
+      "id": "UUSI-P3-05",
+      "kind": "decision",
+      "title": "Voimalan siirto ei siirtänyt huoltotietä",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Voimala siirrettiin liito-oravan puustoisen yhteyden ulkopuolelle. Vanha huoltotie ja kaapelilinja kulkisivat silti sen läpi. Ne jäivät muutoksessa päivittämättä."
+    },
+    {
+      "id": "UUSI-P3-06",
+      "kind": "decision",
+      "title": "Alempi paneelipaikka kerää sadevedet",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maisemasyistä alemmas siirretylle paneelikentälle kertyisi hulevesilaskelman mukaan vettä. Naapurin näkymä parani, mutta uuden paikan kuivatus ei vielä toimi."
+    },
+    {
+      "id": "UUSI-P3-07",
+      "kind": "decision",
+      "title": "Huoltotien kohdalta löytyi tervahauta",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Arkeologinen inventointi tunnistaa huoltotien kohdalta suojeltavan tervahaudan. Tielinjaus pitää tarkistaa ennen kaavaehdotusta."
+    },
+    {
+      "id": "UUSI-P3-08",
+      "kind": "decision",
+      "title": "Lepakkohavainnot keskittyvät loppukesän öihin",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Lepakkoseurannassa aktiivisuus kasvaa lämpiminä, vähätuulisina loppukesän öinä. Kahdelle voimalapaikalle ehdotetaan näihin oloihin kohdistuvaa pysäytystä."
+    },
+    {
+      "id": "UUSI-P3-09",
+      "kind": "decision",
+      "title": "Talvella voimalat näkyvät enemmän",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maisema-arvion kuvat on otettu lehtipuiden ollessa lehdessä. Lehdettömän ajan tarkistus näyttää reunimmaisen voimalaryhmän huomattavasti selvemmin kylälle."
+    },
+    {
+      "id": "UUSI-P3-10",
+      "kind": "decision",
+      "title": "Yömelu puuttui vertailusta",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Meluraportin koosteessa on käytetty vain päiväajan tilannetta. Hankkeen voimalat toimisivat myös öisin, jolloin asuin- ja lomarakennuksille sovelletaan tiukempaa ohjearvoa."
+    },
+    {
+      "id": "UUSI-P3-11",
+      "kind": "decision",
+      "title": "Kuulemiseen tuli myös Ruotsi",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Rajaseudun hankkeen voimalat näkyisivät myös Ruotsiin. Kansainvälisessä kuulemisessa pyydetään lisää havainnekuvia ja arvioita vastarannan asutukselle."
+    },
+    {
+      "id": "UUSI-P3-12",
+      "kind": "decision",
+      "title": "Porojen talvilaitumelle ei enää päästä",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Selvityksessä on huomioitu talvilaidun, mutta kulkuyhteys sille jää oman ja naapurihankkeen väliin. Paliskunta pyytää tarkastelemaan koko laidunkiertoa."
+    },
+    {
+      "id": "UUSI-P3-13",
+      "kind": "decision",
+      "title": "Voimajohdon rakentaminen voi kuivattaa Natura-suota",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Voimajohto kiertää Natura-alueen, mutta sen rakentaminen muuttaisi suolle tulevien vesien reittiä. Suon vesitalous pitää turvata myös rajauksen ulkopuolella tehtävissä töissä."
+    },
+    {
+      "id": "UUSI-P3-14",
+      "kind": "decision",
+      "title": "Lisäselvitys vapautti kaksi voimalapaikkaa",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tarkempi metsäpeuraseuranta rajaa vasomisalueen aiempaa suppeammaksi. Kaksi varmuuden vuoksi pois jätettyä voimalapaikkaa voisi sittenkin sopia alueelle. Muu pienempi vaihtoehto on jo pitkällä."
+    },
+    {
+      "id": "P3-SOPIMUS",
+      "kind": "decision",
+      "title": "Poikkeuksesta halutaan yhteinen käytäntö",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kolme muuta maanomistajaa vaatii samoja parempia vuokraehtoja kuin hankkeen viimeisille allekirjoittajille sovittiin. Heidän sopimuksensa ovat jo voimassa, mutta seuraavista aluevarauksista neuvotellaan vielä."
+    },
+    {
+      "id": "BESS-P3-01",
+      "kind": "decision",
+      "title": "Jäähdytys kuuluu naapuriin",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akun melutiedot koskevat osakuormaa. Lämpimän illan täydellä kuormalla jäähdytys olisi voimakkaampi, mutta tätä tilannetta ei vielä ole meluarviossa."
+    },
+    {
+      "id": "BESS-P3-02",
+      "kind": "decision",
+      "title": "Paloturvallisuutta ei voi arvioida myyntiesitteestä",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Turvallisuussuunnittelija pyytää tiedot akkujen suojauksista ja häiriötilanteista. Toimittaja lähettää saman myyntiesitteen, joka oli jo tarjousliitteenä."
+    },
+    {
+      "id": "BESS-P3-03",
+      "kind": "decision",
+      "title": "Häiriötilanteen vedet pääsisivät ojaan",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Turvallisuustarkastelussa löytyy laitealueelta suora virtausreitti alapuoliseen ojaan. Nykyinen hulevesisuunnitelma ei käsittele onnettomuustilanteessa mahdollisesti pilaantuneita vesiä."
+    },
+    {
+      "id": "BESS-P3-04",
+      "kind": "decision",
+      "title": "Laiterivi tukki kulun",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akkualueen pinta-alaa pienennettiin siirtämällä yksi laiterivi huolto- ja pelastuskulun kohdalle. Turvallisuussuunnittelija palauttaa asemapiirroksen korjattavaksi."
+    },
+    {
+      "id": "BESS-P3-05",
+      "kind": "decision",
+      "title": "Yhteinen liittymä ei kata molempien huipputehoa",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tuulipuiston ja akun yhtäaikainen purku ylittäisi yhteisen liittymän siirtorajan. Akun tarjouksessa on oletettu, että koko purkuteho olisi aina käytettävissä."
+    },
+    {
+      "id": "BESS-P3-06",
+      "kind": "decision",
+      "title": "Reservitulo on laskelmassa joka vuosi sama",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akun kannattavuuslaskelma olettaa nykyisen reservituoton jatkuvan koko tarkastelujakson. Omistaja pyytää näyttämään myös heikomman markkinatilanteen ennen seuraavaa rahoituserää."
+    },
+    {
+      "id": "BESS-P3-07",
+      "kind": "decision",
+      "title": "Uusi akku tarvitsee eri asemapiirroksen",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Korvaava akkutoimittaja tarjoaa samaa tehoa, mutta kontteja ja jäähdytyslaitteita on eri määrä. Vanha asemapiirros ja meluliite eivät vastaa tarjousta."
+    },
+    {
+      "id": "interludes[2][0]",
+      "kind": "event",
+      "title": "Kaavaluonnos valmistuu",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaavoittaja kokoaa voimalapaikat, tiet ja suojeltavat alueet kaavaluonnokseen. Konsultit tarkistavat, että kartta vastaa selvityksissä tutkittua sijoittelua."
+    },
+    {
+      "id": "interludes[2][1]",
+      "kind": "event",
+      "title": "YVA-selostusta kirjoitetaan",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Luonto-, melu-, maisema- ja muut vaikutusarviot kootaan selostukseen. Hankevaihtoehtojen erot ja vielä puuttuvat tiedot kirjataan näkyviin."
+    },
+    {
+      "id": "interludes[2][2]",
+      "kind": "event",
+      "title": "Tavallinen työpäivä",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Sovitut selvitykset etenevät ja kaava-aineisto valmistuu. Tällä viikolla ei tullut uusia lisäselvityspyyntöjä."
+    },
+    {
+      "id": "interludes[2][3]",
+      "kind": "event",
+      "title": "Havainnekuvat valmistuivat",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Havainnekuvat valmistuivat sovituista kuvauspaikoista. Konsultti liittää ne maisema-arvioon ja tarkistaa näkyvimmät voimalaryhmät."
+    },
+    {
+      "id": "progress-12",
+      "kind": "event",
+      "title": "Yleisötilaisuudessa riitti kysymyksiä",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Selostuksen ja kaavaluonnoksen yleisötilaisuus on pidetty. Kysymykset koskivat erityisesti melua, maisemaa ja eläinten kulkureittejä. Palaute kootaan vastineiden ja jatkosuunnittelun pohjaksi."
+    },
+    {
+      "id": "contract-callback",
+      "kind": "event",
+      "title": "Muut maanomistajat kuulivat poikkeusehdoista",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maanomistajat ovat saaneet tietää kahdelle omistajalle myönnetyistä paremmista ehdoista. Nyt myös muut pyytävät vuokrasopimuksiinsa samaa etua."
+    },
+    {
+      "id": "draft-done",
+      "kind": "event",
+      "title": "Perusteltu päätelmä saapui",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "LVV on antanut YVA-selostuksesta perustellun päätelmän. Siinä esitetyt vaikutukset ja jatkosuunnittelun tarpeet käydään läpi ennen kaavaehdotuksen viimeistelyä."
+    },
+    {
+      "id": "draft-done::no-yva",
+      "kind": "event",
+      "title": "Kaavaluonnoksen palaute saapui",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaavaluonnoksen lausunnot ja mielipiteet on koottu. Konsultti ja kunta valmistelevat niiden perusteella vastineet ja kaavaehdotuksen muutokset."
+    },
+    {
+      "id": "noise-statement",
+      "kind": "event",
+      "title": "Melumoodin takuutieto ei riittänyt",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "LVV pyytää tarkempaa valmistajan takuuta ehdotetun melumoodin lähtötiedoista. Nykyisellä aineistolla käyttötilan melupäästöä ei voida varmistaa."
+    },
+    {
+      "id": "EV-YHTEISASEMA",
+      "kind": "event",
+      "title": "Yhteisliityntä ei onnistukaan",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Verkkoyhtiön ja suunnittelijan tarkastelu osoittaa, ettei ehdotettu yhteinen johtoliityntä toimi hankkeiden tehoilla ja suojausratkaisulla. Myöhemmin mahdollinen yhteisvaihtoehto ei sovi molempien aikatauluihin. Hanke jatkaa oman liittymän suunnittelulla."
+    },
+    {
+      "id": "EV-VERKKO",
+      "kind": "event",
+      "title": "Liityntäselvitys valmistui",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Verkkoyhtiö on arvioinut hankkeen ensisijaisen liityntävaihtoehdon."
+    },
+    {
+      "id": "EV-NAAPURITIETO",
+      "kind": "event",
+      "title": "Naapurihankkeen sijoittelu tarkentui",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Naapurihankkeelta saatiin uusi voimalapaikkakartta."
+    },
+    {
+      "id": "EV-VAIHTOEHDOT",
+      "kind": "event",
+      "title": "Sääksen lentoreitti tarkistettiin uudelle sijoittelulle",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Uusi sijoittelu on verrattu havaittuun sääksen lentoreittiin."
+    },
+    {
+      "id": "EV-ILMAILU",
+      "kind": "event",
+      "title": "Lentoesteen esiselvitys valmistui",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Ilmailuvaikutuksia koskeva tarkastelu on valmistunut suunnitelluille paikoille."
+    },
+    {
+      "id": "EV-LUONTO",
+      "kind": "event",
+      "title": "Uuden sijoittelun luontoarvio valmistui",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Konsultti on arvioinut muutetun sijoittelun ja siihen liittyvät tiet."
+    },
+    {
+      "id": "EV-KOTKA",
+      "kind": "event",
+      "title": "Maakotkan yhteisvaikutusarvio valmistui",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Oman ja naapurihankkeiden vaikutukset maakotkan reviiriin on tarkasteltu yhdessä."
+    },
+    {
+      "id": "EV-PORO",
+      "kind": "event",
+      "title": "Poronhoidon yhteisvaikutukset arvioitiin",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paliskunnan tiedot, oma hanke ja muu maankäyttö on koottu laidunkierron tarkasteluun."
+    },
+    {
+      "id": "EV-VESI",
+      "kind": "event",
+      "title": "Vesienhallinnan laskelmat valmistuivat",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Vesiasiantuntija on arvioinut ehdotetun ratkaisun virtaamat, purkureitin ja tilantarpeen."
+    },
+    {
+      "id": "EV-KOSTEIKKO",
+      "kind": "event",
+      "title": "Varapalsta osoittautui hyödylliseksi",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kosteikkosuunnitelma ja vaikutusarvio osoittavat, että nykyisen viitasammakon lisääntymispaikan vedensaanti säilyy. LVV pitää ratkaisua perusteltuna. Paneelikenttää ei tarvitse pienentää niin paljon kuin alkuperäisessä väistövaihtoehdossa."
+    },
+    {
+      "id": "EV-PALAUTE",
+      "kind": "event",
+      "title": "Palaute ja vastineet käytiin läpi",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kunta ja konsultti ovat tarkistaneet palautteessa esiin nostetut puutteet."
+    },
+    {
+      "id": "EV-BESS-VERKKO",
+      "kind": "event",
+      "title": "Akkuvaraston verkkotarkastelu valmistui",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Verkkoyhtiö on tarkastellut akun latausta, purkua ja muiden hankeosien samanaikaista käyttöä."
+    },
+    {
+      "id": "EV-BESS-TEKNIIKKA",
+      "kind": "event",
+      "title": "Verkkovaatimusten vastuut saatiin sovittua",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Toimittaja toimittaa tarvittavat simulointimallit ja testiaineistot sovitussa aikataulussa. Suunnittelija voi jatkaa niiden perusteella liittymän teknistä valmistelua."
+    },
+    {
+      "id": "external-2",
+      "kind": "event",
+      "title": "Verkkoon ei löydy toteuttamiskelpoista liittymää",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Verkkoselvitys sulkee myös tutkitun varaliitynnän. Hankkeen tavoiteaikaan ei löydy toteuttamiskelpoista vaihtoehtoa. Omistaja päättää lopettaa kehityksen."
+    },
+    {
+      "id": "ext-grid-station",
+      "kind": "event",
+      "title": "Verkon vahvistus siirtyi liian kauas",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankkeen tarvitsema verkon vahvistus siirtyy useita vuosia. Muita toteuttamiskelpoisia liityntöjä ei löytynyt. Omistaja ei jatka valmistelua näin pitkällä odotuksella."
+    },
+    {
+      "id": "ext-nature-network",
+      "kind": "event",
+      "title": "Metsäpeuran kulkuyhteyttä ei voida väistää",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Laajempi arvio osoittaa hankealueen välttämättömäksi metsäpeuran kulkuyhteydeksi. Myös pienemmät sijoittelut ja reittimuutokset heikentäisivät sitä liikaa. Toteuttamiskelpoista hankevaihtoehtoa ei jää."
+    },
+    {
+      "id": "external-golden-full",
+      "kind": "event",
+      "title": "Maakotkan reviirille ei mahdu tätä hanketta",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Reviirin yhteisvaikutusarvio osoittaa, että myös pienimmät toteuttamiskelpoiset vaihtoehdot aiheuttaisivat maakotkalle liian suuren haitan. Lisäsiirroilla ei löydy hyväksyttävää sijoittelua. Hanke lopetetaan."
+    },
+    {
+      "id": "external-herding",
+      "kind": "event",
+      "title": "Laidunkokonaisuus ei kestä lisähaittaa.",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaikki toteuttamiskelpoiset vaihtoehdot katkaisisivat poronhoidolle välttämättömän laidunyhteyden. Paliskunnan tiedot ja yhteisvaikutusten arvio eivät tue esitettyjä lievennyksiä. Hankkeelle ei löydy jatkamiskelpoista sijoittelua."
+    },
+    {
+      "id": "transition-3",
+      "kind": "event",
+      "title": "Kaavaehdotus ja hyväksyntä",
+      "classification": "mode_presentation",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Valitse 06:n mukainen esitysmuoto ja sallitut haarat; oikea YVA-/hankeosaprofiili. Tekstikerros ei muuta mekaanista vaikutusta.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Perusteltu päätelmä ja kaavaluonnoksen palaute on saatu. Nyt korjataan havaittuja puutteita ja valmistellaan kaavaehdotus. Tämän jälkeen edessä ovat hyväksymiskäsittely ja hankkeen tarvitsemat luvat."
+    },
+    {
+      "id": "feedback",
+      "kind": "decision",
+      "title": "Paneeliaita katkaisee metsäpeuran reitin",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaavaehdotuksen aitaus sulkisi metsäpeurojen käyttämän kulkuyhteyden tuulialueen ja paneelilohkojen väliltä. Luontoarviossa yhteys on todettu tärkeäksi."
+    },
+    {
+      "id": "natura",
+      "kind": "decision",
+      "title": "Odotetaanko metsäpeuratutkimusta?",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Oman selvityksen perusteella kolme voimalaa pitäisi jättää pois metsäpeuran kulkuyhteydeltä. Uusi julkinen tutkimus voisi tarkentaa häiriövaikutuksen arviointia, mutta sen julkaisu on vielä kesken."
+    },
+    {
+      "id": "leases",
+      "kind": "decision",
+      "title": "Arvioitu sijoittelu ei ole enää nykyinen",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaavaehdotuksessa kolme voimalaa on eri paikassa kuin YVA-selostuksessa. Kunta pyytää selvittämään, kattavatko aiemmat melu- ja luontoarviot muutetun sijoittelun."
+    },
+    {
+      "id": "hearing",
+      "kind": "decision",
+      "title": "Kuka säilyttää puuston?",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaava-aineistossa luvataan säilyttää paneelialueen ja kylän välinen suojapuusto. Sen omistaja ja säilyttämisen toteutustapa eivät kuitenkaan käy asiakirjoista ilmi."
+    },
+    {
+      "id": "proposal",
+      "kind": "decision",
+      "title": "Maisema-arviosta puuttuu kylän tärkein näkymä",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaavaehdotuksesta tehty muistutus koskee kylän yhteistä näkymää, jota havainnekuvissa ei ole. Yksi reunimmainen voimala näkyisi tästä suunnasta muita selvemmin."
+    },
+    {
+      "id": "natura-review",
+      "kind": "decision",
+      "title": "Maakotkatutkimus on vielä vertaisarvioinnissa",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maakotkatutkimuksen julkaisu voisi tarkentaa hankkeen riskimallin oletuksia. Nykyinen arvio puoltaa kahden paikan poistamista. Tutkimusryhmä ei pysty vahvistamaan julkaisupäivää."
+    },
+    {
+      "id": "UUSI-P4-KOTKAPAIKAT",
+      "kind": "decision",
+      "title": "Kaksi paikkaa takaisin tarkasteluun?",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maakotkatutkimuksen paikallinen tarkastelu antaa aihetta arvioida kaksi pois jätettyä voimalapaikkaa uudelleen. Pienempi ehdotus olisi jo valmis; paikkojen palautus edellyttäisi uutta reviirin yhteisarviota."
+    },
+    {
+      "id": "natura-season",
+      "kind": "decision",
+      "title": "Tutkimus tarvitsee vielä yhden vuoden",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tutkimusryhmä ilmoittaa jatkavansa metsäpeuran seurantaa vielä yhden havaintokauden. Hanke voisi edetä nykyisellä aineistolla ilman kahta vasomisalueen läheistä voimalapaikkaa."
+    },
+    {
+      "id": "natura-applicable",
+      "kind": "decision",
+      "title": "Hyvä tutkimustulos, eri ympäristö",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Julkaistu metsäpeuratutkimus näyttää hankkeen kannalta lupaavalta. Tutkimusalue poikkeaa kuitenkin omasta alueesta, eikä konsultti pidä sen johtopäätöstä sellaisenaan sovellettavana."
+    },
+    {
+      "id": "evidence-joint",
+      "kind": "decision",
+      "title": "Naapurin uusi sijoittelu muuttaa yhteisvaikutuksia",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Naapuri siirtää voimaloita ennen oman kaavaehdotuksen hyväksymistä. Muutos voi vaikuttaa samaan melukohteeseen ja maakotkareviiriin kuin oma hanke."
+    },
+    {
+      "id": "evidence-natura",
+      "kind": "decision",
+      "title": "Natura-arviossa on vanha tieverkko",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaavaehdotuksen uusi tieverkko poikkeaa Natura-arvioinnin vaihtoehdosta. Osa teistä on siirtynyt lähemmäs metsäpeuran kulkuyhteyttä."
+    },
+    {
+      "id": "proposal-lake",
+      "kind": "decision",
+      "title": "Vastarannalta näkyy enemmän",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Järven vastarannan asukkaat pyytävät kuvaa omalta rannaltaan. Aiemmassa kuvasarjassa tätä suuntaa ei ole. Yksi voimalapaikka erottuu sieltä näkyvimmän ryhmän edessä."
+    },
+    {
+      "id": "proposal-village",
+      "kind": "decision",
+      "title": "Voimala näkyisi kulttuurimaiseman taustalla",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kyläyhdistys muistuttaa avoimen kulttuurimaiseman arvoista. Ehdotuksen reunimmainen voimalapaikka nousee keskeiseksi kysymykseksi näkymässä."
+    },
+    {
+      "id": "proposal-photo",
+      "kind": "decision",
+      "title": "Havainnekuva on otettu puiden takaa",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Muistutuksessa osoitetaan, että näköalapaikan havainnekuva on tehty puiden takaa. Vieressä olevalta avoimelta paikalta reunimmainen voimala näkyisi paljon selvemmin."
+    },
+    {
+      "id": "hearing-mitigation",
+      "kind": "decision",
+      "title": "Pelkkä seuranta ei riitä tähän päätökseen",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Natura-arviossa metsäpeuran kulkuhaitan hallinta on jätetty käytönaikaisen seurannan varaan. LVV pyytää osoittamaan ennen päätöstä, millä sijoittelulla kulkuyhteys säilyy."
+    },
+    {
+      "id": "hearing-condition",
+      "kind": "decision",
+      "title": "Naapurin suojapuusto on menossa hakkuuseen",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paneelikentän maisema-arvio olettaa naapurin metsän säilyvän. Maanomistaja kertoo nyt suunnittelevansa hakkuuta. Yhtiö ei ole sopinut puiden säilyttämisestä."
+    },
+    {
+      "id": "proposal::solar-base",
+      "kind": "decision",
+      "title": "Paneelikenttä muuttaisi avoimen peltomaiseman",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaavaehdotuksen muistutus koskee kylälle avautuvaa peltomaisemaa. Näkyvin paneelilohko ulottuu pellon keskelle eikä sitä ole havainnollistettu tästä suunnasta."
+    },
+    {
+      "id": "feedback::noise",
+      "kind": "decision",
+      "title": "Hiljaisesta ajotavasta puuttuu takuu",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Meluarvioon ehdotetun käyttötilan valmistajan takuu ei kata tarvittavia lähtötietoja. Toimittaja lupaa selvittää asian, mutta aineistolle ei ole varmaa toimituspäivää."
+    },
+    {
+      "id": "feedback::herding",
+      "kind": "decision",
+      "title": "Aidan aukko on väärässä kohdassa",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paliskunta osoittaa, että kaavaehdotuksen paneeliaidan aukko on sivussa porojen todellisesta kulkureitistä. Nykyinen aitalinjaus vaikeuttaisi laidunkiertoa."
+    },
+    {
+      "id": "UUSI-P4-01",
+      "kind": "decision",
+      "title": "Lisäselvityksen tulos on kielteinen",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Täydentävä arvio osoittaa, ettei valittu siirto ratkaise tunnistettua luontohaittaa. Konsultti esittää pienempää vaihtoehtoa, jolla hanketta voisi jatkaa. Nykyinen koko säilyisi vain jättämällä tämä johtopäätös ratkaisematta."
+    },
+    {
+      "id": "UUSI-P4-02",
+      "kind": "decision",
+      "title": "Hiljaisesta ajotavasta puuttuu takuu",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Meluarvioon ehdotetun käyttötilan valmistajan takuu ei kata tarvittavia lähtötietoja. Toimittaja lupaa selvittää asian, mutta aineistolle ei ole varmaa toimituspäivää."
+    },
+    {
+      "id": "UUSI-P4-03",
+      "kind": "decision",
+      "title": "Meluraportissa ovat vanhat koordinaatit",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaavaehdotuksen kartalla on uusi sijoittelu, mutta melulaskennan lähtökoordinaatit ovat edellisestä versiosta. Raportin tiedostonimi oli jo päivitetty."
+    },
+    {
+      "id": "UUSI-P4-04",
+      "kind": "decision",
+      "title": "Asiantuntijan pitäisi poistua kokouksesta",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Olet vastannut hankkeen kysymyksiin suljetussa kunnanhallituksen kokouksessa. Puheenjohtaja aloittaa päätöksenteon. Hallintosäännön mukaan asiantuntijan läsnäolo päättyy tähän."
+    },
+    {
+      "id": "UUSI-P4-05",
+      "kind": "decision",
+      "title": "Kaava kumottiin menettelyvirheen vuoksi",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tuomioistuin kumoaa kaavan hyväksymispäätöksen valmistelun menettelyvirheen takia. Voimalapaikkojen sopivuutta ei tällä ratkaisulla hylätty, mutta käsittelyä pitää tehdä uudelleen."
+    },
+    {
+      "id": "UUSI-P4-06",
+      "kind": "decision",
+      "title": "Naapurin suojapuusto on menossa hakkuuseen",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paneelikentän maisema-arvio olettaa naapurin metsän säilyvän. Maanomistaja kertoo nyt suunnittelevansa hakkuuta. Yhtiö ei ole sopinut puiden säilyttämisestä."
+    },
+    {
+      "id": "UUSI-P4-07",
+      "kind": "decision",
+      "title": "Ennallistaminen ei poista tämän suon kuivumista",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Voimajohdon vesitalousvaikutus uhkaa Natura-suota. Yhtiö tarjoaa toiselle alueelle ennallistamista, mutta LVV huomauttaa, ettei se estä tämän suon heikkenemistä."
+    },
+    {
+      "id": "UUSI-P4-08",
+      "kind": "decision",
+      "title": "Natura-arvion lähtötiedot muuttuvat",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Viranomainen valmistelee metsäpeuran lisäämistä läheisen Natura-alueen suojeluperusteisiin. Uusi aineisto osoittaa eläinten käyttävän myös hankealueen kautta kulkevaa reittiä."
+    },
+    {
+      "id": "UUSI-P4-09",
+      "kind": "decision",
+      "title": "Pienempi hanke tuli lähemmäs toista naapuria",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Ehdotuksen pienennyksessä yksi voimala siirrettiin lähemmäs uutta naapuria. Voimalamäärä väheni, mutta hänen kohdallaan melu- ja maisemavaikutus kasvaisi."
+    },
+    {
+      "id": "UUSI-P4-10",
+      "kind": "decision",
+      "title": "Uusi valtuusto suhtautuu hankkeeseen varauksella",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaavaehdotus tulee uuden valtuuston käsittelyyn. Ratkaiseva ryhmä haluaa rajata asutuksen puoleista voimalaryhmää aiempaa enemmän."
+    },
+    {
+      "id": "UUSI-P4-VUOKRAJATKO",
+      "kind": "decision",
+      "title": "Maanomistajilta tarvitaan jatkoa",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankkeeseen kertynyt viive ja maakuntakaavan lykkääntyminen uhkaavat ylittää vuokrasopimusten valmisteluajan. Keskeisten kiinteistöjen omistajille pitää tehdä jatkoesitys nyt."
+    },
+    {
+      "id": "UUSI-P4-11",
+      "kind": "decision",
+      "title": "Haetaanko muutosta hallinto-oikeuden ratkaisuun?",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hallinto-oikeus kumoaa kaavan selvitysten riittävyyden vuoksi. Juristin mukaan ratkaisussa on peruste hakea valituslupaa korkeimmalta hallinto-oikeudelta. Uusi kaavavalmistelu olisi toinen vaihtoehto."
+    },
+    {
+      "id": "UUSI-P4-12",
+      "kind": "decision",
+      "title": "Kaava hyväksyttiin, lupa-asiat ovat vielä kesken",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Valtuusto on hyväksynyt kaavan. Rakentamislupien ja muiden tarvittavien lupien valmistelu jatkuu vielä. Mahdollisen akkuosan selvitykset ovat ydinhanketta jäljessä."
+    },
+    {
+      "id": "BESS-P4-01",
+      "kind": "decision",
+      "title": "Alustava verkkovastaus ei ollut liittymissopimus",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akun jakeluverkkoliitynnän alustava tarkastelu oli myönteinen. Sopimuksen tekemiseen tarvittava Fingridin hyväksyntä ja hakemuksen lupaedellytykset pitää kuitenkin vielä varmistaa."
+    },
+    {
+      "id": "BESS-P4-02",
+      "kind": "decision",
+      "title": "Hyväksynnän määräaika lähestyy",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Fingridin liittymissopimusta koskevan hyväksynnän voimassaoloaika on päättymässä. Yhtiön sisäinen päätös puuttuu. Vastuuhenkilön seuraava vapaa kokousaika olisi vasta määräajan jälkeen."
+    },
+    {
+      "id": "BESS-P4-03",
+      "kind": "decision",
+      "title": "Akun luvat saatiin, reservikäyttö selvitetään myöhemmin",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akkuvaraston tarvittavat luvat ovat valmiit. Toteutusvaiheeseen jäävät vielä rakentaminen, käyttöönottotestit ja reservituotteiden hyväksynnät."
+    },
+    {
+      "id": "BESS-P4-04",
+      "kind": "decision",
+      "title": "Akku odottaa verkkoa, tuulipuisto voisi jatkaa",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akkuvaraston tavoiteltu liityntä odottaa verkon vahvistusta. Tuulipuistolla on erillinen toteuttamiskelpoinen verkkoratkaisu. Osat voidaan selvityksen mukaan erottaa."
+    },
+    {
+      "id": "BESS-P4-RAJAUS",
+      "kind": "decision",
+      "title": "Akulle tarjotaan vain rajattua tehoa",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Verkkoselvityksen mukaan akku voisi jatkaa pienemmällä lataus- ja purkuteholla. Alkuperäistä tehoa ei ole saatavilla tavoiteaikaan."
+    },
+    {
+      "id": "BESS-P4-05",
+      "kind": "decision",
+      "title": "Turvallisuustarkastelussa pyydetään toista ratkaisua",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akkualueen turvallisuusarviossa viitataan ulkomaiseen standardiin ja pyydetään lisää tilaa laitteiden ympärille. Suunnittelija haluaa tarkistaa, mitä tässä kohteessa pitää osoittaa."
+    },
+    {
+      "id": "BESS-P4-06",
+      "kind": "decision",
+      "title": "Akkuosa on luvitettu",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Akkualueen sopimukset, sijoittelu ja lupa-aineisto vastaavat samaa suunnitelmaa. Tarvittavat luvat on saatu ja niiden tila tarkistettu."
+    },
+    {
+      "id": "EV-OPTIO",
+      "kind": "event",
+      "title": "Vuokrasopimusten jatkosta vastattiin",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Keskeisten kiinteistöjen maanomistajat ovat vastanneet jatkoesityksiin."
+    },
+    {
+      "id": "EV-MAAKUNTAODOTUS",
+      "kind": "event",
+      "title": "Maakuntakaava viivästyy taas",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maakuntaliitto ilmoittaa tarvittavan kaavaratkaisun siirtyvän. Hankkeen aiemmat viiveet ovat jo kuluttaneet vuokrasopimusten valmisteluaikaa. Nykyiset määräajat eivät riitä uuteen aikatauluun."
+    },
+    {
+      "id": "interludes[3][0]",
+      "kind": "event",
+      "title": "Vastineet valmistuvat",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Konsultti ja kunta käyvät ehdotuksen muistutukset ja lausunnot läpi. Vastineisiin kirjataan tarvittavat suunnitelmamuutokset ja perustelut."
+    },
+    {
+      "id": "interludes[3][1]",
+      "kind": "event",
+      "title": "Muutettu hanke esiteltiin kunnalle",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Esittelit pienennetyn sijoittelun ja selvitysten johtopäätökset luottamushenkilöille. Kaavaehdotuksen varsinainen hyväksymiskäsittely on vielä edessä."
+    },
+    {
+      "id": "interludes[3][2]",
+      "kind": "event",
+      "title": "Ehdotuksen asiakirjat tarkistettiin",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaavakartta, määräykset ja vaikutusarviot vastaavat nyt samaa sijoittelua. Aineisto valmistellaan hyväksymiskäsittelyyn."
+    },
+    {
+      "id": "interludes[3][3]",
+      "kind": "event",
+      "title": "Viimeiset täydennykset valmistuvat",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Lausuntojen vaatimia täydennyksiä viimeistellään. Kunta kokoaa päätösesitystä, ja lupahakemusten valmistelu jatkuu rinnalla."
+    },
+    {
+      "id": "proposal-review",
+      "kind": "event",
+      "title": "Kaavaehdotus valmistellaan päätettäväksi",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Ehdotuksen lausunnot ja muistutukset on käsitelty. Kunta tarkistaa vastineet, päivitetyt selvitykset ja kaavamääräykset ennen hyväksymisesitystä."
+    },
+    {
+      "id": "adoption",
+      "kind": "event",
+      "title": "Kaava hyväksyttiin.",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Valtuusto hyväksyi kaavan. Mahdollinen muutoksenhaku käsitellään seuraavaksi. Rakentamis- ja muiden tarvittavien lupien valmistelu jatkuu."
+    },
+    {
+      "id": "ready",
+      "kind": "event",
+      "title": "Hankkeen luvat ovat valmiit",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaava ja hankkeen tarvitsemat luvat ovat lainvoimaisia. Lopullinen suunnitelma vastaa käsiteltyjä asiakirjoja, eikä luvituksessa ole enää avoimia esteitä."
+    },
+    {
+      "id": "EV-AURINKOLUONTO",
+      "kind": "event",
+      "title": "Paneelikentän luontoarvio valmistui",
+      "classification": "requires_own_solar",
+      "candidateContexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Aktiivinen aurinko-osa, oikea lohko ja havainto. Ei sovellu suoraan Tuuli-tilaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Konsultti on arvioinut muutetun paneelikentän ja siihen liittyvät työt."
+    },
+    {
+      "id": "EV-MELU",
+      "kind": "event",
+      "title": "Päivitetty meluarvio valmistui",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Valittu sijoittelu tai käyttötila on laskettu oikeilla lähtötiedoilla ja tarvittavilla yhteisvaikutuksilla."
+    },
+    {
+      "id": "EV-MAISEMA",
+      "kind": "event",
+      "title": "Täydentävä maisema-arvio valmistui",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Puuttuva näkymä on havainnollistettu ja vaikutus arvioitu."
+    },
+    {
+      "id": "EV-TUTKIMUS",
+      "kind": "event",
+      "title": "Tutkimustiedon vaikutus hankkeeseen selvisi",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Konsultti on verrannut uutta tutkimustietoa hankkeen omiin havaintoihin."
+    },
+    {
+      "id": "EV-NATURA",
+      "kind": "event",
+      "title": "Natura-arviosta saatiin lausunto",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "LVV on käsitellyt päivitetyn Natura-arvioinnin."
+    },
+    {
+      "id": "EV-AJANTASAISUUS",
+      "kind": "event",
+      "title": "Aiemman arvioinnin kattavuus tarkistettiin",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Konsultin vertailu ja tarvittava viranomaistarkistus ovat valmistuneet."
+    },
+    {
+      "id": "EV-LIEVENNYS",
+      "kind": "event",
+      "title": "Suojapuuston säilyttämisestä sovittiin",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Maanomistajan kanssa on sovittu säilytettävä puustoalue, vastuut ja korvaus. Kaava-aineisto ja maisema-arvio päivitetään tähän järjestelyyn."
+    },
+    {
+      "id": "EV-KORJAUS",
+      "kind": "event",
+      "title": "Korjatun vaihtoehdon arvio valmistui",
+      "classification": "case_scoped",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Ei globaalia hyväksyntää: laji, mekanismi, aktiivinen lähdetapaus, haara ja hankeosat tarkistetaan yksitellen. Wind-törmäyshaara ei muutu paneeliaidan vaikutukseksi.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Suunnitelman muutokset on arvioitu ja aiempi ongelmakohta tarkistettu."
+    },
+    {
+      "id": "EV-MENETTELY",
+      "kind": "event",
+      "title": "Asiantuntijan läsnäolosta tehtiin valitus",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaavapäätöksestä tehdyssä valituksessa vedotaan asiantuntijan läsnäoloon suljetun kokouksen päätöksenteossa. Kunta toimittaa asiakirjat hallinto-oikeudelle."
+    },
+    {
+      "id": "EV-KUULEMINEN",
+      "kind": "event",
+      "title": "Ehdotuksen muutos tarvitsee lisäkuulemisen",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kunta katsoo muutoksen vaikuttavan uudella tavalla naapurikiinteistöihin. Muutetusta aineistosta järjestetään tarvittava kuuleminen ennen hyväksymiskäsittelyä."
+    },
+    {
+      "id": "EV-KUNTA",
+      "kind": "event",
+      "title": "Kaavaehdotus oli valtuuston käsittelyssä",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Valtuusto on käsitellyt kaavaehdotuksen ja sen päätösaineiston."
+    },
+    {
+      "id": "EV-HYVAKSYNTA",
+      "kind": "event",
+      "title": "Kaava on hyväksytty",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaava hyväksyttiin. Ennen luvitusvaiheen valmistumista tarkistetaan päätöksen lainvoima ja viimeistellään hankkeen tarvitsemat lupahakemukset."
+    },
+    {
+      "id": "EV-VALITUS",
+      "kind": "event",
+      "title": "Kaavasta tehty valitus ratkaistiin",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Tuomioistuin on antanut ratkaisunsa kaava-asiassa."
+    },
+    {
+      "id": "EV-LAINVOIMA",
+      "kind": "event",
+      "title": "Kaava on lainvoimainen",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaavan muutoksenhakutilanne on päättynyt ja päätös on lainvoimainen. Tarvittavien rakentamis- ja muiden lupien tila tarkistetaan vielä erikseen."
+    },
+    {
+      "id": "EV-LUVAT",
+      "kind": "event",
+      "title": "Hankkeen kaikki tarvittavat luvat on saatu",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankkeen tarvittavat luvat ovat valmiit ja lainvoimaiset. Lupaehtoja ja lopullista suunnitelmaa on verrattu toisiinsa, eikä avoimia ristiriitoja jää."
+    },
+    {
+      "id": "EV-BESS-TURVA",
+      "kind": "event",
+      "title": "Akkualueen turvallisuussuunnitelma tarkistettiin",
+      "classification": "hybrid_bess",
+      "candidateContexts": [
+        "hybrid"
+      ],
+      "gate": "Hybridi ja aktiivinen BESS; myös tuloksen lähde/työ ja epilogin tila tarkistetaan.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Suunnittelija ja asian käsittelyyn osallistuvat viranomaiset ovat käyneet tarvittavan aineiston läpi."
+    },
+    {
+      "id": "external-3",
+      "kind": "event",
+      "title": "Rahoittaja vetäytyi.",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Rahoittaja lopettaa uusien hankkeiden kehitysrahoituksen muuttuneen markkinatilanteen vuoksi. Korvaavaa rahoittajaa ei löydy, eikä omistaja rahoita valmistelua itse. Hanke keskeytetään lopullisesti."
+    },
+    {
+      "id": "ext-buyer",
+      "kind": "event",
+      "title": "Sähkön ostaja vetäytyi",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankkeen jatkokehitys on sidottu suuren sähkönostajan sitoumukseen. Ostaja vetäytyy, eikä omistaja löydä korvaavaa toteutusmallia. Hankkeen valmistelu lopetetaan."
+    },
+    {
+      "id": "ext-grid-delivery",
+      "kind": "event",
+      "title": "Liittyminen siirtyy liian kauas.",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Verkon rakentamisen aikataulu siirtyy olennaisesti. Hankkeen omistaja ei jatka näin pitkää odotusta, eikä toteuttamiskelpoista korvaavaa liityntää löydy. Kehitystyö lopetetaan."
+    },
+    {
+      "id": "LOPPU-VUOKRA-AIKA",
+      "kind": "event",
+      "title": "Kaava jäi odottamaan. Sopimukset eivät riittäneet.",
+      "classification": "requires_own_wind",
+      "candidateContexts": [
+        "wind",
+        "hybrid"
+      ],
+      "gate": "Nykyinen kirjoitettu vaikutus edellyttää omaa aktiivista tuuliosaa tai sen nimenomaista lähdeketjua. Ei aurinkokorviketta haku–korvauksella.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hanke joutui odottamaan lykkääntynyttä maakuntakaavaa. Aiemmat viivästykset olivat jo kuluttaneet vuokrasopimusten valmisteluajan, eikä riittävän moni maanomistaja suostunut jatkoon. Tarvittavat alueet menetettiin eikä korvaavaa sijoittelua löytynyt. Hanke päättyy."
+    },
+    {
+      "id": "LOPPU-VOITTO",
+      "kind": "event",
+      "title": "Hanke on luvitettu",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Kaava ja hankkeen tarvitsemat luvat ovat lainvoimaisia. Hankekehitys saatiin maaliin. Seuraavaksi katsotaan, paljonko hankkeesta säilyi ja millä ajalla sekä kustannuksilla."
+    },
+    {
+      "id": "LOPPU-VALINTA",
+      "kind": "event",
+      "title": "Ratkaisematon ongelma pysäytti hankkeen",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "{decisionLabel}. Tämän jälkeen {blockingIssue} jäi ratkaisematta, eikä hankkeen hyväksymiselle saatu edellytyksiä. Vaihtoehtona olisi ollut {availableAlternative}."
+    },
+    {
+      "id": "LOPPU-LAAJUUS",
+      "kind": "event",
+      "title": "Jäljelle jäi liian pieni hanke",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Paikkojen ja alueiden menetyksen jälkeen hanke jäi pienemmäksi kuin omistajan alussa ilmoittama jatkoraja. Korvaavaa sijoittelua ei löytynyt. Kehitystyö päättyy."
+    },
+    {
+      "id": "LOPPU-ULKOINEN",
+      "kind": "event",
+      "title": "Hankkeelle ei löytynyt jatkomahdollisuutta",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "{externalReason} Myös toteuttamiskelpoiset pienemmät vaihtoehdot ja muut ratkaisut on selvitetty. Hankkeen kehitys päättyy."
+    },
+    {
+      "id": "LOPPU-OMISTAJA",
+      "kind": "event",
+      "title": "Omistaja lopettaa hankkeen kehityksen",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Omistaja on tehnyt lopullisen päätöksen hankkeen kehityksen lopettamisesta. Valmistelua ei enää rahoiteta, ja käynnissä olevat työt päätetään sovitusti."
+    },
+    {
+      "id": "PISTEET",
+      "kind": "event",
+      "title": "Mitä hankkeesta jäi käteen?",
+      "classification": "shared_requires_rule_audit",
+      "candidateContexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "gate": "Yhteisen aiheen ehdokas. Codex tarkistaa nykyisen rule.spec/eligible/apply/resolverin ja kaikki haarat ennen sallimista. Ei automaattista kaikille sallivaa fallbackia.",
+      "runtimeAuditStatus": "implementation-required",
+      "sourceBody": "Hankkeen säilynyt laajuus: {scopeScore}/400. Aikataulu: {timeScore}/200. Selvitysten ja menettelyn laatu: {qualityScore}/250. Kehitysrahojen käyttö: {resourceScore}/150. Yhteensä {totalScore}/1000."
+    }
+  ]
+}

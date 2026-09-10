@@ -42,7 +42,7 @@ export const proposalRules: Rule[] = [
     apply(game, issue, id, choice) { schedule(game, issue, id, choice, "EV-MELU", { duration: choice === "A" ? 8 : 2, baseline: 2, milestone: "proposal", euros: choice === "A" ? 6500 : 5000, key: "guaranteeFollowup" }); return null; } },
   { ids: ["feedback"], role: "base", art: ["deer-corridor", "solar-corridor"],
     spec: () => ({ family: "deerFence", component: "solar", species: "forestDeer", mechanism: "corridor", hectares: 8 }),
-    eligible: game => game.world.forestDeerArea && game.run.mode !== "wind",
+    eligible: game => game.world.forestDeerArea && game.activeMode !== "wind",
     apply(game, issue, id, choice) { if (choice === "A") { excludeAssets(game, issue); issue.fallback = "viable"; workOnly(game, issue, id, "openCorridor", 3, 6000); resolveCase(issue); }
       else schedule(game, issue, id, choice, "EV-LUONTO", { duration: 4, milestone: "proposal", euros: 10000 }); return null; } },
   { ids: ["feedback::herding"], role: "followup", art: ["reindeer-fence", "solar-corridor"],
@@ -52,7 +52,7 @@ export const proposalRules: Rule[] = [
       schedule(game, issue, id, choice, "EV-PORO", { duration: 4, milestone: "proposal", euros: 9000 }); return null; } },
   { ids: ["proposal", "proposal-lake", "proposal-village", "proposal-photo", "proposal::solar-base"], role: "base", art: ["landscape-photo", "village-view"],
     spec: (_game, id) => ({ family: id === "proposal::solar-base" ? "proposalSolarLandscape" : "proposalWindLandscape", component: id === "proposal::solar-base" ? "solar" : "wind", mechanism: "landscape", count: 1, hectares: 8 }),
-    eligible: (game, id) => id === "proposal::solar-base" ? game.run.mode !== "wind" : game.run.mode !== "solar",
+    eligible: (game, id) => id === "proposal::solar-base" ? game.activeMode !== "wind" : game.activeMode !== "solar",
     apply(game, issue, id, choice) { if (choice === "A") excludeAssets(game, issue);
       schedule(game, issue, id, choice, "EV-MAISEMA", { duration: 3, milestone: "proposal", euros: 5500 }); return null; } },
   { ids: ["leases", "evidence-joint", "evidence-natura"], role: "base", art: ["versioned-map", "noise-contours", "natura-bog"],
@@ -65,7 +65,7 @@ export const proposalRules: Rule[] = [
       schedule(game, issue, id, choice, "EV-AJANTASAISUUS", { duration: choice === "A" ? 4 : 2, milestone: "proposal", euros: choice === "A" ? 10000 : 4000 }); return null; } },
   { ids: ["UUSI-P4-03"], role: "base", art: ["versioned-map", "noise-contours"],
     spec: () => ({ family: "wrongCoordinates", component: "shared", mechanism: "noise" }),
-    eligible: game => game.planRevision > game.procedure.documentRevision && game.run.mode !== "solar",
+    eligible: game => game.planRevision > game.procedure.documentRevision && game.activeMode !== "solar",
     apply(game, issue, id, choice) {
       const cannotReturn = Object.values(game.cases).some(item => item.facts.relocated || item.placeIds.some(placeId => game.run.assets.windSites.find(site => site.id === placeId)?.exclusions.length));
       issue.facts.directUpdate = choice === "A" || cannotReturn;
@@ -75,7 +75,7 @@ export const proposalRules: Rule[] = [
     } },
   { ids: ["hearing", "hearing-condition", "UUSI-P4-06"], role: "base", art: ["winter-screen", "owner-plan"],
     spec: () => ({ family: "screeningAgreement", component: "solar", mechanism: "landscape", hectares: 6 }),
-    eligible: game => game.run.mode !== "wind" && game.cases["case:solarLandscape"]?.facts.treeAgreement !== true,
+    eligible: game => game.activeMode !== "wind" && game.cases["case:solarLandscape"]?.facts.treeAgreement !== true,
     apply(game, issue, id, choice) {
       const agrees = sample(game.run.seed, "screening-owner-acceptance") < 0.65;
       if (choice === "A" && agrees) {
@@ -130,7 +130,7 @@ export const proposalRules: Rule[] = [
       return null;
     } },
   { ids: ["UUSI-P4-10"], role: "base", art: ["council-chairs", "village-view"],
-    spec: () => ({ family: "councilSettlementGroup", component: "wind", mechanism: "landscape", count: 3 }), eligible: game => game.run.mode !== "solar" && !game.procedure.adopted,
+    spec: () => ({ family: "councilSettlementGroup", component: "wind", mechanism: "landscape", count: 3 }), eligible: game => game.activeMode !== "solar" && !game.procedure.adopted,
     apply(game, issue, id, choice) {
       issue.facts.settlementGroup = true; issue.facts.smallerPrepared = choice === "B";
       if (choice === "B") { excludeAssets(game, issue); workOnly(game, issue, id, "settlementAlternative", 4, 12000); }

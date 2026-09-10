@@ -5,6 +5,7 @@ export function Score({ game }: { game: Game }) {
   if (!score) return null;
   return (
     <section className="score" aria-label="Pelikerran pisteet">
+      {game.routeCategory==='hybrid_solar' && <p className="recovery-summary">Aurinkojatkon tulos. Alkuperäisen hybridin tuuliosa jäi pois. Aurinkoalaa verrataan alkuperäiseen {game.initial.solarHa} ha:n tavoitteeseen; koko hankkeen kulut ja viiveet ovat mukana.</p>}
       <strong className="score-total">
         {score.total}
         <small> / {score.maximum} pistettä</small>

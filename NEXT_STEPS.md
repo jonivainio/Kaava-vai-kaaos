@@ -1,3 +1,14 @@
+# Lisäpaketti 01 — toteutus ja varmennus kesken (10.9.2026)
+
+Aktiivinen toimeksianto: `docs/source-lp1/KAAVA_VAI_KAAOS_LISAPAKETTI_01/00_ALOITA_TASTA.txt` ja sen 01–06-ohjeet. Lähtöcommit e123ec68de0c94a40f05230a3d50a49752ff9bec, työpuu alussa puhdas. Alkuperäinen v5 ja aiemmat rytmiparannukset säilyvät. Julkinen peli on vielä edellinen hyväksytty versio.
+
+Toteutuksessa: 27 LP1-ID:tä erillisenä tekstikerroksena, keskitetty pelimuotopolitiikka, avatut Tuuli/Aurinko-valinnat, aurinkojatkon tarjous ja atominen muutos, omat aurinkoprofiilit, DC/AC-erottelu, kuntakohtaiset tilat, 18 uutta SVG-kuvaa sekä uusia tapauskohtaisia loppureaktioita. Tilasopimus: `docs/LP1_TILASOPIMUS.md`.
+
+Tähän mennessä ajettu: lähtöversion TS-testit ja build, paketin 399 eheystarkistusta, uuden version tyypitys/build, 300 pelimuotokoepeliä, 27 uuden teknisen tapahtumahaaraan positiiviset sekä väärän lähteen/valinnan/revision/työn negatiiviset testit, aurinkojatkon ja pisteytyksen erilliset testit. 1 500 kehityssimulaatiota ilman suoritusvirheitä. Nämä ovat välituloksia, eivät LP1:n koko hyväksyntä.
+
+Seuraavaksi: kaikkien 60 hyväksymistapauksen kattavuus ja puuttuvat rajatestit, koko regressiosarja, 15 000 loppusimulaatiota, kuvien oikea katselmus, kaikki pelimuodot ja aurinkojatko selaimessa 360/390/430 px + desktop, offline/päivitys, julkinen julkaisu ja kirjautumaton tarkistus. Säilytä uusi 3-kortin ajankulkuraja ja alkuperäiset v5-lähdehashit. Älä merkitse tätä valmiiksi pelkän buildin tai tekstien perusteella.
+
+---
 # Tarinoiden tiivistys ja reaktiot — 10.9.2026
 
 Aktiivinen sääntöversio `v5-rules-3`, lähdesisältö edelleen `v5-fi-03ae27238966`. Käyttäjän uusi pyyntö sallii tarinatiivistelmät ja tilanteisiin valitut reaktiot. Toteutus `src/game/v5/narration.ts` on erillinen ID-/haara-kohtainen esityskerros. Päätöskysymykset ja A/B-valinnat eivät muutu.

@@ -1,0 +1,1092 @@
+{
+  "schemaVersion": "lp1-source-1",
+  "packageId": "kaava-lisapaketti-01",
+  "targetRepository": "jonivainio/Kaava-vai-kaaos",
+  "observedCommit": "e123ec68de0c94a40f05230a3d50a49752ff9bec",
+  "baseSourceSha256": "03ae272389667c41412e8fef7a86f091db147aa72fbe6907a54b79661d3003f2",
+  "status": "implementable-design-not-executed-game-rules",
+  "authority": "02_UUDET_KORTIT_JA_EVENTIT.md on toimituksen ensisijainen pelaajateksti; JSON on saman tekstin generoitu rakenteinen rinnakkaismuoto. Tämä skeema ei ole suoraan nykyisen pelin ContentEntry tai suoritettava DSL.",
+  "contexts": {
+    "wind": "suora Tuuli",
+    "solar": "suora Aurinko",
+    "hybrid": "Hybridi ennen aurinkojatkoa",
+    "hybrid_solar": "Hybridi → Aurinko; aktiivinen tuotantomuoto vain aurinko"
+  },
+  "entries": [
+    {
+      "id": "LP1-T01",
+      "kind": "decision",
+      "stage": 3,
+      "contexts": [
+        "wind",
+        "hybrid"
+      ],
+      "family": "lp1_shadow",
+      "role": "base",
+      "title": "Melu alittuu, välke ei",
+      "body": "Yhteismelu on kunnossa. Välkemallinnus osoittaa kuitenkin kahden voimalan lapavarjojen osuvan saman talon ikkunoihin kevätiltaisin. Näihin hetkiin voidaan suunnitella pysäytysohjaus tai voimalapaikat jättää pois.",
+      "choices": {
+        "A": {
+          "label": "Suunnitellaan kohdennettu pysäytysohjaus",
+          "result": "Välkeajat ja ohjaus suunnitellaan näille kahdelle voimalalle. Samalla lasketaan, kuinka paljon sähköntuotantoa rajoitus vähentäisi.",
+          "branches": [],
+          "effect": "Tilaa shadowDesign: 2 kk / 8 000 €, baseline 2 kk, normaali selvitystyö. Ei paikkapoistoa. Kohdekohtainen ohjaus on tässä skenaariossa teknisesti toteuttamiskelpoinen; tuotantovaikutus ei vielä ole tiedossa."
+        },
+        "B": {
+          "label": "Jätetään nämä kaksi voimalapaikkaa pois",
+          "result": "Kaksi välkettä aiheuttavaa voimalapaikkaa poistetaan suunnitelmasta. Jäljelle jäävä sijoittelu mallinnetaan uudelleen.",
+          "branches": [],
+          "effect": "Poista vain sidotut kaksi aktiivista windSite-ID:tä, niiden tarpeettomat tiehaarat ja teho. Tilaa verification: 1 kk / 5 000 €, baseline 1 kk. Ei samalla muuta solar- tai BESS-arvoja."
+        }
+      },
+      "branches": [],
+      "eligibility": "Aktiivinen tuuliosa; vähintään kaksi tähän tapaukseen sidottavaa aktiivista voimalaa; nimetty asuinrakennus; yhteismelu tämän sijoittelun osalta ratkaistu. Skenaarion välkehaitan aiheuttavat juuri nämä paikat, ja ohjaus sekä niiden poisto ovat kumpikin tutkittavissa olevia ratkaisuja.",
+      "sources": [
+        "LPA01",
+        "LPA02"
+      ],
+      "artBrief": "Kaksi voimalan varjoa osuu talon ikkunoihin; pieni aurinko matalalla. Ei heijastavaa paneelikenttää.",
+      "nextIds": [
+        "LP1-E-T01"
+      ],
+      "implementationNotes": "Erota välke, valon heijastus ja melu. Ei Suomen yleistä 8 h / 30 h -lakirajaa. Ohjauksen tuotantorajoitus koskee vuosienergiaa, ei koneen nimellistehoa. Rajoitus kirjataan omana syykohtaisena vaikutuksena, ei tuplasti muun rajoituksen päälle."
+    },
+    {
+      "id": "LP1-E-T01",
+      "kind": "event",
+      "stage": 3,
+      "contexts": [
+        "wind",
+        "hybrid"
+      ],
+      "family": "lp1_shadow",
+      "role": "result",
+      "title": "Välkeratkaisu saatiin laskettua",
+      "body": "",
+      "choices": {},
+      "branches": [
+        {
+          "id": "control",
+          "when": "Lähde LP1-T01/A; ohjaussuunnitelma valmis",
+          "text": "Kohdennettu pysäytysohjaus estää tarkastellun välkkeen. Voimalamäärä säilyy. Arvioitu vuosituotanto pienenee {yieldLossPct} prosenttia.",
+          "effect": "Ratkaise vain välketapaus. Kirjaa syykohtainen windYield-muutos yhden kerran. yieldLossPct on koko hankkeen laskettu suhteellinen muutos, ei automaattisesti kahden koneen nimellistehon vähennys.",
+          "nextIds": []
+        },
+        {
+          "id": "removed",
+          "when": "Lähde LP1-T01/B; uusintamallinnus valmis",
+          "text": "Uusi välkemallinnus ei osoita samaa haittaa talolle. Kaksi poistettua voimalapaikkaa jäävät pois myös kaavaehdotuksesta.",
+          "effect": "Ratkaise välketapaus, pidä aiemmat poisto-ID:t. Älä poista toista kahden voimalan joukkoa tapahtuman vuoksi.",
+          "nextIds": []
+        }
+      ],
+      "eligibility": "Vain tämän tapauksen tilatun työn valmistuttua ja oikealle suunnitelmarevisiolle. Haara seuraa A/B-valintaa, ei uutta arvontaa.",
+      "sources": [
+        "LPA01",
+        "LPA02"
+      ],
+      "artBrief": "Sama talo ja voimalat; ohjauksen ajankohdat tai pois rajattu paikkapari.",
+      "nextIds": [],
+      "implementationNotes": ""
+    },
+    {
+      "id": "LP1-T02",
+      "kind": "decision",
+      "stage": 2,
+      "contexts": [
+        "wind",
+        "hybrid"
+      ],
+      "family": "lp1_tv",
+      "role": "base",
+      "title": "Televisiokuva pätkii jo nyt",
+      "body": "Asukas kertoo television pätkivän ja vastustaa hanketta. Yhtään voimalaa ei ole rakennettu. Verkkoasiantuntijan mukaan tuulipuiston mahdollinen lisävaikutus pitää silti erottaa nykyisestä vastaanotto-ongelmasta.",
+      "choices": {
+        "A": {
+          "label": "Mitataan vastaanoton nykytila",
+          "result": "Lähialueen antennivastaanoton lähtötilanne mitataan. Mittaustiedot liitetään suunnitellun tuulipuiston häiriöarvioon.",
+          "branches": [],
+          "effect": "Tilaa baselineAndModel: 2 kk / 6 000 €, baseline 2 kk. Tallennetaan nykyinen vastaanottotilanne ja vaikutusmalli. Ei rakenneta antennia eikä taajuuslupaa myönnetä."
+        },
+        "B": {
+          "label": "Aloitetaan laskennallisesta häiriöarviosta",
+          "result": "Asiantuntija arvioi suunniteltujen voimaloiden vaikutusta lähetysreittiin. Paikan päällä tehtäviä mittauksia ei vielä tilata.",
+          "branches": [],
+          "effect": "Tilaa deskModel: 1 kk / 3 000 €, baseline 1 kk. Jos ennalta sidottu aineisto ei riitä, lisämittaus 1 kk / 4 000 €; tämä jatkotyö ei luo uutta häiriötä."
+        }
+      },
+      "branches": [],
+      "eligibility": "Aktiivinen tuuliosa ja skenaarion alueella antenni-tv:n vastaanottoa. Olemassa oleva huono vastaanotto sidottu maailmaan ennen pelaajan valintaa. Ei väitetä rakentamattomien voimaloiden jo aiheuttavan häiriötä.",
+      "sources": [
+        "LPA03"
+      ],
+      "artBrief": "Asukas katsoo pätkivää televisiota; pöydällä suunnittelukartta ja antennimittaaja. Voimalat näkyvät vain kartalla.",
+      "nextIds": [
+        "LP1-E-T02"
+      ],
+      "implementationNotes": "Ei yleistä oletusta, että kaikki radio- tai mobiilihäiriöt ovat tuulivoiman aiheuttamia. Mahdollisten korjausten toteutusvastuu ja kustannus selvitetään tapauskohtaisesti; rahoitusta ei muuteta automaattiseksi lupaehtomaksuksi."
+    },
+    {
+      "id": "LP1-E-T02",
+      "kind": "event",
+      "stage": 3,
+      "contexts": [
+        "wind",
+        "hybrid"
+      ],
+      "family": "lp1_tv",
+      "role": "result",
+      "title": "Vastaanottoarviosta saatiin vastaus",
+      "body": "",
+      "choices": {},
+      "branches": [
+        {
+          "id": "baseline_clear",
+          "when": "A tai B:n jälkeen todella valmistunut lisämittaus; lisähäiriön riski pieni",
+          "text": "Mittaukset osoittavat vastaanoton pätkivän jo nykytilanteessa. Tuulipuiston suunnitelma ei arvion mukaan aiheuttaisi olennaista lisähäiriötä.",
+          "effect": "Nykyvian ja hankkeen vaikutuksen erottelu valmis; ei muuta tuulimäärää.",
+          "nextIds": []
+        },
+        {
+          "id": "mitigation",
+          "when": "A tai riittävän aineiston B; hankkeen lisähäiriö todettu mahdolliseksi",
+          "text": "Suunniteltu tuulipuisto voisi heikentää osan taloista vastaanottoa. Asiantuntija esittää antenniratkaisua tai täytelähetintä; vastuut ja kustannusarvio lisätään hankesuunnitelmaan.",
+          "effect": "Kirjaa toteutusvaiheen häiriöntorjuntavelvoite ja suunnittelukustannus, ei valmista rakentamista. Tämän skenaarion ratkaisu on selvitetty toteuttamiskelpoiseksi.",
+          "nextIds": []
+        },
+        {
+          "id": "measure_later",
+          "when": "B:n ensimmäinen deskModel valmis ja nykytilan tieto puutteellinen; lisämittausta ei vielä ole tehty",
+          "text": "Laskenta ei erota heikkoa lähtötilannetta hankkeen mahdollisesta lisävaikutuksesta. Tarvitaan vielä vastaanottomittaukset.",
+          "effect": "Tilaa rajattu lisämittaus kerran ja pidä tapaus avoinna valmistumiseen. Lisämittauksen valmistuminen julkaisee saman tapahtuman uuden outcome-ID:n haaralla baseline_clear tai mitigation. measure_later on sallittu vain deskModel-vaiheessa, eikä koskaan sen jälkeisen työn tuloksena. B:n ilman lisämittausta riittävä tulos käyttää desk_clear-haaraa.",
+          "nextIds": []
+        },
+        {
+          "id": "desk_clear",
+          "when": "B:n ensimmäinen deskModel; malliaineisto riittävä, lisähäiriön riski pieni eikä lisämittausta tarvittu",
+          "text": "Lähetysreitin ja maaston tarkastelu ei osoita tuulipuistolle olennaista lisähäiriötä. Erillisiä maastomittauksia ei tarvita tätä arviota varten.",
+          "effect": "Ratkaise tapaus ilman lisämittauslaskua.",
+          "nextIds": []
+        }
+      ],
+      "eligibility": "LP1-T02:n työ valmis; mahdollinen lisämittaus on oma job saman case-ID:n alla. baseline_clear näytetään B:n jälkeen vain jos lisämittaus todella tehtiin.",
+      "sources": [
+        "LPA03"
+      ],
+      "artBrief": "Antennivastaanoton mittaus ja talon katto; sama kohde kuin alkukortissa.",
+      "nextIds": [],
+      "implementationNotes": ""
+    },
+    {
+      "id": "LP1-T03",
+      "kind": "decision",
+      "stage": 2,
+      "contexts": [
+        "wind"
+      ],
+      "family": "lp1_transport",
+      "role": "base",
+      "title": "Lyhin reitti päättyy painorajaan",
+      "body": "Tuulivoimaloiden alustava kuljetusreitti ylittää painorajoitetun sillan. Toinen reitti on pidempi mutta välttää sillan. Kuljetusasiantuntija pyytää valitsemaan, kumpaa selvitetään ensin.",
+      "choices": {
+        "A": {
+          "label": "Selvitetään sillan ylityksen toteutettavuus",
+          "result": "Sillan ja suunniteltujen kuljetusten tiedot toimitetaan tarkasteltaviksi. Lyhyttä reittiä ei vielä vahvisteta käyttökelpoiseksi.",
+          "branches": [],
+          "effect": "Tilaa bridgeAssessment: 2 kk / 7 000 €, baseline 2 kk. Preseed bridgeSuitable. Ei kuljetusluvan automaattista myöntämistä eikä työkoneiden ajamista sillalle."
+        },
+        "B": {
+          "label": "Suunnitellaan sillan kiertävä reitti",
+          "result": "Kiertoreitin sopivuus ja sen edellyttämät järjestelyt selvitetään. Hanke varautuu pidempään kuljetusmatkaan.",
+          "branches": [],
+          "effect": "Tilaa bypassDesign: 3 kk / 10 000 €, baseline 2 kk. Kiertoreitin periaatteellinen soveltuvuus on tämän kortin ennakkotieto; huoltotien tai sähkönsiirron km ei kasva kuljetusmatkan takia."
+        }
+      },
+      "branches": [],
+      "eligibility": "Erikoiskortti vain suoraan Tuuli-pelimuodosta aloitetulle hankkeelle; vaihe 2, ei rakennusvaihe. Kiertoreitti on alustavasti käytettävissä eikä silta ole ainoa fyysinen pääsy alueelle. Katalogista on myös yksilöity yhteensopiva, kevyemmin kuljetettava mallivaihtoehto LP1-T04:n vertailua varten.",
+      "sources": [
+        "LPA04"
+      ],
+      "artBrief": "Tuulivoimalan raskas komponentti kuljetussuunnitelmassa, sillan painorajoitus ja kartan kiertoreitti.",
+      "nextIds": [
+        "LP1-E-T03"
+      ],
+      "implementationNotes": "Tämä on teknis-taloudellinen ennakkoselvitys, ei lupamaalin jälkeen toteutuva kuljetus. Ei keksittyä alkuvaiheen kuolemanloukkua. Tuleva kuljetusinvestointi ei kokonaan vähene kehitysbudjetista, vain selvitys- ja suunnittelukulut."
+    },
+    {
+      "id": "LP1-T04",
+      "kind": "decision",
+      "stage": 3,
+      "contexts": [
+        "wind"
+      ],
+      "family": "lp1_transport",
+      "role": "followup",
+      "title": "Sillan kautta ei päästä",
+      "body": "Selvitys sulki lyhyen kuljetusreitin pois. Pidempi reitti on edelleen mahdollinen, mutta suunnittelu ja kustannusarvio puuttuvat. Pitäydytkö nykyisessä voimalassa vai tutkitko kevyemmin kuljetettavaa mallia?",
+      "choices": {
+        "A": {
+          "label": "Tehdään nykyiselle mallille kiertoreittisuunnitelma",
+          "result": "Kiertoreitin selvitys tilataan nykyiselle voimalamallille. Siltavaihtoehtoon käytetyt rahat eivät palaudu.",
+          "branches": [],
+          "effect": "Tilaa bypassDesign kerran: 3 kk / 10 000 €. Säilytä bridgeAssessment-kulu ja siihen jo kulunut todellinen aika."
+        },
+        "B": {
+          "label": "Verrataan toista voimalamallia",
+          "result": "Valmistajalta pyydetään kuljetustiedot ja tuotantoarvio toiselle mallille. Nykyistä voimalatyyppiä ei vaihdeta ennen vertailun tulosta.",
+          "branches": [],
+          "effect": "Tilaa modelComparison: 2 kk / 6 000 €. Tämän korttiketjun skenaarioon kuuluu nykyisen tyyppikatalogin teknisesti yhteensopiva ja kevyemmin kuljetettava vaihtoehto. Vertailu täsmentää kustannuksen, tuotannon ja muut selvitystarpeet; se ei vielä vaihda mallia."
+        }
+      },
+      "branches": [],
+      "eligibility": "Vain LP1-T03/A:n kielteisen bridgeAssessmentin jälkeen. Yksi jatkopäätös; ei tavalliseen pakkaan. Mallihaara tarjotaan vain, jos skenaariossa on yhteensopiva vaihtoehtoinen laite. Tämä tarkistetaan jo LP1-T03:n kelpoisuudessa.",
+      "sources": [
+        "LPA04"
+      ],
+      "artBrief": "Siltareitti yliviivattuna ja vaihtoehtoisen voimalamallin kuljetuspiirros.",
+      "nextIds": [
+        "LP1-E-T03"
+      ],
+      "implementationNotes": "B:n myönteinen vertailu tuo erillisen hyväksymisvahvistuksen nykyisen teknisen mallinvalinnan kautta; ei mallinvaihtoa pelkän selvityksen tilaamisesta. Vertailu ei arvo jo todettua teknistä yhteensopivuutta uudelleen. Pelaaja hyväksyy muuttuvat malliarvot tai pitäytyy nykyisessä mallissa ja kiertoreitissä. Enintään yksi vertailukierros."
+    },
+    {
+      "id": "LP1-E-T03",
+      "kind": "event",
+      "stage": 3,
+      "contexts": [
+        "wind"
+      ],
+      "family": "lp1_transport",
+      "role": "result",
+      "title": "Kuljetussuunnitelma tarkentui",
+      "body": "",
+      "choices": {},
+      "branches": [
+        {
+          "id": "bridge_ok",
+          "when": "LP1-T03/A ja bridgeSuitable",
+          "text": "Sillan ylitys on selvityksen perusteella suunniteltavissa määritellyillä järjestelyillä. Lyhyt reitti voidaan pitää hankesuunnitelmassa.",
+          "effect": "Ratkaise suunnittelun avoin kysymys. Kuljetusten erilliset luvat ja lopulliset järjestelyt jäävät oikeaan toteutusvaiheeseen.",
+          "nextIds": []
+        },
+        {
+          "id": "bridge_no",
+          "when": "LP1-T03/A ja ei bridgeSuitable",
+          "text": "Silta ei sovellu suunnitelluille kuljetuksille. Hanketta voidaan jatkaa, mutta kuljetusratkaisu on valittava uudelleen.",
+          "effect": "Pidä tapaus avoinna; tarjoa jatkokortti.",
+          "nextIds": [
+            "LP1-T04"
+          ]
+        },
+        {
+          "id": "bypass_ok",
+          "when": "LP1-T03/B tai LP1-T04/A ja kiertoreitin suunnittelu valmis",
+          "text": "Kiertoreitti soveltuu suunnitelluille kuljetuksille. Matka ja kustannusarvio kasvavat, mutta voimalamalli voidaan säilyttää.",
+          "effect": "Sulje kuljetustapaus. Kirjaa logisticsKm erikseen gridRouteKm:stä.",
+          "nextIds": []
+        },
+        {
+          "id": "model_report",
+          "when": "LP1-T04/B ja vertailu valmis",
+          "text": "Toisen voimalamallin kuljetusratkaisu on arvioitu. Sen hinta- ja tuotantotiedot tuodaan päätettäväksi yhdessä muuttuvien selvitystarpeiden kanssa.",
+          "effect": "Avaa dokumentoitu mallin hyväksymisvahvistus; näytä todelliset vanha/uusi MW ja korkeus. Tämä tulos ei itsessään hyväksy mallinvaihtoa. Vahvistus ei ole uusi satunnainen peruskortti.",
+          "nextIds": [
+            "LP1-D-T04"
+          ]
+        }
+      ],
+      "eligibility": "Kuljetustapauksen sidottu työ valmis. Mallihaaran hyväksymisdialogi on tekninen jatkovalinta; toteuta ja testaa, älä jätä pelkäksi tekstiksi.",
+      "sources": [
+        "LPA04"
+      ],
+      "artBrief": "Reittikartta ja kuljetusasiantuntijan laskelmat.",
+      "nextIds": [
+        "LP1-D-T04",
+        "LP1-T04"
+      ],
+      "implementationNotes": ""
+    },
+    {
+      "id": "LP1-A01",
+      "kind": "decision",
+      "stage": 3,
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_glare",
+      "role": "base",
+      "title": "Paneelit heijastavat lähestymissuuntaan",
+      "body": "Häikäisyselvitys osoittaa paneelikentän yhden lohkon heijastuksen lentopaikan lähestymissuuntaan. Toimittajan mukaan paneelipinta voidaan vaihtaa vähemmän heijastavaksi. Sen riittävyys täytyy vielä osoittaa.",
+      "choices": {
+        "A": {
+          "label": "Selvitetään toinen paneelipinta",
+          "result": "Toisesta paneelipinnasta pyydetään tekniset tiedot ja uusi häikäisylaskenta. Lohko säilyy toistaiseksi suunnitelmassa.",
+          "branches": [],
+          "effect": "Tilaa glareSurface: 2 kk / 7 000 €, baseline 2 kk. World.surfaceMitigates määritelty ennen valintaa. Ei globaalia häikäisyvahinkoa tai tulevien lentojen peruuttamista vielä rakentamattomasta kentästä."
+        },
+        "B": {
+          "label": "Jätetään heijastuksen aiheuttava lohko pois",
+          "result": "Heijastuksen aiheuttava paneelilohko jätetään pois. Muu kenttä tarkistetaan samalla laskentatavalla.",
+          "branches": [],
+          "effect": "Poista sidotun solarBlock-ID:n paneeliala ja sen oikea MWp/MWac-osuus. Tilaa check: 1 kk / 4 000 €. Ohita sama jo poistettu lohko; älä vähennä tuulipaikkoja."
+        }
+      },
+      "branches": [],
+      "eligibility": "Aktiivinen aurinko-osa; lentopaikan vaikutusyhteys ja nimetty heijastuslohko. Lohkon poisrajaus on tässä skenaariossa toimiva vararatkaisu. Skenaarioon sidotaan myös pienempi, häikäisyn välttävä lohkoasettelu LP1-A05:n myöhempää vertailua varten. Ei jokaiselle aurinkopuistolle tuleva perusriski.",
+      "sources": [
+        "LPA05",
+        "LPA06"
+      ],
+      "artBrief": "Paneelilohkon heijastusviuhka kohti pienkoneen lähestymislinjaa; ei voimalan lapavarjoa.",
+      "nextIds": [
+        "LP1-E-A01"
+      ],
+      "implementationNotes": "Schipholin tapaus on ilmiöesimerkki ulkomailta, ei Suomen lupakäytäntö tai kohteen tositarina. Pinnoite tai paneelinvaihto ei ole automaattisesti riittävä. Ei laskennan yhteydessä lentoturvallisuusohjeita pelaajalle."
+    },
+    {
+      "id": "LP1-A05",
+      "kind": "decision",
+      "stage": 3,
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_glare",
+      "role": "followup",
+      "title": "Uusi paneelipinta ei riitä",
+      "body": "Uusintalaskennan mukaan heijastus osuu edelleen lähestymissuuntaan. Suunnittelija on löytänyt toisen lohkoasettelun, mutta siihen mahtuu vähemmän paneeleja. Toinen vaihtoehto on jättää koko ongelmalohko pois.",
+      "choices": {
+        "A": {
+          "label": "Valitaan tutkittu pienempi lohkoasettelu",
+          "result": "Lohkon suuntaus ja paneelimäärä muutetaan tutkitun vaihtoehdon mukaisiksi. Osa kapasiteetista säilyy.",
+          "branches": [],
+          "effect": "Käytä ennalta selvitettyä viableGlareLayoutia; muokkaa block layout revision ja pienempi MWp/ha, suunnittelu 2 kk / 6 000 €. Ei lisäsatunnaista epäonnistumista todennetulle vaihtoehdolle."
+        },
+        "B": {
+          "label": "Jätetään koko ongelmalohko pois",
+          "result": "Lohko poistetaan kaava- ja lupapiirustuksista. Muu aurinkohanke jatkuu pienempänä.",
+          "branches": [],
+          "effect": "Poista vain saman casen lohko; check 1 kk / 4 000 €. Jos omistajan aiemmin ilmoitettu jatkoraja alittuu, sovelletaan normaalia laajuustarkistusta, ei uutta arpaa."
+        }
+      },
+      "branches": [],
+      "eligibility": "LP1-A01/A epäonnistui ja aidosti tutkittu pienempi asettelu on käytettävissä. Enintään yksi korjaus tähän havaintoon.",
+      "sources": [
+        "LPA05",
+        "LPA06"
+      ],
+      "artBrief": "Sama paneelilohko kahdella tutkitulla rajauksella.",
+      "nextIds": [
+        "LP1-E-A01"
+      ],
+      "implementationNotes": ""
+    },
+    {
+      "id": "LP1-E-A01",
+      "kind": "event",
+      "stage": 3,
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_glare",
+      "role": "result",
+      "title": "Häikäisyn tarkistus valmistui",
+      "body": "",
+      "choices": {},
+      "branches": [
+        {
+          "id": "surface_ok",
+          "when": "LP1-A01/A ja surfaceMitigates",
+          "text": "Uuden paneelipinnan ja sijoittelun laskenta ei osoita aiempaa haitallista heijastusta. Ratkaisu ja käytettävä paneelityyppi kirjataan suunnitelmaan.",
+          "effect": "Ratkaise glare-case vain tällä equipment/layout-revisiolla. Aineisto viedään tarvittavaan lausunto- ja lupakäsittelyyn.",
+          "nextIds": []
+        },
+        {
+          "id": "surface_no",
+          "when": "LP1-A01/A ja ei surfaceMitigates",
+          "text": "Paneelipinnan vaihtaminen ei poista haitallista heijastusta tästä suunnasta. Kentän asettelua tai laajuutta on muutettava.",
+          "effect": "Avaa LP1-A05. Sen pienempi vaihtoehto on sidottu tämän skenaarion kelpoisuuteen etukäteen ja tarkistettu uusintalaskennassa; älä keksi ratkaisua mielivaltaiselle toiselle kohteelle.",
+          "nextIds": [
+            "LP1-A05"
+          ]
+        },
+        {
+          "id": "layout_ok",
+          "when": "LP1-A05/A, muuttunut asettelu tarkistettu",
+          "text": "Uusi asettelu välttää todetun heijastuksen. Lohkoon jää aiempaa vähemmän paneeleja, mutta sitä ei tarvitse poistaa kokonaan.",
+          "effect": "Ratkaise case; säilytä toteutettu pienennys eikä uutta poistokertaa.",
+          "nextIds": []
+        },
+        {
+          "id": "block_out",
+          "when": "LP1-A01/B tai LP1-A05/B",
+          "text": "Ongelmalohkon poisto ratkaisee tarkastellun heijastuksen. Muut paneelialueet jäävät jatkosuunnitteluun.",
+          "effect": "Ratkaise case, älä poista samoja hehtaareja uudelleen.",
+          "nextIds": []
+        }
+      ],
+      "eligibility": "Valitun vaihtoehdon selvitys valmis. Jos suunnitelma on vaihtunut tämän jälkeen, tulos vanhentunut eikä kuulu hyväksymisen pohjaksi.",
+      "sources": [
+        "LPA05",
+        "LPA06"
+      ],
+      "artBrief": "Heijastusmallin tulos ja sama vastaanottosuunta.",
+      "nextIds": [
+        "LP1-A05"
+      ],
+      "implementationNotes": ""
+    },
+    {
+      "id": "LP1-A02",
+      "kind": "decision",
+      "stage": 2,
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_sulfate",
+      "role": "base",
+      "title": "Kuiva pelto, syvällä toinen tilanne",
+      "body": "Paneelialueen kaapeli- ja kuivatussuunnitelma ulottuu maakerrokseen, jossa epäillään sulfidipitoista maata. Jos kerros pääsee hapettumaan, valumavedet voivat happamoitua. Epäily koskee vain yhtä kentän osaa.",
+      "choices": {
+        "A": {
+          "label": "Tutkitaan maakerros ja muokataan kaivusuunnitelmaa",
+          "result": "Maaperänäytteet ja kaivusyvyyksien tarkistus tilataan. Epäiltyä kentän osaa ei vielä jätetä pois.",
+          "branches": [],
+          "effect": "Tilaa sulfateSurvey: 2 kk / 9 000 €, baseline 2 kk. Maan ominaisuus preseed; kaivusyvyys ja vedenpinnan muutos eivät synny pelaajan tutkimuspäätöksestä."
+        },
+        "B": {
+          "label": "Jätetään epäilty kentän osa pois",
+          "result": "Suunnittelua jatketaan ilman epäiltyä lohkoa. Sen osalta ei tarvita samaa syvää kaivua tai kuivatusta.",
+          "branches": [],
+          "effect": "Poista sidottu lohko, check boundary hydrology 1 kk / 3 000 €. Tarjottavan rajauksen tulee aidosti välttää tämä maakerrokseen ulottuva vaikutus, ei vain siirtää ojaa naapuriin."
+        }
+      },
+      "branches": [],
+      "eligibility": "Aurinko-osa ja paikalliseen maaperään perustuva sulfaattimaaepäily: rannikon/alavan kerrostumisympäristön tieto tai näyte. Ei kaikille sisämaan paikoille pelkän alueprofiilin perusteella. Tähän rajattuun skenaarioon kuuluu matalampi, riskikerrosta muuttamaton suunnitteluvaihtoehto, joka tutkitaan samalla aineistolla mahdollista LP1-A06-jatkoa varten.",
+      "sources": [
+        "LPA07",
+        "LPA08"
+      ],
+      "artBrief": "Maaperän poikkileikkaus, matala kaapelikaivanto ja syvemmällä näytekerros. Ei mustaa saastepilveä.",
+      "nextIds": [
+        "LP1-E-A02"
+      ],
+      "implementationNotes": "Kohdekohtainen näyte on eri asia kuin yleiskartan todennäköisyys. Ei kemiallisten käsittelyannosten ohjeita. Maan rakentamiskelpoisuus ja muu luontoarvo ovat eri ominaisuuksia."
+    },
+    {
+      "id": "LP1-A06",
+      "kind": "decision",
+      "stage": 3,
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_sulfate",
+      "role": "followup",
+      "title": "Kaivusuunnitelma menee uusiksi",
+      "body": "Näytteet vahvistavat happamoitumisriskin suunnitellulla kaivusyvyydellä. Asiantuntijan vaihtoehto jättää riskikerroksen rauhaan, mutta kaapelointi pitenee ja vedet täytyy johtaa uudelleen. Toinen ratkaisu on poistaa lohko.",
+      "choices": {
+        "A": {
+          "label": "Valitaan tutkittu matalampi kaivuratkaisu",
+          "result": "Kaapelointi ja vesienhallinta suunnitellaan asiantuntijan vaihtoehdon mukaisiksi. Paneelilohko voidaan säilyttää.",
+          "branches": [],
+          "effect": "2 kk / 8 000 € suunnittelutyö. Säilytä lohko vain ennakolta viability-flagilla todetussa ratkaisussa, kaikille vaadituille nykyvaikutuksille tarkistus. Kasvata intraSiteCableKm, ei automaattisesti gridConnectionKm."
+        },
+        "B": {
+          "label": "Poistetaan kyseinen paneelilohko",
+          "result": "Lohko jää rakentamisen ulkopuolelle. Kaapeli- ja kuivatuspiirustukset päivitetään pienemmälle kentälle.",
+          "branches": [],
+          "effect": "Poista kyseinen block-ID ja tarkista 1 kk / 3 000 €. Aiempi tutkimuskulu säilyy; uuden työn kustannus ei korvaa maksettua laskua."
+        }
+      },
+      "branches": [],
+      "eligibility": "Vain LP1-A02/A:n positiivinen riskilöydös; asiantuntijalla aidosti toteuttamiskelpoinen matalampi suunnitelma. Ei luoda tätä vaihtoehtoa jälkikäteen kaikkiin maaperiin.",
+      "sources": [
+        "LPA07",
+        "LPA08"
+      ],
+      "artBrief": "Sama maapoikkileikkaus ja matalampi kaapelointi; vaihtoehtona pois rajattu paneelilohko.",
+      "nextIds": [
+        "LP1-E-A02"
+      ],
+      "implementationNotes": ""
+    },
+    {
+      "id": "LP1-E-A02",
+      "kind": "event",
+      "stage": 3,
+      "contexts": [
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_sulfate",
+      "role": "result",
+      "title": "Maaperäselvityksen tulos",
+      "body": "",
+      "choices": {},
+      "branches": [
+        {
+          "id": "no_acid",
+          "when": "LP1-A02/A; riskikerrosta ei todeta suunnitellulla vaikutussyvyydellä",
+          "text": "Näytteet ja kaivusuunnitelma eivät osoita epäiltyä happamoitumisriskiä tässä lohkossa. Paneeliala voidaan säilyttää.",
+          "effect": "Ratkaise sulfate-case; ei hyvitystä poisjätetylle lohkolle, jota ei tutkittu.",
+          "nextIds": []
+        },
+        {
+          "id": "risk",
+          "when": "LP1-A02/A; riski todettu",
+          "text": "Suunniteltu kaivu voisi altistaa sulfidipitoisen kerroksen hapettumiselle. Kaivusyvyyttä ja vesienhallintaa on muutettava tai lohko jätettävä pois.",
+          "effect": "Jatko LP1-A06. Älä oleta toteutunutta vesistövahinkoa suunnittelupelissä.",
+          "nextIds": [
+            "LP1-A06"
+          ]
+        },
+        {
+          "id": "shallower",
+          "when": "LP1-A06/A ja suunnitelma tarkistettu",
+          "text": "Muuttunut kaivuratkaisu ei ulotu riskikerrokseen eikä muuta sen vesitaloutta haitallisesti. Paneelilohko säilyy, mutta suunnittelu ja kaapelointi maksavat enemmän.",
+          "effect": "Ratkaise kyseinen maaperäriski; mahdolliset erilliset lupa-/vesikysymykset eivät poistu.",
+          "nextIds": []
+        },
+        {
+          "id": "excluded",
+          "when": "LP1-A02/B tai LP1-A06/B ja vaikutusrajauksen tarkistus valmis",
+          "text": "Riskialttiiksi arvioitu lohko on poistettu kaivu- ja kuivatussuunnitelmasta. Muu kenttä jatkaa ilman tämän lohkon kapasiteettia.",
+          "effect": "Säilytä poisto kerran. Älä sano näytteiden vahvistaneen riskiä, jos B:ssä niitä ei tilattu.",
+          "nextIds": []
+        }
+      ],
+      "eligibility": "Sidottu maaperätyö tai poisrajauksen tarkistus valmis; preseed ja valittu työ määräävät näytettävän haaran.",
+      "sources": [
+        "LPA07",
+        "LPA08"
+      ],
+      "artBrief": "Maaperänäytteet ja kaivukartta.",
+      "nextIds": [
+        "LP1-A06"
+      ],
+      "implementationNotes": ""
+    },
+    {
+      "id": "LP1-A03",
+      "kind": "decision",
+      "stage": 2,
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "family": "lp1_grazing",
+      "role": "base",
+      "title": "Lampuri ehdottaa yhteistyötä",
+      "body": "Paikallinen lampuri tarjoaisi laidunnusta aurinkokentän kasvillisuuden hoitoon. Hän tarvitsee toimivan portin ja turvalliset kulkureitit. Paneelien alla ei vielä laidunna kukaan: toteutus pitää suunnitella ja sopia.",
+      "choices": {
+        "A": {
+          "label": "Suunnitellaan laidunnus osaksi kenttää",
+          "result": "Lampurin kanssa sovitaan eläinten hoidosta, kulusta ja aitaamisesta. Laite- ja kaapeliturvallisuus tarkistetaan suunnittelussa.",
+          "branches": [],
+          "effect": "Tilaa grazingPlan: 1 kk / 3 000 €, baseline 1 kk. Ei luvan ostamista tai automaattista luontokompensaatiota; pienellä suunnittelukululla voi syntyä toimiva myöhempi hoitosopimus."
+        },
+        "B": {
+          "label": "Suunnitellaan kasvillisuuden hoito niittämällä",
+          "result": "Kentän kasvillisuuden hoito suunnitellaan koneellisesti. Lampurin ehdotuksesta ei tehdä sopimusta.",
+          "branches": [],
+          "effect": "Kirjaa mowingPlan: 1 kk / 1 000 €. Ei rangaistusta laidunnuksesta kieltäytymisestä. Huoltokulku turvataan myös tässä."
+        }
+      },
+      "branches": [],
+      "eligibility": "Aktiivinen solar-konteksti, myös hybridistä jatkanut aurinko; paikallinen lampuri, soveltuva kenttä ja kasvillisuuden hoitosuunnitelma avoinna. Ei pakollinen lupavaihe.",
+      "sources": [
+        "LPA09"
+      ],
+      "artBrief": "Lampuri ja suunnittelija paneelialueen porttikartalla; pieni lammas siluettina tulevaa käyttöä havainnollistamassa.",
+      "nextIds": [
+        "LP1-E-A03"
+      ],
+      "implementationNotes": "Erityisesti Aurinko-pelimuodon myönteinen erikoistilanne. Luonnon monimuotoisuushyötyä ei pisteytetä ilman laadittua kohdekohtaista perustaa. Lampaita ei toteuteta rakennustyömaan eläinsimulaatioksi."
+    },
+    {
+      "id": "LP1-E-A03",
+      "kind": "event",
+      "stage": 3,
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "family": "lp1_grazing",
+      "role": "result",
+      "title": "Kasvillisuuden hoidosta sovittiin",
+      "body": "",
+      "choices": {},
+      "branches": [
+        {
+          "id": "grazing",
+          "when": "A; laitteisto ja lampurin ehdot yhteensopivat",
+          "text": "Laidunnus sopii suunnitelmaan. Portit, turvallisuusjärjestelyt ja hoitovastuut on sovittu. Paikallinen yhteistyö tuo tällä kertaa ratkaisun eikä uutta kiistaa.",
+          "effect": "Kirjaa hoitosopimus ja planningQuality vain kerran, ei kapasiteetin ilmaista kasvua.",
+          "nextIds": []
+        },
+        {
+          "id": "not_suitable",
+          "when": "A; laitteisto tai käytännön hoito ei sovi",
+          "text": "Laidunnusta ei saada sovitettua tähän kenttään turvallisesti. Kasvillisuuden hoito suunnitellaan niittämällä; paneeliala säilyy.",
+          "effect": "Pidä A-suunnittelukulu; kirjaa niitto ilman uutta rangaistusketjua tai eläinvahinkoa.",
+          "nextIds": []
+        },
+        {
+          "id": "mowing",
+          "when": "B; hoitosuunnitelma valmis",
+          "text": "Niittokalustolle on toimivat reitit ja kasvillisuuden hoidosta on suunnitelma. Kentän muu suunnittelu jatkuu.",
+          "effect": "Neutraali valmistuminen voidaan yhdistää seuraavaan näkymään; ei pakollista erillistä välitarinaa.",
+          "nextIds": []
+        }
+      ],
+      "eligibility": "LP1-A03:n tilattu hoitosuunnitelma valmis. Ei luoda laidunnustarjousta jokaiseen aurinkohankkeeseen.",
+      "sources": [
+        "LPA09"
+      ],
+      "artBrief": "Paneelikentän portti ja sovittu hoitotapa.",
+      "nextIds": [],
+      "implementationNotes": ""
+    },
+    {
+      "id": "LP1-A04",
+      "kind": "decision",
+      "stage": 2,
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "family": "lp1_dcac",
+      "role": "base",
+      "title": "Kaksi tarjousta, sama liittymäteho",
+      "body": "Liittymän suunnitteluraja on {solarAcMW} MW. Toinen vaihtoehto sisältää {dcLowMWp} MWp paneeleita, toinen {dcHighMWp} MWp. Isompi kenttä voi tuottaa enemmän vuodessa, mutta huippuhetkien tehoa ei saada kokonaan verkkoon.",
+      "choices": {
+        "A": {
+          "label": "Mallinnetaan suuremman paneelimäärän hyöty",
+          "result": "Suuremmalle paneelimäärälle lasketaan vuosituotanto, tehorajoituksen menetys ja tarvittava kenttätila. Liittymäteho ei kasva.",
+          "branches": [],
+          "effect": "Tilaa dcAcStudy: 1 kk / 4 000 €, baseline 1 kk. Skenaariossa valmiiksi varattu ja selvitetty lisäpaneelitila: ei ulkopuolelta syntyviä hehtaareja. Raportti ei itsessään rakenna tai lisää paneeleita; tekninen valintavahvistus vaaditaan."
+        },
+        "B": {
+          "label": "Pidetään pienempi paneelivaihtoehto",
+          "result": "Jatkosuunnittelu käyttää pienempää paneelimäärää ja sen kustannusarviota. Suurempaa vaihtoehtoa ei oteta mukaan ilman lisävertailua.",
+          "branches": [],
+          "effect": "Kirjaa aiemmin perusteltu pienempi layout ja capacitydc/AC. Ei väitetä suuremman MWp:n olleen yksin virhe. Sama AC-raja pysyy molemmille."
+        }
+      },
+      "branches": [],
+      "eligibility": "Vain Aurinko-konteksti; sama AC-liittymärajausehto tunnetaan, molemmat DC-vaihtoehdot mahtuvat jo hallittuun suunnittelualueeseen. dcHighMWp > dcLowMWp > 0. Ei tule akkuinvestoinnin tarjoukseksi.",
+      "sources": [
+        "LPA10",
+        "LPA11"
+      ],
+      "artBrief": "Kaksi paneelitarjousta yhdelle sähköasemalle; eri paneelimäärä mutta sama liittymä.",
+      "nextIds": [
+        "LP1-E-A04"
+      ],
+      "implementationNotes": "MWp/DC, invertterin MWac ja liittymän vientiraja ovat kolme eri arvoa. Älä arvioi clippingiä vain paneelitehon ja liittymätehon erotuksena; vuosienergia tarvitsee tuotantoprofiilin. Käytä validoitua fiktiivistä tuotantoprofiilia, ei ajonaikaista nettilaskentaa."
+    },
+    {
+      "id": "LP1-E-A04",
+      "kind": "event",
+      "stage": 3,
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "family": "lp1_dcac",
+      "role": "result",
+      "title": "Paneelimäärän vertailu valmistui",
+      "body": "",
+      "choices": {},
+      "branches": [
+        {
+          "id": "useful",
+          "when": "A; suuremman vaihtoehdon hyöty osoitettu",
+          "text": "Suurempi paneelivaihtoehto tuottaisi tässä laskelmassa enemmän käyttökelpoista vuosienergiaa myös tehorajoituksen jälkeen. Lisähinta ja kenttätila esitetään omistajalle päätettäväksi.",
+          "effect": "Avaa teknisen vaihtoehdon vahvistus: suurempi layout tai pysyminen pienemmässä. Säilytä AC-raja. Lopullinen scope arvioidaan sovittuun alkuperäiseen tavoitteeseen, ei resetoi tavoitetta.",
+          "nextIds": [
+            "LP1-D-A04"
+          ]
+        },
+        {
+          "id": "weak",
+          "when": "A; hyöty ei vastaa lisäpanosta",
+          "text": "Lisäpaneelien laskettu hyöty jää pieneksi suhteessa lisähintaan ja tehorajoitukseen. Suunnittelua jatketaan pienemmällä vaihtoehdolla.",
+          "effect": "Ei automaattista MWac-menetystä. A-tutkimuskulu säilyy; ei tiedon vuoksi syntyvää uutta fyysistä ongelmaa.",
+          "nextIds": []
+        },
+        {
+          "id": "small",
+          "when": "B",
+          "text": "Pienempi paneelivaihtoehto on jatkosuunnittelun lähtökohta. Sen vuosituotanto ja liittymän vientiraja ovat mukana kustannusarviossa.",
+          "effect": "Tavallinen vahvistus saa olla tiivistetty rivihuomio. Älä väitä lisäpaneelitutkimusta tehdyksi.",
+          "nextIds": []
+        }
+      ],
+      "eligibility": "LP1-A04 tehty ja sen valittu vaihtoehto valmistunut. Hyötyprofiili ennalta johdettu; kumpikaan polku ei tuo tuulivoimaloita tai BESSiä.",
+      "sources": [
+        "LPA10",
+        "LPA11"
+      ],
+      "artBrief": "Tuotantoprofiilin luonnos ja kaksi vaihtoehtoa; ei kWh-lupauksia kuvitukseen.",
+      "nextIds": [
+        "LP1-D-A04"
+      ],
+      "implementationNotes": ""
+    },
+    {
+      "id": "LP1-Y01",
+      "kind": "decision",
+      "stage": 4,
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_municipal",
+      "role": "base",
+      "title": "Yksi hanke, kaksi valtuustoa",
+      "body": "Tuotantoalue ulottuu kahteen kuntaan, joissa laaditaan omat osayleiskaavat. Ensimmäinen kunta hyväksyy ratkaisunsa. Toinen palauttaa pienen reuna-alueen uudelleen valmisteltavaksi. Muu kokonaisuus voisi toimia ilman sitä.",
+      "choices": {
+        "A": {
+          "label": "Odotetaan toisen kunnan tarkistettua ratkaisua",
+          "result": "Toisen kunnan esiin nostamat vaikutukset täydennetään. Hankkeen nykyinen kokonaisuus pysyy toistaiseksi suunnitelmassa.",
+          "branches": [],
+          "effect": "Tilaa municipalAmendment: 4 kk / 9 000 €, baseline 2 kk; hallinnollinen käsittelyaika erikseen ulkoinen. Preseed conclusion. Älä muuta ensimmäisen kunnan päätöstä toisen kunnan päätökseksi."
+        },
+        "B": {
+          "label": "Jatketaan ilman palautettua reuna-aluetta",
+          "result": "Toisen kunnan puolella oleva tuotantoalue jätetään tästä hankevaiheesta pois. Jäljelle jäävän kokonaisuuden kaava- ja lupatarpeet tarkistetaan.",
+          "branches": [],
+          "effect": "Poista vain municipalParcelIds:n aktiiviset kyseisen moodin kohteet; ei puuttuvan hankeosan poistoa. Tilaa separabilityCheck: 2 kk / 6 000 €. Säilytä jäljelle jäävän alueen yhteinen johto ja oikeudet, jos ne todistetusti riittävät."
+        }
+      },
+      "branches": [],
+      "eligibility": "Kaksi kuntaa laatii kumpikin oman tuotanto-osan kaavansa, ensimmäisen päätös tehty; toinen palautettu. Ei kahden kunnan yhteistä yleiskaavaa. Puuttuva reuna ei sisällä ainoaa sähköasemaa, johtoyhteyttä tai välttämätöntä luontolievennystä. Liitteen 03 mukainen regionParts-rakenne nimeää toisen kunnan kohteet ja näyttää tunnetun kpl/ha-menetyksen valinnan yhteydessä; itse kortti sopii jokaiseen tuotantomuotoon.",
+      "sources": [
+        "LPA12",
+        "LPA13"
+      ],
+      "artBrief": "Kaksi kunnan päätöspöytää ja niiden välissä tuotantoalueen kuntaraja. Kuvassa vain nykyisen pelimuodon tuotantolaitteet.",
+      "nextIds": [
+        "LP1-E-Y01"
+      ],
+      "implementationNotes": "Uusi aihe on eriaikainen kunnallinen ratkaisu, ei sama kuin nykyinen maakuntakaavan odotus tai uusi valtuusto. Kaavan hyväksyntä/lainvoima ovat kuntakohtaisia. Ensimmäinen myönteinen päätös ei myönnä toisen kunnan hyväksyntää."
+    },
+    {
+      "id": "LP1-E-Y01",
+      "kind": "event",
+      "stage": 4,
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "family": "lp1_municipal",
+      "role": "result",
+      "title": "Toisen kunnan asian käsittely eteni",
+      "body": "",
+      "choices": {},
+      "branches": [
+        {
+          "id": "both",
+          "when": "A; toinen kunta hyväksyy käsitellyn ehdotuksen",
+          "text": "Myös toinen kunta hyväksyy kaavaratkaisunsa. Koko suunniteltu tuotantoalue säilyy. Molempien päätösten muutoksenhaku ja lainvoima tarkistetaan erikseen.",
+          "effect": "Merkitse kunta2 adopted; ei automaattisesti final. Alkuperäinen kunta1-status säilyy.",
+          "nextIds": []
+        },
+        {
+          "id": "exclude_after_wait",
+          "when": "A; toinen kunta ei hyväksy; pienempi vaihtoehto yhä mahdollinen",
+          "text": "Toinen kunta ei hyväksy tuotantoalueensa kaavaa. Muu hanke voisi jatkaa ilman tätä osaa, mutta rajaus on päätettävä uudelleen.",
+          "effect": "Tarjoa samaan municipal-caseen sidottu B:n poistovahvistus tai omistajan tietoinen lopetus. Ei uudelleen A-odotusta loputtomasti. Älä lupaa suoraan uutta kaavaa.",
+          "nextIds": [
+            "LP1-D-Y01"
+          ]
+        },
+        {
+          "id": "separated",
+          "when": "B tai A:n jälkeen hyväksytty poistovahvistus",
+          "text": "Jäljelle jäävä hanke on erotettu palautetusta alueesta. Sen kaava- ja lupa-asiakirjat vastaavat nyt pienempää kokonaisuutta.",
+          "effect": "Päivitä vain erotetun suunnitelman arvioiden revision kattavuus; jatka aidosti tarvittaviin muutoksiin ja lainvoimaan.",
+          "nextIds": []
+        }
+      ],
+      "eligibility": "Kuntakohtainen käsittely valmistunut tai erottelu tarkistettu. Alkuperäinen puolto ei yksin laukaise loppuvoittoa.",
+      "sources": [
+        "LPA12",
+        "LPA13"
+      ],
+      "artBrief": "Kaksi päätöstä; näytä erilliset tilat ilman varsinaista kunnan vaakunaa.",
+      "nextIds": [
+        "LP1-D-Y01"
+      ],
+      "implementationNotes": ""
+    },
+    {
+      "id": "LP1-H01",
+      "kind": "decision",
+      "stage": 3,
+      "contexts": [
+        "hybrid"
+      ],
+      "family": "lp1_solar_continuation",
+      "role": "recovery",
+      "title": "Jatketaanko aurinkovoimahankkeena?",
+      "body": "Tuulivoimaosalle ei löydy toteuttamiskelpoista jatkoa. Hankkeessa on kuitenkin edelleen {solarHa} hehtaaria käyttökelpoista aurinkoaluetta. Omistaja on valmis jatkamaan sen selvittämistä. Pelkästä aurinkohankkeesta tarvitaan päivitetty suunnitelma.",
+      "choices": {
+        "A": {
+          "label": "Jatketaan aurinkovoimahankkeena",
+          "result": "Tuulivoimaosa jätetään pois ja aurinkohankkeen suunnitelma päivitetään. Tehdyt selvitykset hyödynnetään siltä osin kuin ne vastaavat muuttunutta hanketta.",
+          "branches": [],
+          "effect": "Toteuta 03:n atominen konversio ennen finish():ä. Sama runId/seed/kello/raha/historia. activeMode=solar, route=hybrid_solar, conversion.used=true. Säilytä originalMode=hybrid. Älä lisää maata tai kasvata aurinkoa poistettujen tuulipaikkojen tilalle. BESS pois vain jos erotettavissa."
+        },
+        "B": {
+          "label": "Lopetetaan tämän hankkeen kehitys",
+          "result": "Hankkeen kehitys päättyy. Aurinkovoiman jatkosuunnitelmaa ei tilata.",
+          "branches": [],
+          "effect": "Viimeistele alkuperäinen failureAssessment johdetulla loppusyyllä; kieltäytyminen ei ole uusi tyhmä valinta tai oma tappioarpa. Tallenna continuationDeclined, näytä alkuperäinen syyhistoria."
+        }
+      },
+      "branches": [],
+      "eligibility": "Vain alkujaan hybridinä alkanut peli. Tuuliosaan kohdistuva todellinen lopetusperuste; vähimmäislaajuuden ylittävä olemassa oleva aurinkoalue; omistaja jatkaa; itsenäinen liityntä ja maa alustavasti mahdollisia; ei yhteistä estettä; ei aiempaa tarjousta/konversiota; lupavoittoa ei ole. Tarkat ehdot 03:ssa. Voi tulla vaiheessa 2, 3 tai 4, ei satunnaisena peruskorttina.",
+      "sources": [
+        "LPA01",
+        "LPA06",
+        "LPA13",
+        "LPA14"
+      ],
+      "artBrief": "Sama hankekartta: tuulivoimalat merkitty pois, jo olemassa oleva paneelikenttä jää; ei uusia paneeleja tyhjästä.",
+      "nextIds": [
+        "LP1-E-H01"
+      ],
+      "implementationNotes": "body ei näytä failure classification -koodia. Ennen tätä pelaaja näkee tuuliosan todellisen estävän johtopäätöksen ilman väitettä koko hankeyhtiön kaikkien vaihtoehtojen lopettamisesta. existing independentSolar -haara ei saa enää muuttaa hanketta ilman A-valintaa."
+    },
+    {
+      "id": "LP1-E-H01",
+      "kind": "event",
+      "stage": 3,
+      "contexts": [
+        "hybrid_solar"
+      ],
+      "family": "lp1_solar_continuation",
+      "role": "result",
+      "title": "Aurinkohankkeen valmistelu jatkuu",
+      "body": "",
+      "choices": {},
+      "branches": [
+        {
+          "id": "converted",
+          "when": "LP1-H01/A sitovasti käsitelty",
+          "text": "Tuulivoimalat eivät enää kuulu hankkeeseen. Aurinkokenttää on jäljellä {solarHa} ha. Aiempiin selvityksiin kuluneet rahat ja aika jäävät hankkeelle; nyt selvitetään, mitä muuttunut suunnitelma vielä tarvitsee.",
+          "effect": "Näytä yksi olennainen siirtymä. Tilaa solarContinuationReview: ehdotus 2 kk / 8 000 €, maksu kerran. Ei puhtaan uuden aurinkopelin initialStatea. Tarkistuksen valmistuminen julkaisee LP1-E-H02:n.",
+          "nextIds": [
+            "LP1-E-H02"
+          ]
+        }
+      ],
+      "eligibility": "Konversion tapahtumahistoria tallennettu, komponenttisiivous tehty. Tämä ilmoitus ei hyväksy kaavaa eikä YVA:n riittävyyttä.",
+      "sources": [
+        "LPA06",
+        "LPA13",
+        "LPA14"
+      ],
+      "artBrief": "Aurinkokentän muuttunut kartta; sama fiktiivinen hankenimi säilyy.",
+      "nextIds": [
+        "LP1-E-H02"
+      ],
+      "implementationNotes": ""
+    },
+    {
+      "id": "LP1-E-H02",
+      "kind": "event",
+      "stage": 3,
+      "contexts": [
+        "hybrid_solar"
+      ],
+      "family": "lp1_solar_continuation",
+      "role": "result",
+      "title": "Aurinkohankkeen täydennystarpeet selvisivät",
+      "body": "",
+      "choices": {},
+      "branches": [
+        {
+          "id": "reuse",
+          "when": "Tarkistus valmis, aiempi aineisto kattaa muuttuneen aurinkoratkaisun olennaisilta osiltaan",
+          "text": "Aiemmat aurinkoalueen selvitykset voidaan käyttää päivitetyn suunnitelman pohjana. Tuuliosaa koskevat kohdat poistetaan asiakirjoista. Aurinkohankkeen oma kaava- ja lupakäsittely jatkuu.",
+          "effect": "Säilytä vain perustellusti kattavat readiness-evidence-rivit; päivitä asiakirjat/kuulemistarve. Ei suoraa voittoa tai lupaleimaa.",
+          "nextIds": []
+        },
+        {
+          "id": "supplement",
+          "when": "Tarkistus valmis, rajattu lisätyö tarpeen",
+          "text": "Nykyisen johtoreitin mitoitus ja vaikutusarvio pitää päivittää aurinkohankkeelle. Rajattu täydennys tilataan; muut käyttökelpoiset selvitykset säilyvät.",
+          "effect": "Tämän haaran yksilöity lisätyö on olemassa olevan sähkönsiirtoreitin päivitetty vaikutus- ja mitoitustarkistus aurinkoratkaisulle: 2 kk / 5 000 €, sama johto ja samat maat. Ei uutta reittisummaa eikä koko YVAa tyhjästä. Kirjaa readiness-evidence; jos aiempi tieto jo kattaa tarkistuksen, tätä haaraa ei tarjota. Muut puutteet käsitellään omissa nykyisissä tapauksissaan.",
+          "nextIds": []
+        },
+        {
+          "id": "reduced",
+          "when": "Tarkistus valmis; itsenäinen ratkaisu vaatii paneelialaa",
+          "text": "Aurinkohankkeen oma sähköasema ja kulkuyhteys vievät tilaa paneelikentältä. Suunnittelija esittää pienempää kenttää, jolla itsenäinen ratkaisu olisi mahdollinen.",
+          "effect": "Tarjoa LP1-H02 ja sido ehdotetut block/parcelIDt. Vielä ei poistoa.",
+          "nextIds": [
+            "LP1-H02"
+          ]
+        },
+        {
+          "id": "blocked",
+          "when": "Tarkistuksessa ilmenee ennen konversiota avoin aurinko-/yhteinen toteutuseste eikä korvaavaa ratkaisua",
+          "text": "Aurinko-osalle ei löydy toimivaa itsenäistä ratkaisua tutkituilla vaihtoehdoilla. Myös tämän jatkohankkeen kehitys päättyy.",
+          "effect": "Kirjaa uusi todennettu solar/shared-este ja viimeistele loppu. Ei toista konversiota. Ei käytetä jo ennen tarjousta tiedossa olleeseen globaaliin esteeseen.",
+          "nextIds": []
+        }
+      ],
+      "eligibility": "A-tarjouksen hyväksymisen jälkeen tilattu tarkistus valmis. Aiemmin tuntematon tulos määräytyy sidotuista teknisistä/maankäyttötiedoista, ei pelimuodon vaihtamisen rangaistusarvasta.",
+      "sources": [
+        "LPA06",
+        "LPA13",
+        "LPA14"
+      ],
+      "artBrief": "Aurinkokenttä ja sen oma sähköasema. Tarkastetut ja täydennettävät hankeosat.",
+      "nextIds": [
+        "LP1-H02"
+      ],
+      "implementationNotes": ""
+    },
+    {
+      "id": "LP1-H02",
+      "kind": "decision",
+      "stage": 3,
+      "contexts": [
+        "hybrid_solar"
+      ],
+      "family": "lp1_solar_continuation",
+      "role": "followup",
+      "title": "Oma sähköasema tarvitsee tilaa",
+      "body": "Itsenäisen aurinkohankkeen sähköasema ja kulku voidaan sijoittaa omille maille, mutta paneelialasta jäisi pois {lostSolarHa} ha. Jäljelle jäävä {remainingSolarHa} ha ylittää omistajan jatkorajan. Alueen kasvattamiseen ei ole sovittua lisämaata.",
+      "choices": {
+        "A": {
+          "label": "Jatketaan pienemmällä aurinkokentällä",
+          "result": "Sähköasemalle ja kululle varataan tila. Paneeliala pienenee, ja päivitetty kokonaisuus viedään tarvittavaan kaava- ja lupakäsittelyyn.",
+          "branches": [],
+          "effect": "Toteuta vain sidotut lohkomuutokset, solarArea=remainingSolarHa. Tilaa layout/permitDelta 2 kk / 6 000 €. Maksettu valmistelu ja aiemmat poistot pysyvät. Tämä on tutkittu jatko, ei uusi satunnainen mahdollisuuspiste."
+        },
+        "B": {
+          "label": "Ei jatketa pienemmän vaihtoehdon kanssa",
+          "result": "Omistaja päättää lopettaa kehityksen. Pienempi aurinkohanke jää toteuttamatta.",
+          "branches": [],
+          "effect": "Omistajan tietoinen lopetus; säilytä alkuperäinen hybridin tuuliosan syy ja aurinkojatkon päätös erillään. Ei muualla olevien voimaloiden tai uusien paneelien syntymistä."
+        }
+      },
+      "branches": [],
+      "eligibility": "Vain LP1-E-H02/reduced, olemassa oleva oma maa riittää sekä itsenäinen pienempi vaihtoehto tutkittu. remainingSolarHa=nykyinen solarHa-lostSolarHa; >0 ja vähintään sovittu solarjatkoraja. Ei tarjota jo vähennettyä samaa alaa uudelleen.",
+      "sources": [
+        "LPA06"
+      ],
+      "artBrief": "Sähköasema ja kulku vievät osan paneelialueesta; muutama pois jäävä paneelirivi.",
+      "nextIds": [],
+      "implementationNotes": "Jatko A → normaalit uusiin revisioihin sidotut aurinko-/yhteiset lupa-askeleet → LP1-E-H03 vasta oikeassa voitossa. Suunniteltu kertaluonteinen rajaus kirjataan case-faktoihin."
+    },
+    {
+      "id": "LP1-E-H03",
+      "kind": "event",
+      "stage": 4,
+      "contexts": [
+        "hybrid_solar"
+      ],
+      "family": "lp1_solar_continuation",
+      "role": "result",
+      "title": "Aurinkohanke on luvitettu",
+      "body": "",
+      "choices": {},
+      "branches": [
+        {
+          "id": "rescued_win",
+          "when": "Hybridistä jatkunut aurinkohanke täyttää kaikki omat lupa- ja lainvoimaehdot",
+          "text": "Tuulivoimaosa jäi pois, mutta aurinkohankkeen tarvittavat luvat on saatu. Jäljellä on {solarHa} hehtaarin aurinkokenttä. Hankkeeseen käytetty aika ja raha ovat mukana loppupisteissä.",
+          "effect": "Ending.kind=win, routeCategory=hybrid_solar. Näytä jatkovoitto erillään alkuperäisen hybriditavoitteen täyttämisestä. Pisteytys 03:n mukaisesti.",
+          "nextIds": []
+        }
+      ],
+      "eligibility": "Ei tarjota tavallisena eventtinä: ainoastaan todennettu permitGoalReached aktiiviselle aurinkoprofiilille, ei vain hyväksytty kaava. Tavallinen LOPPU-VOITTO-teksti ei tule päälle toisena voittona.",
+      "sources": [
+        "LPA06",
+        "LPA13",
+        "LPA14"
+      ],
+      "artBrief": "Luvitettu paneelikenttä. Alkuperäinen tuuliosan päättyminen näkyy historiassa, ei uusina voimaloina kuvassa.",
+      "nextIds": [],
+      "implementationNotes": ""
+    }
+  ],
+  "confirmationDialogs": [
+    {
+      "id": "LP1-D-T04",
+      "source": "LP1-T04",
+      "when": "Mallivertailu valmis ja tutkittu vaihtoehtoinen malli yhteensopiva",
+      "title": "Valitaanko toinen voimalamalli?",
+      "body": "Tutkittu vaihtoehto muuttaa hankkeen yhteistehoa {oldWindMW} → {newWindMW} MW ja kokonaiskorkeutta {oldHeightM} → {newHeightM} m. Uuden mallin vaikutusarviot on päivitettävä.",
+      "A": "Valitaan tutkittu voimalamalli",
+      "B": "Pidetään nykyinen malli ja kiertoreitti",
+      "A_result": "Hankkeen voimalamalli vaihdetaan. Muuttuvat vaikutusarviot ja lausunnot päivitetään.",
+      "B_result": "Nykyinen voimalamalli säilyy. Kiertoreitin suunnittelu käynnistyy.",
+      "logic": "A vaatii catalogue compatibility, päivittää named sites kerran; B tilaa bypassDesign vain jos ei jo tehty. Nykyisen mallin uudelleenvalinta ei nollaa kuluhistoriaa. A tilaa mallin muuttamien melu-/välke-/lausuntotietojen päivityksen 2 kk / 7 000 € ja mitätöi vain muutoksen kattamattoman aineiston; B bypassDesign 3 kk / 10 000 €. Nämä kustannukset näkyvät vahvistuksessa. Kuljetuspaikan pituus ei ole liitynnän pituus.",
+      "contexts": [
+        "wind"
+      ],
+      "nextIds": [
+        "LP1-E-T03"
+      ]
+    },
+    {
+      "id": "LP1-D-A04",
+      "source": "LP1-A04",
+      "when": "DC/AC-vertailu valmis ja suurempi vaihtoehto teknisesti mahdollinen",
+      "title": "Valitaanko suurempi paneelivaihtoehto?",
+      "body": "Paneeliteho olisi {dcHighMWp} MWp, mutta liittymän vientiraja pysyy {solarAcMW} MW:ssa. Vertailu osoittaa lisää käyttökelpoista vuosienergiaa. Lisäpaneelien kustannusarvio kuuluu vaihtoehtoon.",
+      "A": "Valitaan suurempi paneelivaihtoehto",
+      "B": "Pidetään pienempi paneelivaihtoehto",
+      "A_result": "Suurempi paneelivaihtoehto valitaan jatkosuunnitteluun. Liittymän vientiraja ei muutu.",
+      "B_result": "Jatketaan pienemmällä paneelivaihtoehdolla.",
+      "logic": "Sama hallittu maa; ei uutta aluetta tai wind/bess-osaa; A päivittää DC-layoutin, ei AC-liittymää; B säilyttää tutkimuskulun. A tilaa valitun DC-layoutin asiakirjapäivityksen 1 kk / 2 000 €; lisälaitteiston tuleva investointi kirjataan kustannusarvioksi, ei jo maksetuksi kehityskuluksi.",
+      "contexts": [
+        "solar",
+        "hybrid_solar"
+      ],
+      "nextIds": []
+    },
+    {
+      "id": "LP1-D-Y01",
+      "source": "LP1-Y01",
+      "when": "Toinen kunta on hylännyt A-odotuksen jälkeen; pienempi erotettu kokonaisuus yhä mahdollinen",
+      "title": "Jatketaanko ilman toisen kunnan aluetta?",
+      "body": "Toisen kunnan tuotantoaluetta ei saada mukaan. Jäljelle jäävä hanke voidaan käsitellä omana pienempänä kokonaisuutenaan.",
+      "A": "Jatketaan pienemmällä alueella",
+      "B": "Lopetetaan hankkeen kehitys",
+      "A_result": "Toisen kunnan alue jätetään pois. Jäljelle jäävän suunnitelman asiakirjat päivitetään.",
+      "B_result": "Omistaja päättää lopettaa hankkeen kehityksen.",
+      "logic": "A sama vaikutus kuin LP1-Y01/B vain kerran; B owner ending syyhistoria säilyy. Ei uudelleen 4kk odotusta.",
+      "contexts": [
+        "wind",
+        "solar",
+        "hybrid",
+        "hybrid_solar"
+      ],
+      "nextIds": [
+        "LP1-E-Y01"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,779 @@
+{
+  "schemaVersion": "lp1-tests-1",
+  "notice": "Toteutettavat testit, ei ajettuja tuloksia. Testifikstuurit luodaan moottorissa ja siemenet raportoidaan.",
+  "tests": [
+    {
+      "id": "LP1-QA-001",
+      "group": "modes",
+      "title": "Valikkovalinta toimii",
+      "given": "Nykyinen päävalikko; ei avointa tallennetta",
+      "action": "Valitse vuorotellen Tuuli, Aurinko ja Hybridi; aloita kukin",
+      "expected": "Valinta, kuvaus ja uuden pelin originMode vastaavat valintaa; ei oletushybridiä kaikkien nappien takana.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-002",
+      "group": "modes",
+      "title": "Jatka ei vaihda moodia",
+      "given": "Tallennettu Aurinko; valikossa valittu Tuuli uudelle pelille",
+      "action": "Paina Jatka",
+      "expected": "Sama Aurinko-hanke avautuu; ei uutta maailmaa eikä tuotantomuodon muutosta.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-003",
+      "group": "modes",
+      "title": "Tuulen fyysiset invarianssit",
+      "given": "Uusi wind; kaikki sen lailliset tapahtumareitit",
+      "action": "Aja valmistumis-/häviöpolut ja jokainen siemenellinen vaihe",
+      "expected": "SolarHa/MWp/MWac=0, ei aktiivisia solarBlockeja, akku excluded; ei niiden maksuja tai vaadittuja lupia.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-004",
+      "group": "modes",
+      "title": "Auringon fyysiset invarianssit",
+      "given": "Uusi solar",
+      "action": "Aja valmistumis-/häviöpolut ja kaikki edellytysten mukaiset jatkot",
+      "expected": "WindCount/MW=0, ei aktiivisia windSiteja tai wind-permittejä; ei BESSiä.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-005",
+      "group": "modes",
+      "title": "Jonotuksen ohitus estetään",
+      "given": "Puhtaaseen aurinkopeliin yritetään jonottaa defence ja tuulipeliin solarNature",
+      "action": "Kutsu samaa jonotus- ja julkaisupolkua kuin pakolliset jatkot",
+      "expected": "Soveltumaton sisältö estetään ennen pelaajalle näyttöä ja sen vaikutusta; ei hiljaista tilan korruptiota.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-006",
+      "group": "modes",
+      "title": "Shared ei ole kaikille salliva",
+      "given": "Yhteiseksi merkitty omaa tuulta edellyttävä melu-/tutkimuscase",
+      "action": "Testaa aurinkomoodin modeAllows sekä resolver",
+      "expected": "Ilman oikeaa omaa lähdettä case ei kelpaa; ei paneelille kirjoitettua törmäysriskiä.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-007",
+      "group": "modes",
+      "title": "Maanomistajan oikea haara",
+      "given": "land-perhe; kielteinen B, omat aurinkolohkot tai tuulipaikat",
+      "action": "Aja molemmat puhtaat muodot samoilla owner-faktoilla",
+      "expected": "Aurinko menettää vain sidotun lohkon; Tuuli käyttää tuulimaan vaikutusta; ei väärää vastausta.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-008",
+      "group": "modes",
+      "title": "Esityskerroksen oikea tekniikka",
+      "given": "Kaikki 248 vanhaa ID:tä ja uudet ID:t sopivissa fikstuureissa",
+      "action": "Renderöi otsikko, body, reaktio, lyhyt tulos, puhuja ja art",
+      "expected": "Ei oman puuttuvan tekniikan toimintaa tai lupaa. Kaikki havaitut osumat tarkistetaan sisällöllisesti, ei pelkällä sanakiellolla.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-009",
+      "group": "modes",
+      "title": "Aurinkopeli ilman YVAa",
+      "given": "Alkuperusteinen profiili, yvaDetermined ja notRequired",
+      "action": "Aja kaikki neljä vaihetta",
+      "expected": "Ei yvaConclusions-tapahtumaa tai YVA-selostuksen tilausta; vaikutusselvitykset, kaava ja luvat eivät ohitu.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-010",
+      "group": "modes",
+      "title": "Aurinkopeli YVAlla",
+      "given": "Profiilin vaikutukset edellyttävät YVAa",
+      "action": "Aja samoista alkutiedoista molemmat A/B-strategiat",
+      "expected": "Ohjelma, selostus, kuuleminen ja päätelmä vaaditaan; raha ei osta no-YVA-vapautusta.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-011",
+      "group": "modes",
+      "title": "Tuntematon menettelytarve",
+      "given": "Aurinko, YVA-tarve vielä selvittämättä",
+      "action": "Yritä siirtyä lupavoittoon tai käyttää no-YVA-otsikkoa",
+      "expected": "Tuntematonta ei tulkita päätökseksi ettei menettelyä tarvita.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-012",
+      "group": "modes",
+      "title": "BESSin pakotettu kortti puhtaassa tilassa",
+      "given": "Vaihe2 ja vanha battery-undecided-promootio",
+      "action": "Aja director/candidate",
+      "expected": "BESS-P2-04 ei ohita modeAllows-tarkistusta; puhdas tila ei jää odottamaan akkua.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-013",
+      "group": "modes",
+      "title": "Poolin kattavuus",
+      "given": "Puhtaat moodit ja kaikki sallitut päävaiheet",
+      "action": "Laske soveltuvat alkutilanteet ja aja realistinen pelikerta",
+      "expected": "Tarpeelliset vaiheet valmistuvat. Ei täytekortteja toisesta moodista, endlesstilaa tai pakollista mahdotonta casea.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-014",
+      "group": "modes",
+      "title": "Hybridin regressio",
+      "given": "Nykyiset v5-siemenet ja julkaistut peruspolut",
+      "action": "Aja ennen/jälkeen samalla hybridiprofiililla",
+      "expected": "Vanha sisältö ja akkupolku säilyvät lukuun ottamatta nimenomaisia uusia valintoja; ei v5-tekstien palautusta vanhemmiksi.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-015",
+      "group": "recovery",
+      "title": "Puolustuksesta tarjous eikä automaatio",
+      "given": "Hybrid; independentSolar1; kaikki kelpoisuusehdot; lopullinen kielteinen EV-PV",
+      "action": "Ratkaise puolustuksen havainto",
+      "expected": "Tuuliesteteksti ja LP1-H01 näkyvät. Tuuliosaa ei poisteta ennen A:ta, ending null, ei automaattista defenceStopsWind-jatkoa.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-016",
+      "group": "recovery",
+      "title": "VTT:n kielteinen loppukanta",
+      "given": "Sama jatkokelpoinen hybrid VTT-työn kautta",
+      "action": "Julkaise EV-VTT-TULOS",
+      "expected": "Sama yhtenäinen tarjousportti; ei toinen rinnakkainen tarjous tai ennenaikainen finish.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-017",
+      "group": "recovery",
+      "title": "Kieltäytyminen",
+      "given": "LP1-H01 offered",
+      "action": "Valitse B",
+      "expected": "Alkuperäinen failure finalize, ei jatkotarkistuksen laskua tai wind/solar-resettiä, ei kieltäytymisestä uutta väärän valinnan luokkaa.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-018",
+      "group": "recovery",
+      "title": "Hyväksyminen atomisena",
+      "given": "LP1-H01 offered; tunnetut kustannukset/aika/paikat",
+      "action": "Valitse A",
+      "expected": "originMode hybrid, activeMode solar, route hybrid_solar, sama identiteetti/seed/historia/aika/raha; ei lisäaurinkoalaa.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-019",
+      "group": "recovery",
+      "title": "Ei puhtaista moodeista",
+      "given": "wind tai solar; sama failure kuin hybridissä",
+      "action": "Aja failure-portti",
+      "expected": "Ei LP1-H01:tä eikä aurinkoalaa lisätä wind-runille.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-020",
+      "group": "recovery",
+      "title": "Ei yhteisestä esteestä",
+      "given": "Hybrid, kunnan kielto kaikille vaihtoehdoille tai ei toimivaa yhteistä verkkoa",
+      "action": "Aja failure-portti",
+      "expected": "Ei aurinkojatkotarjousta vaikka independentSolar-lippu olisi1.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-021",
+      "group": "recovery",
+      "title": "Ei kaikkialta vetäytyvän omistajan jatkoa",
+      "given": "Omistaja lopettaa kaiken kehityksen; ei jatkajaa",
+      "action": "Julkaise ulkoinen omistajatapahtuma",
+      "expected": "Tarjous ei ilmesty ristiriidassa ilmoitetun vetäytymisen kanssa.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-022",
+      "group": "recovery",
+      "title": "Luontohaitta koskee myös paneeleja",
+      "given": "Tuuliosa epäonnistuu, mutta sama yhteys katkeaa aurinkoaidoista/tiestä",
+      "action": "Aja kelpoisuus",
+      "expected": "Pelkkä wind-komponenttileima ei vapauta aurinkoa; yhteinen tunnettu este estää tarjouksen.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-023",
+      "group": "recovery",
+      "title": "Aurinkolaajuus ei riitä",
+      "given": "Aiemmat aurinkopoistot laskeneet alan alle jatkorajan",
+      "action": "Ratkaise tuulieste",
+      "expected": "Ei tarjousta; alkuperäistä aurinkoalaa ei palauteta.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-024",
+      "group": "recovery",
+      "title": "Akku ei ole erotettavissa",
+      "given": "Solarjatko olisi ilman BESS-erottelua mahdoton",
+      "action": "Ratkaise tuulieste",
+      "expected": "Ei tarjoilla puhdasta aurinkojatkoa tai poisteta akun yhteisiä velvoitteita.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-025",
+      "group": "recovery",
+      "title": "Ei onnistumisen jälkeen",
+      "given": "permitGoalReached tosi / win valmis",
+      "action": "Syötä vanhentunut tuuliestetulos",
+      "expected": "Voitto ei muutu tappioksi tai jatkopyynnöksi.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-026",
+      "group": "recovery",
+      "title": "Yksi tarjous ja oikea token",
+      "given": "Sama failure kahdesta järjestelmäkutsusta",
+      "action": "Aja kahdesti ja tuplaklikkaa A samalla tokenilla",
+      "expected": "Vain yksi tarjous, yksi konversio, yksi tarkistusmaksu.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-027",
+      "group": "recovery",
+      "title": "Tulevat wind-tulokset perutaan",
+      "given": "A:n jälkeen kalenterissa puolustus-, melu- ja solar/shared-työtä",
+      "action": "Etene seuraaviin valmistumisiin",
+      "expected": "Tarpeettomat wind-case-tulokset eivät näy; solar/shared-työt sekä oikeat yhteisvaikutukset säilyvät.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-028",
+      "group": "recovery",
+      "title": "Jo valmistunut havainto säilyy",
+      "given": "Wind- ja yhteisiä luontohavaintoja historiassa",
+      "action": "Konvertoi aurinkoon",
+      "expected": "Ei vanhojen faktojen tai kulujen pyyhintää; niiden soveltuvuus arvioidaan eikä kaikki case-status resolved kerralla.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-029",
+      "group": "recovery",
+      "title": "Esityssiirtymä",
+      "given": "Hybridi → Aurinko A",
+      "action": "Renderöi seuraava toimintakortti, HUD ja valikko",
+      "expected": "Aktiivinen aurinko, selkeä reittinimi, vanha tuuliluku vain historiassa; ei uuden aurinkorunin nimeä.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-030",
+      "group": "recovery",
+      "title": "Myöhempi vaihe ei aloita kaikkea alusta",
+      "given": "Tarjous vaiheessa4; useita käyttökelpoisia aurinkoselvityksiä",
+      "action": "Hyväksy ja viimeistele delta-review",
+      "expected": "Hyödylliset selvitykset ja toteutuneet vaiheet säilyvät, muuttunut ehdotus/luvat arvioidaan; ei reset 18 korttia tai suora voitto.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-031",
+      "group": "recovery",
+      "title": "Tarkistus vähentää paneelialaa",
+      "given": "LP1-E-H02/reduced ja soveltuva tutkittu layout",
+      "action": "Valitse H02/A ja toista tulostoiminto",
+      "expected": "Ala vähenee kerran täsmälleen sidotuista lohkoista; remainingSolarHa pitää paikkansa eikä tuulialaa muutu paneeleiksi.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-032",
+      "group": "recovery",
+      "title": "Avoin itsenäisyyden kysymys jää kielteiseksi",
+      "given": "Tarjouksessa aidosti avoin, preseed aurinkokysymys",
+      "action": "Tarkistus H02/blocked",
+      "expected": "Kirjaa todellinen uusi havainto; ei toista konversiota eikä uusi muodonvaihtorangaistusarpa.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-033",
+      "group": "recovery",
+      "title": "Jatkon onnistuminen",
+      "given": "Aurinkojatkon oikeat luvat, lainvoima ja tarkistukset valmiit",
+      "action": "Viimeistele",
+      "expected": "Vain yksi win tekstillä LP1-E-H03, route hybrid_solar; ei myös alkuperäisen hybridin win.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-034",
+      "group": "save",
+      "title": "Tallennus tarjouksen jokaisessa rajapisteessä",
+      "given": "Ennen syytulosta, tarjouksessa, A:n jälkeen, tarkistuksen odotuksessa, tuloksessa",
+      "action": "serialize→restore→jatka",
+      "expected": "Sama tila ja haara; replay alkaa alkuperäisestä hybridistä; kaikki hash/versiovaatimukset täyttyvät.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-035",
+      "group": "save",
+      "title": "Teknisen vahvistuksen replay",
+      "given": "LP1-D-T04 / D-A04 / D-Y01 avoinna",
+      "action": "Vahvista molemmat haarat erillisissä koeajoissa ja lataa",
+      "expected": "Vahvistus toistuu toimintohistoriasta; ei kliinisen UI:n kirjoitusta suoraan moottoritilaan.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-036",
+      "group": "save",
+      "title": "Vanhan sääntöversion turvallinen avaus",
+      "given": "v5-rules-3-tallenne uuden sääntöversion sovelluksessa",
+      "action": "Avaa vanha tallenne",
+      "expected": "Vain dokumentoitu migraatio/vanhaversioreplay tai säilytys vientiin. Ei toisto uusilla säännöillä tai tietojen hävitys.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-037",
+      "group": "save",
+      "title": "Keskeytetty pyyhkäisy",
+      "given": "Mikä tahansa uusi kortti tai H01",
+      "action": "Vedä ja palauta keskelle",
+      "expected": "Ei uusia töitä, kustannuksia, haaravalintaa tai siemenvirran muutosta.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-038",
+      "group": "score",
+      "title": "Aurinkojatkon alkuperäinen nimittäjä",
+      "given": "Alussa100ha, tarjouksessa70ha, lopussa60ha",
+      "action": "Laske jatkon scope",
+      "expected": "Pinta-alasuhde60/100, ei60/70 tai100%; originalinitial muuttumaton.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-039",
+      "group": "score",
+      "title": "Koko kustannushistoria mukana",
+      "given": "Hybridin kehityskulut100k, jatkon8k ja muita asianmukaisia kuluja",
+      "action": "Laske resurssipisteet",
+      "expected": "Kaikki maksetut kulut mukana; ei konversion hyvitystä tai tulevan investoinnin kokonaiskulua kehityslaskuun.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-040",
+      "group": "score",
+      "title": "Nollanimittäjät",
+      "given": "Wind ilman solaria ja solar ilman windiä",
+      "action": "Laske HUD/arvot/score",
+      "expected": "Ei NaN/Infinity/virheellistä0/0; puuttuville hankeosille ei miinuspisteitä.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-041",
+      "group": "score",
+      "title": "Viive ei ole työmäärien summa",
+      "given": "Kaksi päällekkäistä2kktyötä",
+      "action": "Etene molempien valmistumiseen",
+      "expected": "Kelloon vain todellinen2kkjakso; vältettävä viive määrittyy baseline-laskennasta, ei 4 kk automaattisesti.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-042",
+      "group": "content",
+      "title": "Varjo ja nimellisteho",
+      "given": "LP1-T01/A; kaksi aktiivista paikkaa",
+      "action": "Julkaise control ja myöhemmin poista samat paikat",
+      "expected": "Alkuun vain vuosienergiakerroin; myöhemmässä poistossa ei samoista koneista jää haamurajoitusta muille.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-043",
+      "group": "content",
+      "title": "Television lisämittaus ei toistu",
+      "given": "T02/B ja desk-puute",
+      "action": "Etene measure_later → lisätyö → tulos",
+      "expected": "Mittaus tilataan kerran; seuraava tulos baseline_clear/mitigation, ei uudelleen measure_later.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-044",
+      "group": "content",
+      "title": "Kuljetusmallia ei vaihdeta tilattaessa",
+      "given": "T04/B",
+      "action": "Tilaa vertailu ja vahvista D-T04/B",
+      "expected": "Voimalamalli ennallaan vertailun ajan ja B:n jälkeen; kiertoreitti tilataan kerran; grid-km ei kasva kuljetusmatkasta.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-045",
+      "group": "content",
+      "title": "Paneelipinta ei automaattisesti ratkaise häikäisyä",
+      "given": "A01/A ja surfaceMitigatesfalse",
+      "action": "Etene A05 ja kokeile A/B",
+      "expected": "Oikea tutkittu korjaus tai sama lohko pois; ei lentoturvallisuusluvan automaattista myöntämistä.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-046",
+      "group": "content",
+      "title": "Sulfaattiepäily ei ole näytetulos",
+      "given": "A02/B",
+      "action": "Poista lohko ja renderöi excluded",
+      "expected": "Teksti ei väitä näytteiden todistaneen riskiä; maahan sidottu epäily ei muutu toteutuneeksi pilaantumiseksi.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-047",
+      "group": "content",
+      "title": "Matalampi kaivu vaatii soveltuvan suunnitelman",
+      "given": "A02/A riskituloksella",
+      "action": "Tarjoa A06",
+      "expected": "A-vaihtoehto edellyttää todellista skenaariossa tutkittua vaihtoehtoa; kaikki mielivaltaiset maaperät eivät saa varmaa oikotietä.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-048",
+      "group": "content",
+      "title": "Laidunnuksesta kieltäytyminen",
+      "given": "A03/B",
+      "action": "Julkaise mowing",
+      "expected": "Ei tuulivoimaa, BESSiä, automaattista luontotappiota tai uutta pakollista laidunnuskorttia.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-049",
+      "group": "content",
+      "title": "DC/AC-vaihtoehto ei lisää verkon tehoa",
+      "given": "A04/A myönteinen ja D-A04/A",
+      "action": "Hyväksy suurempiDC",
+      "expected": "Vientiraja ja invertterinAC pysyvät määritellyssä arvossa; suurempiDC vain varatussa tilassa; vuosienergia ei oleDC−ACvähennys.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-050",
+      "group": "content",
+      "title": "Kaksi kuntaa",
+      "given": "Y01 ennen kunta 2:n päätöstä; kunta 1 hyväksynyt",
+      "action": "Tarkista voitto ja seuraavat haarat",
+      "expected": "Ei voittoa kunta 1:n päätöksestä; kuntakohtaiset hyväksyntä/lainvoima ja erottelu huomioidaan; vain todelliset tuotanto-osat poistuvat.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-051",
+      "group": "narration",
+      "title": "Rytmi ei nollaudu jatkossa",
+      "given": "Ennen konversiota jo2 ajankulkukorttia",
+      "action": "Etene aurinkojatko loppuun",
+      "expected": "Enintään3 koko istunnossa ja 1 vaihetta kohti; ei peräkkäisiä. Jatkotarjous ja olennainen kielteinen tulos säilyvät näkyvinä.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-052",
+      "group": "narration",
+      "title": "Tuntematon uusi event ei katoa",
+      "given": "UusiLP1resolver julkaisee olennaisen tuloksen",
+      "action": "Kutsu compactNarration",
+      "expected": "Ei automaattista silent-progress-luokkaa; uusihaara on explicitdisplaypolicyssä ja metadata ei näy.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-053",
+      "group": "ui",
+      "title": "Mobiiliasettelu ja näppäimistö",
+      "given": "360,390,430pxleveydet ja normaalileveädesktop",
+      "action": "Testaa kaikki uudet otsikot, vaihtopainikkeet, kortit ja vahvistukset",
+      "expected": "Ei leikkautuvaa tekstiä, päällekkäisiä mittareita, piilotettuja valintoja tai lukukelvotonta pientäfonttia; nuolinäppäinpolku toimii.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-054",
+      "group": "ui",
+      "title": "Kuvitus vastaa aktiivista tekniikkaa",
+      "given": "Kaikkien modeoverridejen art ja LP1sisällöt",
+      "action": "Visuaalinen katselmus normaalikoossa",
+      "expected": "Ei väärän oman tekniikan proppia. Konversion historiallinen tuuliselitys erotetaan aktiivisesta aurinkokortista.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-055",
+      "group": "pwa",
+      "title": "Päivityskokonaisuus offline",
+      "given": "VanhaPWA, uusiversio ja vanhatallenne",
+      "action": "Päivitä, katkaiseverkko, jatka/vie",
+      "expected": "Sama content/rules/assetversio; ei mixedcachea eikä tallenteen pyyhintää.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-056",
+      "group": "simulation",
+      "title": "Kohtuullinen lisäpituus",
+      "given": "Kolmen aloitusmuodon nimetty vertailustrategia ja siemenjoukko",
+      "action": "Aja15 000 toistettavaa koetta04:n mukaisesti",
+      "expected": "Peruspäätökset/jatkot/odotukset erikseen; pituusjakauma ja saavutettavuus raportoitu; ei vain keskiarvo tai piilotettu haarojen poistaminen.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-057",
+      "group": "simulation",
+      "title": "Jatko ei vääristä tilastoa",
+      "given": "HybridifailjaLP1-H01tarjoukset",
+      "action": "Raportoi esijatko- ja lopputulokset",
+      "expected": "Tarjottu/hyväksytty/pelastunut eri nimittäjillä; hybridvoitot ja hybrid_solarvoitot eivät sama luokka.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-058",
+      "group": "integrity",
+      "title": "Uusien sisältöjen kattavuus",
+      "given": "Kaikki 13 + 11 + 3 lähdetunnistetta",
+      "action": "Vertaa runtime rekisteriin ja testikuviin",
+      "expected": "Jokainen on toteutettu tai täsmällisesti avoin; ei prose-onlyhaaraa tai nimeämätöntä fallbackia.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-059",
+      "group": "integrity",
+      "title": "Vanhat poistetut kortit eivät palaudu",
+      "given": "Nykyinen 248 ID:n pankki ja poistettujenlista",
+      "action": "Generoi uudetpakatsave",
+      "expected": "initiative, programme, UUSI-P1-02, UUSI-P1-10, BESS-P1-04 eivät palaudu poistettuina runkokortteina.",
+      "status": "not_run"
+    },
+    {
+      "id": "LP1-QA-060",
+      "group": "integrity",
+      "title": "Lähteet eivät muutu tositarinaksi",
+      "given": "Kaikki uudet pelaajatekstit",
+      "action": "Tarkista tekstit ja kuvat",
+      "expected": "Ei oikeita hankkeita, kuntanimiä, yrityksiä, lähdekoodeja tai pitkiä tekniikkaohjeita; lähteet dokumentaatiossa.",
+      "status": "not_run"
+    }
+  ],
+  "eventBranchCoverage": [
+    {
+      "contentId": "LP1-E-T01",
+      "branchId": "control",
+      "requiredWhen": "Lähde LP1-T01/A; ohjaussuunnitelma valmis",
+      "expected": "Ratkaise vain välketapaus. Kirjaa syykohtainen windYield-muutos yhden kerran. yieldLossPct on koko hankkeen laskettu suhteellinen muutos, ei automaattisesti kahden koneen nimellistehon vähennys.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-T01",
+      "branchId": "removed",
+      "requiredWhen": "Lähde LP1-T01/B; uusintamallinnus valmis",
+      "expected": "Ratkaise välketapaus, pidä aiemmat poisto-ID:t. Älä poista toista kahden voimalan joukkoa tapahtuman vuoksi.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-T02",
+      "branchId": "baseline_clear",
+      "requiredWhen": "A tai B:n jälkeen todella valmistunut lisämittaus; lisähäiriön riski pieni",
+      "expected": "Nykyvian ja hankkeen vaikutuksen erottelu valmis; ei muuta tuulimäärää.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-T02",
+      "branchId": "mitigation",
+      "requiredWhen": "A tai riittävän aineiston B; hankkeen lisähäiriö todettu mahdolliseksi",
+      "expected": "Kirjaa toteutusvaiheen häiriöntorjuntavelvoite ja suunnittelukustannus, ei valmista rakentamista. Tämän skenaarion ratkaisu on selvitetty toteuttamiskelpoiseksi.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-T02",
+      "branchId": "measure_later",
+      "requiredWhen": "B:n ensimmäinen deskModel valmis ja nykytilan tieto puutteellinen; lisämittausta ei vielä ole tehty",
+      "expected": "Tilaa rajattu lisämittaus kerran ja pidä tapaus avoinna valmistumiseen. Lisämittauksen valmistuminen julkaisee saman tapahtuman uuden outcome-ID:n haaralla baseline_clear tai mitigation. measure_later on sallittu vain deskModel-vaiheessa, eikä koskaan sen jälkeisen työn tuloksena. B:n ilman lisämittausta riittävä tulos käyttää desk_clear-haaraa.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-T02",
+      "branchId": "desk_clear",
+      "requiredWhen": "B:n ensimmäinen deskModel; malliaineisto riittävä, lisähäiriön riski pieni eikä lisämittausta tarvittu",
+      "expected": "Ratkaise tapaus ilman lisämittauslaskua.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-T03",
+      "branchId": "bridge_ok",
+      "requiredWhen": "LP1-T03/A ja bridgeSuitable",
+      "expected": "Ratkaise suunnittelun avoin kysymys. Kuljetusten erilliset luvat ja lopulliset järjestelyt jäävät oikeaan toteutusvaiheeseen.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-T03",
+      "branchId": "bridge_no",
+      "requiredWhen": "LP1-T03/A ja ei bridgeSuitable",
+      "expected": "Pidä tapaus avoinna; tarjoa jatkokortti.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-T03",
+      "branchId": "bypass_ok",
+      "requiredWhen": "LP1-T03/B tai LP1-T04/A ja kiertoreitin suunnittelu valmis",
+      "expected": "Sulje kuljetustapaus. Kirjaa logisticsKm erikseen gridRouteKm:stä.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-T03",
+      "branchId": "model_report",
+      "requiredWhen": "LP1-T04/B ja vertailu valmis",
+      "expected": "Avaa dokumentoitu mallin hyväksymisvahvistus; näytä todelliset vanha/uusi MW ja korkeus. Tämä tulos ei itsessään hyväksy mallinvaihtoa. Vahvistus ei ole uusi satunnainen peruskortti.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A01",
+      "branchId": "surface_ok",
+      "requiredWhen": "LP1-A01/A ja surfaceMitigates",
+      "expected": "Ratkaise glare-case vain tällä equipment/layout-revisiolla. Aineisto viedään tarvittavaan lausunto- ja lupakäsittelyyn.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A01",
+      "branchId": "surface_no",
+      "requiredWhen": "LP1-A01/A ja ei surfaceMitigates",
+      "expected": "Avaa LP1-A05. Sen pienempi vaihtoehto on sidottu tämän skenaarion kelpoisuuteen etukäteen ja tarkistettu uusintalaskennassa; älä keksi ratkaisua mielivaltaiselle toiselle kohteelle.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A01",
+      "branchId": "layout_ok",
+      "requiredWhen": "LP1-A05/A, muuttunut asettelu tarkistettu",
+      "expected": "Ratkaise case; säilytä toteutettu pienennys eikä uutta poistokertaa.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A01",
+      "branchId": "block_out",
+      "requiredWhen": "LP1-A01/B tai LP1-A05/B",
+      "expected": "Ratkaise case, älä poista samoja hehtaareja uudelleen.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A02",
+      "branchId": "no_acid",
+      "requiredWhen": "LP1-A02/A; riskikerrosta ei todeta suunnitellulla vaikutussyvyydellä",
+      "expected": "Ratkaise sulfate-case; ei hyvitystä poisjätetylle lohkolle, jota ei tutkittu.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A02",
+      "branchId": "risk",
+      "requiredWhen": "LP1-A02/A; riski todettu",
+      "expected": "Jatko LP1-A06. Älä oleta toteutunutta vesistövahinkoa suunnittelupelissä.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A02",
+      "branchId": "shallower",
+      "requiredWhen": "LP1-A06/A ja suunnitelma tarkistettu",
+      "expected": "Ratkaise kyseinen maaperäriski; mahdolliset erilliset lupa-/vesikysymykset eivät poistu.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A02",
+      "branchId": "excluded",
+      "requiredWhen": "LP1-A02/B tai LP1-A06/B ja vaikutusrajauksen tarkistus valmis",
+      "expected": "Säilytä poisto kerran. Älä sano näytteiden vahvistaneen riskiä, jos B:ssä niitä ei tilattu.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A03",
+      "branchId": "grazing",
+      "requiredWhen": "A; laitteisto ja lampurin ehdot yhteensopivat",
+      "expected": "Kirjaa hoitosopimus ja planningQuality vain kerran, ei kapasiteetin ilmaista kasvua.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A03",
+      "branchId": "not_suitable",
+      "requiredWhen": "A; laitteisto tai käytännön hoito ei sovi",
+      "expected": "Pidä A-suunnittelukulu; kirjaa niitto ilman uutta rangaistusketjua tai eläinvahinkoa.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A03",
+      "branchId": "mowing",
+      "requiredWhen": "B; hoitosuunnitelma valmis",
+      "expected": "Neutraali valmistuminen voidaan yhdistää seuraavaan näkymään; ei pakollista erillistä välitarinaa.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A04",
+      "branchId": "useful",
+      "requiredWhen": "A; suuremman vaihtoehdon hyöty osoitettu",
+      "expected": "Avaa teknisen vaihtoehdon vahvistus: suurempi layout tai pysyminen pienemmässä. Säilytä AC-raja. Lopullinen scope arvioidaan sovittuun alkuperäiseen tavoitteeseen, ei resetoi tavoitetta.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A04",
+      "branchId": "weak",
+      "requiredWhen": "A; hyöty ei vastaa lisäpanosta",
+      "expected": "Ei automaattista MWac-menetystä. A-tutkimuskulu säilyy; ei tiedon vuoksi syntyvää uutta fyysistä ongelmaa.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-A04",
+      "branchId": "small",
+      "requiredWhen": "B",
+      "expected": "Tavallinen vahvistus saa olla tiivistetty rivihuomio. Älä väitä lisäpaneelitutkimusta tehdyksi.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-Y01",
+      "branchId": "both",
+      "requiredWhen": "A; toinen kunta hyväksyy käsitellyn ehdotuksen",
+      "expected": "Merkitse kunta2 adopted; ei automaattisesti final. Alkuperäinen kunta1-status säilyy.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-Y01",
+      "branchId": "exclude_after_wait",
+      "requiredWhen": "A; toinen kunta ei hyväksy; pienempi vaihtoehto yhä mahdollinen",
+      "expected": "Tarjoa samaan municipal-caseen sidottu B:n poistovahvistus tai omistajan tietoinen lopetus. Ei uudelleen A-odotusta loputtomasti. Älä lupaa suoraan uutta kaavaa.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-Y01",
+      "branchId": "separated",
+      "requiredWhen": "B tai A:n jälkeen hyväksytty poistovahvistus",
+      "expected": "Päivitä vain erotetun suunnitelman arvioiden revision kattavuus; jatka aidosti tarvittaviin muutoksiin ja lainvoimaan.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-H01",
+      "branchId": "converted",
+      "requiredWhen": "LP1-H01/A sitovasti käsitelty",
+      "expected": "Näytä yksi olennainen siirtymä. Tilaa solarContinuationReview: ehdotus 2 kk / 8 000 €, maksu kerran. Ei puhtaan uuden aurinkopelin initialStatea. Tarkistuksen valmistuminen julkaisee LP1-E-H02:n.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-H02",
+      "branchId": "reuse",
+      "requiredWhen": "Tarkistus valmis, aiempi aineisto kattaa muuttuneen aurinkoratkaisun olennaisilta osiltaan",
+      "expected": "Säilytä vain perustellusti kattavat readiness-evidence-rivit; päivitä asiakirjat/kuulemistarve. Ei suoraa voittoa tai lupaleimaa.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-H02",
+      "branchId": "supplement",
+      "requiredWhen": "Tarkistus valmis, rajattu lisätyö tarpeen",
+      "expected": "Tämän haaran yksilöity lisätyö on olemassa olevan sähkönsiirtoreitin päivitetty vaikutus- ja mitoitustarkistus aurinkoratkaisulle: 2 kk / 5 000 €, sama johto ja samat maat. Ei uutta reittisummaa eikä koko YVAa tyhjästä. Kirjaa readiness-evidence; jos aiempi tieto jo kattaa tarkistuksen, tätä haaraa ei tarjota. Muut puutteet käsitellään omissa nykyisissä tapauksissaan.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-H02",
+      "branchId": "reduced",
+      "requiredWhen": "Tarkistus valmis; itsenäinen ratkaisu vaatii paneelialaa",
+      "expected": "Tarjoa LP1-H02 ja sido ehdotetut block/parcelIDt. Vielä ei poistoa.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-H02",
+      "branchId": "blocked",
+      "requiredWhen": "Tarkistuksessa ilmenee ennen konversiota avoin aurinko-/yhteinen toteutuseste eikä korvaavaa ratkaisua",
+      "expected": "Kirjaa uusi todennettu solar/shared-este ja viimeistele loppu. Ei toista konversiota. Ei käytetä jo ennen tarjousta tiedossa olleeseen globaaliin esteeseen.",
+      "status": "not_run"
+    },
+    {
+      "contentId": "LP1-E-H03",
+      "branchId": "rescued_win",
+      "requiredWhen": "Hybridistä jatkunut aurinkohanke täyttää kaikki omat lupa- ja lainvoimaehdot",
+      "expected": "Ending.kind=win, routeCategory=hybrid_solar. Näytä jatkovoitto erillään alkuperäisen hybriditavoitteen täyttämisestä. Pisteytys 03:n mukaisesti.",
+      "status": "not_run"
+    }
+  ]
+}

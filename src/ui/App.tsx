@@ -11,7 +11,8 @@ import {
   token,
   serializeGame,
   restoreGame,
-  STAGES,
+  stageLabels,
+  modeLabel,
 } from "../game/v5";
 import type { Game, Mode, Side } from "../game/v5";
 import { SwipeCard } from "./SwipeCard";
@@ -33,7 +34,7 @@ export default function App() {
   const [saved, setSaved] = useState(readSaved),
     [game, setGame] = useState<Game | null>(null),
     [screen, setScreen] = useState<"menu" | "play" | "tutorial">("menu"),
-    [mode] = useState<Mode>("hybrid"),
+    [mode, setMode] = useState<Mode>("hybrid"),
     [seed, setSeed] = useState(""),
     [error, setError] = useState(""),
     [settings, setSettings] = useState(false),
@@ -148,11 +149,11 @@ export default function App() {
                 <button
                   key={m}
                   aria-pressed={mode === m}
-                  disabled={m !== "hybrid"}
+                  onClick={() => setMode(m)}
                 >
                   {m === "wind" ? "↟" : m === "solar" ? "☀" : "↟☀"}
                   <span>{modeNames[m]}</span>
-                  {m !== "hybrid" && <small>Ei vielä valittavissa</small>}
+
                 </button>
               ))}
             </div>
@@ -207,10 +208,10 @@ export default function App() {
                 <span>
                   {screen === "tutorial"
                     ? "PIENI HARJOITUS"
-                    : STAGES[game.stage - 1]}
+                    : stageLabels(game)[game.stage - 1]}
                 </span>
                 <div aria-label={`Vaihe ${game.stage} / 4`}>
-                  {STAGES.map((s, i) => (
+                  {stageLabels(game).map((s, i) => (
                     <i key={s} className={i < game.stage ? "filled" : ""} />
                   ))}
                 </div>
@@ -249,7 +250,8 @@ export default function App() {
                   </>
                 ) : ended && game.ending && ending ? (
                   <>
-                    <MomentArt kind={game.ending.kind === "win" ? "win" : "loss"} />
+                    <MomentArt mode={game.activeMode} kind={game.ending.kind === "win" ? "win" : "loss"} />
+                    {ending.reaction && <p className="scene-reaction">{ending.reaction}</p>}
                     <h1>{ending.title}</h1>
                     <p className="end-reason">{ending.body}</p>
                     <Score game={game} />
@@ -263,7 +265,7 @@ export default function App() {
                   </>
                 ) : story?.kind === "transition" ? (
                   <>
-                    <MomentArt kind="transition" stage={story.stage ?? game.stage} />
+                    <MomentArt mode={game.activeMode} kind="transition" stage={story.stage ?? game.stage} />
                     <section
                       className="narrative story-narrative"
                       aria-live="polite"
@@ -289,8 +291,8 @@ export default function App() {
                       : { title: "Työt etenevät", body: "Selvitykset ja valmistelu jatkuvat. Siirrytään seuraavaan tulokseen.", updates: [game.lastOutcome, ...game.narration.updates].filter(Boolean), eyebrow: "AIKA ETENEE" }}
                     onChoose={expected => next(expected)} />
                     {story?.id === "start" && <details className="owner-goals"><summary>Omistajan lähtötavoite ja jatkoraja</summary>
-                      <p>{game.initial.windCount} voimalaa / {game.initial.windMW} MW, {game.initial.solarHa} ha aurinkoaluetta. Valmistelussa harkitaan lisäksi 100 MW lataus- ja purkutehon, 200 MWh:n akkua.</p>
-                      <p>Jatkoon tarvitaan vähintään {game.initial.minimumWindMW} MW tuulta tai {game.initial.minimumSolarHa} ha aurinkoaluetta sekä {100 * game.initial.minimumScopeRatio} % alkuperäisestä painotetusta laajuustavoitteesta. Tuuli painaa 60 %, aurinko 30 % ja akku 10 %.</p>
+                      <p>{game.originMode !== "solar" && `${game.initial.windCount} voimalaa / ${game.initial.windMW} MW. `}{game.originMode !== "wind" && `${game.initial.solarHa} ha aurinkoaluetta. `}{game.originMode === "hybrid" && "Valmistelussa harkitaan lisäksi 100 MW / 200 MWh:n akkua."}</p>
+                      <p>Jatkoon tarvitaan vähintään {game.originMode === "solar" ? `${game.initial.minimumSolarHa} ha aurinkoaluetta` : `${game.initial.minimumWindMW} MW tuulta`} sekä {100 * game.initial.minimumScopeRatio} % alkuperäisestä painotetusta laajuustavoitteesta. {game.originMode === "hybrid" ? "Tuuli painaa 60 %, aurinko 30 % ja akku 10 %." : "Laajuutta verrataan tämän hankkeen alkuperäiseen tuotantotavoitteeseen."}</p>
                     </details>}</>
                 ) : c ? (
                   <>
@@ -324,7 +326,7 @@ export default function App() {
               </main>
               <footer className="project-footer">
                 <span>{game.run.projectIdentity.displayName}</span>
-                <small>{modeNames[game.run.mode]}hanke</small>
+                <small>{modeLabel(game.routeCategory)}</small>
               </footer>
             </>
           )
@@ -352,7 +354,7 @@ export default function App() {
                 ×
               </button>
               <h2 id="numbers-title">Mitä luvut kertovat?</h2>
-              <p>
+              {game?.activeMode !== "solar" && <><p>
                 <b>Kokonaiskorkeus</b> on yhden voimalan korkeus maasta lavan
                 ylimpään kärkeen.
               </p>
@@ -360,11 +362,11 @@ export default function App() {
                 <b>Yhteisteho</b> on jäljellä olevien voimaloiden
                 nimellistehojen summa. Esimerkiksi 20 × 10 MW = 200 MW. Se ei
                 ole jatkuva tuotanto.
-              </p>
-              <p>
+              </p></>}
+              {game?.activeMode !== "wind" && <><p>
                 <b>Hehtaarit</b> ovat aurinkopaneeleille varattua pinta-alaa.
-              </p>
-              <p><b>Akku</b>: latausteho ja purkuteho ilmoitetaan megawatteina (MW), varastoitava energia megawattitunteina (MWh). Akun purku ei lisää tuulivoimaloiden nimellistehoa.</p>
+              </p><p><b>MWp</b> on paneelien nimellisteho, <b>MWac</b> invertterien vaihtovirtateho. Liittymän vientiraja rajoittaa verkkoon syötettävää tehoa. Suurempi paneeliteho ei kasvata näitä rajoja.</p></>}
+              {game?.activeMode === "hybrid" && <p><b>Akku</b>: latausteho ja purkuteho ilmoitetaan megawatteina (MW), varastoitava energia megawattitunteina (MWh). Akun purku ei lisää tuulivoimaloiden nimellistehoa.</p>}
               <p>
                 Kuvake tyhjenee, kun tuulivoiman yhteisteho tai aurinkoalue
                 pienenee alun suunnitelmasta.

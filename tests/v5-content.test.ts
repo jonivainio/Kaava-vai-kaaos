@@ -7,9 +7,9 @@ import { playerText } from "../src/game/v5";
 
 describe("v5 K01–K07: faithful player-field import", () => {
   it("preserves every indexed decision, event, bracketed ID and changed type", () => {
-    expect(content).toHaveLength(248);
-    expect(content.filter(item => item.kind === "decision")).toHaveLength(159);
-    expect(content.filter(item => item.kind === "event")).toHaveLength(89);
+    expect(content.filter(item => !item.id.startsWith("LP1-"))).toHaveLength(248);
+    expect(content.filter(item => item.kind === "decision" && !item.id.startsWith("LP1-"))).toHaveLength(159);
+    expect(content.filter(item => item.kind === "event" && !item.id.startsWith("LP1-"))).toHaveLength(89);
     expect(content.filter(item => item.id.startsWith("interludes["))).toHaveLength(13);
     expect(entry("P3-SOPIMUS").kind).toBe("decision");
     for (const id of ["UUSI-P1-02", "UUSI-P1-10", "BESS-P1-04", "initiative", "programme"]) expect(() => entry(id)).toThrow();

@@ -40,7 +40,7 @@ export default function V5Review() {
       <details><summary>Katselmuksen lähtötilanne</summary>
         <label>Siemen<input aria-label="Katselmuksen siemen" value={seed} onChange={event => setSeed(event.target.value)} /></label>
         <label>Pelitila<select aria-label="Katselmuksen pelitila" value={mode} onChange={event => setMode(event.target.value as Mode)}>
-          <option value="hybrid">Hybridi</option><option value="wind">Tuuli (suljettu pelitila)</option><option value="solar">Aurinko (suljettu pelitila)</option>
+          <option value="hybrid">Hybridi</option><option value="wind">Tuuli</option><option value="solar">Aurinko</option>
         </select></label>
         <label>Tuloksen lähdepäätös<select aria-label="Katselmuksen lähdepäätös" value={sourceId} onChange={event => setSourceId(event.target.value)}>
           <option value="">Ei pakotettua lähdepäätöstä</option>

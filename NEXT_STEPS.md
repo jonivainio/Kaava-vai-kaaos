@@ -1,4 +1,4 @@
-# Lisäpaketti 01 — toteutettu ja varmennettu (11.9.2026)
+# Lisäpaketti 01 — toteutettu, varmennettu ja julkaistu (10.9.2026)
 
 Aktiivinen peli käyttää sääntöversiota `v5-lp1-1`. V5:n muuttumaton lähde ja LP1:n 27 lisä-ID:tä muodostavat 275 ID:n sisältöpankin. Tuuli, Aurinko ja Hybridi ovat valittavissa. Ehdollinen hybridin aurinkojatko säilyttää pelikerran identiteetin, historian ja toteutuneet kustannukset sekä päivittää lupapolun ja pisteytyksen. Lisätty 18 SVG-kuvaa ja tapauskohtaisia loppureaktioita. Aiemmat pyyhkäisyt, muutosluvut ja enintään kolmen ajankulkukortin raja säilyvät.
 
@@ -6,7 +6,7 @@ Varmennettu: 442 TS-testiä; 23 Chromium-koetta ja lopullisen asettelun 4 leveys
 
 Tilasopimus: `docs/LP1_TILASOPIMUS.md`. Lähteet: `docs/source-lp1/KAAVA_VAI_KAAOS_LISAPAKETTI_01/`. Testien käyttämät oikeista pelipoluista kerätyt tallenteet: `reports/lp1/fixtures/`. Vanhan rules-3-tallenteen raakasisältö säilyy vientiin; päivitystä varten aloitetaan uusi pelikerta. Älä tulkitse vanhoja valintoja uuden pakan mukaan.
 
-Julkaisu ja kirjautumaton tarkistus tehdään seuraavaksi; niiden todelliset tunnisteet kirjataan `reports/lp1/release.json`- ja `public-check.json`-tiedostoihin. Fyysistä puhelinta, iOS/Safaria tai puhelimeen asennettua PWA:ta ei ole testattu. Seuraava kehityksen lähtökohta on käyttäjien palaute uusista pelimuodoista ja aurinkojatkon ymmärrettävyydestä. Säilytä keskitetty pelimuotopolitiikka, tuloshaarojen lähde-/valinta-/revisio-/valmistumisehdot ja todellinen lupamaali.
+Julkaistu julkiseksi 10.9.2026, Sites-versio 7, lähdecommit `73f4bd0eafda7433204018906a1cffddca8bceb7`. Osoite https://kaava-vai-kaaos.joni-vainio.chatgpt.site avautui HTTP 200:lla ilman evästeitä, kirjautumista tai ohitustunnuksia. Palvelimen JavaScript vastasi paikallista buildia. Kokonainen 22 päätöksen pelikerta, kolme vaihesiirtymää/latausta ja 739 pisteen lupavoitto tarkistettu; kaikki tilat vastasivat moottoria, ei selainvirheitä. Tunnisteet `reports/lp1/release.json`, koe `public-check.json`. Lähdekoodi siirretty myös GitHubin päähaaraan. Fyysistä puhelinta, iOS/Safaria tai puhelimeen asennettua PWA:ta ei ole testattu. Seuraava kehityksen lähtökohta on käyttäjien palaute uusista pelimuodoista ja aurinkojatkon ymmärrettävyydestä. Säilytä keskitetty pelimuotopolitiikka, tuloshaarojen lähde-/valinta-/revisio-/valmistumisehdot ja todellinen lupamaali.
 
 ---
 # Tarinoiden tiivistys ja reaktiot — 10.9.2026

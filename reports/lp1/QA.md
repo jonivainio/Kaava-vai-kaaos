@@ -95,4 +95,4 @@ Peruskiintiö enintään 18; sen jälkeen tarvittavat jatkot lasketaan erikseen.
 
 Tämä on fiktiivisen pelin hyväksyntä, ei oikeiden hankkeiden oikeudellinen tai tekninen kelpoisuusarvio. Lähdepakettien raportit ovat muuttumattomia aineistoja eivätkä pelin ajotuloksia. Kehitysvaiheen epäonnistuneet kokeet eivät ole loppuhyväksyntä; niissä löydetty tuulijonon jääminen aurinkojatkoon, tutkimuksen väärä kohde sekä kapean HUD:n/rivien ylivuoto korjattiin ennen loppukokeita.
 
-Julkaisun ja kirjautumattoman kokeen tarkat tunnisteet kirjataan release.json- ja public-check.json-tiedostoihin vasta onnistumisen jälkeen. Nykyinen tiedosto ei yksin todista julkaisua.
+Julkaistu 10.9.2026, Sites-versio 7. Tunnisteet: `release.json`. Kirjautumaton tarkistus: `public-check.json`, HTTP 200, oikea build, 22 päätöstä, kolme siirtymän latausta, 739 pisteen lupavoitto ja nolla selainvirhettä. Jokainen tila verrattiin puhtaaseen moottoriin. Fyysinen puhelin ja iOS/Safari jäävät testaamatta.

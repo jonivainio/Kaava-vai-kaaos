@@ -1,0 +1,14 @@
+{
+  "projectId": "appgprj_6a9f15554f248191b0170ac9b997e896",
+  "versionId": "appgprj_6a9f15554f248191b0170ac9b997e896~appgver_21c525eed6888191bfc1499754a7747a",
+  "versionNumber": 7,
+  "deploymentId": "appgdep_6aa31931b80c81918187008278fa88fc",
+  "status": "succeeded",
+  "url": "https://kaava-vai-kaaos.joni-vainio.chatgpt.site",
+  "sourceCommit": "73f4bd0eafda7433204018906a1cffddca8bceb7",
+  "archiveSha256": "ab7aea71d13d05e958035fd9e8d1a0cdb0e60d235992b774d758fd88e6f18bee",
+  "engineBundleSha256": "427d169a3c1cde1bd702e44227f8bd254106150c851e7a05943cbacc466a812d",
+  "deployedAt": "2026-09-10T20:55:27.269687+00:00",
+  "accessMode": "public",
+  "anonymousVerification": "public-check.json"
+}

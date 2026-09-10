@@ -1,0 +1,24 @@
+{
+  "url": "https://kaava-vai-kaaos.joni-vainio.chatgpt.site/",
+  "httpStatus": 200,
+  "contentVersion": "v5-fi-03ae27238966-lp1-ab0413638fd3",
+  "rulesVersion": "v5-lp1-1",
+  "deployedScript": "./assets/index-DlkrG6V6.js",
+  "deployedScriptSha256": "a500c22d29963d0236cf453ccf611a581ef1d1b63e1c0b03314010492f66f247",
+  "anonymousFreshContext": true,
+  "initialCookieCount": 0,
+  "bypassOrAuthHeaders": false,
+  "fullRun": true,
+  "seed": "v5-ui-win-2",
+  "canonicalStrategy": "A",
+  "decisions": 22,
+  "transitions": 3,
+  "reloads": 3,
+  "score": 739,
+  "viewport": {
+    "width": 390,
+    "height": 844
+  },
+  "errors": [],
+  "checkedAt": "2026-09-10T20:56:15.587Z"
+}

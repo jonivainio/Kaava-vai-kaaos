@@ -2,7 +2,7 @@
 
 **[Avaa peli puhelimella](https://kaava-vai-kaaos.joni-vainio.chatgpt.site)** — julkinen testiversio, ei vaadi ChatGPT-kirjautumista. Linkin voi jakaa testaajille. Lähdekoodi: [GitHub](https://github.com/jonivainio/Kaava-vai-kaaos).
 
-Lisäpaketti 01 (`v5-lp1-1`) avaa Tuuli-, Aurinko- ja Hybridi-pelimuodot. Julkaisun tarkka tila: [NEXT_STEPS](NEXT_STEPS.md). Päivitä vanha selainversio aloitusvalikosta ja aloita uusi peli. Edellisen version tallenne säilyy vietäväksi.
+Lisäpaketti 01 on julkaistu 10.9.2026 (Sites-versio 7). Kirjautumaton kokonainen pelikerta on tarkistettu julkisesta osoitteesta. Päivitys (`v5-lp1-1`) avaa Tuuli-, Aurinko- ja Hybridi-pelimuodot. Julkaisun tarkka tila: [NEXT_STEPS](NEXT_STEPS.md). Päivitä vanha selainversio aloitusvalikosta ja aloita uusi peli. Edellisen version tallenne säilyy vietäväksi.
 
 Suomalainen hankekehityskorttipeli: kehitä fiktiivinen hanke maanvuokrauksesta luvitetuksi. V5 ja LP1 sisältävät yhteensä 275 sisältö-ID:tä. Peliin valitaan 18 peruspäätöksen tavoite ja tarpeelliset jatkot. Hybridissä tuuliaiheita on eniten, aurinkoa toiseksi ja akulla enintään kaksi peruspäätöstä. Tuuliosan kaatuessa elinkelpoinen aurinko-osa voi ehdollisesti jatkaa samassa pelikerrassa. Hyväksyminen yksin ei ole voitto: lupien ja lainvoiman pitää olla kunnossa.
 
